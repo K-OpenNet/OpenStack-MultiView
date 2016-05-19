@@ -123,8 +123,8 @@ do
 
 
 
-  curl -XPOST "http://$IP:9200/function_visibility-$name/GJ" -d "`cat function_visibility`"
-  curl -XPOST "http://$IP:9200/vbox_visibility-$name/GJ" -d "`cat vbox_visibility`"
+  curl -XPOST "http://$IP:9200/function_visibility-$name/$hyp" -d "`cat function_visibility`"
+  curl -XPOST "http://$IP:9200/vbox_visibility-$name/$hyp" -d "`cat vbox_visibility`"
 
 
 

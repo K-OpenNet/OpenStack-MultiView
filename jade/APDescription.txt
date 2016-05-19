@@ -1,1 +1,0 @@
-( ap-description  :name "Visibility" :ap-services (set ( ap-service  :name fipa.mts.mtp.http.std :type fipa.mts.mtp.http.std :addresses (sequence http://K1-GJ1:7778/acc))))
