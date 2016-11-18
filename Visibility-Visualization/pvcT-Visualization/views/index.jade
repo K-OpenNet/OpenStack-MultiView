@@ -1,0 +1,124 @@
+html
+  head
+    title OF@TEIN Resource Visualization
+    |         
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    |         
+    meta(name='description', content='OF@TEIN Resource Visualization')
+    |         
+    meta(name='keywords', content='jquery, circular menu, navigation, round, bubble')
+    |         
+    link(rel='stylesheet', href='stylesheets/indexstyle.css', type='text/css', media='screen')
+    |         
+    style.
+      *{
+      margin:0;
+      padding:0;
+      }
+      body{
+      font-family:Arial;
+      background:#fff url(images/bg.png) no-repeat top left;
+      }
+      .title{
+      width:600px;
+      height:150px;
+      position:absolute;
+      top:400px;
+      left:150px;
+      background:transparent url(images/title.png) no-repeat top left;
+      }
+      a.back{
+      background:transparent url(images/back.png) no-repeat top left;
+      position:fixed;
+      width:150px;
+      height:27px;
+      outline:none;
+      bottom:0px;
+      left:0px;
+      }
+      #content{
+      margin:0 auto;
+      }
+  |     
+  body
+    #content
+      .title
+      |             
+      #nav.navigation
+        .item.user
+          img.circle(src='images/bg_user.png', alt='', width='199', height='199')
+          |                     
+          a.icon(href='#')
+          |                     
+          h2 Resources Map
+          |                     
+          ul
+            li
+              a(href='/map') View
+        |                 
+        .item.home
+          img.circle(src='images/bg_shop.png', alt='', width='199', height='199')
+          |                     
+          a.icon(href='#')
+          |                     
+          h2 Physical Links
+          |                     
+          ul
+            li
+              a(href='/routes') Draw (Routes)
+        |                 
+        .item.shop
+          img.circle(src='images/bg_camera.png', alt='', width='199', height='199')
+          |                     
+          a.icon(href='#')
+          |                     
+          h2 Box Performance
+          |                     
+          ul
+            li
+              a(href='http://103.22.221.55:5601/#/dashboard/Resource-Dashboard-1') CPU
+            |                       &#x9;
+            li
+              a(href='http://103.22.221.55:5601/#/dashboard/Resource-Dashboard-2') Memory
+            |                       &#x9;
+            li
+              a(href='http://103.22.221.55:5601/#/dashboard/Resource-Dashboard-3') Disk
+            |                       &#x9;
+            li
+              a(href='http://103.22.221.55:5601/#/dashboard/Resource-Dashboard-4') SysLogs
+    // The JavaScript
+    script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    |         
+    script(type='text/javascript', src='javascripts/jquery.easing.1.3.js')
+    |         
+    script(type='text/javascript').
+      $(function() {
+      $('#nav > div').hover(
+      function () {
+      var $this = $(this);
+      $this.find('img').stop().animate({
+      'width'     :'210px',
+      'height'    :'210px',
+      'top'       :'-25px',
+      'left'      :'-25px',
+      'opacity'   :'1.0'
+      },500,'easeOutBack',function(){
+      $(this).parent().find('ul').fadeIn(700);
+      });
+      $this.find('a:first,h2').addClass('active');
+      },
+      function () {
+      var $this = $(this);
+      $this.find('ul').fadeOut(500);
+      $this.find('img').stop().animate({
+      'width'     :'70px',
+      'height'    :'52px',
+      'top'       :'0px',
+      'left'      :'0px',
+      'opacity'   :'0.1'
+      },5000,'easeOutBack');
+      $this.find('a:first,h2').removeClass('active');
+      }
+      );
+      });
+

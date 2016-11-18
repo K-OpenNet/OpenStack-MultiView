@@ -1,0 +1,26 @@
+doctype transitional
+html(xmlns='http://www.w3.org/1999/xhtml', xml:lang='en', lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    title RGraph - Tree Animation
+    // CSS Files
+    link(type='text/css', href='stylesheets/base.css', rel='stylesheet')
+    link(type='text/css', href='stylesheets/RGraph.css', rel='stylesheet')
+    //if IE
+      script(language='javascript', type='text/javascript', src='../../Extras/excanvas.js')
+    // JIT Library File
+    script(language='javascript', type='text/javascript', src='javascripts/jit.js')
+    // Example File
+    script(language='javascript', type='text/javascript', src='javascripts/multiview.js')
+  body(onload='init();')
+    #container
+      #left-container
+        .text
+        #id-list
+        div(style='text-align:center;')
+          a(href='example1.js')
+      #center-container
+        #infovis
+      #right-container
+        #inner-details
+      #log

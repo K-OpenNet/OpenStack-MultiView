@@ -1,0 +1,394 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    style(type='text/css').
+      .panel-resizable {
+        resize: vertical;
+        overflow: auto
+        }
+      #mynetwork {
+      width: 100%;
+      height: 100%;
+      background: #222222;
+      }
+    script(src='../bower_components/jquery/dist/jquery.min.js')
+    // Bootstrap Core CSS
+    link(href='../bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    // MetisMenu CSS
+    link(href='../bower_components/metisMenu/dist/metisMenu.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='../dist/css/sb-admin-2.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='../bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    script(type='text/javascript', src='javascripts/vis.js')
+    script(type='text/javascript', src='javascripts/boxes.json')
+    link(href='stylesheets/vis.css', rel='stylesheet', type='text/css')
+    link(type="text/css" rel="stylesheet" href="stylesheets/opentip.css")
+    script(type="text/javascript" src="javascripts/opentip-jquery.js")
+    script(type='text/javascript').
+      //redirect to login page if user is not logged
+      var session_username = sessionStorage.getItem('ss_user_name');
+      var session_userrole = sessionStorage.getItem('ss_role');
+      if(session_username === null){
+        window.location.replace("http://127.0.0.1:3006");
+      }
+      var boxList         = !{boxList};
+      var switchList      = !{switchList};
+      var instanceList    = !{instanceList};
+      var serviceList     = !{serviceList};
+      //var pPathStatus     = !{pPathStatus};
+      var ovsBridgeStatus = !{ovsBridgeStatus};
+      //var flowData        = !{flowData};
+      var index=0, boxlevel=1, switchlevel=0, instancelevel=0, servicelevel=0;
+      var nodes             = null;
+      var edges             = null;
+      var network           = null;
+      var DIR               = 'images/';
+      var EDGE_LENGTH_MAIN  = 350;
+      var EDGE_LENGTH_SUB   = 150;
+      var BridgeLinkColor = 'GREEN';
+      var BridgeNodeColor = '#3399ff';
+      WIDTH_SCALE = 2,
+      GREEN = 'green',
+      RED = '#C5000B',
+      ORANGE = 'orange',
+      GRAY = 'gray',
+      BLACK = '#2B1B17';
+      // Called when the Visualization API is loaded.
+      function draw() {
+      var mynetwork = document.getElementById('mynetwork');
+      var x = mynetwork.clientWidth;
+      var y = mynetwork.clientHeight;
+      document.getElementById('text').innerHTML="Logged as "+session_userrole+' ('+session_username +')';
+      // Create a data table with nodes.
+      nodes = [];
+      // Create a data table with links.
+      edges = [];
+      //Add network Node
+      nodes.push({id: 1, image: DIR + 'tein.png', shape: 'image', level:0, fixed: true, physics:true, x: x/2, y});
+      //Draw the Physical Boxes
+      var stepBox = x/(boxList.length*2+1)+80;
+      var firstBox = (x/(boxList.length*2+1))/2
+      for (var i in boxList)
+      {
+      index=index+1;
+      BoxNodeID = index * 1000;
+      if (boxList[i].data_ip_status == 'GREEN')
+        {
+          nodes.push({id: BoxNodeID, label: boxList[i].host, image: DIR + 'pboxgreen.jpg', shape: 'image', fixed: true, x: firstBox+stepBox*index, y: y-300});
+          edges.push({from: 1, to: BoxNodeID, length: EDGE_LENGTH_MAIN, width: WIDTH_SCALE * 4, color: GREEN, label: '0.71 mbps'});
+        }
+      else
+        {
+          nodes.push({id: BoxNodeID, label: boxList[i].host, image: DIR + 'pboxgreen.jpg', shape: 'image', fixed: true, x: firstBox+stepBox*index, y: y-300});
+          edges.push({from: 1, to: BoxNodeID, length: EDGE_LENGTH_MAIN, width: WIDTH_SCALE * 4, color: RED, label: '0.71 mbps'});
+        }
+      //Draw the OVS Bridges
+      switchNodeID = BoxNodeID;
+      console.log(switchList);
+      for (var j in switchList)
+      {
+      if (switchList[j].bridge !== 'br-ex')
+      {
+      for (var a in ovsBridgeStatus)
+      {
+      if (ovsBridgeStatus[a].bridge == switchList[j].bridge && ovsBridgeStatus[a].box == boxList[i].box)
+      {
+      if (ovsBridgeStatus[a].status == 'UP')
+      {
+      BridgeLinkColor = 'GREEN';
+      BridgeNodeColor = '#3399ff'
+      //console.log(ovsBridgeStatus[a].box + ' '+BridgeLinkColor);
+      }
+      else
+      {
+      BridgeLinkColor='RED';
+      BridgeNodeColor = 'RED'
+      }
+      break;
+      }
+      }
+      switchNodeID = switchNodeID + 1;
+      if (switchNodeID != BoxNodeID + 1)
+      {
+      switchlevel=switchlevel + 1;
+      // Huynh: insert box field
+      nodes.push({id: switchNodeID, label: switchList[j].bridge, box: boxList[i].box, level:switchlevel, group: 'desktop', value: 3, fixed: true, physics:false, color: BridgeNodeColor, x: firstBox+stepBox*index, y: y-150*(switchlevel+1)});
+      edges.push({from: switchNodeID-1, to: switchNodeID, length: EDGE_LENGTH_SUB, color: BridgeLinkColor});
+      //edges.push({from: switchNodeID-1, to: switchNodeID, length: EDGE_LENGTH_SUB, color: RED, title:'flow 1. Src: , DSt: '});
+      //edges.push({from: switchNodeID-1, to: switchNodeID, length: EDGE_LENGTH_SUB, color: BridgeLinkColor, title:'flow 2. Src: , Dst: '});
+      }
+      else
+      {
+      switchlevel = boxlevel + 1;
+      // Huynh: insert box field
+      nodes.push({id: switchNodeID, label: switchList[j].bridge, box: boxList[i].box, level:switchlevel, group: 'desktop', value: 3, fixed: true, physics:false, color: BridgeNodeColor,x: firstBox+stepBox*index, y: y-150*(switchlevel+1)});
+      edges.push({from: BoxNodeID, to: switchNodeID, length: EDGE_LENGTH_SUB, color: BridgeLinkColor});
+      }
+      }
+      }
+      //Draw the OpenStack Instances
+      vmNodeID      = BoxNodeID+100;
+      serviceNodeID = BoxNodeID+600;
+      instancelevel = switchlevel+1;
+      var listInstance= [];
+      for(var k in instanceList)
+      {
+        if(boxList[i].box == instanceList[k].box)
+        {
+          listInstance.push(instanceList[k]);
+        }
+      }
+      console.log(listInstance);
+      var i =0;
+      for(var k in listInstance)
+      {
+      vmNodeID = vmNodeID + 1;
+      if (listInstance[k].state == 'Running')
+      {
+      nodes.push({id: vmNodeID, label: listInstance[k].name, box: listInstance[k].box, level:instancelevel, image: DIR + 'vmicongreen.png', shape: 'image', group: 'instance', title: 'Instance Details', fixed: true, physics:true, x: firstBox+stepBox*index+i*150-200, y: y-150*(instancelevel+1)});
+      edges.push({from: switchNodeID, to: vmNodeID, length: EDGE_LENGTH_SUB, color: GREEN});
+      }
+      else
+      {
+      //console.log('TEST');
+      nodes.push({id: vmNodeID, label: listInstance[k].name, box: listInstance[k].box, level:instancelevel, image: DIR + 'vmiconred.png', shape: 'image', group: 'instance', title: 'Instance Details', fixed: true, physics:true, x: firstBox+stepBox*index+i*150-200, y: y-150*(instancelevel+1)});
+      edges.push({from: switchNodeID, to: vmNodeID, length: EDGE_LENGTH_SUB, color: GREEN});
+      }
+      //Draw the Services Running in the OpenStack Instance
+      serviceNodeID = serviceNodeID+1;
+      nodes.push({id: serviceNodeID, label: 'Streaming', box: listInstance[k].box, level:switchlevel+2, group: 'desktop', value: 3, fixed: true, physics:false,x: firstBox+stepBox*index+i*150-200, y: y-150*(instancelevel+2)});
+      edges.push({from: vmNodeID, to: serviceNodeID, length: EDGE_LENGTH_SUB, color: GREEN});
+      i= i+1;
+      }
+      }
+      // Huynh: create flow visualization
+      var protocol = 'ICMP';
+      var vmSrc = 'usman-gist-vm';
+      var vmDst = 'usman-pks-vm';
+      var boxSrc ='SmartX-BPlus-GIST';
+      var boxDst ='PKS';
+      var boxID = 0;
+      var brCap =0;
+      var brDev =0;
+      var brVlan =0;
+      var brInt =0;
+      var vmId =0;
+      var serviceId =0;
+      for(var i =0; i<nodes.length; i++){
+        if(nodes[i].label === 'GIST')
+        boxID = nodes[i].id;
+        if(nodes[i].label === 'brcap' && nodes[i].box === boxSrc)
+        brCap = nodes[i].id;
+        if(nodes[i].label === 'brdev' && nodes[i].box === boxSrc)
+        brDev = nodes[i].id;
+        if(nodes[i].label === 'brvlan' && nodes[i].box === boxSrc)
+        brVlan = nodes[i].id;
+        if(nodes[i].label === 'br-int' && nodes[i].box === boxSrc)
+        brInt = nodes[i].id;
+        if(nodes[i].label === vmSrc)
+        vmId = nodes[i].id;
+      }
+      edges.push({from: boxID, to: brCap, length: EDGE_LENGTH_SUB, color: '#FFFF00', dashes:true, title: 'Flow from '+vmSrc+' to '+vmDst+'. Protocol: '+protocol});
+      edges.push({from: brCap, to: brDev, length: EDGE_LENGTH_SUB, color: '#FFFF00', dashes:true, title: 'Flow from '+vmSrc+' to '+vmDst+'. Protocol: '+protocol});
+      edges.push({from: brDev, to: brVlan, length: EDGE_LENGTH_SUB, color: '#FFFF00', dashes:true, title: 'Flow from '+vmSrc+' to '+vmDst+'. Protocol: '+protocol});
+      edges.push({from: brVlan, to: brInt, length: EDGE_LENGTH_SUB, color: '#FFFF00', dashes:true, title: 'Flow from '+vmSrc+' to '+vmDst+'. Protocol: '+protocol});
+      edges.push({from: brInt, to: vmId, length: EDGE_LENGTH_SUB, color: '#FFFF00', dashes:true, title: 'Flow from '+vmSrc+' to '+vmDst+'. Protocol: '+protocol});
+      // legend
+      // create a visualization network
+      var container = document.getElementById('mynetwork');
+      var data = {
+      nodes: nodes,
+      edges: edges
+      };
+      var options = {
+      nodes: {
+      shape: 'dot',
+      size: 20,
+      borderWidth: 2,
+      font: {
+      size: 16,
+      color: '#ffffff'
+      },
+      scaling: {
+      min: 16,
+      max: 32,
+      }
+      },
+      edges: {
+      color: GRAY,
+      width: 2,
+      smooth: {
+          type: 'dynamic'
+        }
+      },
+      interaction: {
+      dragNodes: false,// do not allow dragging nodes
+      hover: true,
+      //zoomView: false, // do not allow zooming
+      //dragView: false,  // do not allow dragging
+      navigationButtons: true
+      }
+      };
+      network = new vis.Network(container, data, options);
+      //var myInput = $("#mynetwork");
+      //var inputOpentip = new Opentip(myInput, { showOn: null, style: 'glass' });
+      //network.on("hoverEdge", function (params){
+          //params.event = "[original event]";
+          //var edgeId = params.edge;
+          //inputOpentip.setContent('Edge Id: '+edgeId);
+          //inputOpentip.show();
+          //});
+      network.moveTo({
+        position: {x: 0, y: 0},
+        offset: {x: -x/2, y: -y/2},
+        scale: 1,
+        })
+      //console.log(flowData);
+      }
+      function test() {
+           var container = document.getElementById('mynetwork');
+           // Create a data table with nodes.
+           nodes = [];
+           // Create a data table with links.
+           edges = [];
+           nodes.push({id: 1, image: DIR + 'tein.png', shape: 'image', level:0, fixed: true, physics:true, x:-1000, y: 1000});
+           nodes.push({id: 2, image: DIR + 'tein.png', shape: 'image', level:0, fixed: true, physics:true, x:1000, y: 100});
+           edges.push({from: 1, to: 2, color: GREEN, label: '0.71 mbps'});
+           edges.push({from: 1, to: 2, color: RED, label: '0.71 mbps'});
+           var data = {
+               nodes: nodes,
+               edges: edges
+            };
+           var options = {
+                nodes: {
+                    //shape: 'dot',
+                    size: 20,
+                    borderWidth: 2,
+                    font: {
+                        size: 16,
+                        color: '#ffffff'
+                    },
+                    scaling: {
+                        min: 16,
+                        max: 32,
+                    }
+                },
+                edges: {
+                    color: GRAY,
+                    width: 2,
+                    smooth: {
+                        type: 'dynamic'
+                    }
+                },
+      interaction: {
+      dragNodes: false,// do not allow dragging nodes
+      //zoomView: false, // do not allow zooming
+      //dragView: false,  // do not allow dragging
+      navigationButtons: true
+      }
+            };
+           network = new vis.Network(container, data, options);
+      }
+  body(onload='draw()')
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-default.navbar-static-top(role='navigation', style='margin-bottom: 0')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          p
+            #text
+        ul.nav.navbar-top-links.navbar-right
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-envelope.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-messages
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-tasks.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-tasks
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-bell.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-alerts
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-user.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li
+                a(href='#')
+                  i.fa.fa-user.fa-fw
+                  |  User Profile
+              li
+                a(href='#')
+                  i.fa.fa-gear.fa-fw
+                  |  Settings
+              li.divider
+              li
+                a(href='login')
+                  i.fa.fa-sign-out.fa-fw
+                  |  Logout
+        .navbar-default.sidebar(role='navigation')
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav
+              li.sidebar-search
+                .input-group.custom-search-form
+                  input.form-control(type='text', placeholder='Search...')
+                  span.input-group-btn
+                    button.btn.btn-default(type='button')
+                      i.fa.fa-search
+              li
+                a(href='#')
+                  i.fa.fa-bookmark.fa-fw
+                  |  Multiview
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='http://127.0.0.1:3006/menu') Resource-centric View
+                  li
+                    a(href='http://127.0.0.1:3006/flowview') Flow-centric View
+                  li
+                    a(href='#') Service-centric View
+              li
+                a(href='login')
+                  i.fa.fa-sign-out.fa-fw
+                  |  Logout
+      #page-wrapper
+        .container-fluid
+          .row
+            .col-lg-12
+              //h1.page-header
+        .row
+          .col-lg-12
+            .panel.panel-default.panel-resizable
+              .panel-heading
+                | Visualization Panel
+              .panel-body
+                p
+                   #mynetwork(align='center')
+    // jQuery
+    script(src='../bower_components/jquery/dist/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='../bower_components/bootstrap/dist/js/bootstrap.min.js')
+    // Metis Menu Plugin JavaScript
+    script(src='../bower_components/metisMenu/dist/metisMenu.min.js')
+    // Custom Theme JavaScript
+    script(src='../dist/js/sb-admin-2.js')

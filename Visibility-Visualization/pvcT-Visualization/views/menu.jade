@@ -1,0 +1,212 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    style(type='text/css').
+      #mynetwork {
+      width: 100%;
+      height: 60%;
+      background: #222222;
+      }
+    // Bootstrap Core CSS
+    link(href='../bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    // MetisMenu CSS
+    link(href='../bower_components/metisMenu/dist/metisMenu.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='../dist/css/sb-admin-2.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='../bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    // if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    script(type='text/javascript', src='javascripts/vis.js')
+    script(type='text/javascript', src='javascripts/boxes.json')
+    link(href='stylesheets/vis.css', rel='stylesheet', type='text/css')
+    script(type='text/javascript').
+      //redirect to login page if user is not logged
+      var session_username = sessionStorage.getItem('ss_user_name');
+      var session_userrole = sessionStorage.getItem('ss_role');
+      if(session_username === null){
+      window.location.replace("http://103.22.221.55:3006");
+      }
+      //Resource-level Functions Start
+      //receive Box objects
+      function receiveValueBox(boxs){
+      var iframe = document.getElementById('grafanaIframe');
+      console.log(boxs);
+      iframe.src = 'http://103.22.221.55:3000/dashboard/db/resource-dashboard-'+boxs.label;
+      }
+      //receive brCap Objects
+      function receiveValueBrCap(brCaps){
+      var iframe = document.getElementById('grafanaIframe');
+      console.log(brCaps);
+      ////iframe.src = 'http://103.22.221.55:3000/dashboard/db/flow-dashboard-'+brCaps.label+'-'+brCaps.box;
+      //iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      }
+      //receive VM Objects
+      function receiveValueVM(vms){
+      var iframe = document.getElementById('grafanaIframe');
+      console.log(vms);
+      //iframe.src = 'http://103.22.221.55:3000/dashboard/db/flow-dashboard-instance-'+vms.label+'-'+vms.box;
+      }
+      //Resource-level Functions End
+      //Flow-level Functions Start
+      //Route to Network Flow View
+      function getNetworkFlow(network){
+      var iframe = document.getElementById('grafanaIframe');
+      //console.log(boxs);
+      iframe.src = 'http://103.22.221.55:8008/app/dashboard-example/html/';
+      }
+      //Route to Box Flow View
+      function getBoxFlow(boxs){
+      var iframe = document.getElementById('grafanaIframe');
+      console.log(boxs);
+      //iframe.src = 'http://103.22.221.55:3000/dashboard/db/resource-dashboard-'+boxs.label;
+      }
+      //Route to Flow Rules + Stats View
+      function getBrCapFlow(brCaps){
+      var iframe = document.getElementById('grafanaIframe');
+      console.log(brCaps);
+      iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      }
+      //Route to VM View
+      function getVMFlow(vms){
+      var iframe = document.getElementById('grafanaIframe');
+      console.log(vms);
+      //iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      }
+      //Flow-level Functions End
+      //Show Panel on Click
+      function showPanel(itemID){
+      var iframe = document.getElementById('topoIframe');
+      console.log(itemID);
+      iframe.src = 'http://103.22.221.55:3006/'+itemID.label+'-'+itemID.box;
+      }
+      // Called when the Visualization API is loaded.
+      function draw() {
+      document.getElementById('text').innerHTML="Logged as "+session_userrole;
+      //Update********************************************************
+      var resource = document.getElementById('resourcecentricviewops');
+      var flow = document.getElementById('flowcentricviewops');
+      var service = document.getElementById('servicecentricviewops');
+      var iframe = document.getElementById('topoIframe');
+      resource.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = 'Resource-Centric Topological View';
+      iframe.src = 'http://103.22.221.55:3006/resourcecentricviewops';
+      });
+      flow.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
+      iframe.src = 'http://103.22.221.55:3006/flowcentricviewops';
+      });
+      service.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = 'Service-Centric Topological View';
+      iframe.src = 'http://103.22.221.55:3006/servicecentricviewops';
+      });
+      //**************************************************************
+      // Create a data table with nodes.
+      }
+  body(onload='draw()')
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-default.navbar-static-top(role='navigation', style='margin-bottom: 0')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          p
+            #text
+        ul.nav.navbar-top-links.navbar-right
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-envelope.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-messages
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-tasks.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-tasks
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-bell.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-alerts
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              i.fa.fa-user.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li
+                a(href='#')
+                  i.fa.fa-user.fa-fw
+                  |  User Profile
+              li
+                a(href='#')
+                  i.fa.fa-gear.fa-fw
+                  |  Settings
+              li.divider
+              li
+                a(href='login')
+                  i.fa.fa-sign-out.fa-fw
+                  |  Logout
+        .navbar-default.sidebar(role='navigation')
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav
+              li.sidebar-search
+                .input-group.custom-search-form
+                  input.form-control(type='text', placeholder='Search...')
+                  span.input-group-btn
+                    button.btn.btn-default(type='button')
+                      i.fa.fa-search
+              li
+                a(href='#')
+                  i.fa.fa-bookmark.fa-fw
+                  |  Multiview
+                  span.fa.arrow
+                ul#parent-list.nav.nav-second-level
+                  li
+                    a#resourcecentricviewops(href='#') Resource-centric View
+                  li
+                    a#flowcentricviewops(href='#') Flow-centric View
+                  li
+                    a#servicecentricviewops(href='#') Service-centric View
+              li
+                a(href='login')
+                  i.fa.fa-sign-out.fa-fw
+                  |  Logout
+      #page-wrapper
+        .container-fluid
+          .row
+            .col-lg-12
+              // h1.page-header
+        .row
+          .col-lg-12
+            .panel.panel-default
+              #panel-heading-id.panel-heading Resource-centric Topological View
+              .panel-body
+                p
+                  iframe#topoIframe(src='http://103.22.221.55:3006/resourcecentricviewops', width='100%', height='60%')
+        .row
+          .col-lg-12
+            .panel.panel-default
+              .panel-heading Metrics Visualization Panel
+              .panel-body
+                p
+                  iframe#grafanaIframe(src='', width='100%', height='50%')
+    // jQuery
+    script(src='../bower_components/jquery/dist/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='../bower_components/bootstrap/dist/js/bootstrap.min.js')
+    // Metis Menu Plugin JavaScript
+    script(src='../bower_components/metisMenu/dist/metisMenu.min.js')
+    // Custom Theme JavaScript
+    script(src='../dist/js/sb-admin-2.js')
+

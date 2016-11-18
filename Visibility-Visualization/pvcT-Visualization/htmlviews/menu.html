@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <style type="text/css">
+      #mynetwork {
+      width: 100%;
+      height: 60%;
+      background: #222222;
+      }
+    </style>
+    <!-- Bootstrap Core CSS-->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS-->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS-->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts-->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+    <!--if lt IE 9-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script type="text/javascript" src="javascripts/vis.js"></script>
+    <script type="text/javascript" src="javascripts/boxes.json"></script>
+    <link href="stylesheets/vis.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+      //redirect to login page if user is not logged
+      var session_username = sessionStorage.getItem('ss_user_name');
+      var session_userrole = sessionStorage.getItem('ss_role');
+      
+      if(session_username === null){
+        window.location.replace("http://103.22.221.55:3006");
+      }
+	  
+	  //Resource-level Functions Start
+      //receive Box objects
+      function receiveValueBox(boxs){
+        var iframe = document.getElementById('grafanaIframe');
+        console.log(boxs);
+        iframe.src = 'http://103.22.221.55:3000/dashboard/db/resource-dashboard-'+boxs.label;
+      }
+      //receive brCap Objects
+      function receiveValueBrCap(brCaps){
+        var iframe = document.getElementById('grafanaIframe');
+        console.log(brCaps);
+        ////iframe.src = 'http://103.22.221.55:3000/dashboard/db/flow-dashboard-'+brCaps.label+'-'+brCaps.box;
+        //iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      }
+      //receive VM Objects
+      function receiveValueVM(vms){
+        var iframe = document.getElementById('grafanaIframe');
+        console.log(vms);
+        //iframe.src = 'http://103.22.221.55:3000/dashboard/db/flow-dashboard-instance-'+vms.label+'-'+vms.box;
+      }
+	  //Resource-level Functions End
+	  
+	  //Flow-level Functions Start
+	  //Route to Network Flow View
+      function getNetworkFlow(network){
+        var iframe = document.getElementById('grafanaIframe');
+        //console.log(boxs);
+        iframe.src = 'http://103.22.221.55:8008/app/dashboard-example/html/';
+      }
+	  //Route to Box Flow View
+      function getBoxFlow(boxs){
+        var iframe = document.getElementById('grafanaIframe');
+        console.log(boxs);
+        //iframe.src = 'http://103.22.221.55:3000/dashboard/db/resource-dashboard-'+boxs.label;
+      }
+	  //Route to Flow Rules + Stats View
+      function getBrCapFlow(brCaps){
+        var iframe = document.getElementById('grafanaIframe');
+        console.log(brCaps);
+        iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+	  }
+	  //Route to VM View
+      function getVMFlow(vms){
+        var iframe = document.getElementById('grafanaIframe');
+        console.log(vms);
+        //iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+	  }
+	  //Flow-level Functions End
+	  
+      //Show Panel on Click
+      function showPanel(itemID){
+        var iframe = document.getElementById('topoIframe');
+        console.log(itemID);
+        iframe.src = 'http://103.22.221.55:3006/'+itemID.label+'-'+itemID.box;
+      }
+      // Called when the Visualization API is loaded.
+      function draw() {
+      document.getElementById('text').innerHTML="Logged as "+session_userrole;
+      
+      //Update********************************************************
+      var resource = document.getElementById('resourcecentricviewops');
+      var flow = document.getElementById('flowcentricviewops');
+      var service = document.getElementById('servicecentricviewops');
+	    var iframe = document.getElementById('topoIframe');
+      resource.addEventListener('click', function() { 
+        document.getElementById('panel-heading-id').innerHTML = 'Resource-Centric Topological View';
+        iframe.src = 'http://103.22.221.55:3006/resourcecentricviewops';
+        });
+      flow.addEventListener('click', function() { 
+        document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
+        iframe.src = 'http://103.22.221.55:3006/flowcentricviewops';
+        });
+      service.addEventListener('click', function() { 
+        document.getElementById('panel-heading-id').innerHTML = 'Service-Centric Topological View';
+        iframe.src = 'http://103.22.221.55:3006/servicecentricviewops';
+        });
+        //**************************************************************
+      // Create a data table with nodes.
+      }
+    </script>
+  </head>
+  <body onload="draw()">
+    <div id="wrapper">
+      <!-- Navigation-->
+      <nav role="navigation" style="margin-bottom: 0" class="navbar navbar-default navbar-static-top">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <p>
+            <div id="text"></div>
+          </p>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu dropdown-messages"></ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu dropdown-tasks"></ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu dropdown-alerts"></ul>
+          </li>
+          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div role="navigation" class="navbar-default sidebar">
+          <div class="sidebar-nav navbar-collapse">
+            <ul id="side-menu" class="nav">
+              <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                  <input type="text" placeholder="Search..." class="form-control"><span class="input-group-btn">
+                    <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button></span>
+                </div>
+              </li>
+              <li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Multiview<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" id="parent-list">
+                  <li ><a id="resourcecentricviewops" href="#">Resource-centric View</a></li>
+                  <li ><a id="flowcentricviewops" href="#">Flow-centric View</a></li>
+                  <li ><a id="servicecentricviewops" href="#">Service-centric View</a></li>
+                </ul>
+              </li>
+              <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <!--h1.page-header-->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading" id="panel-heading-id">Resource-centric Topological View</div>
+              <div class="panel-body">
+                <p>
+                  <iframe id="topoIframe" src="http://103.22.221.55:3006/resourcecentricviewops" width="100%" height="60%"></iframe>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">Metrics Visualization Panel</div>
+              <div class="panel-body">
+                <p>
+                  <iframe id="grafanaIframe" src="" width="100%" height="50%"></iframe>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery-->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript-->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript-->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript-->
+    <script src="../dist/js/sb-admin-2.js"></script>
+  </body>
+</html>
