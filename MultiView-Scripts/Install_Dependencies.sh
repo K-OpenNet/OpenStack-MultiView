@@ -31,7 +31,7 @@ fi
 wgetExist=`dpkg -l | grep wget`
 if [ "$wgetExist" == "" ]; then
 echo "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] wget Installing..."
-apt-get -y install wget
+apt-get -y install wget nmap 
 fi
 
 MultiView-Dependencies/Install_Oracle_Java.sh
