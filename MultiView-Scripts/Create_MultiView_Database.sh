@@ -13,17 +13,12 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #
-# Name          : Install_Dependencies.sh
-# Description   : Script for Installing Dependencies
+# Name          : Create_MultiView_Database.sh
+# Description   : Script for Creating MultiView Database
 #
 # Created by    : usman@smartx.kr
 # Version       : 0.1
 # Last Update   : November, 2016
 
-#Update Management IP according to your requirement
-MGMT_IP=""
-
-echo "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] MultiView Installation Started..."
-
-MultiView-Scripts/Install_Dependencies.sh MGMT_IP
-MultiView-Scripts/Create_MultiView_Database.sh
+echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Creating MultiView Database..."
+mongo < MultiView_Configuration_Database.js
