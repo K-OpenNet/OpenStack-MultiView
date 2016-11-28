@@ -29,11 +29,11 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
 
 public class InstaceStatusNovaClass implements Runnable{
+	private Thread thread;
 	private OSClient client;
-	private String token, key, line = "", neworkList, USER_ID, PASSWORD, PROJECT_ID, END_POINT;
 	private String ThreadName="vBox Status Thread";
-	private String vboxMongoCollection;
-	private String vboxMongoCollectionRT;
+	private String token, key, line = "", neworkList, USER_ID, PASSWORD, PROJECT_ID, END_POINT;
+	private String vboxMongoCollection, vboxMongoCollectionRT;
 	private URL url;
 	private HttpURLConnection connection;
 	private InputStream content;
@@ -44,7 +44,6 @@ public class InstaceStatusNovaClass implements Runnable{
 	private Hashtable<String, String> regions = new Hashtable<String, String>();
 	private Enumeration e;
 	private Set<String> networksKeySet;
-	private Thread thread;
 	private MongoClient mongoClient;
 	private MongoDatabase db;
 	private Document documentHistory, documentRT;
@@ -94,11 +93,7 @@ public class InstaceStatusNovaClass implements Runnable{
 			key = (String) e.nextElement();
 			//Get the Identity Token
 			token = client.getToken().getId();
-			//System.out.println("**************************************");
 			System.out.println("["+dateFormat.format(timestamp)+"][INFO][NOVA][Region: "+regions.get(key)+" Token: "+token+"]");
-			//System.out.println("Token : "+ token);
-			//System.out.println("Region: "+ regions.get(key));
-			//System.out.println("**************************************");
 			//URL String to call OpentStack RestAPI
 			String urlStr = "http://"+regions.get(key)+":8774/v2/ec8174bf08414e39b0b0f0ced69955d4/servers/detail?all_tenants=1";
 			//String urlStr = "http://103.22.221.170:8774/v2/ec8174bf08414e39b0b0f0ced69955d4/servers/detail?all_tenants=1";

@@ -32,29 +32,28 @@ import com.mongodb.client.MongoDatabase;
 
 import org.bson.Document;
 
-public class SDNControllerStatusClass implements Runnable{
-	private String devopscontroller;
-	private String ThreadName="SDN Controller Config Thread";
-	private String user, password;
+public class SDNControllerStatus implements Runnable{
 	private Thread thread;
+	private String ThreadName="SDN Controller Config Thread";
+	private String devopscontroller, user, password;
 	private MongoClient mongoClient;
+	private MongoDatabase db;
 	private Document document;
 	private MongoCollection<Document> collection1, collection2;
 	private BatchPoints batchPoints;
-	private static MongoDatabase db;
-	private static InfluxDB influxDB;
+	private InfluxDB influxDB;
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	//public SDNControllerStatusClass(String dbHost, int dbPort, String dbName, String flowConfigMongoCollection, String flowConfigMongoCollectionRT, String devopscon, String User, String Password)
-	public SDNControllerStatusClass(String dbHost, int dbPort, String dbName, String flowConfigMongoCollection, String flowConfigMongoCollectionRT, String devopscon, String User, String Password)
+	public SDNControllerStatus(String dbHost, int dbPort, String dbName, String flowConfigMongoCollection, String flowConfigMongoCollectionRT, String devopscon, String User, String Password)
 	{
-		mongoClient = new MongoClient(dbHost, dbPort);
-		db          = mongoClient.getDatabase(dbName);
-		collection1 = db.getCollection(flowConfigMongoCollection);
-		collection2 = db.getCollection(flowConfigMongoCollectionRT);
-		devopscontroller          = devopscon;
-		user 					  = User;
-		password                  = Password;
+		mongoClient      = new MongoClient(dbHost, dbPort);
+		db               = mongoClient.getDatabase(dbName);
+		collection1      = db.getCollection(flowConfigMongoCollection);
+		collection2      = db.getCollection(flowConfigMongoCollectionRT);
+		devopscontroller = devopscon;
+		user 			 = User;
+		password         = Password;
 	}
      
     public void getFlowsDetails() 

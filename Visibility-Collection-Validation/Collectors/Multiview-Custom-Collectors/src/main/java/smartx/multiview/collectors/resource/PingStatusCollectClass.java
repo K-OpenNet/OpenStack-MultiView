@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import org.apache.log4j.Logger;
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
@@ -30,6 +31,7 @@ public class PingStatusCollectClass implements Runnable
 	private BasicDBObject document;
 	private DeleteResult deleteResult;
 	private FindIterable<Document> pBoxList;
+	private static Logger logger = Logger.getLogger(PingStatusCollectClass.class.getName());
 	
 	public PingStatusCollectClass(String visibilityCenter, String dbHost, int dbPort, String dbName, String pbox, String pboxstatus, String pboxstatusRT, String [] boxType) 
 	{
@@ -51,8 +53,6 @@ public class PingStatusCollectClass implements Runnable
 		
 		db.getCollection(pboxstatusMongoCollection).insertOne(NewDocument);
 		db.getCollection(pboxstatusMongoCollectionRT).insertOne(NewDocument);
-		
-		//document.clear();
 	}
 	
 	public void run() 
@@ -96,9 +96,9 @@ public class PingStatusCollectClass implements Runnable
 						}
 						in.close();
 		            } catch (IOException e) {
-		            System.out.println(e);
+		            	System.out.println("[INFO][PING][Box : "+BoxIP+" Failed "+e);
 		            }
-			    }
+		        }
 			});
 			
 			try {

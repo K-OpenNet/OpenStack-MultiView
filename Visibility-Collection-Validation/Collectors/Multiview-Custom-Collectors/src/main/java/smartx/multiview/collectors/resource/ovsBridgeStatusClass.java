@@ -27,8 +27,8 @@ import com.mongodb.client.result.UpdateResult;
 public class ovsBridgeStatusClass implements Runnable{
 	private Thread thread;
 	private String ThreadName="pBox Status Thread";
-	private String SmartXBox_USER, SmartXBox_PASSWORD;
-	private String box = "", m_ip = "";
+	private String SmartXBox_USER, SmartXBox_PASSWORD, ovsVM_USER, ovsVM_PASSWORD;
+	private String box = "", m_ip = "", ovsVM1ip, ovsVM2ip, activeVM;
 	private String pboxMongoCollection, ovsListMongoCollection, ovsstatusMongoCollection;
 	private String OVS_STATUS;
 	private String [] BoxType;
@@ -40,11 +40,13 @@ public class ovsBridgeStatusClass implements Runnable{
 	private MongoDatabase db;
 	private FindIterable<Document> pBoxList;
     private FindIterable<Document> ovsList;
-    private static Logger logger = Logger.getLogger(PingStatusClass.class.getName());
+    private static Logger logger = Logger.getLogger(ovsBridgeStatusClass.class.getName());
     
-    public ovsBridgeStatusClass(String boxUser, String boxPassword, String dbHost, int dbPort, String dbName, String pbox, String ovslist, String ovsstatus, String [] boxType) {
+    public ovsBridgeStatusClass(String boxUser, String boxPassword, String dbHost, int dbPort, String dbName, String pbox, String ovslist, String ovsstatus, String [] boxType, String ovsVMUser, String ovsVMPass) {
     	SmartXBox_USER           = boxUser;
     	SmartXBox_PASSWORD       = boxPassword;
+    	ovsVM_USER               = ovsVMUser;
+    	ovsVM_PASSWORD           = ovsVMPass;
     	mongoClient 			 = new MongoClient(dbHost, dbPort);
 		db                       = mongoClient.getDatabase(dbName);
 		pboxMongoCollection      = pbox;
@@ -89,8 +91,8 @@ public class ovsBridgeStatusClass implements Runnable{
             e.printStackTrace(System.err);
         }
     }
-    
-    public void CheckNeutron(String serverIp,String command, String usernameString,String password)
+           
+    public void CheckNeutronService(String serverIp,String command, String usernameString,String password)
     {
         try
         {
@@ -126,9 +128,8 @@ public class ovsBridgeStatusClass implements Runnable{
         }
     }
     
-    public void SSHClient(String serverIp,String command, String usernameString,String password)
+    public void getBridgesStatus(String serverIp,String command, String usernameString,String password)
     {
-        //System.out.println(serverIp+" Server Bridges:");
         try
         {
             Connection conn = new Connection(serverIp);
@@ -143,7 +144,6 @@ public class ovsBridgeStatusClass implements Runnable{
             while (true)
             {
             	String line = br.readLine();
-                //System.out.println(line);
                 if (line == null)
                     break;
                 
@@ -160,6 +160,7 @@ public class ovsBridgeStatusClass implements Runnable{
         }
         catch (IOException e)
         {
+        	System.out.println("[INFO][OVS][Box : "+serverIp+" Failed");
             e.printStackTrace(System.err);
 
         }
@@ -173,8 +174,11 @@ public class ovsBridgeStatusClass implements Runnable{
 		pBoxList.forEach(new Block<Document>() {
 		    public void apply(final Document document) {
 		    	
-		        box  = (String) document.get("box");
-		        m_ip = (String) document.get("management_ip");
+		        box      = (String) document.get("box");
+		        m_ip     = (String) document.get("management_ip");
+		        ovsVM1ip = (String) document.get("ovs_vm1");
+		        ovsVM2ip = (String) document.get("ovs_vm2");
+		        activeVM = (String) document.get("active_ovs_vm");
 		        
 		        //Check Status of OVS Process in each Box/OVS-VM
 		        CheckOVSProcess(m_ip,"service openvswitch-switch status | egrep -c 'stop|not running'", SmartXBox_USER, SmartXBox_PASSWORD);
@@ -184,11 +188,11 @@ public class ovsBridgeStatusClass implements Runnable{
 			           	        new Document("$set", new Document("status", OVS_STATUS)));
 		        	System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
 			    }
-			    
+		        
 			    else
 		        {
 			    	//Check Status of OpenStack Neutron Service
-			        CheckNeutron(m_ip,"ps aux | grep -c neutron-openvswitch-agent", SmartXBox_USER,SmartXBox_PASSWORD);
+			    	CheckNeutronService(m_ip,"ps aux | grep -c neutron-openvswitch-agent", SmartXBox_USER,SmartXBox_PASSWORD);
 			        if (OVS_STATUS.equals("DARKGRAY"))
 			        {
 			        	UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateMany(new Document("box", box),
@@ -199,9 +203,20 @@ public class ovsBridgeStatusClass implements Runnable{
 				    else
 			        {   
 				    	//Check OVS bridge configurations for existance of bridge
-				    	SSHClient(m_ip,"ovs-vsctl list-br", SmartXBox_USER, SmartXBox_PASSWORD);
-				        
-				        ovsList = db.getCollection(ovsListMongoCollection).find(new Document("type", "B**"));
+				    	if(ovsVM_USER==null)
+				    	{
+				    		getBridgesStatus(m_ip,"ovs-vsctl list-br", SmartXBox_USER, SmartXBox_PASSWORD);
+				    	}
+				    	else
+				    	{
+				    		//Check for Active VM
+				    		System.out.println("[In B** & C** Setup's]");
+				    		activeVM=activeVM.equals("ovs-vm1") ? ovsVM1ip : ovsVM2ip;
+				    		getBridgesStatus(m_ip,"ovs-vsctl list-br", SmartXBox_USER, SmartXBox_PASSWORD);
+				    		getBridgesStatus(activeVM,"sudo -S <<< "+ovsVM_PASSWORD+" ovs-vsctl list-br", ovsVM_USER, ovsVM_PASSWORD);
+				    	}
+				    	
+				    	ovsList = db.getCollection(ovsListMongoCollection).find(new Document("type", "B**"));
 		        		ovsList.forEach(new Block<Document>() 
 				        {
 				            public void apply(final Document ovsDocument) 

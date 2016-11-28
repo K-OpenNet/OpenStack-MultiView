@@ -21,7 +21,7 @@ import com.mongodb.client.MongoDatabase;
 
 import org.bson.Document;
 
-public class SDNControllerStatsClass implements Runnable{
+public class SDNControllerStats implements Runnable{
 		private String user, password, devopscontroller, ThreadName="SDN Controller Stats Thread";
 		private Thread thread;
 		private MongoClient mongoClient;
@@ -30,7 +30,7 @@ public class SDNControllerStatsClass implements Runnable{
 		private static MongoDatabase db;
 		private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		public SDNControllerStatsClass(String dbHost, int dbPort, String dbName, String flowStatsMongoCollection, String flowStatsMongoCollectionRT, String devopscon, String User, String Password)
+		public SDNControllerStats(String dbHost, int dbPort, String dbName, String flowStatsMongoCollection, String flowStatsMongoCollectionRT, String devopscon, String User, String Password)
 		{
 			mongoClient 	 = new MongoClient(dbHost, dbPort);
 			db               = mongoClient.getDatabase(dbName);
@@ -40,6 +40,7 @@ public class SDNControllerStatsClass implements Runnable{
 			user 			 = User;
 			password         = Password;
 		}
+		
 	    public void getSwitchStats() 
 	    {
 	    	String matchField, outputAction, NodeID, BoxID; ;
