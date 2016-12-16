@@ -13,7 +13,7 @@ db['configuration-multiview-users'].insert( { username: "admin", password: "admi
 db['configuration-multiview-users'].insert( { username: "demo", password: "demo", role: "developer" } )
 
 //Insert pBoxes Data into Collection
-db['configuration-pbox-list'].insert( { box: "SmartXBoxID", boxID: "boxName", management_ip: "", management_ip_status: "up", data_ip: "", data_ip_status: "up", control_ip: "", control_ip_status: "up", ovs_vm1: "", ovs_vm2: "", active_ovs_vm: "ovs_vm1" } )
+db['configuration-pbox-list'].insert( { box: "SmartXBoxID", boxID: "boxName", management_ip: "", management_ip_status: "up", data_ip: "", data_ip_status: "up", control_ip: "", control_ip_status: "up", ovs_vm1: "", ovs_vm2: "", active_ovs_vm: "ovs_vm1", type: "B**" } )
 
 //Insert OVS Bridges Topology Data into Collection
 db['configuration-vswitch-list'].insert( { type: "B**", bridge: "brcap", topologyorder: "1" } )

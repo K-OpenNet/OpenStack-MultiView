@@ -13,20 +13,23 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #
-# Name          : Install_NodeJS_Libraries.sh
-# Description   : Script for Installing Java
+# Name          : Install_Dependencies.sh
+# Description   : Script for Installing Dependencies
 #
 # Created by    : usman@smartx.kr
-# Version       : 0.1
-# Last Update   : November, 2016
+# Version       : 0.2
+# Last Update   : December, 2016
 
-echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] NodeJS Libraries Installing .................... "
-sudo npm install npm -g 
-currentDir=`pwd`
-cd Visibility-Visualization/pvcT-Visualization
-npm config set registry https://registry.npmjs.org/
-npm cache clean
-npm install
-sudo npm install -g nodemon
-echo -e "Done.\n"
-cd $currentDir
+#Update Management IP according to your requirement
+MGMT_IP=""
+
+#Ensure Root User Runs this Script
+if [ "$(id -u)" != "0" ]; then
+   echo "[$(date '+%Y-%m-%d %H:%M:%S')][ERROR][INSTALL]This script must be run as root" 1>&2
+   exit 1
+fi
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] MultiView Installation Started..."
+
+MultiView-Scripts/Install_Dependencies_vCenter.sh "$MGMT_IP"
+MultiView-Scripts/Create_MultiView_Database.sh "$MGMT_IP"

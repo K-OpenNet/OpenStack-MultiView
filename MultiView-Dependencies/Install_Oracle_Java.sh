@@ -22,7 +22,7 @@
 
 javaExist=`dpkg -l | grep oracle-java`
 if [ "$javaExist" == "" ]; then
-echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] JAVA Installing .................... "
+echo -n "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] JAVA Installing .................... "
 sudo add-apt-repository -y ppa:webupd8team/java &> /dev/null
 sudo apt-get -y update &> /dev/null
 echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
