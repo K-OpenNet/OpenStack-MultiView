@@ -22,9 +22,10 @@
 
 NodeJSExist=`dpkg -l | grep  nodejs`
 if [ "$NodeJSExist" == "" ]; then
-echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] NodeJS Installing..."
+echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] NodeJS Installing .................... "
 apt-get install -y nodejs npm
 ln -s /usr/bin/nodejs /usr/bin/node
+echo -e "Done.\n"
 echo `node -v`
 else
 echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] NodeJS Already Installed."

@@ -20,10 +20,12 @@
 # Version       : 0.1
 # Last Update   : November, 2016
 
-echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] NodeJS Libraries Installing..."
+echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] NodeJS Libraries Installing .................... "
 sudo npm install npm -g
 currentDir=`pwd`
 cd Visibility-Visualization/pvcT-Visualization
 npm config set registry https://registry.npmjs.org/
 npm cache clean
 npm install
+echo -e "Done.\n"
+cd $currentDir

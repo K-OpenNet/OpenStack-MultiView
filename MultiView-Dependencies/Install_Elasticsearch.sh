@@ -25,19 +25,20 @@ MGMT_IP=$1
 Elasticsearch=`dpkg -l | grep elasticsearch`
 
 if [ "$Elasticsearch" == "" ]; then
-echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Elasticsearch Installing..."
+echo -e "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Elasticsearch Installing .................... "
 CurrentDir=`pwd`
 cd /tmp/
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb
-sudo dpkg -i elasticsearch-5.0.0.deb
-sudo update-rc.d elasticsearch defaults 95 10
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb &> /dev/null
+sudo dpkg -i elasticsearch-5.0.0.deb &> /dev/null
+sudo update-rc.d elasticsearch defaults 95 10 &> /dev/null
 
 # Configure Elasticsearch
 sed -i "s/#cluster.name: elasticsearch/cluster.name: elasticsearch/g" /etc/elasticsearch/elasticsearch.yml
-sed -i "s/# network.host: 192.168.0.1/network.host: $MGMT_IP/g" /etc/elasticsearch/elasticsearch.yml
+sed -i "s/#network.host: 192.168.0.1/network.host: $MGMT_IP/g" /etc/elasticsearch/elasticsearch.yml
 
-sudo service elasticsearch restart
-cd /usr/share/elasticsearch
+sudo service elasticsearch restart &> /dev/null
+echo -e "Done.\n"
+#cd /usr/share/elasticsearch
 #bin/elasticsearch-plugin install mobz/elasticsearch-head
 cd $CurrentDir
 else

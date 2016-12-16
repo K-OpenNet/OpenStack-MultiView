@@ -25,5 +25,5 @@ MGMT_IP=""
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] MultiView Installation Started..."
 
-MultiView-Scripts/Install_Dependencies.sh MGMT_IP
-MultiView-Scripts/Create_MultiView_Database.sh
+MultiView-Scripts/Install_Dependencies.sh "$MGMT_IP"
+MultiView-Scripts/Create_MultiView_Database.sh "$MGMT_IP"
