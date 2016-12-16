@@ -75,10 +75,21 @@ snap_check ()
   fi
 }
 
+iostat_check ()
+{
+  if command -v iostat > /dev/null; then
+    echo -e "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] iostat Already Installed."
+  else
+    echo -n "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] iostat Installing .................... "
+    apt-get install -y sysstat &> /dev/null
+	echo -e "Done.\n"
+  fi
+}
+
 wget_check
 nmap_check
 java_check
 snap_check
-
+iostat_check
 
 

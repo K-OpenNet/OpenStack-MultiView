@@ -28,7 +28,7 @@ wget_check ()
     echo -e "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] wget Already Installed.\n"
   else
     echo -n "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] wget Installing .................... "
-    apt-get -y install wget &> /dev/null
+    apt-get -y install wget nmap &> /dev/null
 	echo -e "Done.\n"
   fi
 }
