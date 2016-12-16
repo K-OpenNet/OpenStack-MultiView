@@ -20,5 +20,6 @@
 # Version       : 0.1
 # Last Update   : November, 2016
 
+MGMT_IP=$1
 echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Creating MultiView Database..."
-mongo < MultiView_Configuration_Database.js
+mongo  $MGMT_IP < MultiView_Configuration_Database.js
