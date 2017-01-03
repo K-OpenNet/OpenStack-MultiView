@@ -22,7 +22,9 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
 
+
 import static java.util.Arrays.asList;
+import smartx.multiview.DataLake.MongoDB_Connector;
 
 public class PingStatusUpdateClass implements Runnable {
 	private Thread thread;
@@ -32,23 +34,21 @@ public class PingStatusUpdateClass implements Runnable {
 	private String box = "", activeVM, m_ip = "", d_ip = "", ovsVM1ip, ovsVM2ip;
 	private String pboxMongoCollection, pboxstatusMongoCollectionRT;
 	private String [] BoxType;
-	private MongoClient mongoClient;
-	private MongoDatabase db;
 	private FindIterable<Document> pBoxList;
     private FindIterable<Document> pBoxStatus;
     private List<String> bridges = new ArrayList<String>();
+    private MongoDB_Connector mongoConnector;
     private Date timestamp;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static Logger logger = Logger.getLogger(PingStatusUpdateClass.class.getName());
-	    
-    public PingStatusUpdateClass(String boxUser, String boxPassword, String dbHost, int dbPort, String dbName, String pbox, String pboxstatus, String [] boxType, String ovsVMUser, String ovsVMPass) 
+	
+    public PingStatusUpdateClass(String boxUser, String boxPassword, MongoDB_Connector MongoConn, String pbox, String pboxstatus, String [] boxType, String ovsVMUser, String ovsVMPass)
     {
     	SmartXBox_USER              = boxUser;
     	SmartXBox_PASSWORD          = boxPassword;
     	ovsVM_USER                  = ovsVMUser;
     	ovsVM_PASSWORD              = ovsVMPass;
-    	mongoClient 		        = new MongoClient(dbHost, dbPort);
-		db                          = mongoClient.getDatabase(dbName);
+    	mongoConnector              = MongoConn;
 		BoxType                     = boxType;  
 		pboxMongoCollection         = pbox;
 		pboxstatusMongoCollectionRT = pboxstatus;
@@ -173,7 +173,7 @@ public class PingStatusUpdateClass implements Runnable {
 	{
 		timestamp = new Date();
 		//pBoxList = db.getCollection(pboxMongoCollection).find(new Document("type", BoxType).append("type", "C**"));
-		pBoxList = db.getCollection(pboxMongoCollection).find(new Document("$or", asList(new Document("type", BoxType[0]),new Document("type", BoxType[1]))));
+		pBoxList = mongoConnector.getDbConnection().getCollection(pboxMongoCollection).find(new Document("$or", asList(new Document("type", BoxType[0]),new Document("type", BoxType[1]))));
 		
 		pBoxList.forEach(new Block<Document>() {
 		    public void apply(final Document document) 
@@ -187,7 +187,7 @@ public class PingStatusUpdateClass implements Runnable {
 		        activeVM  = (String) document.get("active_ovs_vm");
 		        
 		        //Get Management Plane Status & Update pBox Status Collection
-		        pBoxStatus = db.getCollection(pboxstatusMongoCollectionRT).find(new Document("destination", m_ip));
+		        pBoxStatus = mongoConnector.getDataDB(pboxstatusMongoCollectionRT, "destination", m_ip);		        		
 		        pBoxStatus.forEach(new Block<Document>() 
 		        {
 		            public void apply(final Document document2) 
@@ -220,7 +220,7 @@ public class PingStatusUpdateClass implements Runnable {
 		            		d_status="RED";
 		            	}
 		            	
-		            	UpdateResult result= db.getCollection(pboxMongoCollection).updateOne(new Document("management_ip", m_ip),
+		            	UpdateResult result= mongoConnector.getDbConnection().getCollection(pboxMongoCollection).updateOne(new Document("management_ip", m_ip),
 		            	        new Document("$set", new Document("management_ip_status", m_status_new)
 		            	        		.append("data_ip_status", d_status)
 		            	        		.append("active_ovs_vm", activeVM)));

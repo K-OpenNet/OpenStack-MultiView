@@ -134,7 +134,7 @@
       {
       switchlevel = boxlevel + 1;
       // Huynh: insert box field
-      nodes.push({id: switchNodeID, label: switchList[j].bridge, box: boxList[i]..boxID, level:switchlevel, group: 'desktop', value: 3, fixed: false, physics:false, color: BridgeNodeColor});
+      nodes.push({id: switchNodeID, label: switchList[j].bridge, box: boxList[i].boxID, level:switchlevel, group: 'desktop', value: 3, fixed: false, physics:false, color: BridgeNodeColor});
       edges.push({from: BoxNodeID, to: switchNodeID, length: EDGE_LENGTH_SUB, color: BridgeLinkColor});
       }
       }
