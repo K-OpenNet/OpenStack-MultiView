@@ -25,6 +25,9 @@ public class CustomCollectorsMain
 	private String ControllerUser;
 	private String SmartXBox_USER;
 	private String SmartXBox_PASSWORD;
+	private String CTRL_Box_IP;
+	private String CTRL_Box_USER;
+	private String CTRL_Box_PASSWORD;
 	private String OVS_VM_USER;
 	private String OVS_VM_PASSWORD;
 	private String pboxMongoCollection                  = "configuration-pbox-list";
@@ -171,6 +174,11 @@ public class CustomCollectorsMain
     		//Visibility Center IP
     		VISIBILITY_CENTER    = prop.getProperty("VISIBILITY_CENTER");
     		
+    		//Type C control Box properties
+    		CTRL_Box_IP = prop.getProperty("CTRL_Box_IP");
+    		CTRL_Box_USER = prop.getProperty("CTRL_Box_USER");
+    		CTRL_Box_PASSWORD = prop.getProperty("CTRL_Box_PASSWORD");
+    		
     		//MongoDB Properties
     		MONGO_DB_HOST        = prop.getProperty("MONGODB_HOST");
     		MONGO_DB_PORT        = Integer.parseInt(prop.getProperty("MONGODB_PORT"));
@@ -220,7 +228,7 @@ public class CustomCollectorsMain
     	PingStatusCollectClass pingStatusCollect = new PingStatusCollectClass(ccMain.VISIBILITY_CENTER, MongoConnector, ccMain.pboxMongoCollection, ccMain.pboxstatusMongoCollection,ccMain. pboxstatusMongoCollectionRT, ccMain.BoxType);
     	pingStatusCollect.start();
     	try {
-			TimeUnit.SECONDS.sleep(20);
+			TimeUnit.SECONDS.sleep(10);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -230,15 +238,17 @@ public class CustomCollectorsMain
     	PingStatusUpdateClass pingStatusUpdate = new PingStatusUpdateClass(ccMain.SmartXBox_USER, ccMain.SmartXBox_PASSWORD, MongoConnector, ccMain.pboxMongoCollection, ccMain.pboxstatusMongoCollectionRT, ccMain.BoxType, ccMain.OVS_VM_USER, ccMain.OVS_VM_PASSWORD);
     	pingStatusUpdate.start(); 
         try {
-			TimeUnit.SECONDS.sleep(20);
+			TimeUnit.SECONDS.sleep(10);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
         //Start Visibility Collection for VM's Data
-        InstaceStatusNovaClass instanceNovaStatus = new InstaceStatusNovaClass(ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.OPENSTACK_USER_ID, ccMain.OPENSTACK_PASSWORD, ccMain.OPENSTACK_PROJECT_ID, ccMain.OPENSTACK_ENDPOINT, ccMain.vboxMongoCollection, ccMain.vboxMongoCollectionRT);
+        InstaceStatusNovaClass instanceNovaStatus = new InstaceStatusNovaClass(ccMain.CTRL_Box_IP, ccMain.CTRL_Box_USER, ccMain.CTRL_Box_PASSWORD, ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.OPENSTACK_USER_ID, ccMain.OPENSTACK_PASSWORD, ccMain.OPENSTACK_PROJECT_ID, ccMain.OPENSTACK_ENDPOINT, ccMain.vboxMongoCollection, ccMain.vboxMongoCollectionRT);
         instanceNovaStatus.start();
+        
+        
         
         //Start Instant Visibility Collection for OVS Data
         ovsBridgeStatusClass bridgeStatus  = new ovsBridgeStatusClass(ccMain.SmartXBox_USER, ccMain.SmartXBox_PASSWORD, ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.pboxMongoCollection, ccMain.ovsListMongoCollection, ccMain.ovsstatusMongoCollection, ccMain.BoxType, ccMain.OVS_VM_USER, ccMain.OVS_VM_PASSWORD);

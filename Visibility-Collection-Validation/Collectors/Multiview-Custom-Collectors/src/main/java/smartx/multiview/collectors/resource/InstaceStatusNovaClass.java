@@ -10,7 +10,9 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -21,12 +23,17 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.openstack4j.api.OSClient;
 import org.openstack4j.openstack.OSFactory;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.bson.Document;
+
+import ch.ethz.ssh2.Connection;
+import ch.ethz.ssh2.StreamGobbler;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 
 public class InstaceStatusNovaClass implements Runnable{
 	private Thread thread;
@@ -34,6 +41,7 @@ public class InstaceStatusNovaClass implements Runnable{
 	private String ThreadName="vBox Status Thread";
 	private String token, key, line = "", neworkList, USER_ID, PASSWORD, PROJECT_ID, END_POINT;
 	private String vboxMongoCollection, vboxMongoCollectionRT;
+	private String CTRL_Box_IP, CTRL_Box_USER, CTRL_Box_PASSWORD;
 	private URL url;
 	private HttpURLConnection connection;
 	private InputStream content;
@@ -42,7 +50,9 @@ public class InstaceStatusNovaClass implements Runnable{
 	private JSONObject jsonObject = null, jsonKeyObject = null, jsonNetworkObject = null, jsonControlNetwork = null;
 	private JSONArray jsonServersArray, jsonControlNetworkArray;
 	private Hashtable<String, String> regions = new Hashtable<String, String>();
-	private Enumeration e;
+	private Hashtable<String, String> typecBoxes = new Hashtable<String, String>();
+	private List<Document> documentsRT = new ArrayList<Document>();
+	private Enumeration e, boxKeys;
 	private Set<String> networksKeySet;
 	private MongoClient mongoClient;
 	private MongoDatabase db;
@@ -50,15 +60,19 @@ public class InstaceStatusNovaClass implements Runnable{
 	private DeleteResult deleteResult;
 	private Date timestamp;
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private Logger LOG = Logger.getLogger("novaUpdateFile");
     
 	//@SuppressWarnings("deprecation")
 	
-	public InstaceStatusNovaClass(String dbHost, int dbPort, String dbName, String OpenStackUSER, String OpenStackPASSWD, String OpenStackPROJECT, String OpenStackENDPOINT, String vboxhistory, String vboxrt) 
+	public InstaceStatusNovaClass(String CTRL_IP, String CTRL_USER, String CTRL_PASSWORD, String dbHost, int dbPort, String dbName, String OpenStackUSER, String OpenStackPASSWD, String OpenStackPROJECT, String OpenStackENDPOINT, String vboxhistory, String vboxrt) 
 	{
 		mongoClient           = new MongoClient(dbHost, dbPort);
 		db                    = mongoClient.getDatabase(dbName);
 		vboxMongoCollection   = vboxhistory;
 		vboxMongoCollectionRT = vboxrt;
+		CTRL_Box_IP           = CTRL_IP;
+		CTRL_Box_USER         = CTRL_USER;
+		CTRL_Box_PASSWORD     = CTRL_PASSWORD;
 		USER_ID               = OpenStackUSER;
 		PASSWORD              = OpenStackPASSWD;
 		PROJECT_ID            = OpenStackPROJECT;
@@ -76,10 +90,7 @@ public class InstaceStatusNovaClass implements Runnable{
 		//regions.put("TH","161.200.25.99");
 	}
 
-	public void getOSInstanceList() {
-		//Delete Previous Documents from Real Time collection
-    	deleteResult=db.getCollection(vboxMongoCollectionRT).deleteMany(new Document());
-		//System.out.println("["+timestamp+"][INFO][Successfully Deleted Documents: "+deleteResult.getDeletedCount()+"]");
+	public void getOSInstanceListTypeB() {
 		e = regions.keys();
 		while (e.hasMoreElements())
 		{
@@ -93,7 +104,7 @@ public class InstaceStatusNovaClass implements Runnable{
 			key = (String) e.nextElement();
 			//Get the Identity Token
 			token = client.getToken().getId();
-			System.out.println("["+dateFormat.format(timestamp)+"][INFO][NOVA][Region: "+regions.get(key)+" Token: "+token+"]");
+			//System.out.println("["+dateFormat.format(timestamp)+"][INFO][NOVA][Region: "+regions.get(key)+" Token: "+token+"]");
 			//URL String to call OpentStack RestAPI
 			String urlStr = "http://"+regions.get(key)+":8774/v2/ec8174bf08414e39b0b0f0ced69955d4/servers/detail?all_tenants=1";
 			//String urlStr = "http://103.22.221.170:8774/v2/ec8174bf08414e39b0b0f0ced69955d4/servers/detail?all_tenants=1";
@@ -121,7 +132,6 @@ public class InstaceStatusNovaClass implements Runnable{
 		        //Close Streams
 		        in.close();
 		        content.close();
-		        
 		        
 		        //Process JSON Data
 		        jsonServersArray = (JSONArray) jsonObject.get("servers");
@@ -151,16 +161,7 @@ public class InstaceStatusNovaClass implements Runnable{
 		    		documentRT.put("ostenantname" , jsonKeyObject.get("tenant_id"));
 		    		documentRT.put("vlanid"       , "");
 	            	
-	            	if (jsonKeyObject.get("OS-EXT-STS:vm_state").equals("active"))
-	            	{
-	            		documentRT.put("state", "Running");
-	            	}
-	            	else
-	            	{
-	            		documentRT.put("state", jsonKeyObject.get("OS-EXT-STS:vm_state"));
-	            	}
-		    		
-		        	//Network Information Extraction
+	            	//Network Information Extraction
 		        	jsonNetworkObject = (JSONObject) jsonKeyObject.get("addresses");
 		        	networksKeySet    = jsonNetworkObject.keySet();
 		        	
@@ -175,6 +176,7 @@ public class InstaceStatusNovaClass implements Runnable{
 			        		//System.out.println(jsonControlNetwork.get(network));
 			        		
 		        			neworkList=network+" Address:"+jsonControlNetwork.get("addr")+" MAC:"+jsonControlNetwork.get("OS-EXT-IPS-MAC:mac_addr")+" ";
+		        			
 			        		if (network.contains("control")==true)
 			        		{
 			        			//System.out.println("control");
@@ -192,10 +194,23 @@ public class InstaceStatusNovaClass implements Runnable{
 			        	}
 		        	}
 		        	
+		        	if (jsonKeyObject.get("OS-EXT-STS:vm_state").equals("active"))
+	            	{
+	            		documentRT.put("state", "Running");
+	            		//Update Document to MongoDB
+    		    	}
+	            	else
+	            	{
+	            		documentRT.put("state", jsonKeyObject.get("OS-EXT-STS:vm_state"));
+	            	}
+		        	
 		        	//Insert New Documents to MongoDB
-		    		db.getCollection(vboxMongoCollectionRT).insertOne(documentRT);
-	            	db.getCollection(vboxMongoCollection).insertOne(documentHistory);
-	            	System.out.println("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+jsonKeyObject.get("OS-EXT-SRV-ATTR:host")+" Instance: "+jsonKeyObject.get("name")+" State: "+jsonKeyObject.get("OS-EXT-STS:vm_state")+"]");
+		    		//db.getCollection(vboxMongoCollectionRT).insertOne(documentRT);
+		    		//db.getCollection(vboxMongoCollectionRT).insertOne(documentRT);
+		    		db.getCollection(vboxMongoCollection).insertOne(documentHistory);
+	            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+jsonKeyObject.get("OS-EXT-SRV-ATTR:host")+" Instance: "+jsonKeyObject.get("name")+" State: "+jsonKeyObject.get("OS-EXT-STS:vm_state")+"]");
+	            	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+jsonKeyObject.get("OS-EXT-SRV-ATTR:host")+" Instance: "+jsonKeyObject.get("name")+" State: "+jsonKeyObject.get("OS-EXT-STS:vm_state")+"]");
+	            	documentsRT.add(documentRT);
 		    	}
 		    } catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
@@ -212,14 +227,134 @@ public class InstaceStatusNovaClass implements Runnable{
 			}
 		}
 	}
+	
+	public void getOSInstanceListTypeC()
+    {
+    	String instanceName, instanceID, instanceStatus, instancePower, instanceNetwork, instancetenantID, BoxName;
+    	
+    	typecBoxes.put("Type-C-KU", "cat /opt/InstanceList/Box1VMs.list");
+    	typecBoxes.put("Type-C-KN", "cat /opt/InstanceList/Box2VMs.list");
+    	typecBoxes.put("Type-C-JJ", "cat /opt/InstanceList/Box3VMs.list");
+    	typecBoxes.put("Type-C-GJ", "cat /opt/InstanceList/Box4VMs.list");
+    	boxKeys = typecBoxes.keys();
+    	//sshClient("Type-C-KU", "cat /opt/Box1VMs.list");
+    	//sshClient("Type-C-KN", "cat /opt/Box2VMs.list");
+    	//sshClient("Type-C-JJ", "cat /opt/Box3VMs.list");
+    	//sshClient("Type-C-GJ", "cat /opt/Box4VMs.list");
+    	timestamp = new Date();
+    	while (boxKeys.hasMoreElements())
+    	{
+    		BoxName = (String) boxKeys.nextElement();
+	    	try
+	        {
+	        	Connection conn = new Connection(CTRL_Box_IP);
+	            conn.connect();
+	            boolean isAuthenticated = conn.authenticateWithPassword(CTRL_Box_USER, CTRL_Box_PASSWORD);
+	            if (isAuthenticated == false)
+	                throw new IOException("Authentication failed.");        
+	            ch.ethz.ssh2.Session sess = conn.openSession();
+	            sess.execCommand(typecBoxes.get(BoxName)); 
+	            
+	            InputStream stdout = new StreamGobbler(sess.getStdout());
+	            BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
+	            
+	            while (true)
+	            {
+	            	String line = br.readLine();
+	            	if (line == null)
+	                    break;
+	                if (line!=null)
+	                {
+	                	if (!(line.contains("+-") || line.contains("Task State")))
+	                	{
+	                		instanceID       = line.substring(StringUtils.ordinalIndexOf(line, "|", 1)+1, StringUtils.ordinalIndexOf(line, "|", 2)-1).trim();
+	                		instanceName     = line.substring(StringUtils.ordinalIndexOf(line, "|", 2)+1, StringUtils.ordinalIndexOf(line, "|", 3)-1).trim();
+	                		instancetenantID = line.substring(StringUtils.ordinalIndexOf(line, "|", 3)+1, StringUtils.ordinalIndexOf(line, "|", 4)-1).trim();
+	                		instanceStatus   = line.substring(StringUtils.ordinalIndexOf(line, "|", 4)+1, StringUtils.ordinalIndexOf(line, "|", 5)-1).trim();
+	                		instancePower    = line.substring(StringUtils.ordinalIndexOf(line, "|", 6)+1, StringUtils.ordinalIndexOf(line, "|", 7)-1).trim();
+	                		instanceNetwork  = line.substring(StringUtils.ordinalIndexOf(line, "|", 7)+1, StringUtils.ordinalIndexOf(line, "|", 8)-1).trim();
+	                		
+	                		documentHistory = new Document();
+	    		        	documentRT      = new Document();
+	    		        	
+	    		        	documentHistory.put("timestamp"  , new Date());
+	    		        	documentHistory.put("box"        , BoxName);
+	    		        	documentHistory.put("tenantid"   , instancetenantID);
+	    		        	documentHistory.put("name"       , instanceName);
+	    		        	documentHistory.put("uuid"       , instanceID);
+	    		        	documentHistory.put("Powerstate" , instancePower);
+	    		        	documentHistory.put("Network"    , instanceNetwork);
+	    		    		
+	    		        	documentRT.put("box"             , BoxName);
+	    		        	documentRT.put("tenantid"        , instancetenantID);
+	    		    		documentRT.put("name"            , instanceName);
+	    		    		documentRT.put("uuid"            , instanceID);
+	    		    		
+	    		    	//	UpdateResult result;
+	    		    		if (instanceStatus.equals("ACTIVE"))
+	    	            	{
+	    		    			documentHistory.put("state", "Running");
+	    	            		documentRT.put("state", "Running");
+	    	            		
+	    	            		//Update Documents to MongoDB
+	        		    //		result= db.getCollection(vboxMongoCollectionRT).updateOne(new Document("uuid", instanceID),
+	    		        //    	        new Document("$set", new Document("state", "Running")
+	    		        //    	        		.append("state", "Running")));
+	    	            	}
+	    	            	else
+	    	            	{
+	    	            		documentHistory.put("state", instanceStatus);
+	    	            		documentRT.put("state", instanceStatus);
+	    	           // 		result= db.getCollection(vboxMongoCollectionRT).updateOne(new Document("uuid", instanceID),
+	    		        //    	        new Document("$set", new Document("state", instanceStatus)
+	    		         //   	        		.append("state", instanceStatus)));
+	    	            	}
+	    		    		
+	    		    		//if (result.getModifiedCount()==0)
+	    		    		//{
+	    		    			//db.getCollection(vboxMongoCollectionRT).insertOne(documentRT);
+	    		    			
+	    		    		//}
+	    	            	db.getCollection(vboxMongoCollection).insertOne(documentHistory);
+	    		    		
+	    	            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+BoxName+" Instance: "+instanceName+" State: "+instanceStatus+"]");
+	    	            	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+BoxName+" Instance: "+instanceName+" State: "+instanceStatus+"]");
+	    	            	documentsRT.add(documentRT);
+	                	}
+	                }
+	            }
+	            
+	            
+	            //System.out.println("ExitCode: " + sess.getExitStatus());
+	            sess.close();
+	            conn.close();
+	        }
+	        catch (IOException e)
+	        {
+	        	LOG.debug("[INFO][OVS-VM][Box : "+CTRL_Box_IP+" Failed]");
+	        	System.out.println("[INFO][OVS-VM][Box : "+CTRL_Box_IP+" Failed]");
+	            e.printStackTrace(System.err);
+	        }
+    	}
+    }
+	
 	public void run() 
 	{
 		while (true)
 		{
-			getOSInstanceList();
+			getOSInstanceListTypeC();
+			getOSInstanceListTypeB();
+			
+			//Delete Previous Documents from Real Time collection
+	    	deleteResult = db.getCollection(vboxMongoCollectionRT).deleteMany(new Document());
+	    	
+	    	//Insert New Documents for Near-Realtime Visualization
+			db.getCollection(vboxMongoCollectionRT).insertMany(documentsRT);
+			documentsRT.clear();
+			
 			try {
-				//Sleep For 5 Minutes
-				Thread.sleep(300000);
+				//Sleep For 30 Seconds
+				Thread.sleep(30000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

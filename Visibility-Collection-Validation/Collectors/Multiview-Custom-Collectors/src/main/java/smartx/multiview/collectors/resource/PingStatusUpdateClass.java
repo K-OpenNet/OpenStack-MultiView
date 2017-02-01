@@ -18,10 +18,7 @@ import ch.ethz.ssh2.StreamGobbler;
 
 import com.mongodb.Block;
 import com.mongodb.client.FindIterable;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
-
 
 import static java.util.Arrays.asList;
 import smartx.multiview.DataLake.MongoDB_Connector;
@@ -40,7 +37,7 @@ public class PingStatusUpdateClass implements Runnable {
     private MongoDB_Connector mongoConnector;
     private Date timestamp;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static Logger logger = Logger.getLogger(PingStatusUpdateClass.class.getName());
+    private Logger LOG = Logger.getLogger("pingUpdateFile");
 	
     public PingStatusUpdateClass(String boxUser, String boxPassword, MongoDB_Connector MongoConn, String pbox, String pboxstatus, String [] boxType, String ovsVMUser, String ovsVMPass)
     {
@@ -56,8 +53,7 @@ public class PingStatusUpdateClass implements Runnable {
 	
     public void getActiveVM(String serverIp,String command, String usernameString,String password)
     {
-    	//String activeVM = null;
-        try
+    	try
         {
             Connection conn = new Connection(serverIp);
             conn.connect();
@@ -85,6 +81,7 @@ public class PingStatusUpdateClass implements Runnable {
         catch (IOException e)
         {
         	System.out.println("[INFO][OVS-VM][Box : "+serverIp+" Failed");
+        	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][PING][UPDATE]"+serverIp+" Failed"+e.getStackTrace());
             e.printStackTrace(System.err);
         }
         //return activeVM;
@@ -146,7 +143,6 @@ public class PingStatusUpdateClass implements Runnable {
                     		//System.out.println(" Else");
                     		InterfaceStatus="GREEN";
                     	}
-                    	
                     }
             	}
             	sess.close();
@@ -163,6 +159,7 @@ public class PingStatusUpdateClass implements Runnable {
         catch (IOException e)
         {
         	System.out.println("[INFO][PING][MVC][Box : "+serverMgmtIp+" Failed");
+        	LOG.debug("["+dateFormat.format(timestamp)+"][ERROR][PING][MVC][Box : "+serverMgmtIp+" Failed");
             e.printStackTrace(System.err);
         }
         
@@ -185,13 +182,14 @@ public class PingStatusUpdateClass implements Runnable {
 		        ovsVM1ip  = (String) document.get("ovs_vm1");
 		        ovsVM2ip  = (String) document.get("ovs_vm2");
 		        activeVM  = (String) document.get("active_ovs_vm");
-		        
+		        LOG.debug("TEST 0 : "+m_ip);
 		        //Get Management Plane Status & Update pBox Status Collection
 		        pBoxStatus = mongoConnector.getDataDB(pboxstatusMongoCollectionRT, "destination", m_ip);		        		
 		        pBoxStatus.forEach(new Block<Document>() 
 		        {
 		            public void apply(final Document document2) 
 		            {
+		            	LOG.debug("TEST 1 : "+m_ip);
 		            	m_status_new = document2.get("status").toString().toUpperCase();
 		            	
 		            	//Get Active OVS-VM 
@@ -201,10 +199,10 @@ public class PingStatusUpdateClass implements Runnable {
 		            	if (m_status_new.equalsIgnoreCase("UP"))
 		            	{
 		            		m_status_new="GREEN";
-		            		
+		            		//LOG.debug("TEST 2 : "+m_ip);
 		            		if(ovsVM_USER==null)
 					    	{
-		            			d_status=getBoxStatus(m_ip,d_ip,"netstat -ie | grep 'inet addr:"+d_ip+"' | cut -f 2 -d :", SmartXBox_USER, SmartXBox_PASSWORD);
+		            			d_status=getBoxStatus(m_ip, d_ip, "netstat -ie | grep 'inet addr:"+d_ip+"' | cut -f 2 -d :", SmartXBox_USER, SmartXBox_PASSWORD);
 					    	}
 					    	else
 					    	{
@@ -224,7 +222,8 @@ public class PingStatusUpdateClass implements Runnable {
 		            	        new Document("$set", new Document("management_ip_status", m_status_new)
 		            	        		.append("data_ip_status", d_status)
 		            	        		.append("active_ovs_vm", activeVM)));
-		            	System.out.println("["+dateFormat.format(timestamp)+"][INFO][PING][MVC][Box: "+m_ip+" Management Status: "+m_status_new+" Data Status: "+d_status+" Active VM: "+activeVM+" Records Updated :"+result.getModifiedCount()+"]");
+		            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][PING][MVC][Box: "+m_ip+" Management Status: "+m_status_new+" Data Status: "+d_status+" Active VM: "+activeVM+" Records Updated :"+result.getModifiedCount()+"]");
+		            	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][PING][MVC][Box: "+m_ip+" Management Status: "+m_status_new+" Data Status: "+d_status+" Active VM: "+activeVM+" Records Updated :"+result.getModifiedCount()+"]");
 		            	activeVM=null;
 		            }
 		        });
@@ -238,8 +237,8 @@ public class PingStatusUpdateClass implements Runnable {
 		{
 			update_status();
 			try {
-				//Sleep For 5 Minutes
-				Thread.sleep(300000);
+				//Sleep For 30 Seconds
+				Thread.sleep(30000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

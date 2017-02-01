@@ -40,7 +40,7 @@ public class ovsBridgeStatusClass implements Runnable{
 	private MongoDatabase db;
 	private FindIterable<Document> pBoxList;
     private FindIterable<Document> ovsList;
-    private static Logger logger = Logger.getLogger(ovsBridgeStatusClass.class.getName());
+    private Logger LOG = Logger.getLogger("vSwitchFile");
     
     public ovsBridgeStatusClass(String boxUser, String boxPassword, String dbHost, int dbPort, String dbName, String pbox, String ovslist, String ovsstatus, String [] boxType, String ovsVMUser, String ovsVMPass) {
     	SmartXBox_USER           = boxUser;
@@ -70,7 +70,6 @@ public class ovsBridgeStatusClass implements Runnable{
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
             
             String line = br.readLine();
-            //System.out.println(command+"  - Result : "+line);
             
         	if (Integer.parseInt(line)==0)
         	{
@@ -160,6 +159,7 @@ public class ovsBridgeStatusClass implements Runnable{
         }
         catch (IOException e)
         {
+        	LOG.debug("[ERROR][OVS][Box : "+serverIp+" Failed "+e.getMessage());
         	System.out.println("[INFO][OVS][Box : "+serverIp+" Failed");
             e.printStackTrace(System.err);
 
@@ -186,7 +186,8 @@ public class ovsBridgeStatusClass implements Runnable{
 		        {
 		        	UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateMany(new Document("box", box),
 			           	        new Document("$set", new Document("status", OVS_STATUS)));
-		        	System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
+		        	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OVS][Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
+		        	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
 			    }
 		        
 			    else
@@ -197,7 +198,8 @@ public class ovsBridgeStatusClass implements Runnable{
 			        {
 			        	UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateMany(new Document("box", box),
 				           	        new Document("$set", new Document("status", OVS_STATUS)));
-			        	System.out.println("["+dateFormat.format(timestamp)+"][INFO][OpenStack Neutron Service] Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
+			        	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OpenStack Neutron Service] Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
+			        	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][OpenStack Neutron Service] Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
 				    }
 				    
 				    else
@@ -228,7 +230,8 @@ public class ovsBridgeStatusClass implements Runnable{
 				            		{
 				            			UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateOne(new Document("box", box).append("bridge", bridges.get(i)),
 				                		        new Document("$set", new Document("status", OVS_STATUS)));
-				                		System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+bridges.get(i)+" Records Updated :"+result.getModifiedCount()+"]");
+				            			LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+bridges.get(i)+" Records Updated :"+result.getModifiedCount()+"]");
+				                		//System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+bridges.get(i)+" Records Updated :"+result.getModifiedCount()+"]");
 				            			Mathced=true;
 				            			//System.out.println(Mathced);
 				                		break;
@@ -241,7 +244,8 @@ public class ovsBridgeStatusClass implements Runnable{
 				            		//System.out.println("False "+ ovsDocument.get("bridge")+ " m_ip: "+m_ip+" status: "+OVS_STATUS);
 				            		UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateOne(new Document("box", box).append("bridge", ovsDocument.get("bridge")),
 				    		        		        new Document("$set", new Document("status", "RED")));
-				    		        System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+ovsDocument.get("bridge")+" Records Updated :"+result.getModifiedCount()+"]");
+				            		LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+ovsDocument.get("bridge")+" Records Updated :"+result.getModifiedCount()+"]");
+				    		        //System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+ovsDocument.get("bridge")+" Records Updated :"+result.getModifiedCount()+"]");
 				            		Mathced=false;
 				            		//System.out.println(Mathced);
 				            	}
@@ -262,8 +266,8 @@ public class ovsBridgeStatusClass implements Runnable{
 		{
 			update_status();
 			try {
-				//Sleep For 5 Minutes
-				Thread.sleep(300000);
+				//Sleep For 30 Seconds
+				Thread.sleep(30000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
