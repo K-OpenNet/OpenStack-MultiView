@@ -1,3 +1,8 @@
+/**
+ * @author Muhammad Usman
+ * @version 0.1
+ */
+
 package smartx.multiview.collectors.flow;
 
 import java.io.BufferedReader;

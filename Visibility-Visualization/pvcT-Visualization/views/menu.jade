@@ -25,9 +25,6 @@ html(lang='en')
     // if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
-    script(type='text/javascript', src='javascripts/vis.js')
-    script(type='text/javascript', src='javascripts/boxes.json')
-    link(href='stylesheets/vis.css', rel='stylesheet', type='text/css')
     script(type='text/javascript').
       //redirect to login page if user is not logged
       var session_username = sessionStorage.getItem('ss_user_name');
@@ -75,11 +72,17 @@ html(lang='en')
       console.log(brCaps);
       iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
       }
-      //Route to VM View
+      //Route to VM Flow View
       function getVMFlow(vms){
       var iframe = document.getElementById('grafanaIframe');
       console.log(vms);
       //iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      }
+      //Route to Flow Path Trace View
+      function getFlowPathTrace(vlan){
+      var iframe = document.getElementById('topoIframe');
+      console.log('In Menu '+vlan);
+      iframe.src = 'http://103.22.221.55:3006/flowtracingviewops/'+vlan;
       }
       //Flow-level Functions End
       //Show Panel on Click
@@ -89,27 +92,43 @@ html(lang='en')
       iframe.src = 'http://103.22.221.55:3006/'+itemID.label+'-'+itemID.box;
       }
       // Called when the Visualization API is loaded.
-      function draw() {
-      document.getElementById('text').innerHTML="Logged as "+session_userrole;
+      function draw()
+      {
+      document.getElementById('text').innerHTML="   User: "+session_userrole;
       //Update********************************************************
-      var resource = document.getElementById('resourcecentricviewops');
-      var flow = document.getElementById('flowcentricviewops');
-      var service = document.getElementById('servicecentricviewops');
-      var iframe = document.getElementById('topoIframe');
+      var iframe1     = document.getElementById('topoIframe');
+      var iframe2     = document.getElementById('grafanaIframe');
+      var resource    = document.getElementById('resourcecentricviewops');
+      var flowrules   = document.getElementById('flowrulesviewops');
+      var flowtracing = document.getElementById('flowtracingviewops');
+      var flowmeasure = document.getElementById('flowmeasureviewops');
+      var service     = document.getElementById('servicecentricviewops');
       resource.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = 'Resource-Centric Topological View';
-      iframe.src = 'http://103.22.221.55:3006/resourcecentricviewops';
+      iframe1.src = 'http://103.22.221.55:3006/resourcecentricviewops';
+      //iframe2.src = 'http://103.22.221.55:3006/#';
       });
-      flow.addEventListener('click', function() {
+      flowrules.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
-      iframe.src = 'http://103.22.221.55:3006/flowcentricviewops';
+      iframe1.src = 'http://103.22.221.55:3006/flowrulesviewops';
+      //iframe2.src = 'http://103.22.221.55:3006/#';
+      });
+      flowtracing.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
+      //iframe1.src = 'http://103.22.221.55:3006/flowtracingviewops';
+      iframe2.src = 'http://103.22.221.55:3006/tenantvlanmapops';
+      });
+      flowmeasure.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
+      iframe1.src = 'http://103.22.221.55:3006/flowmeasureviewops';
+      //iframe2.src = 'http://103.22.221.55:3006/#';
       });
       service.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = 'Service-Centric Topological View';
-      iframe.src = 'http://103.22.221.55:3006/servicecentricviewops';
+      iframe1.src = 'http://103.22.221.55:3006/servicecentricviewops';
+      //iframe2.src = 'http://103.22.221.55:3006/#';
       });
       //**************************************************************
-      // Create a data table with nodes.
       }
   body(onload='draw()')
     #wrapper
@@ -169,15 +188,37 @@ html(lang='en')
               li
                 a(href='#')
                   i.fa.fa-bookmark.fa-fw
-                  |  Multiview
+                  | Resource-layer Visualization
                   span.fa.arrow
                 ul#parent-list.nav.nav-second-level
                   li
                     a#resourcecentricviewops(href='#') Resource-centric View
+              li
+                a(href='#')
+                  i.fa.fa-bookmark.fa-fw
+                  | Flow-layer Visualization
+                  span.fa.arrow
+                ul#parent-list.nav.nav-second-level
                   li
-                    a#flowcentricviewops(href='#') Flow-centric View
+                    a#flowmeasureviewops(href='#') Playground Flows
+              li
+                a(href='#')
+                  i.fa.fa-bookmark.fa-fw
+                  | Workload-layer Visualization
+                  span.fa.arrow
+                ul#parent-list.nav.nav-second-level
                   li
-                    a#servicecentricviewops(href='#') Service-centric View
+                    a#servicecentricviewops(href='#') Workload-centric View
+              li
+                a(href='#')
+                  i.fa.fa-bookmark.fa-fw
+                  | Integrated Visualization
+                  span.fa.arrow
+                ul#parent-list.nav.nav-second-level
+                  li
+                    a#flowrulesviewops(href='#') vSwich-Flows Info
+                  li
+                    a#flowtracingviewops(href='#') Resource-Flow Locator
               li
                 a(href='login')
                   i.fa.fa-sign-out.fa-fw
@@ -209,4 +250,3 @@ html(lang='en')
     script(src='../bower_components/metisMenu/dist/metisMenu.min.js')
     // Custom Theme JavaScript
     script(src='../dist/js/sb-admin-2.js')
-

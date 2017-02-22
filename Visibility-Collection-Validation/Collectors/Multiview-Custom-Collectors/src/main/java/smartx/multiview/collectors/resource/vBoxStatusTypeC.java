@@ -1,6 +1,6 @@
 /**
- * @author Muhammad
- *
+ * @author Muhammad Usman
+ * @version 0.1
  */
 
 package smartx.multiview.collectors.resource;
@@ -40,15 +40,12 @@ public class vBoxStatusTypeC implements Runnable{
 	private Logger LOG = Logger.getLogger("novaUpdateFile");
     
 	//@SuppressWarnings("deprecation")
-	
 	public vBoxStatusTypeC(String CTRL_IP, String CTRL_USER, String CTRL_PASSWORD, String dbHost, int dbPort, String dbName, String vboxhistory, String vboxrt) 
 	{
 		mongoClient           = new MongoClient(dbHost, dbPort);
 		db                    = mongoClient.getDatabase(dbName);
 		vboxMongoCollection   = vboxhistory;
 		vboxMongoCollectionRT = vboxrt;
-		//SmartXBox_USER        = boxUser;
-		//SmartXBox_PASSWORD    = boxPassword;
 		ControlBox_IP         = CTRL_IP;
 		ControlBox_USER       = CTRL_USER;
 		ControlBox_PASSWORD   = CTRL_PASSWORD;

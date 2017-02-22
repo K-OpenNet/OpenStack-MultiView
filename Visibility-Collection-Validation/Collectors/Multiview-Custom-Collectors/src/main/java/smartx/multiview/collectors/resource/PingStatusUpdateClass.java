@@ -1,3 +1,8 @@
+/**
+ * @author Muhammad Usman
+ * @version 0.1
+ */
+
 package smartx.multiview.collectors.resource;
 
 import java.io.BufferedReader;
@@ -25,10 +30,10 @@ import smartx.multiview.DataLake.MongoDB_Connector;
 
 public class PingStatusUpdateClass implements Runnable {
 	private Thread thread;
-	private String ThreadName="pBox Status Thread";
+	private String ThreadName="vSwitch Status Thread";
 	private String SmartXBox_USER, SmartXBox_PASSWORD, ovsVM_USER, ovsVM_PASSWORD;
 	private String m_status, m_status_new, d_status;
-	private String box = "", activeVM, m_ip = "", d_ip = "", ovsVM1ip, ovsVM2ip;
+	private String box = "", activeVM, m_ip = "", d_ip = "", ovsVM1ip, ovsVM2ip, boxtype;
 	private String pboxMongoCollection, pboxstatusMongoCollectionRT;
 	private String [] BoxType;
 	private FindIterable<Document> pBoxList;
@@ -87,7 +92,7 @@ public class PingStatusUpdateClass implements Runnable {
         //return activeVM;
     }
     
-	public String getBoxStatus(String serverMgmtIp,String serverDataIp, String command, String usernameString,String password)
+	public String getBoxStatus(String serverMgmtIp, String serverDataIp, String command, String usernameString, String password, String type)
     {
 		String InterfaceStatus = null;
         try
@@ -110,7 +115,7 @@ public class PingStatusUpdateClass implements Runnable {
             	InterfaceStatus="GREEN";
             	//System.out.println("Box : "+serverMgmtIp+" Data Interface Status: "+InterfaceStatus);
             	ch.ethz.ssh2.Session sess2 = conn.openSession();
-            	sess2.execCommand("ovs-ofctl show brcap | grep ovs_vxlan | cut -f 1 -d : | cut -f 2 -d '(' | cut -f 1 -d ')'");
+            	sess2.execCommand("ovs-ofctl show brcap | grep vxlan | cut -f 1 -d : | cut -f 2 -d '(' | cut -f 1 -d ')'");
             	stdout = new StreamGobbler(sess2.getStdout());
             	br     = new BufferedReader(new InputStreamReader(stdout));
             	while(true)
@@ -121,27 +126,36 @@ public class PingStatusUpdateClass implements Runnable {
             			if (index==0)
             				InterfaceStatus="ORANGE";
             			index=1;
+            			//System.out.println("InterfaceStatus : "+InterfaceStatus);
             			break;
             		}
                     
             		index++;
             		//System.out.print(host);
-                    if (host!=null)
+                    if (host != null)
                     {
+                    	//System.out.println("Host : "+host);
                     	ch.ethz.ssh2.Session sess3 = conn.openSession();
-                    	sess3.execCommand("ping -c 1 `ovs-vsctl show | grep -A2 "+host+" | grep remote_ip | cut -d '\"' -f 2` | grep ttl");
+                    	
+                    	if (type.equals("B**"))
+                    		sess3.execCommand("ping -c 1 `ovs-vsctl show | grep -A2 "+host+" | grep remote_ip | cut -d '\"' -f 2` | grep ttl");
+                    	else
+                    		sess3.execCommand("ping -c 1 `ovs-vsctl show | grep -A2 "+host+" | grep remote_ip | cut -d '\"' -f 4` | grep ttl");
+                    	
                     	stdout2 = new StreamGobbler(sess3.getStdout());
                     	br2     = new BufferedReader(new InputStreamReader(stdout2));
                     	if (br2.readLine() == null)
                     	{
-                    		//System.out.println(" If");
+                    		
                     		InterfaceStatus="ORANGE";
+                    		//System.out.println(InterfaceStatus);
                     		break;
                     	}
                     	else
                     	{
                     		//System.out.println(" Else");
                     		InterfaceStatus="GREEN";
+                    		//System.out.println(InterfaceStatus);
                     	}
                     }
             	}
@@ -158,8 +172,8 @@ public class PingStatusUpdateClass implements Runnable {
         }
         catch (IOException e)
         {
-        	System.out.println("[INFO][PING][MVC][Box : "+serverMgmtIp+" Failed");
-        	LOG.debug("["+dateFormat.format(timestamp)+"][ERROR][PING][MVC][Box : "+serverMgmtIp+" Failed");
+        	System.out.println("[INFO][PING][UPDATE][Box : "+serverMgmtIp+" Failed");
+        	LOG.debug("["+dateFormat.format(timestamp)+"][ERROR][PING][UPDATE][Box : "+serverMgmtIp+" Failed");
             e.printStackTrace(System.err);
         }
         
@@ -182,35 +196,58 @@ public class PingStatusUpdateClass implements Runnable {
 		        ovsVM1ip  = (String) document.get("ovs_vm1");
 		        ovsVM2ip  = (String) document.get("ovs_vm2");
 		        activeVM  = (String) document.get("active_ovs_vm");
-		        LOG.debug("TEST 0 : "+m_ip);
+		        boxtype      = (String) document.get("type");
+		        //LOG.debug("TEST 0 : "+m_ip);
+		        
 		        //Get Management Plane Status & Update pBox Status Collection
 		        pBoxStatus = mongoConnector.getDataDB(pboxstatusMongoCollectionRT, "destination", m_ip);		        		
 		        pBoxStatus.forEach(new Block<Document>() 
 		        {
 		            public void apply(final Document document2) 
 		            {
-		            	LOG.debug("TEST 1 : "+m_ip);
+		            	//LOG.debug("TEST 1 : "+m_ip);
 		            	m_status_new = document2.get("status").toString().toUpperCase();
 		            	
-		            	//Get Active OVS-VM 
-		            	getActiveVM(m_ip, "virsh list | grep ovs-vm | grep running | awk '{print $2}'", SmartXBox_USER, SmartXBox_PASSWORD);
-		            	
-		            	//Get Data Plane Status
+		            	//Added Now Feb 21 2017
 		            	if (m_status_new.equalsIgnoreCase("UP"))
 		            	{
-		            		m_status_new="GREEN";
-		            		//LOG.debug("TEST 2 : "+m_ip);
-		            		if(ovsVM_USER==null)
-					    	{
-		            			d_status=getBoxStatus(m_ip, d_ip, "netstat -ie | grep 'inet addr:"+d_ip+"' | cut -f 2 -d :", SmartXBox_USER, SmartXBox_PASSWORD);
-					    	}
-					    	else
-					    	{
-					    		System.out.println("[In B** & C** Data Plane Setup's]");
-					    		//activeVM=activeVM.equals("ovs-vm1") ? ovsVM1ip : ovsVM2ip;
-					    		d_status=getBoxStatus(activeVM.equals("ovs-vm1") ? ovsVM1ip : ovsVM2ip, d_ip,"netstat -ie | grep 'inet addr:"+d_ip+"' | cut -f 2 -d :", ovsVM_USER, ovsVM_PASSWORD);
-					    	}
-		            		
+			            	//Get Active OVS-VM 
+			            	getActiveVM(m_ip, "virsh list | grep ovs-vm | grep running | awk '{print $2}'", SmartXBox_USER, SmartXBox_PASSWORD);
+			            	
+			            	//Get Data Plane Status
+			      /*      	if (m_status_new.equalsIgnoreCase("UP"))
+			            	{*/
+			            		m_status_new="GREEN";
+			            		//LOG.debug("TEST 2 : "+m_ip);
+			            		if(ovsVM_USER==null)
+						    	{
+			            			d_status = getBoxStatus(m_ip, d_ip, "netstat -ie | grep 'inet addr:"+d_ip+"' | cut -f 2 -d :", SmartXBox_USER, SmartXBox_PASSWORD, boxtype);
+						    	}
+						    	else
+						    	{
+						    		//brcap Inside OVS-VM
+						    		if (boxtype.equals("B**"))
+						    		{
+						    			//System.out.println("[In B** & C** Data Plane Setup's]");
+							    		//activeVM=activeVM.equals("ovs-vm1") ? ovsVM1ip : ovsVM2ip;
+							    		//System.out.println("Box: "+ box + " Type: "+boxtype+" Active VM"+ activeVM);
+							    		d_status = getBoxStatus(activeVM.equals("ovs-vm1") ? ovsVM1ip : ovsVM2ip, d_ip, "netstat -ie | grep 'inet addr:"+d_ip+"' | cut -f 2 -d :", ovsVM_USER, ovsVM_PASSWORD, boxtype);
+						    		}
+						    		
+						    		//brcap Inside Box
+						    		else
+						    		{
+						    			//System.out.println("Box: "+ box + " Type: "+boxtype+" Active VM"+ activeVM);
+						    			d_status = getBoxStatus(m_ip, d_ip, "netstat -ie | grep 'inet addr:"+d_ip+"' | cut -f 2 -d :", SmartXBox_USER, SmartXBox_PASSWORD, boxtype);
+						    		}
+						    	}
+			            		
+			 /*           	}
+			            	else
+			            	{
+			            		m_status_new="RED";
+			            		d_status="RED";
+			            	}*/
 		            	}
 		            	else
 		            	{
@@ -222,7 +259,7 @@ public class PingStatusUpdateClass implements Runnable {
 		            	        new Document("$set", new Document("management_ip_status", m_status_new)
 		            	        		.append("data_ip_status", d_status)
 		            	        		.append("active_ovs_vm", activeVM)));
-		            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][PING][MVC][Box: "+m_ip+" Management Status: "+m_status_new+" Data Status: "+d_status+" Active VM: "+activeVM+" Records Updated :"+result.getModifiedCount()+"]");
+		            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][PING][UPDATE][Box: "+m_ip+" Management Status: "+m_status_new+" Data Status: "+d_status+" Active VM: "+activeVM+" Records Updated :"+result.getModifiedCount()+"]");
 		            	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][PING][MVC][Box: "+m_ip+" Management Status: "+m_status_new+" Data Status: "+d_status+" Active VM: "+activeVM+" Records Updated :"+result.getModifiedCount()+"]");
 		            	activeVM=null;
 		            }

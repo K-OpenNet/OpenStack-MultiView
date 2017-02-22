@@ -3,15 +3,12 @@
  */
 
 var express = require('express');
-//var ArticleProvider = require('./resource-mongodb').ArticleProvider;
-//var RouteProvider = require('./route-mongodb').RouteProvider;
 var BoxProvider = require('./MultiView-DataAPI').BoxProvider;
-//var UserProvider = require('./user-mongodb').UserProvider;
 var http = require("http");
 var app = express();
 //var app = module.exports = express.createServer();
 var client = require('socket.io').listen(8080).sockets;
-// Configuration
+var host = "103.22.221.55";
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
@@ -33,39 +30,39 @@ app.configure('production', function(){
 });
 
 //Define Application Routes
-//MultiView Data Integration & View Access
 var resourceProvider = new ResourceProvider();
+// Route for Resource-Centric View
 app.get('/resourcecentricviewops', function(req, res){
     var boxList         = null;
     var switchList      = null;
     var instanceList    = null;
-    var serviceList     = 0;
+    var workloadList     = 0;
     var ovsBridgeStatus = null;
     var pPathStatus     = null;
     resourceProvider.getpBoxList( function(error,boxobj)
     {
 	boxList = boxobj;
-        console.log( boxList);
+    //console.log( boxList);
 	showView();
     })
     resourceProvider.getvSwitchList(function(error, switchobj)
     {
     	switchList = switchobj;
-        console.log(switchList);
+        //console.log(switchList);
 	showView();
     })
 
     resourceProvider.getvBoxList(function(error, instanceobj)
     {
         instanceList = instanceobj;
-        console.log(instanceList);
+        //console.log(instanceList);
         showView();
     })
 
-    /*resourceProvider.getServiceList(function(error, serviceobj)
+    /*resourceProvider.getworkloadList(function(error, serviceobj)
     {
-        serviceList = serviceobj;
-        console.log(serviceList);
+        workloadList = serviceobj;
+        console.log(workloadList);
         showView();
     })*/
 
@@ -79,20 +76,20 @@ app.get('/resourcecentricviewops', function(req, res){
     resourceProvider.getovsBridgeStatus(function(error, bridgestatusobj)
     {
         ovsBridgeStatus = bridgestatusobj;
-        console.log(ovsBridgeStatus);
+        //console.log(ovsBridgeStatus);
         showView();
     })
 
     function showView()
     {
-        if(boxList !== null && switchList !== null && instanceList !== null && serviceList !==null &&  ovsBridgeStatus !== null)
+        if(boxList !== null && switchList !== null && instanceList !== null && workloadList !==null &&  ovsBridgeStatus !== null)
 	{
-        	console.log('Resource-Centric View Rendering');
-    		res.render('resourcecentricviewops.jade',{locals: {
-                	boxList         : JSON.stringify(boxList),
+		    console.log('Resource-Centric View Rendering');
+			res.render('resourcecentricviewops.jade',{locals: {
+            boxList         : JSON.stringify(boxList),
 			switchList      : JSON.stringify(switchList),
 			instanceList    : JSON.stringify(instanceList),
-			serviceList     : JSON.stringify(serviceList),
+			workloadList     : JSON.stringify(workloadList),
 //			pPathStatus    : JSON.stringify(pPathStatus),
 			ovsBridgeStatus : JSON.stringify(ovsBridgeStatus)
         	},
@@ -102,14 +99,14 @@ app.get('/resourcecentricviewops', function(req, res){
     }
 });
 
-//var resourceProvider = new ResourceProvider();
-app.get('/flowcentricviewops', function(req, res){
-    console.log('Flow-Centric View Rendering');
-    //res.render('flowcentricviewops.jade', {title: 'Flow-Centric View'})
+//Route for Flow Rules View
+app.get('/flowrulesviewops', function(req, res){
+    console.log('Flow Rules and Statistics View Rendering');
+    //res.render('flowrulesviewops.jade', {title: 'Flow-Centric View'})
     var boxList         = null;
     var switchList      = null;
     var instanceList    = null;
-    var serviceList     = 0;
+    var workloadList     = 0;
     var ovsBridgeStatus = null;
     var pPathStatus     = null;
     resourceProvider.getpBoxList( function(error,boxobj)
@@ -141,29 +138,155 @@ app.get('/flowcentricviewops', function(req, res){
 
     function showView()
     {
-        if(boxList !== null && switchList !== null && instanceList !== null && serviceList !==null &&  ovsBridgeStatus !== null)
+        if(boxList !== null && switchList !== null && instanceList !== null && workloadList !==null &&  ovsBridgeStatus !== null)
         {
-                console.log('Flow-Centric View Rendering');
-                res.render('flowcentricviewops.jade',{locals: {
+                console.log('Flow Rules and Statistics View Rendering');
+                res.render('flowrulesviewops.jade',{locals: {
                         boxList         : JSON.stringify(boxList),
                         switchList      : JSON.stringify(switchList),
                         instanceList    : JSON.stringify(instanceList),
-                        serviceList     : JSON.stringify(serviceList),
+                        workloadList     : JSON.stringify(workloadList),
 //                      pPathStatus    : JSON.stringify(pPathStatus),
                         ovsBridgeStatus : JSON.stringify(ovsBridgeStatus)
                 },
-                title: 'Flow-Centric Topological View'}
+                title: 'Flow Rules and Statistics View Rendering'}
                 )
         }
     }
 });
 
+// Route for Flow Path Tracing View
+app.get('/flowtracingviewops/*', function(req, res){
+	//Wait for 1 minute before requesting again
+	req.connection.setTimeout(60*1000);
+	
+	console.log('Flow Path Tracing View Rendering');
+    
+	var tenantID=req.originalUrl;
+	var vlanID=tenantID;
+	
+	tenantID=tenantID.substring(20, tenantID.indexOf("&"));
+	vlanID=vlanID.substring(vlanID.indexOf("&")+1, vlanID.length);
+	console.log(tenantID);
+	console.log(vlanID);
+	
+    var boxList           = null;
+    var switchList        = null;
+    var instanceList      = null;
+    var workloadList      = 0;
+    var ovsBridgeStatus   = 0;
+	var bridgevlanmapList = null;
+    
+	resourceProvider.getpBoxList( function(error,boxobj)
+    {
+        boxList = boxobj;
+        showView();
+    })
+    resourceProvider.getvSwitchList(function(error, switchobj)
+    {
+        switchList = switchobj;
+        showView();
+    })
+
+    resourceProvider.getTenantvBoxList(tenantID, function(error, instanceobj)
+    {
+        instanceList = instanceobj;
+        showView();
+    })
+
+	/*resourceProvider.getovsBridgeStatus(function(error, bridgestatusobj)
+    {
+        ovsBridgeStatus = bridgestatusobj;
+        showView();
+    })*/
+	
+	resourceProvider.getbridgevlanmapList(vlanID, function(error, bridgevlanmapobj)
+    {
+       	bridgevlanmapList = bridgevlanmapobj;
+       	showView();
+    })
+
+    function showView()
+    {
+        if(boxList !== null && switchList !== null && instanceList !== null && workloadList !==null &&  ovsBridgeStatus !== null && bridgevlanmapList !==null)
+        {
+                res.render('flowtracingviewops.jade',{locals: {
+                        boxList           : JSON.stringify(boxList),
+                        switchList        : JSON.stringify(switchList),
+                        instanceList      : JSON.stringify(instanceList),
+                        workloadList      : JSON.stringify(workloadList),
+                        ovsBridgeStatus   : JSON.stringify(ovsBridgeStatus),
+                        bridgevlanmapList : JSON.stringify(bridgevlanmapList)
+                },
+                title: 'Flow Tracing View Rendering'}
+                )
+        }
+    }
+});
+
+// Route for Flow Measurements View
+app.get('/flowmeasureviewops', function(req, res){
+    console.log('Flow Measure View Rendering');
+    //res.render('flowcentricviewops.jade', {title: 'Flow-Centric View'})
+    var boxList         = null;
+    var switchList      = null;
+    var instanceList    = null;
+    var workloadList     = 0;
+    var ovsBridgeStatus = null;
+    var pPathStatus     = null;
+    resourceProvider.getpBoxList( function(error,boxobj)
+    {
+        boxList = boxobj;
+        console.log( boxList);
+        showView();
+    })
+    resourceProvider.getvSwitchList(function(error, switchobj)
+    {
+        switchList = switchobj;
+        console.log(switchList);
+        showView();
+    })
+
+    resourceProvider.getvBoxList(function(error, instanceobj)
+    {
+        instanceList = instanceobj;
+        console.log(instanceList);
+        showView();
+    })
+
+	resourceProvider.getovsBridgeStatus(function(error, bridgestatusobj)
+    {
+        ovsBridgeStatus = bridgestatusobj;
+        console.log(ovsBridgeStatus);
+        showView();
+    })
+
+    function showView()
+    {
+        if(boxList !== null && switchList !== null && instanceList !== null && workloadList !==null &&  ovsBridgeStatus !== null)
+        {
+                console.log('Flow Measure View Rendering');
+                res.render('flowmeasureviewops.jade',{locals: {
+                        boxList         : JSON.stringify(boxList),
+                        switchList      : JSON.stringify(switchList),
+                        instanceList    : JSON.stringify(instanceList),
+                        workloadList     : JSON.stringify(workloadList),
+//                      pPathStatus    : JSON.stringify(pPathStatus),
+                        ovsBridgeStatus : JSON.stringify(ovsBridgeStatus)
+                },
+                title: 'Flow Measure View'}
+                )
+        }
+    }
+});
+
+// Route for Workload View
 app.get('/servicecentricviewops', function(req, res){
     console.log('Workload-Centric View Rendering');
     res.render('servicecentricviewops.jade', {title: 'Workload Centric View'})
 });
 
-//var resourceProvider = new ResourceProvider();
+// Route for Flow Rules View
 app.get('/opsflowrules/*', function(req, res){
     var configList = null;
     var statList = null;
@@ -196,6 +319,7 @@ app.get('/opsflowrules/*', function(req, res){
     }    
 });
 
+// Route for Flow Statistics View
 app.get('/opsflowstat', function(req, res){
     var statList = null;
     resourceProvider.getOpsSDNStatList( function(error,statobj)
@@ -214,11 +338,45 @@ app.get('/opsflowstat', function(req, res){
     }
 });
 
-//var userProvider = new UserProvider();
-app.get('/', function(req, res){
-    res.render('login.jade', {title: 'MultiView Login'})
+// Route for Tenant-Vlan Mappings View
+app.get('/tenantvlanmapops', function(req, res){
+	var tenantList = null;
+    //var tenantID=req.originalUrl;
+    //tenantID=tenantID.substring(14, tenantID.length);
+    //resourceProvider.gettenantvlanmapList(tenantID, function(error, tenantObj)
+	resourceProvider.gettenantvlanmapList(function(error, tenantObj)
+    {
+       	tenantList = tenantObj;
+       	showView();
+    })
+    
+    function showView()
+    {
+       	if(tenantList !== null)
+       	{
+        	console.log('Tenant-Vlan Flow Path Tracing');
+			console.log(tenantList);
+			res.render('tenantvlanmapops', { title: 'Tenant Vlan Mappings View', tenantList: tenantList });
+		}
+    }    
 });
 
+// Route for Login View
+app.get('/', function(req, res){
+    res.render('login.jade', {title: 'MultiView Web Application Login'})
+});
+
+// Route for Menu View
+app.get('/menu', function(req, res){
+       	console.log('Menu Rendering');
+	res.render('menu.jade',{locals: {}, title: 'MultiView Menu'})
+});
+
+app.get('/login', function(req, res){
+    res.render('login.jade',{ title: 'MultiView Login'})
+});
+
+// Web Autentication & Validation
 client.on('connection', function (socket) {
     socket.on('login', function(login_info){
         var this_user_name = login_info.user_name,
@@ -256,15 +414,6 @@ client.on('connection', function (socket) {
             })
         }
     });
-});
-
-app.get('/menu', function(req, res){
-       	console.log('Menu Rendering');
-	res.render('menu.jade',{locals: {}, title: 'MultiView Menu'})
-});
-
-app.get('/login', function(req, res){
-    res.render('login.jade',{ title: 'MultiView Login'})
 });
 
 app.set('domain', '0.0.0.0')

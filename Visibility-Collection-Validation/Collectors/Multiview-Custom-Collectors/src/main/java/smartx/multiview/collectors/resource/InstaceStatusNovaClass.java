@@ -1,3 +1,8 @@
+/**
+ * @author Muhammad Usman
+ * @version 0.1
+ */
+
 package smartx.multiview.collectors.resource;
 
 import java.io.BufferedReader;
@@ -152,16 +157,17 @@ public class InstaceStatusNovaClass implements Runnable{
 		        	documentHistory.put("status",jsonKeyObject.get("status"));
 		        	documentHistory.put("host",jsonKeyObject.get("OS-EXT-SRV-ATTR:host"));
 		        	documentHistory.put("key_name",jsonKeyObject.get("key_name"));
-		        	documentHistory.put("tenant_id",jsonKeyObject.get("tenant_id"));
-		        	documentHistory.put("user_id",jsonKeyObject.get("user_id"));
+		        	documentHistory.put("ostenantid",jsonKeyObject.get("tenant_id"));
+		        	documentHistory.put("osuserid",jsonKeyObject.get("user_id"));
 		        	
-		        	documentRT.put("box"          , jsonKeyObject.get("OS-EXT-SRV-ATTR:host"));
-		    		documentRT.put("name"         , jsonKeyObject.get("name"));
-		    		documentRT.put("osusername"   , jsonKeyObject.get("user_id"));
-		    		documentRT.put("ostenantname" , jsonKeyObject.get("tenant_id"));
-		    		documentRT.put("vlanid"       , "");
-	            	
-	            	//Network Information Extraction
+		        	documentRT.put("name"       , jsonKeyObject.get("name"));
+		        	documentRT.put("uuid"       , "");
+		        	documentRT.put("vlanid"     , "");
+		        	documentRT.put("ostenantid" , jsonKeyObject.get("tenant_id"));
+		    		documentRT.put("osuserid"   , jsonKeyObject.get("user_id"));
+		    		documentRT.put("box"        , jsonKeyObject.get("OS-EXT-SRV-ATTR:host"));
+		    		
+		    		//Network Information Extraction
 		        	jsonNetworkObject = (JSONObject) jsonKeyObject.get("addresses");
 		        	networksKeySet    = jsonNetworkObject.keySet();
 		        	
@@ -279,51 +285,39 @@ public class InstaceStatusNovaClass implements Runnable{
 	    		        	
 	    		        	documentHistory.put("timestamp"  , new Date());
 	    		        	documentHistory.put("box"        , BoxName);
-	    		        	documentHistory.put("tenantid"   , instancetenantID);
+	    		        	documentHistory.put("ostenantid"   , instancetenantID);
 	    		        	documentHistory.put("name"       , instanceName);
 	    		        	documentHistory.put("uuid"       , instanceID);
 	    		        	documentHistory.put("Powerstate" , instancePower);
 	    		        	documentHistory.put("Network"    , instanceNetwork);
 	    		    		
+	    		        	documentRT.put("name"            , instanceName);
+	    		        	documentRT.put("uuid"            , instanceID);
+	    		        	documentRT.put("vlanid"          , "");
+	    		        	documentRT.put("ostenantid"      , instancetenantID);
+	    		        	documentRT.put("osuserid"        , instancetenantID);
 	    		        	documentRT.put("box"             , BoxName);
-	    		        	documentRT.put("tenantid"        , instancetenantID);
-	    		    		documentRT.put("name"            , instanceName);
-	    		    		documentRT.put("uuid"            , instanceID);
 	    		    		
-	    		    	//	UpdateResult result;
+	    		        	//	UpdateResult result;
 	    		    		if (instanceStatus.equals("ACTIVE"))
 	    	            	{
 	    		    			documentHistory.put("state", "Running");
 	    	            		documentRT.put("state", "Running");
 	    	            		
-	    	            		//Update Documents to MongoDB
-	        		    //		result= db.getCollection(vboxMongoCollectionRT).updateOne(new Document("uuid", instanceID),
-	    		        //    	        new Document("$set", new Document("state", "Running")
-	    		        //    	        		.append("state", "Running")));
 	    	            	}
 	    	            	else
 	    	            	{
 	    	            		documentHistory.put("state", instanceStatus);
 	    	            		documentRT.put("state", instanceStatus);
-	    	           // 		result= db.getCollection(vboxMongoCollectionRT).updateOne(new Document("uuid", instanceID),
-	    		        //    	        new Document("$set", new Document("state", instanceStatus)
-	    		         //   	        		.append("state", instanceStatus)));
 	    	            	}
 	    		    		
-	    		    		//if (result.getModifiedCount()==0)
-	    		    		//{
-	    		    			//db.getCollection(vboxMongoCollectionRT).insertOne(documentRT);
-	    		    			
-	    		    		//}
-	    	            	db.getCollection(vboxMongoCollection).insertOne(documentHistory);
+	    		    		db.getCollection(vboxMongoCollection).insertOne(documentHistory);
 	    		    		
 	    	            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+BoxName+" Instance: "+instanceName+" State: "+instanceStatus+"]");
-	    	            	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+BoxName+" Instance: "+instanceName+" State: "+instanceStatus+"]");
 	    	            	documentsRT.add(documentRT);
 	                	}
 	                }
 	            }
-	            
 	            
 	            //System.out.println("ExitCode: " + sess.getExitStatus());
 	            sess.close();

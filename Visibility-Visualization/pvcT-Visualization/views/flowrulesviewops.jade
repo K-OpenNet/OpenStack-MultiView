@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title MultiView : Flow Centric View
+    title MultiView : Flow Rules and Statistics View
     style(type='text/css').
       body {
       color: #d3d3d3;
@@ -22,7 +22,6 @@ html
       }
     script(src='../bower_components/jquery/dist/jquery.min.js')
     script(type='text/javascript', src='javascripts/vis.js')
-    script(type='text/javascript', src='javascripts/boxes.json')
     link(href='stylesheets/vis.css', rel='stylesheet', type='text/css')
     link(type='text/css', rel='stylesheet', href='stylesheets/opentip.css')
     script(type='text/javascript', src='javascripts/opentip-jquery.js')
@@ -36,9 +35,9 @@ html
       var boxList         = !{boxList};
       var switchList      = !{switchList};
       var instanceList    = !{instanceList};
-      var serviceList     = !{serviceList};
+      var workloadList    = !{workloadList};
       var ovsBridgeStatus = !{ovsBridgeStatus};
-      var index=0, boxlevel=1, switchlevel=0, instancelevel=0, servicelevel=0;
+      var index=0, boxlevel=1, switchlevel=0, instancelevel=0, workloadlevel=0;
       var nodes             = null;
       var edges             = null;
       var network           = null;
@@ -135,7 +134,7 @@ html
       }
       //Draw the OpenStack Instances
       vmNodeID      = BoxNodeID+100;
-      serviceNodeID = BoxNodeID+600;
+      workloadNodeID = BoxNodeID+600;
       instancelevel = switchlevel+1;
       for (var k in instanceList)
       {
@@ -250,9 +249,10 @@ html
       if(nodes[i].id == nodeId){
       switch (nodes[i].level){
       case 0: //Network
-      window.parent.getNetworkFlow(nodes[i]);
+      //window.parent.getNetworkFlow(nodes[i]);
+      break;
       case 1: //Box
-      window.parent.getBoxFlow(nodes[i]);
+      //window.parent.getBoxFlow(nodes[i]);
       break;
       case 2: // brcap
       window.parent.getBrCapFlow(nodes[i]);
@@ -264,7 +264,7 @@ html
       case 5: // brint
       break;
       case 6: // vm
-      window.parent.receiveValueVMFlow(nodes[i])
+      //window.parent.receiveValueVMFlow(nodes[i])
       break;
       case 7: // service
       break;
@@ -294,9 +294,6 @@ html
       });
       }
   body(onload='draw()')
-    #ViewName(align='center')
-      h1(style='background-color:red;color:black;padding:20px;') Flow-Centric View
     p
     p
     #mynetwork(align='center')
-

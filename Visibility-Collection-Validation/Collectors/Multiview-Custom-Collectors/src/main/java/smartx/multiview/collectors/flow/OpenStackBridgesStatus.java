@@ -1,6 +1,9 @@
-package smartx.multiview.collectors.flow;
+/**
+ * @author Muhammad Usman
+ * @version 0.1
+ */
 
-import static java.util.Arrays.asList;
+package smartx.multiview.collectors.flow;
 
 import java.io.BufferedReader;
 import java.io.IOException;

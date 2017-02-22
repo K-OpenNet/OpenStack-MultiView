@@ -1,9 +1,10 @@
+/**
+ * @author Muhammad Usman
+ * @version 0.1
+ */
+
 package smartx.multiview.collectors.CollectorsMain;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import smartx.multiview.collectors.flow.*;
@@ -12,220 +13,16 @@ import smartx.multiview.DataLake.*;
 
 public class CustomCollectorsMain 
 {
-	private String VISIBILITY_CENTER;
-	private String MONGO_DB_HOST;
-	private int    MONGO_DB_PORT;
-	private String MONGO_DB_DATABASE;
-	private String OPENSTACK_PASSWORD;
-	private String OPENSTACK_USER_ID;
-	private String OPENSTACK_PROJECT_ID;
-	private String OPENSTACK_ENDPOINT;
-	private String devopscontrollers;
-	private String ControllerPassword;
-	private String ControllerUser;
-	private String SmartXBox_USER;
-	private String SmartXBox_PASSWORD;
-	private String CTRL_Box_IP;
-	private String CTRL_Box_USER;
-	private String CTRL_Box_PASSWORD;
-	private String OVS_VM_USER;
-	private String OVS_VM_PASSWORD;
-	private String pboxMongoCollection                  = "configuration-pbox-list";
-	private String vboxMongoCollection                  = "resourcelevel-os-instance-detail";
-	private String vboxMongoCollectionRT                = "configuration-vbox-list";
-	private String pboxstatusMongoCollection            = "resourcelevel-ppath";
-	private String pboxstatusMongoCollectionRT          = "resourcelevel-ppath-rt";
-	private String ovsListMongoCollection               = "configuration-vswitch-list";
-	private String ovsstatusMongoCollection             = "configuration-vswitch-status";
-	private String flowConfigMongoCollection            = "flow-configuration-sdn-controller";
-	private String flowConfigMongoCollectionRT          = "flow-configuration-sdn-controller-rt";
-	private String flowStatsMongoCollection             = "flow-stats-sdn-controller";
-	private String flowStatsMongoCollectionRT           = "flow-stats-sdn-controller-rt";
-	private String flowConfigOpenStackMongoCollection   = "flow-stats-openstack-bridges";
-	private String flowConfigOpenStackMongoCollectionRT = "flow-stats-openstack-bridges-rt";
-	private String [] BoxType = {"B**", "C**"};
-	
-	public String getVISIBILITY_CENTER() {
-		return VISIBILITY_CENTER;
-	}
-	
-	public String getMONGO_DB_HOST() {
-		return MONGO_DB_HOST;
-	}
-
-	public int getMONGO_DB_PORT() {
-		return MONGO_DB_PORT;
-	}
-
-	public String getMONGO_DB_DATABASE() {
-		return MONGO_DB_DATABASE;
-	}
-
-	public String getOPENSTACK_PASSWORD() {
-		return OPENSTACK_PASSWORD;
-	}
-
-	public String getOPENSTACK_USER_ID() {
-		return OPENSTACK_USER_ID;
-	}
-
-	public String getOPENSTACK_PROJECT_ID() {
-		return OPENSTACK_PROJECT_ID;
-	}
-
-	public String getOPENSTACK_ENDPOINT() {
-		return OPENSTACK_ENDPOINT;
-	}
-
-	public String getDevopscontrollers() {
-		return devopscontrollers;
-	}
-
-	public String getControllerPassword() {
-		return ControllerPassword;
-	}
-
-	public String getControllerUser() {
-		return ControllerUser;
-	}
-
-	public String getSmartXBox_USER() {
-		return SmartXBox_USER;
-	}
-
-	public String getSmartXBox_PASSWORD() {
-		return SmartXBox_PASSWORD;
-	}
-
-	public String getOVS_VM_USER() {
-		return OVS_VM_USER;
-	}
-
-	public String getOVS_VM_PASSWORD() {
-		return OVS_VM_PASSWORD;
-	}
-
-	public String getPboxMongoCollection() {
-		return pboxMongoCollection;
-	}
-
-	public String getVboxMongoCollection() {
-		return vboxMongoCollection;
-	}
-
-	public String getVboxMongoCollectionRT() {
-		return vboxMongoCollectionRT;
-	}
-
-	public String getPboxstatusMongoCollection() {
-		return pboxstatusMongoCollection;
-	}
-
-	public String getPboxstatusMongoCollectionRT() {
-		return pboxstatusMongoCollectionRT;
-	}
-
-	public String getOvsListMongoCollection() {
-		return ovsListMongoCollection;
-	}
-
-	public String getOvsstatusMongoCollection() {
-		return ovsstatusMongoCollection;
-	}
-
-	public String getFlowConfigMongoCollection() {
-		return flowConfigMongoCollection;
-	}
-
-	public String getFlowConfigMongoCollectionRT() {
-		return flowConfigMongoCollectionRT;
-	}
-
-	public String getFlowStatsMongoCollection() {
-		return flowStatsMongoCollection;
-	}
-
-	public String getFlowStatsMongoCollectionRT() {
-		return flowStatsMongoCollectionRT;
-	}
-
-	public String getFlowConfigOpenStackMongoCollection() {
-		return flowConfigOpenStackMongoCollection;
-	}
-
-	public String getFlowConfigOpenStackMongoCollectionRT() {
-		return flowConfigOpenStackMongoCollectionRT;
-	}
-
-	public String[] getBoxType() {
-		return BoxType;
-	}
-				
-    public void getProperties(){
-    	Properties prop = new Properties();
-    	InputStream input = null;
-    	try {
-
-    		input = new FileInputStream("../MultiView-Configurations/Custom_Collectors.properties");
-
-    		// load a properties file
-    		prop.load(input);
-    		
-    		//Visibility Center IP
-    		VISIBILITY_CENTER    = prop.getProperty("VISIBILITY_CENTER");
-    		
-    		//Type C control Box properties
-    		CTRL_Box_IP = prop.getProperty("CTRL_Box_IP");
-    		CTRL_Box_USER = prop.getProperty("CTRL_Box_USER");
-    		CTRL_Box_PASSWORD = prop.getProperty("CTRL_Box_PASSWORD");
-    		
-    		//MongoDB Properties
-    		MONGO_DB_HOST        = prop.getProperty("MONGODB_HOST");
-    		MONGO_DB_PORT        = Integer.parseInt(prop.getProperty("MONGODB_PORT"));
-    		MONGO_DB_DATABASE    = prop.getProperty("MONGODB_DATABASE");
-    		
-    		//OpenStack Properties
-    		OPENSTACK_USER_ID    = prop.getProperty("OPENSTACK_USER_ID");
-    		OPENSTACK_PASSWORD   = prop.getProperty("OPENSTACK_PASSWORD");
-    		OPENSTACK_PROJECT_ID = prop.getProperty("OPENSTACK_PROJECT_ID");
-    		OPENSTACK_ENDPOINT   = prop.getProperty("OPENSTACK_ENDPOINT");
-    		
-    		//OpenDayLight Properties
-    		devopscontrollers    = prop.getProperty("devopscontrollers");
-    		ControllerUser       = prop.getProperty("CONTROLLER_USER");
-    		ControllerPassword   = prop.getProperty("CONTROLLER_PASSWORD");
-    		
-    		//SmartX Box Properties
-    		SmartXBox_USER       = prop.getProperty("SmartXBox_USER");
-    		SmartXBox_PASSWORD   = prop.getProperty("SmartXBox_PASSWORD");
-    		
-    		//OVS-VM Properties
-    		OVS_VM_USER       = prop.getProperty("OVS_VM_USER");
-    		OVS_VM_PASSWORD   = prop.getProperty("OVS_VM_PASSWORD");
-    		
-    		} catch (IOException ex) {
-    		 ex.printStackTrace();
-    	 }	finally {
-    		 if (input != null) {
-    			 try {
-    				 input.close();
-    			 } catch (IOException e) {
-				e.printStackTrace();
-    			 }
-    		 }
-    	 }
-    }
-    
-    public static void main( String[] args )
+	public static void main( String[] args )
     {
-    	CustomCollectorsMain ccMain = new CustomCollectorsMain();
-		ccMain.getProperties();
+		PlaygroundConfigurationLoader configLoader = new PlaygroundConfigurationLoader();
+		configLoader.getProperties();
 		
 		MongoDB_Connector MongoConnector = new MongoDB_Connector();
-		MongoConnector.setDbConnection(ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE);
+		MongoConnector.setDbConnection(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE());
 
     	//Start Visibility Data Collection for Ping Data from SmartX Boxes
-    	PingStatusCollectClass pingStatusCollect = new PingStatusCollectClass(ccMain.VISIBILITY_CENTER, MongoConnector, ccMain.pboxMongoCollection, ccMain.pboxstatusMongoCollection,ccMain. pboxstatusMongoCollectionRT, ccMain.BoxType);
+    	PingStatusCollectClass pingStatusCollect = new PingStatusCollectClass(configLoader.getVISIBILITY_CENTER(), MongoConnector, configLoader.getpboxMongoCollection(), configLoader.getpboxstatusMongoCollection(), configLoader. getpboxstatusMongoCollectionRT(), configLoader.getBoxType());
     	pingStatusCollect.start();
     	try {
 			TimeUnit.SECONDS.sleep(10);
@@ -235,7 +32,7 @@ public class CustomCollectorsMain
 		}
     	
     	//Update Instant Visibility Collection for Box status using Ping Data
-    	PingStatusUpdateClass pingStatusUpdate = new PingStatusUpdateClass(ccMain.SmartXBox_USER, ccMain.SmartXBox_PASSWORD, MongoConnector, ccMain.pboxMongoCollection, ccMain.pboxstatusMongoCollectionRT, ccMain.BoxType, ccMain.OVS_VM_USER, ccMain.OVS_VM_PASSWORD);
+    	PingStatusUpdateClass pingStatusUpdate = new PingStatusUpdateClass(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), MongoConnector, configLoader.getpboxMongoCollection(), configLoader.getpboxstatusMongoCollectionRT(), configLoader.getBoxType(), configLoader.getOVS_VM_USER(), configLoader.getOVS_VM_PASSWORD());
     	pingStatusUpdate.start(); 
         try {
 			TimeUnit.SECONDS.sleep(10);
@@ -245,25 +42,32 @@ public class CustomCollectorsMain
 		}
         
         //Start Visibility Collection for VM's Data
-        InstaceStatusNovaClass instanceNovaStatus = new InstaceStatusNovaClass(ccMain.CTRL_Box_IP, ccMain.CTRL_Box_USER, ccMain.CTRL_Box_PASSWORD, ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.OPENSTACK_USER_ID, ccMain.OPENSTACK_PASSWORD, ccMain.OPENSTACK_PROJECT_ID, ccMain.OPENSTACK_ENDPOINT, ccMain.vboxMongoCollection, ccMain.vboxMongoCollectionRT);
+        InstaceStatusNovaClass instanceNovaStatus = new InstaceStatusNovaClass(configLoader.getCTRL_Box_IP(), configLoader.getCTRL_Box_USER(), configLoader.getCTRL_Box_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getOPENSTACK_USER_ID(), configLoader.getOPENSTACK_PASSWORD(), configLoader.getOPENSTACK_PROJECT_ID(), configLoader.getOPENSTACK_ENDPOINT(), configLoader.getvboxMongoCollection(), configLoader.getvboxMongoCollectionRT());
         instanceNovaStatus.start();
         
         
-        
         //Start Instant Visibility Collection for OVS Data
-        ovsBridgeStatusClass bridgeStatus  = new ovsBridgeStatusClass(ccMain.SmartXBox_USER, ccMain.SmartXBox_PASSWORD, ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.pboxMongoCollection, ccMain.ovsListMongoCollection, ccMain.ovsstatusMongoCollection, ccMain.BoxType, ccMain.OVS_VM_USER, ccMain.OVS_VM_PASSWORD);
+        ovsBridgeStatusClass bridgeStatus  = new ovsBridgeStatusClass(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getpboxMongoCollection(), configLoader.getovsListMongoCollection(), configLoader.getovsstatusMongoCollection(), configLoader.getBoxType(), configLoader.getOVS_VM_USER(), configLoader.getOVS_VM_PASSWORD());
         bridgeStatus.start();
         
         //Start Visibility Collection for OpenStack Bridges Data
-        OpenStackBridgesStatus osBridgeStatus  = new OpenStackBridgesStatus(ccMain.SmartXBox_USER, ccMain.SmartXBox_PASSWORD, ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.pboxMongoCollection, ccMain.flowConfigOpenStackMongoCollection, ccMain.flowConfigOpenStackMongoCollectionRT, ccMain.BoxType);
+        OpenStackBridgesStatus osBridgeStatus  = new OpenStackBridgesStatus(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getpboxMongoCollection(), configLoader.getflowConfigOpenStackMongoCollection(), configLoader.getflowConfigOpenStackMongoCollectionRT(), configLoader.getBoxType());
         osBridgeStatus.start();
         
+        //Start Instant Visibility Collection for Vlan Mappings
+        BridgesVLANMapping vlanMapping  = new BridgesVLANMapping(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), configLoader.getOVS_VM_USER(), configLoader.getOVS_VM_PASSWORD(), MongoConnector, configLoader.getpboxMongoCollection(), configLoader.getbridgevlanmapMongoCollection(), configLoader.getbridgevlanmapMongoCollectionRT(), configLoader.getVLAN_START(), configLoader.getVLAN_END(), configLoader.getBoxType());
+        vlanMapping.start();
+        
+        //Start sFlow Kafka Consumer
+        sFlowKafkaConsumer sFlowconsumer  = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType());
+        sFlowconsumer.Consume();
+        
         //Start Visibility Collection for ODL Flow Rules Data
-        SDNControllerStatus sdnStatus = new SDNControllerStatus(ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.flowConfigMongoCollection, ccMain.flowConfigMongoCollectionRT, ccMain.devopscontrollers, ccMain.ControllerUser, ccMain.ControllerPassword);
+        SDNControllerStatus sdnStatus = new SDNControllerStatus(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getflowConfigMongoCollection(), configLoader.getflowConfigMongoCollectionRT(), configLoader.getdevopscontrollers(), configLoader.getControllerUser(), configLoader.getControllerPassword());
         sdnStatus.start();
         
         //Start Visibility Collection for ODL Statistics Data
-        SDNControllerStats sdnStats = new SDNControllerStats(ccMain.MONGO_DB_HOST, ccMain.MONGO_DB_PORT, ccMain.MONGO_DB_DATABASE, ccMain.flowStatsMongoCollection, ccMain.flowStatsMongoCollectionRT, ccMain.devopscontrollers, ccMain.ControllerUser, ccMain.ControllerPassword);
+        SDNControllerStats sdnStats = new SDNControllerStats(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getflowStatsMongoCollection(), configLoader.getflowStatsMongoCollectionRT(), configLoader.getdevopscontrollers(), configLoader.getControllerUser(), configLoader.getControllerPassword());
         sdnStats.start();
     }
 }

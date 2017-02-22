@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>MultiView : Flow Centric View</title>
-    <style type="text/css">
+doctype html
+html
+  head
+    title MultiView : Flow Measures View
+    style(type='text/css').
       body {
       color: #d3d3d3;
       font: 12pt arial;
@@ -20,27 +20,24 @@
       border: 1px solid lightgray;
       background: #ffffff;
       }
-    </style>
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/vis.js"></script>
-    <script type="text/javascript" src="javascripts/boxes.json"></script>
-    <link href="stylesheets/vis.css" rel="stylesheet" type="text/css">
-    <link type="text/css" rel="stylesheet" href="stylesheets/opentip.css">
-    <script type="text/javascript" src="javascripts/opentip-jquery.js"></script>
-    <script type="text/javascript">
+    script(src='../bower_components/jquery/dist/jquery.min.js')
+    script(type='text/javascript', src='javascripts/vis.js')
+    link(href='stylesheets/vis.css', rel='stylesheet', type='text/css')
+    link(type='text/css', rel='stylesheet', href='stylesheets/opentip.css')
+    script(type='text/javascript', src='javascripts/opentip-jquery.js')
+    script(type='text/javascript').
       //Check Session
       var session_username = sessionStorage.getItem('ss_user_name');
       if(session_username === null){
       window.location.replace("http://103.22.221.55:3006/login");
       }
-      
       // Receive Parameters From Server.js
       var boxList         = !{boxList};
       var switchList      = !{switchList};
       var instanceList    = !{instanceList};
-      var serviceList     = !{serviceList};
+      var workloadList     = !{workloadList};
       var ovsBridgeStatus = !{ovsBridgeStatus};
-      var index=0, boxlevel=1, switchlevel=0, instancelevel=0, servicelevel=0;
+      var index=0, boxlevel=1, switchlevel=0, instancelevel=0, workloadlevel=0;
       var nodes             = null;
       var edges             = null;
       var network           = null;
@@ -66,7 +63,6 @@
       edges = [];
       //Add network Node
       nodes.push({id: 1, label: '                                   TEIN Network                                   ', font: {size: 50, color: '#ffffff'},shape: 'box', color: BridgeNodeColor, level:0, fixed: false, physics:true});
-      
       //Draw the Physical Boxes
       for (var i in boxList)
       {
@@ -138,7 +134,7 @@
       }
       //Draw the OpenStack Instances
       vmNodeID      = BoxNodeID+100;
-      serviceNodeID = BoxNodeID+600;
+      workloadNodeID = BoxNodeID+600;
       instancelevel = switchlevel+1;
       for (var k in instanceList)
       {
@@ -252,13 +248,13 @@
       for(var i=0; i<nodes.length; i++){
       if(nodes[i].id == nodeId){
       switch (nodes[i].level){
-	  case 0: //Network
-	  window.parent.getNetworkFlow(nodes[i]);
+      case 0: //Network
+      window.parent.getNetworkFlow(nodes[i]);
       case 1: //Box
-      window.parent.getBoxFlow(nodes[i]);
+      //window.parent.getBoxFlow(nodes[i]);
       break;
       case 2: // brcap
-      window.parent.getBrCapFlow(nodes[i]);
+      //window.parent.getBrCapFlow(nodes[i]);
       break;
       case 3: // brdev
       break;
@@ -267,7 +263,7 @@
       case 5: // brint
       break;
       case 6: // vm
-      window.parent.receiveValueVMFlow(nodes[i])
+      //window.parent.receiveValueVMFlow(nodes[i])
       break;
       case 7: // service
       break;
@@ -296,11 +292,7 @@
       inputOpentip.hide();
       });
       }
-    </script>
-  </head>
-  <body onload="draw()">
-    <p></p>
-    <p></p>
-	<div id="mynetwork" align="center"></div>
-  </body>
-</html>
+  body(onload='draw()')
+    p
+    p
+    #mynetwork(align='center')
