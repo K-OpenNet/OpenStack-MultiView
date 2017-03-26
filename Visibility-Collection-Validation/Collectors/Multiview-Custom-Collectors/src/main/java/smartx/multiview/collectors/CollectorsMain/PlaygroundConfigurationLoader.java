@@ -17,6 +17,9 @@ public class PlaygroundConfigurationLoader {
 	private int    MONGO_DB_PORT;
 	private String MONGO_DB_DATABASE;
 	
+	private String ES_HOST;
+	private int    ES_PORT;
+	
 	private String OPENSTACK_PASSWORD;
 	private String OPENSTACK_USER_ID;
 	private String OPENSTACK_PROJECT_ID;
@@ -54,7 +57,7 @@ public class PlaygroundConfigurationLoader {
 	private String flowStatsMongoCollectionRT           = "flow-stats-sdn-controller-rt";
 	private String flowConfigOpenStackMongoCollection   = "flow-stats-openstack-bridges";
 	private String flowConfigOpenStackMongoCollectionRT = "flow-stats-openstack-bridges-rt";
-	private String sflowMongoCollection               = "flow-sFlow-data";
+	private String sflowMongoCollection                 = "flow-sFlow-data";
 	private String [] BoxType = {"B**", "C**"};
 	
 	public String getVISIBILITY_CENTER() {
@@ -201,6 +204,14 @@ public class PlaygroundConfigurationLoader {
 		public int getVLAN_END() {
 		return VLAN_END;
 	}
+	
+	public String getES_HOST() {
+		return ES_HOST;
+	}
+
+	public int getES_PORT() {
+		return ES_PORT;
+	}	
 
 	public String[] getBoxType() {
 		return BoxType;
@@ -228,6 +239,10 @@ public class PlaygroundConfigurationLoader {
     		MONGO_DB_HOST        = prop.getProperty("MONGODB_HOST");
     		MONGO_DB_PORT        = Integer.parseInt(prop.getProperty("MONGODB_PORT"));
     		MONGO_DB_DATABASE    = prop.getProperty("MONGODB_DATABASE");
+    		
+    		//Elasticsearch Properties
+    		ES_HOST              = prop.getProperty("ES_HOST");
+    		ES_PORT              = Integer.parseInt(prop.getProperty("ES_PORT"));
     		
     		//OpenStack Properties
     		OPENSTACK_USER_ID    = prop.getProperty("OPENSTACK_USER_ID");

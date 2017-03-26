@@ -20,6 +20,9 @@ public class CustomCollectorsMain
 		
 		MongoDB_Connector MongoConnector = new MongoDB_Connector();
 		MongoConnector.setDbConnection(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE());
+		
+		Elasticsearch_Connector ESConnector = new Elasticsearch_Connector();
+		ESConnector.setClient(configLoader.getES_HOST(), configLoader.getES_PORT());
 
     	//Start Visibility Data Collection for Ping Data from SmartX Boxes
     	PingStatusCollectClass pingStatusCollect = new PingStatusCollectClass(configLoader.getVISIBILITY_CENTER(), MongoConnector, configLoader.getpboxMongoCollection(), configLoader.getpboxstatusMongoCollection(), configLoader. getpboxstatusMongoCollectionRT(), configLoader.getBoxType());
@@ -59,7 +62,7 @@ public class CustomCollectorsMain
         vlanMapping.start();
         
         //Start sFlow Kafka Consumer
-        sFlowKafkaConsumer sFlowconsumer  = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType());
+        sFlowKafkaConsumer sFlowconsumer  = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector, ESConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType());
         sFlowconsumer.Consume();
         
         //Start Visibility Collection for ODL Flow Rules Data

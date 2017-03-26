@@ -21,34 +21,41 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.log4j.Logger;
 import org.bson.Document;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import smartx.multiview.DataLake.Elasticsearch_Connector;
 import smartx.multiview.DataLake.MongoDB_Connector;
 
 public class sFlowKafkaConsumer {
-	private Date timestamp;
-	private DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
-	
-    private String sFlowMongoCollection;
+	private String sFlowMongoCollection;
 	private String bootstrapServer;
-	private String topic = "sFlow";
-    
+	
+	private String topic   = "sFlow";
+    private String ESindex = "flow-sflow-data";
     
     private MongoDB_Connector mongoConnector;
+    private Elasticsearch_Connector ESConnector;
+    
     private Document document;
     private List<Document> documentsRT = new ArrayList<Document>();
     
     private KafkaConsumer<String, String> consumer;
 	
+	private Date timestamp;
+	private DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+	
 	private Logger LOG = Logger.getLogger("sFlowKafka");
     
-    public sFlowKafkaConsumer(String bootstrapserver, MongoDB_Connector MongoConn, String sflowCollection, String [] boxType) 
+    public sFlowKafkaConsumer(String bootstrapserver, MongoDB_Connector MongoConn, Elasticsearch_Connector ESConn, String sflowCollection, String [] boxType) 
     {
     	bootstrapServer      = bootstrapserver;
     	mongoConnector       = MongoConn;
     	sFlowMongoCollection = sflowCollection;
+    	ESConnector          = ESConn;
+    	ESConnector.createIndex(ESindex);
     }
     
     public void Consume(){
@@ -104,9 +111,20 @@ public class sFlowKafkaConsumer {
 					TLProtocol = "UDP";
 					agentBox   = json.get("AgentID").toString();
 					dataBytes  = Float.parseFloat(json.get("Bytes").toString());
-					frameSize  = Float.parseFloat(json.get("FrameSize").toString());
 					
-					System.out.println("[AgentID - "+agentBox+"][FlowKey - "+flowKey+"][ Bytes - "+dataBytes+"][FrameSize - "+frameSize+"]");
+					//System.out.println("[AgentID - "+agentBox+"][FlowKey - "+flowKey+"][ Bytes - "+dataBytes+"][FrameSize - "+json+"]");
+					if (json.get("FrameSize")==null)
+					{
+						frameSize = 0;
+						System.out.println("[AgentID - "+agentBox+"][FlowKey - "+flowKey+"][ Bytes - "+dataBytes+"][FrameSize - "+frameSize+"]");
+					}
+					else
+					{
+						frameSize  = Float.parseFloat(json.get("FrameSize").toString());
+						System.out.println("[AgentID - "+agentBox+"][FlowKey - "+flowKey+"][ Bytes - "+dataBytes+"][FrameSize - "+frameSize+"]");
+					}
+					
+					//System.out.println("[AgentID - "+agentBox+"][FlowKey - "+flowKey+"][ Bytes - "+dataBytes+"][FrameSize - "+frameSize+"]");
 		        	
 					document = new Document();
 					document.put("timestamp",         timestamp);
@@ -118,9 +136,7 @@ public class sFlowKafkaConsumer {
 		            
 		            documentsRT.add(document);
 		            
-		            //mongoConnector.insertDataDB(sFlowMongoCollection, document);
-		            //collection.insert(document,write);
-		            //document.clear();*/
+		            ESConnector.insertData(ESindex, timestamp, flowKey, TLProtocol, agentBox, dataBytes, frameSize);
 		        }
 		    }
 			else if (json.containsKey("TCPFlowDetail"))
@@ -152,8 +168,7 @@ public class sFlowKafkaConsumer {
 		            
 		            documentsRT.add(document);
 		            
-		           // mongoConnector.insertDataDB(sFlowMongoCollection, document);
-		           // document.clear();*/
+		            ESConnector.insertData(ESindex, timestamp, flowKey, TLProtocol, agentBox, dataBytes, frameSize);
 		        }
 			
 			}
@@ -162,7 +177,7 @@ public class sFlowKafkaConsumer {
 				System.out.println("Unknown Key in JSON.");
 			}
     		
-    		//Insert New Documents for Near-Realtime Visualization
+    		//Insert New Documents to MongoDB Collection
     		if (documentsRT.size()>0)
     		{
     			mongoConnector.getDbConnection().getCollection(sFlowMongoCollection).insertMany(documentsRT);
@@ -174,7 +189,8 @@ public class sFlowKafkaConsumer {
 			e.printStackTrace();
 		}
 		
-		
     }
+    
+    
 }
 
