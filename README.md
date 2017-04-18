@@ -1,25 +1,24 @@
-# OpenStack-MultiView: Multi-layer Visibility with SmartX Agent
+# OpenStack-MultiView: Multi-layer Visibility
 
 ### What is OpenStack-MultiView?
-OpenStack-MultiView is a visibility tool leveraging exisited monotiroing tools over IoT-Cloud. 
-It can support multi-layer (i.e., resource, flow and workload) and data(i.e, application and operation)
+OpenStack-MultiView is an Open-source visibility software leveraging existing monotiroing tools over Multi-site SDN-Cloud Playgrounds. It can support Multi-layer (i.e., resource, flow and workload) and data (i.e, application and operation)
 
 ### Requirments
-* Ubuntu 14.04 (Fedora has not been tested yet)
-* Java Run Time Environment version 1.4
+* Ubuntu 14.04/16.04 (Fedora has not been tested yet)
 
 ### Notice
-This is a initial version of MultiView SW focusing on only resource-level visibiliiy
+This is an initial version of SmartX MultiView SW focusing on Resource-layer and Flow-layer visibiliy.
 
 ### Top-Level Features
-* Support resource metrics both pResource and vResource
-* JSON-based time-series data collection
-* Remote agent control based on JADE Framework 
+* Visibility Collection Using Intel Snap Telemetry Framework and Custom Java-based Collectors
+* Visibility Transportation using Kafka and Zookeeper Open-source Frameworks
+* Visibility Storage using MongoDB, Elasticsearch and InfluxDB DataStores
+* Visibility Visualization using p+vTopological Approach
 
 
 Checkout out our [website](http://opennetworking.kr/projects/k-one-collaboration-project/wiki) for further Information about K-ONE Project
 
 
 ## Acknowledgement
-This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIP)
+This work is supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government (MSIP)
 (Global SDN/NFV OpenSource Software Module/Function Development)
