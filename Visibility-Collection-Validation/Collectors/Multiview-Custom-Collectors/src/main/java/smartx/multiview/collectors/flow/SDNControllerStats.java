@@ -81,7 +81,7 @@ public class SDNControllerStats implements Runnable{
 		        
 		        //JSONParser jsonParser = null;
 		        line = in.readLine();
-		        //System.out.println(line);
+		        System.out.println(line);
 		        
 		        jsonObjectMain = new JSONObject(line);
 		        jsonArrayMain  = jsonObjectMain.getJSONArray("flowStatistics");

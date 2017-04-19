@@ -1,6 +1,6 @@
 /**
  * @author Muhammad Usman
- * @version 0.1
+ * @version 0.2
  */
 
 package smartx.multiview.collectors.CollectorsMain;
@@ -49,10 +49,10 @@ public class PlaygroundConfigurationLoader {
 	private String pboxstatusMongoCollectionRT          = "resourcelevel-ppath-rt";
 	private String ovsListMongoCollection               = "configuration-vswitch-list";
 	private String ovsstatusMongoCollection             = "configuration-vswitch-status";
-	private String flowConfigMongoCollection            = "flow-configuration-sdn-controller";
-	private String flowConfigMongoCollectionRT          = "flow-configuration-sdn-controller-rt";
 	private String bridgevlanmapMongoCollection         = "configuration-bridge-vlan-map";
 	private String bridgevlanmapMongoCollectionRT       = "configuration-bridge-vlan-map-rt";
+	private String flowConfigMongoCollection            = "flow-configuration-sdn-controller";
+	private String flowConfigMongoCollectionRT          = "flow-configuration-sdn-controller-rt";
 	private String flowStatsMongoCollection             = "flow-stats-sdn-controller";
 	private String flowStatsMongoCollectionRT           = "flow-stats-sdn-controller-rt";
 	private String flowConfigOpenStackMongoCollection   = "flow-stats-openstack-bridges";

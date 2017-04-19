@@ -75,7 +75,7 @@ public class SDNControllerStatus implements Runnable{
 	
 	        // Create URL = base URL + container
 	        URL url = new URL(baseURL + "/" + containerName);
-	        //System.out.println(url);
+	        System.out.println(url);
 	
 	        // Create authentication string and encode it to Base64
 	        String authStr = user + ":" + password;
@@ -96,7 +96,7 @@ public class SDNControllerStatus implements Runnable{
 	        
 	        //JSONParser jsonParser = null;
 	        line = in.readLine();
-	        //System.out.println(line);
+	        System.out.println(line);
 	        JSONObject jsonObject = new JSONObject(line);
 	        JSONArray jsonArray = jsonObject.getJSONArray("flowConfig");
 	        for (int i=0 ; i<jsonArray.length(); i++)
@@ -167,8 +167,8 @@ public class SDNControllerStatus implements Runnable{
 		{
     		getFlowsDetails();
 			try {
-				//Sleep For 60 Minutes
-				Thread.sleep(3600000);
+				//Sleep For 5 Minutes
+				Thread.sleep(300000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

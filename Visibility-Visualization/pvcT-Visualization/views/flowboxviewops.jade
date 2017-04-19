@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title MultiView : Flow Measures View
+    title MultiView : Flow Measures/Box View
     style(type='text/css').
       body {
       color: #d3d3d3;
@@ -54,9 +54,6 @@ html
       edges = [];
       //Add network Node
       nodes.push({id: 1, label: '                                   REN Network                                   ', font: {size: 50, color: '#ffffff'},shape: 'box', color: BridgeNodeColor, level:0, fixed: false, physics:true});
-      //nodes.push({id: 1, image: DIR + 'tein.png', shape: 'image', level:0, fixed: true, physics:true});
-      //nodes.push({id: 1001, x: x, y: y, label: 'Desktop', group: 'desktop', value: 4, fixed: false, physics:false});
-      //edges.push({from: 1000, to: 1001, length: EDGE_LENGTH_MAIN, width: WIDTH_SCALE * 6, color: GREEN, label: '0.71 mbps'});
       //Draw the Physical Boxes
       for (var i in boxList)
       {
@@ -153,8 +150,6 @@ html
       edges.push({from: 1, to: BoxNodeID, length: EDGE_LENGTH_MAIN, width: WIDTH_SCALE * 4, color: boxList[i].data_ip_status, label: '0.71 mbps'});
       }
       }
-      //edges.push({from: 1, to: 2, length: EDGE_LENGTH_MAIN, width: WIDTH_SCALE * 4, color: GREEN, label: '0.71 mbps', arrows:'to, from'});
-      //edges.push({from: 1, to: 1001, length: EDGE_LENGTH_MAIN, width: WIDTH_SCALE * 4, color: GREEN, label: '0.71 mbps', arrows:'to, from'});
       // legend
       var mynetwork = document.getElementById('mynetwork');
       var x = - mynetwork.clientWidth / 2 + 50;
@@ -227,9 +222,9 @@ html
       if(nodes[i].id == nodeId){
       switch (nodes[i].level){
       case 0: //Network
-      window.parent.getNetworkFlow(nodes[i]);
+      //window.parent.getNetworkFlow(nodes[i]);
       case 1: //Box
-      //window.parent.getBoxFlow(nodes[i]);
+      window.parent.getBoxFlow(nodes[i]);
       break;
       case 2: // brcap
       //window.parent.getBrCapFlow(nodes[i]);

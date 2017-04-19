@@ -218,7 +218,7 @@ app.get('/flowtracingviewops/*', function(req, res){
     }
 });
 
-// Route for Flow Measurements View
+// Route for Flows/Playground Measurements View
 app.get('/flowmeasureviewops', function(req, res){
     console.log('Flow Measure View Rendering');
     //res.render('flowcentricviewops.jade', {title: 'Flow-Centric View'})
@@ -269,6 +269,60 @@ app.get('/flowmeasureviewops', function(req, res){
                         ovsBridgeStatus : JSON.stringify(ovsBridgeStatus)
                 },
                 title: 'Flow Measure View'}
+                )
+        }
+    }
+});
+
+// Route for Flows/Box Measurements View
+app.get('/flowboxviewops', function(req, res){
+    console.log('Flow Box View Rendering');
+    var boxList         = null;
+    var switchList      = null;
+    var instanceList    = null;
+    var workloadList     = 0;
+    var ovsBridgeStatus = null;
+    var pPathStatus     = null;
+    resourceProvider.getpBoxList( function(error,boxobj)
+    {
+        boxList = boxobj;
+        console.log( boxList);
+        showView();
+    })
+    resourceProvider.getvSwitchList(function(error, switchobj)
+    {
+        switchList = switchobj;
+        console.log(switchList);
+        showView();
+    })
+
+    resourceProvider.getvBoxList(function(error, instanceobj)
+    {
+        instanceList = instanceobj;
+        console.log(instanceList);
+        showView();
+    })
+
+	resourceProvider.getovsBridgeStatus(function(error, bridgestatusobj)
+    {
+        ovsBridgeStatus = bridgestatusobj;
+        console.log(ovsBridgeStatus);
+        showView();
+    })
+
+    function showView()
+    {
+        if(boxList !== null && switchList !== null && instanceList !== null && workloadList !==null &&  ovsBridgeStatus !== null)
+        {
+                console.log('Flow Box View Rendering');
+                res.render('flowboxviewops.jade',{locals: {
+                        boxList         : JSON.stringify(boxList),
+                        switchList      : JSON.stringify(switchList),
+                        instanceList    : JSON.stringify(instanceList),
+                        workloadList     : JSON.stringify(workloadList),
+                        ovsBridgeStatus : JSON.stringify(ovsBridgeStatus)
+                },
+                title: 'Flows/Box Measure View'}
                 )
         }
     }
@@ -411,6 +465,6 @@ client.on('connection', function (socket) {
 });
 
 app.set('domain', '0.0.0.0')
-app.listen(3006);
+app.listen(3011);
 console.log("Express Server Running...");
 //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

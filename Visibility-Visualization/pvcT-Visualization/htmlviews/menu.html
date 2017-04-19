@@ -66,7 +66,11 @@
       function getBoxFlow(boxs){
       var iframe = document.getElementById('grafanaIframe');
       console.log(boxs);
-      //iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+boxs.label;
+	  if (boxs.label === 'SmartXBoxGIST')
+		iframe.src = 'http://'+serverIP+':5601/goto/e263733960be4b9ff94ba48dbb278c5d';
+	  else if (boxs.label === 'SmartXBoxMYREN')
+		iframe.src = 'http://'+serverIP+'::5601/goto/48e591f431b051ae64b4ad3f451c36d9';
+	  
       }
       //Route to Flow Rules + Stats View
       function getBrCapFlow(brCaps){
@@ -131,6 +135,18 @@
 				iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowmeasureviewops';
 				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 			});
+			
+			flowboxviewops.addEventListener('click', function() { 
+				document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
+				iframe1.src = 'http://'+serverIP+':5601/goto/1cf86a106a8725db0f3ab9c33c72bf60';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+			});
+			
+			flowclusterviewops.addEventListener('click', function() { 
+				document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
+				iframe1.src = 'http://'+serverIP+':5601/goto/20e35e15d09a942539b445badc77693c';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+			});
 		
 			service.addEventListener('click', function() { 
 				document.getElementById('panel-heading-id').innerHTML = 'Service-Centric Topological View';
@@ -185,7 +201,8 @@
 							<li><a href="#"><i class="fa fa-bookmark fa-fw"></i>Flow-layer Visualization<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level" id="parent-list">
 									<li ><a id="flowmeasureviewops" href="#">Playground Flows</a></li>
-									<li ><a id="flowmeasureviewops" href="#">Clustered Flows</a></li>
+									<li ><a id="flowboxviewops" href="#">Box Flows</a></li>
+									<li ><a id="flowclusterviewops" href="#">Clustered Flows</a></li>
 								</ul>
 							</li>
 							<li><a href="#"><i class="fa fa-bookmark fa-fw"></i>Workload-layer Visualization<span class="fa arrow"></span></a>
