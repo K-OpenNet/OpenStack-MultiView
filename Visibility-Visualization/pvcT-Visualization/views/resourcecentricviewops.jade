@@ -27,9 +27,11 @@ html
     script(type='text/javascript', src='javascripts/opentip-jquery.js')
     script(type='text/javascript').
       //Huynh start
+      var serverIP="103.22.221.56";
+      var serverPort="3011";
       var session_username = sessionStorage.getItem('ss_user_name');
       if (session_username === null){
-      window.location.replace("http://103.22.221.55:3006/login");
+      window.location.replace("http://"+serverIP+":"+serverPort+"/login");
       }
       //Huynh End
       //var boxes = JSON.parse(data);
@@ -52,7 +54,7 @@ html
       // Create a data table with links.
       edges = [];
       //Add network Node
-      nodes.push({id: 1, label: '                                   TEIN Network                                   ', font: {size: 50, color: '#ffffff'},shape: 'box', color: BridgeNodeColor, level:0, fixed: false, physics:true});
+      nodes.push({id: 1, label: '                                   REN Network                                   ', font: {size: 50, color: '#ffffff'},shape: 'box', color: BridgeNodeColor, level:0, fixed: false, physics:true});
       //nodes.push({id: 1, image: DIR + 'tein.png', shape: 'image', level:0, fixed: true, physics:true});
       //nodes.push({id: 1001, x: x, y: y, label: 'Desktop', group: 'desktop', value: 4, fixed: false, physics:false});
       //edges.push({from: 1000, to: 1001, length: EDGE_LENGTH_MAIN, width: WIDTH_SCALE * 6, color: GREEN, label: '0.71 mbps'});

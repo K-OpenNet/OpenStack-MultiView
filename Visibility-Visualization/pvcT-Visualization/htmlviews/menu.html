@@ -27,70 +27,71 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script type="text/javascript">
+	  var serverIP="103.22.221.56";
+	  var serverPort="3011";
       //redirect to login page if user is not logged
       var session_username = sessionStorage.getItem('ss_user_name');
       var session_userrole = sessionStorage.getItem('ss_role');
       if(session_username === null){
-      window.location.replace("http://103.22.221.55:3006");
+      window.location.replace("http://"+serverIP+":"+serverPort+"/login");
       }
       //Resource-level Functions Start
       //receive Box objects
       function receiveValueBox(boxs){
       var iframe = document.getElementById('grafanaIframe');
       console.log(boxs);
-      iframe.src = 'http://103.22.221.55:3000/dashboard/db/resource-dashboard-'+boxs.label;
+      iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+boxs.label;
       }
       //receive brCap Objects
       function receiveValueBrCap(brCaps){
       var iframe = document.getElementById('grafanaIframe');
       console.log(brCaps);
-      ////iframe.src = 'http://103.22.221.55:3000/dashboard/db/flow-dashboard-'+brCaps.label+'-'+brCaps.box;
-      //iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      ////iframe.src = 'http://'+serverIP+':3000/dashboard/db/flow-dashboard-'+brCaps.label+'-'+brCaps.box;
+      //iframe.src = 'http://'+serverIP+':'+serverPort+'/opsflowrules/'+brCaps.box;
       }
       //receive VM Objects
       function receiveValueVM(vms){
       var iframe = document.getElementById('grafanaIframe');
       console.log(vms);
-      //iframe.src = 'http://103.22.221.55:3000/dashboard/db/flow-dashboard-instance-'+vms.label+'-'+vms.box;
+      //iframe.src = 'http://'+serverIP+':3000/dashboard/db/flow-dashboard-instance-'+vms.label+'-'+vms.box;
       }
       //Resource-level Functions End
       //Flow-level Functions Start
       //Route to Network Flow View
       function getNetworkFlow(network){
       var iframe = document.getElementById('grafanaIframe');
-      //console.log(boxs);
-      iframe.src = 'http://103.22.221.55:8008/app/dashboard-example/html/';
+      iframe.src = 'http://'+serverIP+':8008/app/dashboard-example/html/';
       }
       //Route to Box Flow View
       function getBoxFlow(boxs){
       var iframe = document.getElementById('grafanaIframe');
       console.log(boxs);
-      //iframe.src = 'http://103.22.221.55:3000/dashboard/db/resource-dashboard-'+boxs.label;
+      //iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+boxs.label;
       }
       //Route to Flow Rules + Stats View
       function getBrCapFlow(brCaps){
       var iframe = document.getElementById('grafanaIframe');
       console.log(brCaps);
-      iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      iframe.src = 'http://'+serverIP+':'+serverPort+'/opsflowrules/'+brCaps.box;
       }
       //Route to VM Flow View
       function getVMFlow(vms){
       var iframe = document.getElementById('grafanaIframe');
       console.log(vms);
-      //iframe.src = 'http://103.22.221.55:3006/opsflowrules/'+brCaps.box;
+      //iframe.src = 'http://'+serverIP+':'+serverPort+'/opsflowrules/'+brCaps.box;
       }
       //Route to Flow Path Trace View
       function getFlowPathTrace(vlan){
       var iframe = document.getElementById('topoIframe');
       console.log('In Menu '+vlan);
-      iframe.src = 'http://103.22.221.55:3006/flowtracingviewops/'+vlan;
+      iframe.src = 'http://'+serverIP+':'+serverPort+'/flowtracingviewops/'+vlan;
       }
       //Flow-level Functions End
       //Show Panel on Click
       function showPanel(itemID){
       var iframe = document.getElementById('topoIframe');
       console.log(itemID);
-      iframe.src = 'http://103.22.221.55:3006/'+itemID.label+'-'+itemID.box;
+      iframe.src = 'http://'+serverIP+':'+serverPort+'/'+itemID.label+'-'+itemID.box;
       }
       
 		// Called when the Visualization API is loaded.
@@ -109,32 +110,32 @@
 			
 			resource.addEventListener('click', function() { 
 				document.getElementById('panel-heading-id').innerHTML = 'Resource-Centric Topological View';
-				iframe1.src = 'http://103.22.221.55:3006/resourcecentricviewops';
-				//iframe2.src = 'http://103.22.221.55:3006/#';
+				iframe1.src = 'http://'+serverIP+':'+serverPort+'/resourcecentricviewops';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 				});
 		  
 			flowrules.addEventListener('click', function() {
 				document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
-				iframe1.src = 'http://103.22.221.55:3006/flowrulesviewops';
-				//iframe2.src = 'http://103.22.221.55:3006/#';
+				iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowrulesviewops';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 			});
 		
 			flowtracing.addEventListener('click', function() {
 				document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
-				//iframe1.src = 'http://103.22.221.55:3006/flowtracingviewops';
-				iframe2.src = 'http://103.22.221.55:3006/tenantvlanmapops';
+				//iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowtracingviewops';
+				iframe2.src = 'http://'+serverIP+':'+serverPort+'/tenantvlanmapops';
 			}); 	
 		
 			flowmeasure.addEventListener('click', function() { 
 				document.getElementById('panel-heading-id').innerHTML = 'Flow-Centric Topological View';
-				iframe1.src = 'http://103.22.221.55:3006/flowmeasureviewops';
-				//iframe2.src = 'http://103.22.221.55:3006/#';
+				iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowmeasureviewops';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 			});
 		
 			service.addEventListener('click', function() { 
 				document.getElementById('panel-heading-id').innerHTML = 'Service-Centric Topological View';
-				iframe1.src = 'http://103.22.221.55:3006/servicecentricviewops';
-				//iframe2.src = 'http://103.22.221.55:3006/#';
+				iframe1.src = 'http://'+serverIP+':'+serverPort+'/servicecentricviewops';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 			});
 			//**************************************************************
 		}
@@ -184,6 +185,7 @@
 							<li><a href="#"><i class="fa fa-bookmark fa-fw"></i>Flow-layer Visualization<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level" id="parent-list">
 									<li ><a id="flowmeasureviewops" href="#">Playground Flows</a></li>
+									<li ><a id="flowmeasureviewops" href="#">Clustered Flows</a></li>
 								</ul>
 							</li>
 							<li><a href="#"><i class="fa fa-bookmark fa-fw"></i>Workload-layer Visualization<span class="fa arrow"></span></a>
@@ -194,7 +196,7 @@
 							<li><a href="#"><i class="fa fa-bookmark fa-fw"></i>Integrated Visualization<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level" id="parent-list">
 									<li ><a id="flowrulesviewops" href="#">vSwich-Flows Info</a></li>
-									<li ><a id="flowtracingviewops" href="#">Resource-Flow Locator</a></li>
+									<li ><a id="flowtracingviewops" href="#">Flow Steer Path</a></li>
 								</ul>
 							</li>
 							
@@ -215,7 +217,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading" id="panel-heading-id">Resource-centric Topological View</div>
 						<div class="panel-body">
-							<p><iframe id="topoIframe" src="http://103.22.221.55:3006/resourcecentricviewops" width="100%" height="60%"></iframe></p>
+							<p><iframe id="topoIframe" src="http://103.22.221.56:3011/resourcecentricviewops" width="100%" height="60%"></iframe></p>
 						</div>
 					</div>
 				</div>

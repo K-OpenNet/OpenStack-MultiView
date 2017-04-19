@@ -8,7 +8,7 @@ var http = require("http");
 var app = express();
 //var app = module.exports = express.createServer();
 var client = require('socket.io').listen(8080).sockets;
-var host = "103.22.221.55";
+var host = "103.22.221.56";
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
@@ -194,12 +194,6 @@ app.get('/flowtracingviewops/*', function(req, res){
         showView();
     })
 
-	/*resourceProvider.getovsBridgeStatus(function(error, bridgestatusobj)
-    {
-        ovsBridgeStatus = bridgestatusobj;
-        showView();
-    })*/
-	
 	resourceProvider.getbridgevlanmapList(vlanID, function(error, bridgevlanmapobj)
     {
        	bridgevlanmapList = bridgevlanmapobj;

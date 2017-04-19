@@ -27,10 +27,13 @@
     <link type="text/css" rel="stylesheet" href="stylesheets/opentip.css">
     <script type="text/javascript" src="javascripts/opentip-jquery.js"></script>
     <script type="text/javascript">
-      //Check Session
+      var serverIP="103.22.221.56";
+	  var serverPort="3011";
+      //redirect to login page if user is not logged
       var session_username = sessionStorage.getItem('ss_user_name');
+      var session_userrole = sessionStorage.getItem('ss_role');
       if(session_username === null){
-      window.location.replace("http://103.22.221.55:3006/login");
+      window.location.replace("http://"+serverIP+":"+serverPort+"/login");
       }
       
       // Receive Parameters From Server.js
@@ -64,7 +67,7 @@
       // Create a data table with links.
       edges = [];
       //Add network Node
-      nodes.push({id: 1, label: '                                   TEIN Network                                   ', font: {size: 50, color: '#ffffff'},shape: 'box', color: BridgeNodeColor, level:0, fixed: false, physics:true});
+      nodes.push({id: 1, label: '                                   REN Network                                   ', font: {size: 50, color: '#ffffff'},shape: 'box', color: BridgeNodeColor, level:0, fixed: false, physics:true});
       
       //Draw the Physical Boxes
       for (var i in boxList)
