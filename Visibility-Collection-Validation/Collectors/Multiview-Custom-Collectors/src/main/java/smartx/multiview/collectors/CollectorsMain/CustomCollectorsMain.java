@@ -5,6 +5,7 @@
 
 package smartx.multiview.collectors.CollectorsMain;
 
+import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 import smartx.multiview.collectors.flow.*;
@@ -72,5 +73,10 @@ public class CustomCollectorsMain
         //Start Visibility Collection for ODL Statistics Data
         SDNControllerStats sdnStats = new SDNControllerStats(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getflowStatsMongoCollection(), configLoader.getflowStatsMongoCollectionRT(), configLoader.getdevopscontrollers(), configLoader.getControllerUser(), configLoader.getControllerPassword());
         sdnStats.start();
+        
+        //Start Visibility Collection for sFlow Flow Collection
+    	String topic = "sFlow";
+    	Timer timer = new Timer();
+    	timer.schedule(new sFlowKafkaProducer(configLoader.getVISIBILITY_CENTER(), topic),0,10000);
     }
 }
