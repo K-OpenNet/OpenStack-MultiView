@@ -62,6 +62,17 @@ public class CustomCollectorsMain
         BridgesVLANMapping vlanMapping  = new BridgesVLANMapping(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), configLoader.getOVS_VM_USER(), configLoader.getOVS_VM_PASSWORD(), MongoConnector, configLoader.getpboxMongoCollection(), configLoader.getbridgevlanmapMongoCollection(), configLoader.getbridgevlanmapMongoCollectionRT(), configLoader.getVLAN_START(), configLoader.getVLAN_END(), configLoader.getBoxType());
         vlanMapping.start();
         
+        //Start Visibility Collection for sFlow Flow Collection
+    	String topic = "sFlow";
+    	Timer timer = new Timer();
+    	timer.schedule(new sFlowKafkaProducer(configLoader.getVISIBILITY_CENTER(), topic),0,10000);
+    	try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         //Start sFlow Kafka Consumer
         sFlowKafkaConsumer sFlowconsumer  = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector, ESConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType());
         sFlowconsumer.Consume();
@@ -73,10 +84,5 @@ public class CustomCollectorsMain
         //Start Visibility Collection for ODL Statistics Data
         SDNControllerStats sdnStats = new SDNControllerStats(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getflowStatsMongoCollection(), configLoader.getflowStatsMongoCollectionRT(), configLoader.getdevopscontrollers(), configLoader.getControllerUser(), configLoader.getControllerPassword());
         sdnStats.start();
-        
-        //Start Visibility Collection for sFlow Flow Collection
-    	String topic = "sFlow";
-    	Timer timer = new Timer();
-    	timer.schedule(new sFlowKafkaProducer(configLoader.getVISIBILITY_CENTER(), topic),0,10000);
     }
 }
