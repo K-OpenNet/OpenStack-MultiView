@@ -26,7 +26,7 @@ public class IOVisorKafkaConsumer {
     private Document document;
     private Date timestamp;
 	
-	private Logger LOG = Logger.getLogger("sFlowKafka");
+	private Logger LOG = Logger.getLogger("IOVisorKafka");
     
     public IOVisorKafkaConsumer(String bootstrapserver, MongoDB_Connector MongoConn) 
     {

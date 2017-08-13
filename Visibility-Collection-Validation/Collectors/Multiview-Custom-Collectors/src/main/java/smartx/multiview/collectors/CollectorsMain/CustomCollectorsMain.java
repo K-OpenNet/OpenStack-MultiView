@@ -77,6 +77,10 @@ public class CustomCollectorsMain
         sFlowKafkaConsumer sFlowconsumer  = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector, ESConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType());
         sFlowconsumer.Consume();
         
+        //Start IO Visor Kafka Consumer
+        IOVisorKafkaConsumer iovisorconsumer = new IOVisorKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector);
+        iovisorconsumer.Consume();
+        
         //Start Visibility Collection for ODL Flow Rules Data
         SDNControllerStatus sdnStatus = new SDNControllerStatus(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getflowConfigMongoCollection(), configLoader.getflowConfigMongoCollectionRT(), configLoader.getdevopscontrollers(), configLoader.getControllerUser(), configLoader.getControllerPassword());
         sdnStatus.start();
