@@ -32,6 +32,7 @@ public class IOVisorKafkaConsumer {
     {
     	bootstrapServer        = bootstrapserver;
     	mongoConnector         = MongoConn;
+    	System.out.println("Starting IO Visor Thread");
     }
     
     public void Consume(){
@@ -51,7 +52,7 @@ public class IOVisorKafkaConsumer {
             ConsumerRecords<String, String> records = consumer.poll(0);
             for (ConsumerRecord<String, String> record : records)
             {
-            	//System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+            	System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
                 this.StoreToDB(record.value());
 		    }
         }
