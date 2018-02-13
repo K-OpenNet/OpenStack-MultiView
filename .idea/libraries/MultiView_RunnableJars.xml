@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="MultiView-RunnableJars">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/MultiView-RunnableJars/OpenStackInstances.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MultiView-RunnableJars/ResourceLevelKafkaConsumerTypeB.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MultiView-RunnableJars/FlowLevelKafkaConsumer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

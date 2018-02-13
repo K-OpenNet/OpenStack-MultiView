@@ -17,7 +17,7 @@ import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.search.SearchHits;
 
@@ -35,7 +35,7 @@ public class Elasticsearch_Connector {
 	   //# Settings settings = Settings.builder().put("cluster.name", "elasticsearch").build();
 	    try {
 	    	
-	    	client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddress(new  InetSocketTransportAddress(InetAddress.getByName(dbHost), dbPort));
+	    	client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddress(new  TransportAddress(InetAddress.getByName(dbHost), dbPort));
 	   // 	System.out.println(client.connectedNodes());
 	  //#  	client = new PreBuiltTransportClient(settings);
 			//client = TransportClient.builder().build().addTransportAddress(new  InetSocketTransportAddress(InetAddress.getByName(dbHost), dbPort));

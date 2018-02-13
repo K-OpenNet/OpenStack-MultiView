@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="kafka-influx-linker">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Visibility-Collection-Validation/Validators/kafka-influx-linker/kafka-influx-linker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
