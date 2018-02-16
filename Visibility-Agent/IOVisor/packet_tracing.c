@@ -1,5 +1,3 @@
-#!/usr/bin/python
-#
 # Name          : packet_tacing.c
 # Description   : A script for tracing network packets at kernel-level
 #
