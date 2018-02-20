@@ -16,6 +16,9 @@ public class SnapPluginManifest {
 		pluginManifestMap.put("snap-plugin-collector-df", SnapDFParser.class);
 		pluginManifestMap.put("snap-plugin-collector-iostat", SnapIOStatParser.class);
 		pluginManifestMap.put("snap-plugin-collector-libvirt", SnapLibVirtParser.class);
+		pluginManifestMap.put("snap-plugin-collector-ping", SnapPingParser.class);
+		pluginManifestMap.put("snap-plugin-collector-interface", SnapInterfaceParser.class);
+		pluginManifestMap.put("snap-plugin-collector-processes", SnapProcessesParser.class);
 	}
 	
 	public HashMap<String, Class<? extends SnapPluginParser>> getPluginManifestMap() {

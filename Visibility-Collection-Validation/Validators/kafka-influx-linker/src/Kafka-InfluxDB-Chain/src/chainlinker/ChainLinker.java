@@ -40,6 +40,8 @@ public class ChainLinker {
 		props.put("value.deserializer", kafkaConf.getValueDeserializer());
 		
 		System.out.println(kafkaConf.getBootstrapServers());
+		// Different versions between Kafka broker server and consumer API may make some problems.
+		// Modify pom.xml to switch beteen Kafka Consumer API version for the broker version currently using.
 		KafkaConsumer<String, String> consumer;
 		try {
 			consumer = new KafkaConsumer<String, String>(props);
