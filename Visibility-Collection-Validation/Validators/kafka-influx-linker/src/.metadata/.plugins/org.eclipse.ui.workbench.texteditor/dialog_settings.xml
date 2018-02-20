@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="parserKeySet" key="selection"/>
+		<item value="_perc&quot;, lfClass" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="&quot;, lClass"/>
 			<item value="Failed to find data type info for given data with field name"/>
 			<item value="parserKeySet"/>
 			<item value="instance"/>
@@ -15,9 +16,9 @@
 			<item value="dataTypeClass"/>
 			<item value="parse"/>
 			<item value="System"/>
-			<item value="NullPointerException"/>
 		</list>
 		<list key="replacehistory">
+			<item value="_perc&quot;, lfClass"/>
 			<item value="SnapPluginManifest"/>
 			<item value="getSafe(dataObj, "/>
 			<item value=""/>
@@ -25,14 +26,13 @@
 			<item value="retention_policy"/>
 			<item value="db_name"/>
 			<item value="password"/>
-			<item value="id"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="290" key="DIALOG_WIDTH"/>
 		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText-Regular" key="DIALOG_FONT_NAME"/>
 		<item value="409" key="DIALOG_HEIGHT"/>
-		<item value="562" key="DIALOG_X_ORIGIN"/>
-		<item value="179" key="DIALOG_Y_ORIGIN"/>
+		<item value="87" key="DIALOG_X_ORIGIN"/>
+		<item value="146" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

@@ -1,0 +1,15 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String regex = "^\\/intel\\/procfs\\/filesystem\\/((?!\\/).)*\\/(space_free|space_reserved|inodes_percent_free|inodes_percent_used|device_name|inodes_used)$";
+		String pass = "/intel/procfs/filesystem/sys_fs_cgroup/inodes_used";
+		
+		if (pass.matches(regex)) {
+			System.out.println("Yes");
+		} else System.out.println("No");
+
+	}
+
+}

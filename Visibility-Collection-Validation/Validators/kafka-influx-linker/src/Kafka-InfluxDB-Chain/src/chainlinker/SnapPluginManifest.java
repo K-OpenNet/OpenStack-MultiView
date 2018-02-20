@@ -13,6 +13,7 @@ public class SnapPluginManifest {
 		pluginManifestMap.put("snap-plugin-collector-psutil", SnapPSUtilParser.class);
 		pluginManifestMap.put("snap-plugin-collector-cpu", SnapCPUParser.class);
 		pluginManifestMap.put("snap-plugin-collector-meminfo", SnapMemInfoParser.class);
+		pluginManifestMap.put("snap-plugin-collector-df", SnapDFParser.class);
 	}
 	
 	public HashMap<String, Class<? extends SnapPluginParser>> getPluginManifestMap() {

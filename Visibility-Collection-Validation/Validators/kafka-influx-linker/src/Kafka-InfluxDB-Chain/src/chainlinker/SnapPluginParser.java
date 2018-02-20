@@ -14,10 +14,16 @@ public abstract class SnapPluginParser {
 	
 	Long lValue = 0L;
 	Double lfValue = 0.0;
+	String sValue = "";
+	Boolean bValue = false;
 	@SuppressWarnings("rawtypes")
 	Class lClass = lValue.getClass();
 	@SuppressWarnings("rawtypes")
 	Class lfClass = lfValue.getClass();	
+	@SuppressWarnings("rawtypes")
+	Class sClass = sValue.getClass();	
+	@SuppressWarnings("rawtypes")
+	Class bClass = bValue.getClass();	
 	
 	@SuppressWarnings("rawtypes")
 	HashMap<String, Class> typeMap = new HashMap<>();

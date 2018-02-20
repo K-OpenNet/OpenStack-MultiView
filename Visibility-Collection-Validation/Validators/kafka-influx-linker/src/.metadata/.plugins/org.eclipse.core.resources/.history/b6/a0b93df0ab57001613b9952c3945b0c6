@@ -1,0 +1,9 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String regex = "^\\/intel\\/procfs\\/filesystem\\/((!?\\/).)*\\/(space_free|space_reserved|inodes_percent_free|inodes_percent_used|device_name|inodes_used)$";
+	}
+
+}
