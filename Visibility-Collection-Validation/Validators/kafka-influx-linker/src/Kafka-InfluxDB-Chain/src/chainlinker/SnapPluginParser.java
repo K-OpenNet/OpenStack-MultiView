@@ -16,6 +16,8 @@ public abstract class SnapPluginParser {
 	Double lfValue = 0.0;
 	String sValue = "";
 	Boolean bValue = false;
+	
+	// These are dummy objects to provide class information.
 	@SuppressWarnings("rawtypes")
 	Class lClass = lValue.getClass();
 	@SuppressWarnings("rawtypes")

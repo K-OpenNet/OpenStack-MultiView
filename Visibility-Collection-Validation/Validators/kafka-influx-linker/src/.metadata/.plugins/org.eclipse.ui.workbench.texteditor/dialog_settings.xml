@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value=" or " key="selection"/>
+		<item value="source" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="source"/>
+			<item value="for"/>
+			<item value="tag"/>
+			<item value=" or "/>
 			<item value="|"/>
 			<item value="&quot;, lClass"/>
 			<item value="Failed to find data type info for given data with field name"/>
 			<item value="parserKeySet"/>
-			<item value="instance"/>
-			<item value="ConfigLoader"/>
-			<item value="dataTypeClass"/>
-			<item value="parse"/>
 		</list>
 		<list key="replacehistory">
+			<item value="|"/>
 			<item value=" or "/>
 			<item value="_perc&quot;, lfClass"/>
 			<item value="SnapPluginManifest"/>
@@ -25,7 +26,6 @@
 			<item value=""/>
 			<item value="consistency_level"/>
 			<item value="retention_policy"/>
-			<item value="db_name"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

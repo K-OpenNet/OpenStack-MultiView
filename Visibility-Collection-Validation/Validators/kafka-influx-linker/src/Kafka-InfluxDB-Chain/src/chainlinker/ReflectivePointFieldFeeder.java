@@ -17,11 +17,15 @@ public class ReflectivePointFieldFeeder {
 	private static String sValue = "";
 	private static Boolean bValue = false;	
 	
-	public static void addField(org.influxdb.dto.Point.Builder pointBuilder, @SuppressWarnings("rawtypes") Class dataTypeClass, Object data) throws ClassNotFoundException {
+	public static void addField(
+			org.influxdb.dto.Point.Builder pointBuilder, 
+			@SuppressWarnings("rawtypes") Class dataTypeClass, 
+			Object data
+			) throws ClassNotFoundException {
 		if (dataTypeClass.equals(lValue.getClass())) {
 			pointBuilder.addField("value", (long)data);
 		} else if (dataTypeClass.equals(lfValue.getClass())) {
-			// For double-precision values, additional touch is required as sometimes integer value may be passed.
+			// For double values, additional touch is required as sometimes integer value may be passed.
 			if (lValue.getClass() == data.getClass()) {
 				// The reason for this double typecasting:
 				// http://stackoverflow.com/questions/32757565/java-lang-long-cannot-be-cast-to-java-lang-double

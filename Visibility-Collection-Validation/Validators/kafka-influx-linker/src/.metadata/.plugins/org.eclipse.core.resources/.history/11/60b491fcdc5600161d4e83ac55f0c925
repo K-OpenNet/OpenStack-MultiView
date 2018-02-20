@@ -1,4 +1,0 @@
-package chainlinker;
-
-public class SnapMemInfoParser extends SnapPluginParser {
-}

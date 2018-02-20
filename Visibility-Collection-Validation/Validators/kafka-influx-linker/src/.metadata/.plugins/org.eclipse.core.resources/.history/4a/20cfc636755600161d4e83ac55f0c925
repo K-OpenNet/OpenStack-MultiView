@@ -1,9 +1,0 @@
-package chainlinker;
-
-public class SnapDFParser extends SnapPluginParser {
-
-	public SnapDFParser() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

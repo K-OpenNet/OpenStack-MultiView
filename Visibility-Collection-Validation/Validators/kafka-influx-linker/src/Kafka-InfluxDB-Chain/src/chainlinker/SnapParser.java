@@ -105,8 +105,8 @@ public class SnapParser {
 		// Extraction of name.
 		String name = (String)getSafe(dataObj, "namespace");
 		
-		// Extraction of source.
-		String source = (String)((JSONObject)getSafe(dataObj, "tags")).get("plugin_running_on");
+		// Extraction of tags.
+		JSONObject tags_json = (JSONObject)getSafe(dataObj, "tags");
 
 		// Extraction of unit.
 		String unit = (String)getSafe(dataObj, "unit");
@@ -118,8 +118,13 @@ public class SnapParser {
 		logger.trace("Processed a data with time " + timestamp + " = " + time + " ns.");
 
 		org.influxdb.dto.Point.Builder builder = Point.measurement(name)
-				.time(time, TimeUnit.NANOSECONDS)
-				.tag("source", source);
+				.time(time, TimeUnit.NANOSECONDS);
+		
+		for (Object key : tags_json.keySet()) {
+			// All tags are given as String from Kafka.
+			String tag_name = (String)key;
+			builder.tag(tag_name, (String)tags_json.get(tag_name));
+		}
 		
 		if (unit.length() > 0) {
 			// This prevents 0 length String causing InfluxDB query parsing error.
