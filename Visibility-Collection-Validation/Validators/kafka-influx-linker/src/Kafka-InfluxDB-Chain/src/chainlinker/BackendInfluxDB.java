@@ -64,16 +64,29 @@ public class BackendInfluxDB extends Backend {
 		influxDBConf.db_name = (String)ConfigLoader.getValue(config_influx_json, "db_name");
 		influxDBConf.retention_policy = (String)ConfigLoader.getValue(config_influx_json, "retention_policy");
 		influxDBConf.consistency_level = getConsistencyLevel(config_influx_json);
-	};
+	};	
 	
 	@Override
 	public void processMessage(JSONArray msgValue, HashMap<String, SnapPluginParser> parserMap, LinkedList<SnapPluginParser> parserList) {
 		// Creating InfluxDB instance to handle InfluxDB connection
 		logger.trace("Opening a connection to InfluxDB server " + influxDBConf.getAddress() + " with ID " + influxDBConf.getID() + ".");
 		InfluxDB influxDB = InfluxDBFactory.connect(influxDBConf.getAddress(), influxDBConf.getID(), influxDBConf.getPassword());
+		// Reserving graceful shutdown
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+				// When tested on Eclipse, this will not be executed.
+				// But still on console this will work.
+				influxDB.close();
+				logger.debug("InfluxDB connection is closed.");
+			}
+		});
 		
 		String dbName = influxDBConf.getDBName();
-		influxDB.createDatabase(dbName); // This will be ignored by InfluxDB if already the DB exists
+		try {
+			influxDB.createDatabase(dbName);
+		} catch (RuntimeException e){
+			// If the code reaches this block it means the DB already exists
+		}
 
 		// Only 1 query are sent to the DB per 1 Kafka message by batching points.
 		logger.trace("Setting up a BatchPoints...");

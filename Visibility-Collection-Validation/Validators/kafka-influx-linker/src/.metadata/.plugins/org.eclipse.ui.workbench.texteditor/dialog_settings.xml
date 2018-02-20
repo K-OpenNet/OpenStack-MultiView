@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="influxDBConf" key="selection"/>
+		<item value="InfluxDB" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="ReflectivePointFieldFeeder"/>
-			<item value="influxdb"/>
-			<item value="influx"/>
-			<item value="collectors"/>
-			<item value="hierachy_header"/>
-			<item value="pluginManifestMap"/>
-			<item value=" or "/>
-			<item value="source"/>
+			<item value="influxDB"/>
+			<item value="createdatabase"/>
+			<item value="NullPointerException"/>
+			<item value="header"/>
+			<item value="ConfigLoader()"/>
+			<item value="ConfigLoader ()"/>
+			<item value="java -jar /opt/kafka-influx-linker/kafka-influx-linker.jar"/>
+			<item value="load"/>
 		</list>
 		<list key="replacehistory">
 			<item value="influxDBConf"/>

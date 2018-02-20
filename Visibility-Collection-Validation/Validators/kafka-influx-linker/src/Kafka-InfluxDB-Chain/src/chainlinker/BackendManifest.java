@@ -6,7 +6,7 @@ public class BackendManifest {
 	private HashMap<String, Class<? extends Backend>> backendManifestMap = new HashMap<>();
 	
 	private BackendManifest() {
-		backendManifestMap.put("InfluxDB", BackendInfluxDB.class);
+		backendManifestMap.put("influxdb", BackendInfluxDB.class);
 	}
 	
 	public HashMap<String, Class<? extends Backend>> getBackendManifestMap() {

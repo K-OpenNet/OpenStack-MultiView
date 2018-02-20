@@ -9000,3 +9000,313 @@ org.eclipse.core.runtime.CoreException: Launch configuration tester references n
 2016-12-18 05:17:31,181 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2016-12-18 05:17:31,182 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-12-18 05:17:31,182 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:01:57,209 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2016-12-18 08:04:14,020 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:14,029 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:04:14,034 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:14,034 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:04:18,472 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:18,476 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:04:18,477 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:18,477 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:04:40,051 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:40,052 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:04:40,054 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:40,054 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:04:48,350 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:48,350 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:04:48,352 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:48,352 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:04:52,678 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:52,679 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:04:52,680 [Worker-13] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:04:52,681 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:05:46,375 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:05:46,376 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:05:46,377 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:05:46,377 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:07:28,734 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:28,735 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:07:28,736 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:28,737 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:07:30,045 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:30,046 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:07:30,050 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:30,050 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:07:31,196 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:31,197 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:07:31,198 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:31,199 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:07:33,957 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:33,957 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:07:33,958 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:07:33,958 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:08:18,027 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:08:18,028 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:08:18,028 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:08:18,029 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:08:51,531 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:08:51,532 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:08:51,533 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:08:51,534 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:09:05,749 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:09:05,750 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:09:05,751 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:09:05,752 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:09:12,984 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:09:12,985 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:09:12,986 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:09:12,986 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:16:56,892 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:16:56,892 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:16:56,893 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:16:56,893 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:17:48,334 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:17:48,334 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:17:48,336 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:17:48,336 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:18:10,357 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:18:10,358 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:18:10,359 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:18:10,359 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:18:45,297 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:18:45,298 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:18:45,300 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:18:45,301 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:20:09,505 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:20:09,505 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:20:09,507 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:20:09,507 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:24:35,886 [Worker-12] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2016-12-18 08:24:36,274 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: Kafka-InfluxDB-Chain:Kafka-InfluxDB-Chain:0.0.1-SNAPSHOT @ /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/pom.xml.
+2016-12-18 08:24:36,464 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Kafka-InfluxDB-Chain/src
+2016-12-18 08:24:36,464 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /Kafka-InfluxDB-Chain/src/main/resources overlaps with sources folder /Kafka-InfluxDB-Chain/src
+2016-12-18 08:24:36,464 [Worker-12] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /Kafka-InfluxDB-Chain/src/test/java because it overlaps with /Kafka-InfluxDB-Chain/src
+2016-12-18 08:24:36,538 [Worker-12] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 0 sec
+2016-12-18 08:24:36,789 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:24:36,791 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:24:36,799 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:24:36,800 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:25:32,877 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: Kafka-InfluxDB-Chain:Kafka-InfluxDB-Chain:0.0.1-SNAPSHOT @ /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/pom.xml.
+2016-12-18 08:25:34,452 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/influxdb/influxdb-java/2.5/influxdb-java-2.5.pom
+2016-12-18 08:25:34,795 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/influxdb/influxdb-java/2.5/influxdb-java-2.5.pom
+2016-12-18 08:25:35,108 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/guava/guava/20.0/guava-20.0.pom
+2016-12-18 08:25:35,377 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/guava/guava/20.0/guava-20.0.pom
+2016-12-18 08:25:35,734 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/20.0/guava-parent-20.0.pom
+2016-12-18 08:25:35,914 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/20.0/guava-parent-20.0.pom
+2016-12-18 08:25:36,174 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/retrofit2/retrofit/2.1.0/retrofit-2.1.0.pom
+2016-12-18 08:25:36,415 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/retrofit2/retrofit/2.1.0/retrofit-2.1.0.pom
+2016-12-18 08:25:36,746 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/retrofit2/parent/2.1.0/parent-2.1.0.pom
+2016-12-18 08:25:36,918 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/retrofit2/parent/2.1.0/parent-2.1.0.pom
+2016-12-18 08:25:37,283 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.3.0/okhttp-3.3.0.pom
+2016-12-18 08:25:37,585 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.3.0/okhttp-3.3.0.pom
+2016-12-18 08:25:37,893 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okhttp3/parent/3.3.0/parent-3.3.0.pom
+2016-12-18 08:25:38,105 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okhttp3/parent/3.3.0/parent-3.3.0.pom
+2016-12-18 08:25:38,412 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.8.0/okio-1.8.0.pom
+2016-12-18 08:25:38,675 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.8.0/okio-1.8.0.pom
+2016-12-18 08:25:39,029 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okio/okio-parent/1.8.0/okio-parent-1.8.0.pom
+2016-12-18 08:25:39,285 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okio/okio-parent/1.8.0/okio-parent-1.8.0.pom
+2016-12-18 08:25:39,649 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/retrofit2/converter-moshi/2.1.0/converter-moshi-2.1.0.pom
+2016-12-18 08:25:39,819 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/retrofit2/converter-moshi/2.1.0/converter-moshi-2.1.0.pom
+2016-12-18 08:25:40,161 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/retrofit2/retrofit-converters/2.1.0/retrofit-converters-2.1.0.pom
+2016-12-18 08:25:40,421 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/retrofit2/retrofit-converters/2.1.0/retrofit-converters-2.1.0.pom
+2016-12-18 08:25:40,707 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/moshi/moshi/1.2.0/moshi-1.2.0.pom
+2016-12-18 08:25:41,023 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/moshi/moshi/1.2.0/moshi-1.2.0.pom
+2016-12-18 08:25:41,388 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/moshi/moshi-parent/1.2.0/moshi-parent-1.2.0.pom
+2016-12-18 08:25:41,649 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/moshi/moshi-parent/1.2.0/moshi-parent-1.2.0.pom
+2016-12-18 08:25:42,008 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.5.0/okhttp-3.5.0.pom
+2016-12-18 08:25:42,271 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.5.0/okhttp-3.5.0.pom
+2016-12-18 08:25:42,629 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okhttp3/parent/3.5.0/parent-3.5.0.pom
+2016-12-18 08:25:42,946 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okhttp3/parent/3.5.0/parent-3.5.0.pom
+2016-12-18 08:25:43,137 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.11.0/okio-1.11.0.pom
+2016-12-18 08:25:43,498 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.11.0/okio-1.11.0.pom
+2016-12-18 08:25:43,854 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okio/okio-parent/1.11.0/okio-parent-1.11.0.pom
+2016-12-18 08:25:44,066 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okio/okio-parent/1.11.0/okio-parent-1.11.0.pom
+2016-12-18 08:25:44,296 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okhttp3/logging-interceptor/3.5.0/logging-interceptor-3.5.0.pom
+2016-12-18 08:25:44,454 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okhttp3/logging-interceptor/3.5.0/logging-interceptor-3.5.0.pom
+2016-12-18 08:25:44,820 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.7/log4j-api-2.7.pom
+2016-12-18 08:25:45,081 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.7/log4j-api-2.7.pom
+2016-12-18 08:25:45,391 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j/2.7/log4j-2.7.pom
+2016-12-18 08:25:45,853 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j/2.7/log4j-2.7.pom
+2016-12-18 08:25:46,138 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.7/log4j-core-2.7.pom
+2016-12-18 08:25:46,346 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.7/log4j-core-2.7.pom
+2016-12-18 08:25:46,658 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/influxdb/influxdb-java/2.5/influxdb-java-2.5.jar
+2016-12-18 08:25:47,065 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/influxdb/influxdb-java/2.5/influxdb-java-2.5.jar
+2016-12-18 08:25:47,276 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/guava/guava/20.0/guava-20.0.jar
+2016-12-18 08:25:52,302 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/guava/guava/20.0/guava-20.0.jar
+2016-12-18 08:25:52,581 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/retrofit2/retrofit/2.1.0/retrofit-2.1.0.jar
+2016-12-18 08:25:52,823 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/retrofit2/retrofit/2.1.0/retrofit-2.1.0.jar
+2016-12-18 08:25:53,187 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/retrofit2/converter-moshi/2.1.0/converter-moshi-2.1.0.jar
+2016-12-18 08:25:53,361 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/retrofit2/converter-moshi/2.1.0/converter-moshi-2.1.0.jar
+2016-12-18 08:25:53,630 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/moshi/moshi/1.2.0/moshi-1.2.0.jar
+2016-12-18 08:25:54,014 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/moshi/moshi/1.2.0/moshi-1.2.0.jar
+2016-12-18 08:25:54,292 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.5.0/okhttp-3.5.0.jar
+2016-12-18 08:25:54,808 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.5.0/okhttp-3.5.0.jar
+2016-12-18 08:25:55,084 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.11.0/okio-1.11.0.jar
+2016-12-18 08:25:55,409 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.11.0/okio-1.11.0.jar
+2016-12-18 08:25:55,690 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/squareup/okhttp3/logging-interceptor/3.5.0/logging-interceptor-3.5.0.jar
+2016-12-18 08:25:55,849 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/squareup/okhttp3/logging-interceptor/3.5.0/logging-interceptor-3.5.0.jar
+2016-12-18 08:25:56,063 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.7/log4j-api-2.7.jar
+2016-12-18 08:25:56,509 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.7/log4j-api-2.7.jar
+2016-12-18 08:25:56,796 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.7/log4j-core-2.7.jar
+2016-12-18 08:25:58,006 [Worker-17] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.7/log4j-core-2.7.jar
+2016-12-18 08:25:58,218 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:25:58,220 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-18 08:25:58,221 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:25:58,221 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:25:58,243 [Worker-23] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2016-12-18 08:25:58,461 [Worker-23] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: Kafka-InfluxDB-Chain:Kafka-InfluxDB-Chain:0.0.1-SNAPSHOT @ /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/pom.xml.
+2016-12-18 08:25:58,566 [Worker-23] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Kafka-InfluxDB-Chain/src
+2016-12-18 08:25:58,566 [Worker-23] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Resources folder /Kafka-InfluxDB-Chain/src/main/resources overlaps with sources folder /Kafka-InfluxDB-Chain/src
+2016-12-18 08:25:58,566 [Worker-23] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /Kafka-InfluxDB-Chain/src/test/java because it overlaps with /Kafka-InfluxDB-Chain/src
+2016-12-18 08:25:58,608 [Worker-23] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 0 sec
+2016-12-18 08:25:58,848 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:25:58,849 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 08:25:58,856 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 08:25:58,856 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 08:27:33,262 [main] ERROR o.e.m2e.editor.pom.OverviewPage - Failed to populate overview panel
+java.lang.NullPointerException: null
+	at org.eclipse.m2e.core.ui.internal.editing.PomEdits.performOnDOMDocument(PomEdits.java:510) ~[org.eclipse.m2e.core.ui_1.7.0.20160603-1933.jar:na]
+	at org.eclipse.m2e.editor.pom.OverviewPage$17.run(OverviewPage.java:1129) ~[na:na]
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4024) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3700) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121) [org.eclipse.e4.ui.workbench.swt_0.14.1.v20160829-0832.jar:na]
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336) [org.eclipse.core.databinding.observable_1.6.0.v20160511-1747.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022) [org.eclipse.e4.ui.workbench.swt_0.14.1.v20160829-0832.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150) [org.eclipse.e4.ui.workbench_1.4.0.v20160517-1624.jar:na]
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687) [org.eclipse.ui.workbench_3.108.1.v20160819-2118.jar:na]
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336) [org.eclipse.core.databinding.observable_1.6.0.v20160511-1747.jar:na]
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604) [org.eclipse.ui.workbench_3.108.1.v20160819-2118.jar:na]
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148) [org.eclipse.ui.workbench_3.108.1.v20160819-2118.jar:na]
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138) [org.eclipse.ui.ide.application_1.1.101.v20160829-0827.jar:na]
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196) [org.eclipse.equinox.app_1.3.400.v20150715-1528.jar:na]
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_51]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_51]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_51]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_51]
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673) [org.eclipse.equinox.launcher_1.3.200.v20160318-1642.jar:na]
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610) [org.eclipse.equinox.launcher_1.3.200.v20160318-1642.jar:na]
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519) [org.eclipse.equinox.launcher_1.3.200.v20160318-1642.jar:na]
+2016-12-18 08:27:33,267 [main] ERROR o.e.m2e.editor.pom.OverviewPage - Failed to populate overview panel
+java.lang.NullPointerException: null
+	at org.eclipse.m2e.core.ui.internal.editing.PomEdits.performOnDOMDocument(PomEdits.java:510) ~[org.eclipse.m2e.core.ui_1.7.0.20160603-1933.jar:na]
+	at org.eclipse.m2e.editor.pom.OverviewPage$17.run(OverviewPage.java:1129) ~[na:na]
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4024) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3700) [org.eclipse.swt.cocoa.macosx.x86_64_3.105.1.v20160907-0248.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121) [org.eclipse.e4.ui.workbench.swt_0.14.1.v20160829-0832.jar:na]
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336) [org.eclipse.core.databinding.observable_1.6.0.v20160511-1747.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022) [org.eclipse.e4.ui.workbench.swt_0.14.1.v20160829-0832.jar:na]
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150) [org.eclipse.e4.ui.workbench_1.4.0.v20160517-1624.jar:na]
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687) [org.eclipse.ui.workbench_3.108.1.v20160819-2118.jar:na]
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336) [org.eclipse.core.databinding.observable_1.6.0.v20160511-1747.jar:na]
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604) [org.eclipse.ui.workbench_3.108.1.v20160819-2118.jar:na]
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148) [org.eclipse.ui.workbench_3.108.1.v20160819-2118.jar:na]
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138) [org.eclipse.ui.ide.application_1.1.101.v20160829-0827.jar:na]
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196) [org.eclipse.equinox.app_1.3.400.v20150715-1528.jar:na]
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243) [org.eclipse.osgi_3.11.1.v20160708-1632.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_51]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_51]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_51]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_51]
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673) [org.eclipse.equinox.launcher_1.3.200.v20160318-1642.jar:na]
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610) [org.eclipse.equinox.launcher_1.3.200.v20160318-1642.jar:na]
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519) [org.eclipse.equinox.launcher_1.3.200.v20160318-1642.jar:na]
+2016-12-18 16:10:30,856 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:10:30,870 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:10:30,871 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:10:30,871 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:12:10,081 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:12:10,081 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:12:10,083 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:12:10,084 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:12:42,200 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:12:42,201 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:12:42,202 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:12:42,203 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:22:39,074 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:39,075 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:22:39,076 [Worker-82] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:39,076 [Worker-82] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:22:43,166 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:43,166 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:22:43,167 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:43,168 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:22:45,524 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:45,525 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:22:45,526 [Worker-79] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:45,526 [Worker-79] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:22:48,151 [Worker-83] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:48,152 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:22:48,153 [Worker-83] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:22:48,153 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:25:58,643 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:25:58,643 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:25:58,645 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:25:58,645 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:33:07,401 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:33:07,401 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:33:07,402 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:33:07,402 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:38:30,869 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:38:30,870 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:38:30,871 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:38:30,871 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:38:50,927 [Worker-71] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/influxdb/influxdb-java/2.5/influxdb-java-2.5-sources.jar
+2016-12-18 16:38:51,535 [Worker-71] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/influxdb/influxdb-java/2.5/influxdb-java-2.5-sources.jar
+2016-12-18 16:38:51,550 [Worker-71] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.influxdb:influxdb-java:2.5
+2016-12-18 16:38:51,678 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:38:51,679 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-18 16:38:51,680 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:38:51,680 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:41:26,024 [Worker-88] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:41:26,025 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:41:26,025 [Worker-88] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:41:26,026 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:41:33,728 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:41:33,728 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:41:33,729 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:41:33,730 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:42:21,535 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:42:21,535 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:42:21,536 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:42:21,536 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:51:16,680 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:51:16,689 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:51:16,691 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:51:16,691 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:53:27,644 [Worker-93] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:53:27,645 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:53:27,646 [Worker-93] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:53:27,647 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:53:31,443 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:53:31,444 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:53:31,445 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:53:31,445 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:53:44,496 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:53:44,497 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:53:44,497 [Worker-90] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:53:44,498 [Worker-90] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:54:48,553 [Worker-91] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:54:48,554 [Worker-91] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:54:48,555 [Worker-91] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:54:48,555 [Worker-91] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:54:56,216 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:54:56,217 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:54:56,218 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:54:56,218 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 16:55:03,985 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:55:03,986 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 16:55:03,987 [Worker-87] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 16:55:03,987 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 18:32:40,380 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

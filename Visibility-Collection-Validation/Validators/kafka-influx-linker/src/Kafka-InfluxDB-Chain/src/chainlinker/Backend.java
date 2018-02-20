@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 public abstract class Backend {
 
 	public Backend() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 	abstract public Object getConfig();

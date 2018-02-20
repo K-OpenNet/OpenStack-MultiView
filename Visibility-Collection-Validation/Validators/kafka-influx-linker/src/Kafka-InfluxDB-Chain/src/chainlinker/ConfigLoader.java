@@ -25,6 +25,7 @@ public class ConfigLoader {
 		// Loading configurations from config file. Any error during loading will be filtered here.
 		ConfigLoader conf;
 		try {
+			hierachy_header = new LinkedList<>();
 			// TODO: Make this to get config file's path, not by hard-coded string inside of it.
 			conf = new ConfigLoader();
 		} catch (IOException e1) {
@@ -94,35 +95,6 @@ public class ConfigLoader {
 	}
 
 	protected Backend backend;		
-//	private InfluxDBConfig influxdb;
-//	// Nested class to store and provice read-only access to InfluxDB-related setting values.
-//	public class InfluxDBConfig {
-//		private String address;
-//		private String id;
-//		private String password;
-//		private String db_name;
-//		private String retention_policy;
-//		private ConsistencyLevel consistency_level;
-//
-//		public String getAddress() {
-//			return address;
-//		}
-//		public String getID() {
-//			return id;
-//		}
-//		public String getPassword() {
-//			return password;
-//		}
-//		public String getDBName() {
-//			return db_name;
-//		}
-//		public String getRetentionPolicy() {
-//			return retention_policy;
-//		}
-//		public ConsistencyLevel getConsistencyLevel() {
-//			return consistency_level;
-//		}
-//	}
 
 	private ConfigLoader() throws IOException, ParseException, NullPointerException {
 		load("/opt/kafka-influx-linker/.kafka-influx-linker");
@@ -130,7 +102,7 @@ public class ConfigLoader {
 	}
 
 	// This is to make text of the object in JSON that error occurred for error message.
-	static LinkedList<String> hierachy_header = new LinkedList<>();
+	static LinkedList<String> hierachy_header; // = new LinkedList<>();
 
 	/*
 	 * Reading the config file. The file must be in JSON style.
@@ -181,15 +153,16 @@ public class ConfigLoader {
 
 		hierachy_header.removeLast();
 
+		// Loading part for backend
 		JSONObject config_backend_json;
 		config_backend_json = (JSONObject)getValue(config_all_json, "backend");
 		hierachy_header.add("backend");
 		
 		HashMap<String, Class<? extends Backend>> backendClassMap = BackendManifest.getInstance().getBackendManifestMap();
+		String backend_name = (String)getValue(config_backend_json, "backend");
 		try {
-			String backend_name = (String)getValue(config_backend_json, "backend");
 			Class<? extends Backend> backendClass = backendClassMap.get(backend_name);
-			logger.trace("Loading Backend module '" + backendClass.getName() + "'");
+			logger.debug("Loading Backend module '" + backendClass.getName() + "'");
 			backend = backendClass.newInstance();
 		} catch (InstantiationException e) {
 			logger.fatal("Failed to instantitate given class from BackendManifest. Is BackendManifest is properly written?", e);
@@ -197,36 +170,20 @@ public class ConfigLoader {
 			logger.fatal("Failed to instantitate given class from BackendManifest. Is BackendManifest is properly written?", e);
 		}
 		
+		hierachy_header.add(backend_name);
 		try {
-			backend.loadConfig(config_backend_json);
+			backend.loadConfig((JSONObject)getValue(config_backend_json, backend_name));
 		} catch (ParseException e) {
 			throw new ParseException(0, "Failed to parse '" + String.join(":", ConfigLoader.hierachy_header) + ":consistency_level.");
 		}
+		hierachy_header.removeLast();		
 		
-		hierachy_header.removeLast();
-		
-		// Loading part for InfluxDB
-//		JSONObject config_influx_json;
-//		hierachy_header.add("influxdb");
-//		config_influx_json = (JSONObject)getValue(config_all_json, "influxdb");
-//
-//		influxdb = new InfluxDBConfig();
-//		influxdb.address = (String)getValue(config_influx_json, "address");
-//		influxdb.id = (String)getValue(config_influx_json, "id");
-//		influxdb.password = (String)getValue(config_influx_json, "password");
-//		influxdb.db_name = (String)getValue(config_influx_json, "db_name");
-//		influxdb.retention_policy = (String)getValue(config_influx_json, "retention_policy");
-//		influxdb.consistency_level = getConsistencyLevel(config_influx_json);
-
-		hierachy_header.removeLast();
+		hierachy_header.removeLast();		
 	}
 
 	KafkaConfig getKafkaConfig() {
 		return kafka;
 	}
-//	InfluxDBConfig getInfluxDBConfig() {
-//		return influxdb;
-//	}
 	Backend getBackend() {
 		return backend;
 	}
@@ -240,21 +197,10 @@ public class ConfigLoader {
 	 * Currently, this checks only whether required value exists.
 	 * TODO: Make this also check each value's syntax.
 	 */
-//	protected Object getValue(JSONObject json, String key) throws NullPointerException {
 	public static Object getValue(JSONObject json, String key) throws NullPointerException {
 		Object value = json.get(key);
 		if (value == null) throw new NullPointerException ("Config file's '" + String.join(":", hierachy_header) + ":" + key + "' is missing.");
 		return value;
 	}
 
-	// InfluxDB's ConsistencyLevel requires a different approach as it is not a String.
-//	protected ConsistencyLevel getConsistencyLevel(JSONObject json) throws ParseException {
-//		String lvl_str = ((String)getValue(json, "consistency_level")).toLowerCase();
-//		switch (lvl_str) {
-//		case "all" :
-//			return ConsistencyLevel.ALL;
-//		default:
-//			throw new ParseException(0, "Failed to parse '" + String.join(":", hierachy_header) + ":consistency_level.");
-//		}
-//	}
 }

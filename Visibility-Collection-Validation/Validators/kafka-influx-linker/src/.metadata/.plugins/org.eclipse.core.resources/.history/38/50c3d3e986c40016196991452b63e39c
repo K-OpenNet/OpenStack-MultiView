@@ -1,8 +1,0 @@
-package chainlinker;
-
-public class BackendInfluxDB extends Backend {
-	
-	public Object loadConfig() {
-		
-	};
-}

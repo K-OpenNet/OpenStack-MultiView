@@ -81,7 +81,7 @@ public class ChainLinker {
 //				} catch (ParseException e) {
 				} catch (Exception e) { // Changed due to undetected error: Needs more specific logs
 					logger.error("Failed to parse given message. Is it correctly encoded?", e);
-					logger.debug("Parser failed full message : " + value);
+					logger.error("Parser failed full message : " + value);
 					break;
 				}
 			}

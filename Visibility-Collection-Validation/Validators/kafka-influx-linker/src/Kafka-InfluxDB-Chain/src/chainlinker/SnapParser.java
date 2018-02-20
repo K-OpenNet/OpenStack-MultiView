@@ -27,7 +27,7 @@ public class SnapParser {
 		try {
 			for (String collector : config.getSnapConfig().getCollectors()) {
 				Class<? extends SnapPluginParser> parserClass = parserClassMap.get(collector);
-				logger.trace("Loading SnapPluginParser module '" + parserClass.getName() + "' for plugin '" + collector + "'");
+				logger.debug("Loading SnapPluginParser module '" + parserClass.getName() + "' for plugin '" + collector + "'");
 				parserList.add(parserClass.newInstance());
 			}
 		} catch (InstantiationException e) {
