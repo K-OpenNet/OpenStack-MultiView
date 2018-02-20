@@ -152,18 +152,27 @@ public class ConfigLoader {
 		config_backend_json = (JSONObject)getValue(config_all_json, "backend");
 		hierachy_header.add("backend");
 		
-		ArrayList<String> backendRequstedNames= new ArrayList<>((JSONArray)getValue(config_backend_json, "backends"));
+		ArrayList<String> backendRequstedNames = new ArrayList<>((JSONArray)getValue(config_backend_json, "backends"));
 		HashMap<String, Class<? extends Backend>> backendClassMap = BackendManifest.getInstance().getBackendManifestMap();
 		backends = new LinkedList<>();
 		try {
+			// TODO: Verify the change is working.
 			for (String backendName : backendRequstedNames) {
-				Class<? extends Backend> backendClass = backendClassMap.get(backendName);
+				JSONObject config_backend_instance_json;
+				config_backend_instance_json = (JSONObject)getValue(config_backend_json, backendName);
+				hierachy_header.add(backendName);
+				String backendTypeName = (String)getValue(config_backend_instance_json, "type");
+				Class<? extends Backend> backendClass = backendClassMap.get(backendTypeName);
+//				hierachy_header.removeLast();
+				
+//				Class<? extends Backend> backendClass = backendClassMap.get(backendName);
 				logger.debug("Loading Backend module '" + backendClass.getName() + "' for backend '" + backendName + "'");
 				Backend backend = backendClass.newInstance(); 
 				
-				hierachy_header.add(backendName);
+//				hierachy_header.add(backendName);
 				try {
-					backend.loadConfig((JSONObject)getValue(config_backend_json, backendName));
+//					backend.loadConfig((JSONObject)getValue(config_backend_json, backendName));
+					backend.loadConfig(config_backend_instance_json);
 				} catch (ParseException e) {
 					throw new ParseException(0, "Failed to parse '" + String.join(":", ConfigLoader.hierachy_header) + ":consistency_level.");
 				}

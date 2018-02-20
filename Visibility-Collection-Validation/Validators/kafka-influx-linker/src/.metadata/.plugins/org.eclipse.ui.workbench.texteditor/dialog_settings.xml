@@ -2,17 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="backends" key="selection"/>
+		<item value="backend" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="backend"/>
 			<item value="backends"/>
 			<item value="collectors"/>
 			<item value="parsermap"/>
 			<item value="map"/>
-			<item value="backend"/>
 			<item value="influxDB"/>
 			<item value="createdatabase"/>
 			<item value="NullPointerException"/>
