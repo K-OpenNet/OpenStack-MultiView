@@ -1,8 +1,7 @@
 package chainlinker;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.StringJoiner;
+import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +16,8 @@ import org.json.simple.JSONObject;
 /*
  * Not confirmed about what happens when InfluxDB connection failed.
  * No reference or documents are found. Need to be reinforced.
+ * 
+ * Currently WIP: Support for publisher:kafka:9
  */
 
 public class SnapParser {
@@ -24,19 +25,19 @@ public class SnapParser {
 	ConfigLoader.InfluxDBConfig influxDBConf;
 
 	protected HashMap<String, SnapPluginParser> parserMap = new HashMap<>();
-	protected Set<String> parserKeySet;
+	protected LinkedList<SnapPluginParser> parserList = new LinkedList<>();
 	protected ConfigLoader config;
 
 	public SnapParser() {
 		config = ConfigLoader.getInstance();
 		influxDBConf = config.getInfluxDBConfig();
 		// TODO: Must make this reflective.
-		HashMap<String, Class<? extends SnapPluginParser>> parserClassMap = SnapPluginManifest.getInstance().getPluginManifestMap(); 
+		HashMap<String, Class<? extends SnapPluginParser>> parserClassMap = SnapPluginManifest.getInstance().getPluginManifestMap();
 		try {
 			for (String collector : config.getSnapConfig().getCollectors()) {
 				Class<? extends SnapPluginParser> parserClass = parserClassMap.get(collector);
 				logger.trace("Loading SnapPluginParser module '" + parserClass.getName() + "' for plugin '" + collector + "'");
-				parserMap.put(collector, parserClass.newInstance());
+				parserList.add(parserClass.newInstance());
 			}
 		} catch (InstantiationException e) {
 			logger.fatal("Failed to instantitate given class from SnapPluginManifest. Is SnapPluginManifest is properly written?", e);
@@ -44,9 +45,8 @@ public class SnapParser {
 			logger.fatal("Failed to instantitate given class from SnapPluginManifest. Is SnapPluginManifest is properly written?", e);
 		}
 		
-		parserKeySet = parserMap.keySet();
-		for (String parserKey : parserKeySet) {
-			parserMap.get(parserKey).loadParserMap(parserMap);
+		for (SnapPluginParser parserIter : parserList) {
+			parserIter.loadParserMap(parserMap);
 		}
 	}
 
@@ -99,20 +99,13 @@ public class SnapParser {
 		// name, source, unit, time, value
 
 		// Extraction of name. String name will be the measurement in influxDB.
-		JSONArray namespace = (JSONArray)getSafe(dataObj, "namespace");
-		StringJoiner nameSJ = new StringJoiner("/", "", "");
-		@SuppressWarnings("unchecked")
-		Iterator<JSONObject> namespace_iterator = namespace.iterator();
-		while (namespace_iterator.hasNext()) {
-			nameSJ.add(getSafe(namespace_iterator.next(),"Value").toString());
-		}
-		String name = nameSJ.toString();
-
+		String name = (String)getSafe(dataObj, "namespace");
+		
 		// Extraction of source.
 		String source = (String)((JSONObject)getSafe(dataObj, "tags")).get("plugin_running_on");
 
 		// Extraction of unit.
-		String unit = (String)getSafe(dataObj, "Unit_");
+		String unit = (String)getSafe(dataObj, "unit");
 
 		// Extraction of time.
 		String timestamp = (String)getSafe(dataObj, "timestamp");
@@ -130,14 +123,29 @@ public class SnapParser {
 			builder.tag("unit", unit);
 		}
 
-		// TODO: Maybe this can be improved again...
+		/*
+		 * Not like previous tag data, the actual value 'data' can't be easily fed into the builder.
+		 * First, there are data type problems. Some value may be float, others may be integer.
+		 * 
+		 * At first glance, field value's data type is never changed, so it would be easy to deal with.
+		 * 
+		 * But it isn't. Especially for float values. Sometimes a float type value would be with
+		 * 0 below point. Then JSONParser will interpret this value as long type and when I try to
+		 * convert it then it will throw type cast error.
+		 * 
+		 * To avert this, these specific values must be casted into long first and then into double.
+		 * But this cannot be applied to all values; long type casting will remove digits below point.
+		 * 
+		 * So I made each parsers know their data type by their namespace in predefined map and
+		 * made this class find appropriate parser for each data by their namespace.  
+		 */
+		
 		// 1st pass : Fast searching for static names via HashMap
 		SnapPluginParser parser = parserMap.get(name);
 		if (parser == null) {
 			// 2nd pass : Querying for parameterized names (ex. snap-plugin-collector-cpu)
 			// Asking all registered parsers whether they can handle given data type
-			for (String parseName : parserKeySet) {
-				SnapPluginParser parserIter = parserMap.get(parseName); 
+			for (SnapPluginParser parserIter : parserList) {
 				if (parserIter.isParsible(name)) {
 					parser = parserIter;
 					break;					

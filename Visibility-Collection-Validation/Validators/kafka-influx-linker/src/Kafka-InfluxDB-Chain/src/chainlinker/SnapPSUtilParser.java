@@ -8,11 +8,11 @@ package chainlinker;
  */
 public class SnapPSUtilParser extends SnapPluginParser {
 	public SnapPSUtilParser() {
-		typeMap.put("intel/psutil/load/load1", lfClass);
-		typeMap.put("intel/psutil/load/load5", lfClass);
-		typeMap.put("intel/psutil/load/load15", lfClass);
-		typeMap.put("intel/psutil/vm/free", lClass);
-		typeMap.put("intel/psutil/vm/used", lClass);
-		typeMap.put("intel/psutil/vm/available", lClass);		
+		typeMap.put("/intel/psutil/load/load1", lfClass);
+		typeMap.put("/intel/psutil/load/load5", lfClass);
+		typeMap.put("/intel/psutil/load/load15", lfClass);
+		typeMap.put("/intel/psutil/vm/free", lClass);
+		typeMap.put("/intel/psutil/vm/used", lClass);
+		typeMap.put("/intel/psutil/vm/available", lClass);		
 	}		
 }

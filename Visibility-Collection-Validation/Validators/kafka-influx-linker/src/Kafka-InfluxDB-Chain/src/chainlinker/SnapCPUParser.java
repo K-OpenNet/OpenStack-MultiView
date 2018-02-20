@@ -8,10 +8,10 @@ package chainlinker;
  */
 public class SnapCPUParser extends SnapPluginParser {
 	// The regex must be updated when data type name changes.
-	String regex = "^intel\\/procfs\\/cpu\\/(0|[1-9][0-9]*|all)\\/utilization_percentage$";
+	String regex = "^\\/intel\\/procfs\\/cpu\\/(0|[1-9][0-9]*|all)\\/utilization_percentage$";
 	
 	public SnapCPUParser() {
-		typeMap.put("intel/procfs/cpu/all/utilization_percentage", lfClass);
+		typeMap.put("/intel/procfs/cpu/all/utilization_percentage", lfClass);
 	}			
 	
 	// Overridden due to parameterized data names.

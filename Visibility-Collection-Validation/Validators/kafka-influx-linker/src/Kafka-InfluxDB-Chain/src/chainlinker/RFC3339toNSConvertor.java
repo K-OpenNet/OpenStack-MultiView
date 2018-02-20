@@ -12,7 +12,7 @@ public class RFC3339toNSConvertor {
 	
 	/*
 		Converting timestamp in RFC3339 standard into TimeUnit.NANOSECONDS form.
-		String "2016-07-21T16:41:50.679207324+09:00" -> long 1469086910679207324
+		String "2016-07-21T16:41:50.679207324+09:00" -> long 1469086910679207324L
 	 */
 	public static long ToNS(String timestamp) {
 		int offset_pos = 23; // The position right after millisecond digit.
