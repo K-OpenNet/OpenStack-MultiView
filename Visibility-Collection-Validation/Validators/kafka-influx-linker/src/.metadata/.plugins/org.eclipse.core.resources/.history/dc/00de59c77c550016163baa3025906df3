@@ -40,7 +40,7 @@ public abstract class SnapPluginParser {
 	
 	// This method is to describe whether the parser is able to handle data with the given name.
 	// This exists to handle data with parameterized names.
-	public boolean isParsible(String dataTypeName) {
+	protected boolean isParsible(String dataTypeName) {
 		if (typeMap.get(dataTypeName) != null) return true;
 		return false;
 	}	

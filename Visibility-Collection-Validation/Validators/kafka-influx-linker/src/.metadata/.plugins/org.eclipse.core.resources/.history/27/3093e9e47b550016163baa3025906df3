@@ -1,5 +1,7 @@
 package chainlinker;
 
+import java.util.HashMap;
+
 /*
  * Corresponding to snap-plugin-collector-cpu
  * 
@@ -10,11 +12,20 @@ public class SnapCPUParser extends SnapPluginParser {
 	// The regex must be updated when data type name changes.
 	String regex = "^intel\\/procfs\\/cpu\\/(0|[1-9][0-9]*|all)\\/utilization_percentage$";
 	
-	public SnapCPUParser() {
-		typeMap.put("intel/procfs/cpu/all/utilization_percentage", lfClass);
-	}			
+	public SnapPSUtilParser() {
+		typeMap.put("intel/psutil/load/load1", lfClass);
+		typeMap.put("intel/psutil/load/load5", lfClass);
+		typeMap.put("intel/psutil/load/load15", lfClass);
+		typeMap.put("intel/psutil/vm/free", lClass);
+		typeMap.put("intel/psutil/vm/used", lClass);
+		typeMap.put("intel/psutil/vm/available", lClass);		
+	}		
 	
-	// Overridden due to parameterized data names.
+	
+	public void loadMap(@SuppressWarnings("rawtypes") HashMap<String, Class> typeMap) {
+		typeMap.put("intel/procfs/cpu/all/utilization_percentage", lfClass);
+	}
+		
 	public boolean isParsible(String dataTypeName) {
 		if (dataTypeName.matches(regex)) {
 			return true;			

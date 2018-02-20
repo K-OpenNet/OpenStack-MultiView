@@ -1,5 +1,7 @@
 package chainlinker;
 
+import java.util.HashMap;
+
 /*
  * Corresponding to snap-plugin-collector-cpu
  * 
@@ -13,8 +15,7 @@ public class SnapCPUParser extends SnapPluginParser {
 	public SnapCPUParser() {
 		typeMap.put("intel/procfs/cpu/all/utilization_percentage", lfClass);
 	}			
-	
-	// Overridden due to parameterized data names.
+			
 	public boolean isParsible(String dataTypeName) {
 		if (dataTypeName.matches(regex)) {
 			return true;			

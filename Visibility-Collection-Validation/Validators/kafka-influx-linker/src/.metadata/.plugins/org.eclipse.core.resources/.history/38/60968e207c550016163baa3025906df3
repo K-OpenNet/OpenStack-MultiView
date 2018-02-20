@@ -16,6 +16,10 @@ public abstract class SnapPluginParser {
 	@SuppressWarnings("rawtypes")
 	HashMap<String, Class> typeMap = new HashMap<>(); 
 	
+	public void loadMap(@SuppressWarnings("rawtypes") HashMap<String, Class> map) {
+		map.putAll(typeMap);
+	}
+	
 	public void loadParserMap(HashMap<String, SnapPluginParser> map) {
 		for (String dataName : typeMap.keySet()) {
 			map.put(dataName, this);

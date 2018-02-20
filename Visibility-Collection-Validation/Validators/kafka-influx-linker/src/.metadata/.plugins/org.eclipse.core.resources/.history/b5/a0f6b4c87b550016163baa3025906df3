@@ -16,6 +16,10 @@ public abstract class SnapPluginParser {
 	@SuppressWarnings("rawtypes")
 	HashMap<String, Class> typeMap = new HashMap<>(); 
 	
+	public void loadMap(@SuppressWarnings("rawtypes") HashMap<String, Class> map) {
+		map.putAll(typeMap);
+	}
+	
 	public void loadParserMap(HashMap<String, SnapPluginParser> map) {
 		for (String dataName : typeMap.keySet()) {
 			map.put(dataName, this);
@@ -37,6 +41,21 @@ public abstract class SnapPluginParser {
 			throw new ClassNotFoundException ();
 		}
 	}
+	public void addField(
+			org.influxdb.dto.Point.Builder pointBuilder, 
+			String dataTypeName, 
+			Object data
+			) throws ClassNotFoundException {
+		if (!isParsible(dataTypeName))  throw new ClassNotFoundException ();
+		
+		try {
+			ReflectivePointFieldFeeder.addField(
+					pointBuilder, lfClass, data);			
+		} catch (ClassNotFoundException e) {
+			throw new ClassNotFoundException ();
+		}
+	}
+	
 	
 	// This method is to describe whether the parser is able to handle data with the given name.
 	// This exists to handle data with parameterized names.

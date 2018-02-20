@@ -43,12 +43,9 @@ public class SnapParser {
 		} catch (IllegalAccessException e) {
 			logger.fatal("Failed to instantitate given class from SnapPluginManifest. Is SnapPluginManifest is properly written?", e);
 		}
-//		parserMap.put("snap-plugin-collector-psutil", new SnapPSUtilParser());
-//		parserMap.put("snap-plugin-collector-cpu", new SnapCPUParser());			
 		
 		parserKeySet = parserMap.keySet();
 		for (String parserKey : parserKeySet) {
-//			parserMap.get(parserKey).loadMap(typeMap);
 			parserMap.get(parserKey).loadParserMap(parserMap);
 		}
 	}

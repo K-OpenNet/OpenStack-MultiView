@@ -15,7 +15,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /*
- * Not confirmed about what happends when InfluxDB connection failed.
+ * Not confirmed about what happens when InfluxDB connection failed.
  * No reference or documents are found. Need to be reinforced.
  */
 
@@ -25,12 +25,26 @@ public class SnapParser {
 
 	protected HashMap<String, SnapPluginParser> parserMap = new HashMap<>();
 	protected Set<String> parserKeySet;
+	protected ConfigLoader config;
 
 	public SnapParser() {
-		influxDBConf = ConfigLoader.getInstance().getInfluxDBConfig();
+		config = ConfigLoader.getInstance();
+		influxDBConf = config.getInfluxDBConfig();
 		// TODO: Must make this reflective.
-		parserMap.put("snap-plugin-collector-psutil", new SnapPSUtilParser());
-		parserMap.put("snap-plugin-collector-cpu", new SnapCPUParser());
+		HashMap<String, Class<? extends SnapPluginParser>> parserClassMap = SnapPluginManifest.getInstance().getPluginManifestMap(); 
+		try {
+			for (String collector : config.getSnapConfig().getCollectors()) {
+				Class<? extends SnapPluginParser> parserClass = parserClassMap.get(collector);
+				logger.trace("Loading SnapPluginParser module '" + parserClass.getName() + "' for plugin '" + collector + "'");
+				parserMap.put(collector, parserClass.newInstance());
+			}
+		} catch (InstantiationException e) {
+			logger.fatal("Failed to instantitate given class from SnapPluginManifest. Is SnapPluginManifest is properly written?", e);
+		} catch (IllegalAccessException e) {
+			logger.fatal("Failed to instantitate given class from SnapPluginManifest. Is SnapPluginManifest is properly written?", e);
+		}
+//		parserMap.put("snap-plugin-collector-psutil", new SnapPSUtilParser());
+//		parserMap.put("snap-plugin-collector-cpu", new SnapCPUParser());			
 		
 		parserKeySet = parserMap.keySet();
 		for (String parserKey : parserKeySet) {
@@ -111,28 +125,38 @@ public class SnapParser {
 
 		org.influxdb.dto.Point.Builder builder = Point.measurement(name)
 				.time(time, TimeUnit.NANOSECONDS)
-				.tag("source", source)
-				.tag("unit", unit);
+				.tag("source", source);
+		
+		if (unit.length() > 0) {
+			// This prevents 0 length String causing InfluxDB query parsing error.
+			// If any other values make this error again, then more improvements may be required.
+			builder.tag("unit", unit);
+		}
 
-		// 1st pass : Fast searching via HashMap
+		// TODO: Maybe this can be improved again...
+		// 1st pass : Fast searching for static names via HashMap
 		SnapPluginParser parser = parserMap.get(name);
 		if (parser == null) {
-			// 2nd pass : Querying for parameterized names
-			boolean parsible = false;
+			// 2nd pass : Querying for parameterized names (ex. snap-plugin-collector-cpu)
+			// Asking all registered parsers whether they can handle given data type
 			for (String parseName : parserKeySet) {
-				parserMap.get(parseName).isParsable(name);
-				parsible = true;
-				breakl
+				SnapPluginParser parserIter = parserMap.get(parseName); 
+				if (parserIter.isParsible(name)) {
+					parser = parserIter;
+					break;					
+				}
 			}
-			
+		}
+		
+		if (parser == null) {
 			logger.error("No matching parser found with data type '" + name + "'.");
 			throw new ClassNotFoundException (name);
 		}
 		
 		try {
-			logger.error("A parser '" + parser.getClass().getName() + "' corresponding to data type '" + name + "', but it does not know how to handle it.");
 			parser.addField(builder, name, getSafe(dataObj, "data"));
 		} catch (ClassNotFoundException e) {
+			logger.error("A parser '" + parser.getClass().getName() + "' corresponding to data type '" + name + "', but it does not know how to handle it.");
 			throw new ClassNotFoundException (name);
 		}
 
