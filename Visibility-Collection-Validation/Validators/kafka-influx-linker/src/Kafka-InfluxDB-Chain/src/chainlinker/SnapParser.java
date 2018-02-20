@@ -16,8 +16,6 @@ import org.json.simple.JSONObject;
 /*
  * Not confirmed about what happens when InfluxDB connection failed.
  * No reference or documents are found. Need to be reinforced.
- * 
- * Currently WIP: Support for publisher:kafka:9
  */
 
 public class SnapParser {
@@ -96,9 +94,15 @@ public class SnapParser {
 	public Point parse(JSONObject dataObj) throws NullPointerException, ClassNotFoundException {
 		logger.trace("Parsing...");
 		
-		// name, source, unit, time, value
-
-		// Extraction of name. String name will be the measurement in influxDB.
+		/*
+		 * InfluxDB Format
+		 * 
+		 * Measurement: name
+		 * Tags: source, unit, time
+		 * Field: value
+		 */
+		
+		// Extraction of name.
 		String name = (String)getSafe(dataObj, "namespace");
 		
 		// Extraction of source.

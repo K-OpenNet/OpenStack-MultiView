@@ -22,13 +22,13 @@
 <fullyQualifiedTypeName name="org.json.simple.parser.ParseException"/>
 <fullyQualifiedTypeName name="ConfigLoader.KafkaConfig"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="ConfigLoader.InfluxDBConfig"/>
 <fullyQualifiedTypeName name="org.influxdb.InfluxDB.ConsistencyLevel"/>
 <fullyQualifiedTypeName name="org.apache.logging.log4j.Logger"/>
 <fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
 </qualifiedTypeNameHistroy>

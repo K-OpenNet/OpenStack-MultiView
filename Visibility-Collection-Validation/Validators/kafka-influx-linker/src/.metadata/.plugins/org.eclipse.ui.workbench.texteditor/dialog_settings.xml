@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Instance" key="selection"/>
+		<item value="parserKeySet" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Failed to find data type info for given data with field name"/>
+			<item value="parserKeySet"/>
 			<item value="instance"/>
 			<item value="ConfigLoader"/>
 			<item value="dataTypeClass"/>
 			<item value="parse"/>
 			<item value="System"/>
 			<item value="NullPointerException"/>
-			<item value="dataObj.get("/>
-			<item value=".get"/>
 		</list>
 		<list key="replacehistory">
 			<item value="SnapPluginManifest"/>

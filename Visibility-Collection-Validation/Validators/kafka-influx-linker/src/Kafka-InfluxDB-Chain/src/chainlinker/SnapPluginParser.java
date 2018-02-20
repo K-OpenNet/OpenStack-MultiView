@@ -1,11 +1,17 @@
 package chainlinker;
 
 import java.util.HashMap;
+import java.util.Set;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /*
  * This class serve as a template for all Snap plugin parsers.
  */
 public abstract class SnapPluginParser {
+	private static final Logger logger = LogManager.getLogger(SnapParser.class);
+	
 	Long lValue = 0L;
 	Double lfValue = 0.0;
 	@SuppressWarnings("rawtypes")
@@ -14,7 +20,10 @@ public abstract class SnapPluginParser {
 	Class lfClass = lfValue.getClass();	
 	
 	@SuppressWarnings("rawtypes")
-	HashMap<String, Class> typeMap = new HashMap<>(); 
+	HashMap<String, Class> typeMap = new HashMap<>();
+	@SuppressWarnings("rawtypes")
+	HashMap<String, Class> regexTypeMap = new HashMap<>();
+	Set<String> regexSet = null;
 	
 	public void loadParserMap(HashMap<String, SnapPluginParser> map) {
 		for (String dataName : typeMap.keySet()) {
@@ -31,9 +40,23 @@ public abstract class SnapPluginParser {
 		if (!isParsible(dataTypeName))  throw new ClassNotFoundException ();
 		
 		try {
+			@SuppressWarnings("rawtypes")
+			Class dataType = typeMap.get(dataTypeName);
+			if (dataType == null) {
+				for (String regex : regexSet) {
+					if (dataTypeName.matches(regex)) {
+						dataType = regexTypeMap.get(regex);
+					}
+				}
+			}
+			if (dataType == null) {
+				throw new ClassNotFoundException ();
+			}
+			
 			ReflectivePointFieldFeeder.addField(
-					pointBuilder, typeMap.get(dataTypeName), data);
+					pointBuilder, dataType, data);
 		} catch (ClassNotFoundException e) {
+			logger.error("Given data type isn't supported by JSON format. Is it correct?");
 			throw new ClassNotFoundException ();
 		}
 	}
@@ -41,7 +64,22 @@ public abstract class SnapPluginParser {
 	// This method is to describe whether the parser is able to handle data with the given name.
 	// This exists to handle data with parameterized names.
 	public boolean isParsible(String dataTypeName) {
-		if (typeMap.get(dataTypeName) != null) return true;
-		return false;
+		if (typeMap.get(dataTypeName) != null) {
+			return true;			
+		} 
+		else if (regexSet == null) return false;
+		else {
+			boolean regexMatched = false;
+			for (String regex : regexSet) {
+				if (dataTypeName.matches(regex)) {
+					regexMatched = true;
+					break;
+				}
+			}
+			if (regexMatched) {
+				return true;
+			}
+			return false;			
+		}
 	}	
 }

@@ -1,0 +1,9 @@
+package chainlinker;
+
+public class SnapDFParser extends SnapPluginParser {
+
+	public SnapDFParser() {
+		super();
+	}
+
+}
