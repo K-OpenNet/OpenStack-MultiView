@@ -1,0 +1,16 @@
+
+public class test {
+
+	public test() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String test = "/intel/linux/iostat/device/ALL/r_per_sec";
+		if (test.matches("^\\/intel\\/linux\\/iostat\\/device\\/(([0-9]|[a-z])*|ALL)\\/(avgrq-sz|avgqu-sz|await|r_await|w_await|svctm|%util)$")) {
+			System.out.println("Yes");
+		} else System.out.println("No");	
+	}
+}
+

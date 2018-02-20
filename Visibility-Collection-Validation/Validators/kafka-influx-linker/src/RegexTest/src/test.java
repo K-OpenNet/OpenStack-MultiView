@@ -7,8 +7,8 @@ public class test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String test = "/libvirt/instance-00000001/cpu/vcpu/0/cputime";
-		if (test.matches("^\\/libvirt\\/([0-9]|[a-z]|_|\\-)*\\/cpu\\/vcpu\\/(0|[1-9][0-9]*)\\/cputime$")) {
+		String test = "/intel/psutil/net/qvb9bff2afa-ec/bytes_sent";
+		if (test.matches("^\\/intel\\/psutil\\/net\\/([0-9]|[a-z]|_|\\.|-)*\\/(bytes_recv|bytes_sent|dropin|dropout|errin|errout|packets_recv|packets_sent)$")) {
 			System.out.println("Yes");
 		} else System.out.println("No");	
 	}

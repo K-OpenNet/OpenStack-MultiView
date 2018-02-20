@@ -34,8 +34,8 @@ public class SnapPSUtilParser extends SnapPluginParser {
 		typeMap.put("/intel/psutil/net/all/packets_recv", lClass);
 		typeMap.put("/intel/psutil/net/all/packets_sent", lClass);
 		
-		// Pattern: /intel/psutil/net/(alphanumerical(lowercase only) or _ or .)/(bytes_recv or bytes_sent or packets_recv or packets_sent)
-		regexTypeMap.put("^\\/intel\\/psutil\\/net\\/([0-9]|[a-z]|_|\\.)*\\/(bytes_recv|bytes_sent|dropin|dropout|errin|errout|packets_recv|packets_sent)$", lClass);
+		// Pattern: /intel/psutil/net/(alphanumerical(lowercase only) or _ or . or -)/(bytes_recv or bytes_sent or packets_recv or packets_sent)
+		regexTypeMap.put("^\\/intel\\/psutil\\/net\\/([0-9]|[a-z]|_|\\.|-)*\\/(bytes_recv|bytes_sent|dropin|dropout|errin|errout|packets_recv|packets_sent)$", lClass);
 		// Pattern: /intel/psutil/cpu/cpu(numerical not starting with 0 or 0 itself.)/(bytes_recv or bytes_sent or packets_recv or packets_sent)
 		// regexTypeMap.put("^\\/intel\\/psutil\\/cpu\\/cpu(0|[1-9][0-9]*)\\/(guest|guest_nice|idle|iowait|irq|nice|softirq|steal|stolen|system|user)$", lfClass);
 		// Currently "idle" value is given as null. Snap plugin is broken.

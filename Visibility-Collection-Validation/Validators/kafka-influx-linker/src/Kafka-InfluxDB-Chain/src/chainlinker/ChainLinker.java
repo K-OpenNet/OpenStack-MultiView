@@ -11,7 +11,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 public class ChainLinker {
 	private static final Logger logger = LogManager.getLogger(ChainLinker.class);
@@ -77,7 +76,8 @@ public class ChainLinker {
 				String value = record.value();
 				try {
 					dataParser.processMessage((JSONArray)parser.parse(value));
-				} catch (ParseException e) {
+//				} catch (ParseException e) {
+				} catch (Exception e) { // Changed due to undetected error: Needs more specific logs
 					logger.error("Failed to parse given message. Is it correctly encoded?", e);
 					logger.debug("Parser failed full message : " + value);
 					break;

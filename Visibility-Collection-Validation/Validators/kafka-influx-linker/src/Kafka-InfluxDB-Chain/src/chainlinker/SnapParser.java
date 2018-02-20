@@ -113,7 +113,7 @@ public class SnapParser {
 
 		// Extraction of time.
 		String timestamp = (String)getSafe(dataObj, "timestamp");
-		long time = RFC3339toNSConvertor.ToNS(timestamp);
+		long time = RFC3339toNSConvertor.ToNS(timestamp); // TODO: Crash happens!
 
 		logger.trace("Processed a data with time " + timestamp + " = " + time + " ns.");
 

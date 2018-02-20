@@ -28,7 +28,8 @@ public class ConfigLoader {
 			// TODO: Make this to get config file's path, not by hard-coded string inside of it.
 			conf = new ConfigLoader();
 		} catch (IOException e1) {
-			logger.fatal("Failed to open config file. Is it in proper place? The file's full path must be \"~/kafka/.Kafka-InfluxDB-Chain\".", e1);
+			logger.fatal("Failed to open config file. Is it in proper place? The file's full path must be \"/opt/kafka-influx-linker/.Kafka-InfluxDB-Chain\".", e1);
+//			logger.fatal("Failed to open config file. Is it in proper place? The file's full path must be \"~/kafka-influx-linker/.Kafka-InfluxDB-Chain\".", e1);
 			conf = null;
 		} catch (ParseException e1) {
 			logger.fatal("The config file is found, but JSONParser failed to parse it. Is it in proper form?", e1);
@@ -123,7 +124,8 @@ public class ConfigLoader {
 	}
 
 	private ConfigLoader() throws IOException, ParseException, NullPointerException {
-		load(System.getProperty( "user.home" ) + "/kafka-influx-linker/.kafka-influx-linker");
+		load("/opt/kafka-influx-linker/.kafka-influx-linker");
+//		load(System.getProperty( "user.home" ) + "/kafka-influx-linker/.kafka-influx-linker");
 	}
 
 	// This is to make text of the object in JSON that error occurred for error message.
