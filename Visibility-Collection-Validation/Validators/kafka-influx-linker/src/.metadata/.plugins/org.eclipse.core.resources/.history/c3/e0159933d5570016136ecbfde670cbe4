@@ -1,0 +1,21 @@
+package chainlinker;
+
+public class SnapIOStatParser extends SnapPluginParser {
+
+	public SnapIOStatParser() {
+		// All these data forms must be updated when snap publisher's output format is changed.
+		
+		typeMap.put("/intel/linux/iostat/avg-cpu/%user", lfClass);
+		typeMap.put("/intel/linux/iostat/avg-cpu/%nice", lfClass);
+		typeMap.put("/intel/linux/iostat/avg-cpu/%system", lfClass);
+		typeMap.put("/intel/linux/iostat/avg-cpu/%iowait", lfClass);
+		typeMap.put("/intel/linux/iostat/avg-cpu/%steal", lfClass);
+		typeMap.put("/intel/linux/iostat/avg-cpu/%idle", lfClass);
+		
+		// Pattern: /intel/linux/iostat/device/(alphanumerical(lowercase only))/(bytes_recv or bytes_sent or packets_recv or packets_sent)
+		regexTypeMap.put("^\\/intel\\/psutil\\/net\\/([0-9]|[a-z])*\\/(bytes_recv|bytes_sent|dropin|dropout|errin|errout|packets_recv|packets_sent)$", lClass);
+		
+		regexSet = regexTypeMap.keySet();
+	}
+
+}

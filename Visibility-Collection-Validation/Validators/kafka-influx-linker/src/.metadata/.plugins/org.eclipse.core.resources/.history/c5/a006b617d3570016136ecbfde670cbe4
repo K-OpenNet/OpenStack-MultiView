@@ -1,14 +1,8 @@
 package chainlinker;
 
-/*
- * Corresponding to snap-plugin-collector-psutil
- * 
- * CAUTION: This setting may fail in case if the plugins' version mismatch with the below.
- * - collector:psutil:6
- */
-public class SnapPSUtilParser extends SnapPluginParser {
-	public SnapPSUtilParser() {
-		super();
+public class SnapIOStatParser extends SnapPluginParser {
+
+	public SnapIOStatParser() {
 		// All these data forms must be updated when snap publisher's output format is changed.
 		
 		typeMap.put("/intel/psutil/load/load1", lfClass);
@@ -43,4 +37,5 @@ public class SnapPSUtilParser extends SnapPluginParser {
 		
 		regexSet = regexTypeMap.keySet();
 	}
+
 }

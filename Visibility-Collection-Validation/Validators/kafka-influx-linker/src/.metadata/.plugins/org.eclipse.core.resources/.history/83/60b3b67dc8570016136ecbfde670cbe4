@@ -11,6 +11,22 @@ public class SnapPSUtilParser extends SnapPluginParser {
 		super();
 		// All these data forms must be updated when snap publisher's output format is changed.
 		
+		
+		
+		/*
+/intel/psutil/cpu0/guest                 0                       2016-08-01 18:10:47.001952515 +0900 KST
+/intel/psutil/cpu0/guest_nice            0                       2016-08-01 18:10:46.998733461 +0900 KST
+/intel/psutil/cpu0/idle                                          2016-08-01 18:10:47.009596377 +0900 KST
+/intel/psutil/cpu0/iowait                3.12                    2016-08-01 18:10:47.006205085 +0900 KST
+/intel/psutil/cpu0/irq                   0                       2016-08-01 18:10:46.995134881 +0900 KST
+/intel/psutil/cpu0/nice                  5.73                    2016-08-01 18:10:46.99604566 +0900 KST
+/intel/psutil/cpu0/softirq               24.78                   2016-08-01 18:10:47.007270089 +0900 KST
+/intel/psutil/cpu0/steal                 0                       2016-08-01 18:10:46.997292875 +0900 KST
+/intel/psutil/cpu0/stolen                0                       2016-08-01 18:10:47.000601989 +0900 KST
+/intel/psutil/cpu0/system                118.75                  2016-08-01 18:10:46.999566344 +0900 KST
+/intel/psutil/cpu0/user                  312.78                  2016-08-01 18:10:47.01075507 +0900 KST
+		 */
+		
 		typeMap.put("/intel/psutil/load/load1", lfClass);
 		typeMap.put("/intel/psutil/load/load5", lfClass);
 		typeMap.put("/intel/psutil/load/load15", lfClass);
@@ -36,10 +52,6 @@ public class SnapPSUtilParser extends SnapPluginParser {
 		
 		// Pattern: /intel/psutil/net/(alphanumerical(lowercase only) or _ or .)/(bytes_recv or bytes_sent or packets_recv or packets_sent)
 		regexTypeMap.put("^\\/intel\\/psutil\\/net\\/([0-9]|[a-z]|_|\\.)*\\/(bytes_recv|bytes_sent|dropin|dropout|errin|errout|packets_recv|packets_sent)$", lClass);
-		// Pattern: /intel/psutil/cpu/cpu(numerical not starting with 0 or 0 itself.)/(bytes_recv or bytes_sent or packets_recv or packets_sent)
-		// regexTypeMap.put("^\\/intel\\/psutil\\/cpu\\/cpu(0|[0-9][0-9]*)\\/(guest|guest_nice|idle|iowait|irq|nice|softirq|steal|stolen|system|user)$", lfClass);
-		// Currently "idle" value is given as null. Snap plugin is broken.
-		regexTypeMap.put("^\\/intel\\/psutil\\/cpu\\/cpu(0|[0-9][0-9]*)\\/(guest|guest_nice|iowait|irq|nice|softirq|steal|stolen|system|user)$", lfClass);
 		
 		regexSet = regexTypeMap.keySet();
 	}
