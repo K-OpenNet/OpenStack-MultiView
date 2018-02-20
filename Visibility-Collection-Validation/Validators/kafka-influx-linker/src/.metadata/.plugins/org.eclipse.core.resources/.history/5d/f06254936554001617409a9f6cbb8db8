@@ -128,7 +128,7 @@ public class ConfigLoader {
 		// Loading entire JSON file
 		JSONObject config_all_json;
 		JSONParser parser = new JSONParser();
-		Object obj = parser.parse(new FileReader(configFilePath));
+		Object obj = parser.parse(new FileReader(configFilePath);
 		config_all_json = (JSONObject) obj;
 
 		// Loading part for Kafka configuration
