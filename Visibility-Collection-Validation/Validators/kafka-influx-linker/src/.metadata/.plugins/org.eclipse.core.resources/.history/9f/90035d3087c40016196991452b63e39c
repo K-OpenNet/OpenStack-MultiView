@@ -1,0 +1,50 @@
+package chainlinker;
+
+import org.influxdb.InfluxDB.ConsistencyLevel;
+import org.json.simple.JSONObject;
+
+import chainlinker.ConfigLoader.InfluxDBConfig;
+
+public class BackendInfluxDB extends Backend {
+	private InfluxDBConfig influxdb;
+	// Nested class to store and provice read-only access to InfluxDB-related setting values.
+	public class InfluxDBConfig {
+		private String address;
+		private String id;
+		private String password;
+		private String db_name;
+		private String retention_policy;
+		private ConsistencyLevel consistency_level;
+
+		public String getAddress() {
+			return address;
+		}
+		public String getID() {
+			return id;
+		}
+		public String getPassword() {
+			return password;
+		}
+		public String getDBName() {
+			return db_name;
+		}
+		public String getRetentionPolicy() {
+			return retention_policy;
+		}
+		public ConsistencyLevel getConsistencyLevel() {
+			return consistency_level;
+		}
+	}
+	
+	public InfluxDBConfig loadConfig(JSONObject config_influx_json) {
+		config_influx_json = (JSONObject)getValue(config_all_json, "influxdb");
+
+		influxdb = new InfluxDBConfig();
+		influxdb.address = (String)getValue(config_influx_json, "address");
+		influxdb.id = (String)getValue(config_influx_json, "id");
+		influxdb.password = (String)getValue(config_influx_json, "password");
+		influxdb.db_name = (String)getValue(config_influx_json, "db_name");
+		influxdb.retention_policy = (String)getValue(config_influx_json, "retention_policy");
+		influxdb.consistency_level = getConsistencyLevel(config_influx_json);		
+	};
+}

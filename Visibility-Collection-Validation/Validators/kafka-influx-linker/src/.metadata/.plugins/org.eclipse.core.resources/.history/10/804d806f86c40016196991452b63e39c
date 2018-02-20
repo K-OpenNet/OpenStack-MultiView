@@ -1,0 +1,9 @@
+package chainlinker;
+
+public class BackendManifest {
+
+	public BackendManifest() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

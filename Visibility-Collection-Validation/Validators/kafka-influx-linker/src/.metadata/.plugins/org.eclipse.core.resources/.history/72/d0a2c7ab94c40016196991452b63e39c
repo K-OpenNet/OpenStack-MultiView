@@ -1,0 +1,44 @@
+package chainlinker;
+
+import java.io.InvalidClassException;
+
+public class BackendInfluxDBRPFF extends ReflectivePointFieldFeeder {
+
+	public BackendInfluxDBRPFF() {
+		super();
+	}
+
+	public void addField(
+			org.influxdb.dto.Point.Builder pointBuilder, 
+			@SuppressWarnings("rawtypes") Class dataTypeClass, 
+			Object data
+			) throws ClassNotFoundException {
+		if (dataTypeClass.equals(lValue.getClass())) {
+			pointBuilder.addField("value", (long)data);
+		} else if (dataTypeClass.equals(lfValue.getClass())) {
+			// For double values, additional touch is required as sometimes integer value may be passed.
+			if (lValue.getClass() == data.getClass()) {
+				// The reason for this double typecasting:
+				// http://stackoverflow.com/questions/32757565/java-lang-long-cannot-be-cast-to-java-lang-double
+				// https://docs.oracle.com/javase/specs/jls/se7/html/jls-5.html#jls-5.1.3
+				pointBuilder.addField("value", (double)((long)data));
+			} else {
+				pointBuilder.addField("value", (double)data);
+			}
+		} else if (dataTypeClass.equals(sValue.getClass())) {
+			pointBuilder.addField("value", (String)data);			
+		} else if (dataTypeClass.equals(bValue.getClass())) {
+			pointBuilder.addField("value", (boolean)data);			
+		} else {
+			throw new ClassNotFoundException("Unidentifiable value is detected. Is the JSON data value is correct?");
+		}
+	}
+	
+	protected abstract void addString(Object metricObject, String value) throws InvalidClassException {
+		org.influxdb.dto.Point.Builder pointBuilder = (org.influxdb.dto.Point.Builder)metricObject; 		
+		pointBuilder.addField("value", (long)value);
+	}
+	protected abstract void addLong(Object metricObject, long value) throws InvalidClassException;
+	protected abstract void addDouble(Object metricObject, double value) throws InvalidClassException;
+	protected abstract void addBoolean(Object metricObject, boolean value) throws InvalidClassException;	
+}

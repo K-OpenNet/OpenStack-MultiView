@@ -1,0 +1,9 @@
+package chainlinker;
+
+public class BackendInfluxDB_RPFF extends ReflectivePointFieldFeeder {
+
+	public BackendInfluxDB_RPFF() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

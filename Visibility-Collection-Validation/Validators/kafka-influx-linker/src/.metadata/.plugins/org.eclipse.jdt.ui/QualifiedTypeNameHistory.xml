@@ -15,8 +15,6 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.lang.Class"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
-<fullyQualifiedTypeName name="org.influxdb.dto.Point"/>
-<fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
 <fullyQualifiedTypeName name="PSUtilParser"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="org.json.simple.parser.ParseException"/>
@@ -32,4 +30,8 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="org.apache.kafka.common.config.ConfigException"/>
+<fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
+<fullyQualifiedTypeName name="org.influxdb.dto.Point"/>
+<fullyQualifiedTypeName name="chainlinker.ConfigLoader"/>
+<fullyQualifiedTypeName name="java.io.InvalidClassException"/>
 </qualifiedTypeNameHistroy>

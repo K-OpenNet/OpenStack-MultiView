@@ -1,0 +1,10 @@
+package chainlinker;
+
+public abstract class Backend {
+
+	public Backend() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	abstract public void loadConfig(JSONObject config_json);
+}

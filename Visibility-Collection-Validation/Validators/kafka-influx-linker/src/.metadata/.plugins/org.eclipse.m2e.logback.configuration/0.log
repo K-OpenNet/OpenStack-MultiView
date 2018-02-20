@@ -8195,3 +8195,808 @@ org.eclipse.core.runtime.CoreException: Launch configuration tester references n
 2016-12-18 01:41:33,971 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-12-18 01:41:33,971 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
 2016-12-18 01:42:18,680 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2016-12-18 01:46:09,573 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2016-12-18 01:48:08,864 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:48:08,873 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 01:48:08,881 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:48:08,882 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 01:48:17,312 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:48:17,316 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 01:48:17,317 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:48:17,318 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 01:49:42,415 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:49:42,418 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 01:49:42,420 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:49:42,421 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 01:50:33,659 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:50:33,659 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 01:50:33,660 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:50:33,661 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 01:52:28,732 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:52:28,732 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 01:52:28,733 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 01:52:28,734 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:22:58,912 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:22:58,920 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:22:58,921 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:22:58,921 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:23:40,359 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:23:40,360 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:23:40,361 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:23:40,361 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:24:26,063 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:24:26,064 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:24:26,065 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:24:26,066 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:25:39,073 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:25:39,074 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:25:39,075 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:25:39,075 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:25:57,240 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:25:57,241 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:25:57,242 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:25:57,242 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:26:11,932 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:26:11,933 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:26:11,933 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:26:11,934 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:26:21,979 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:26:21,980 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:26:21,981 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:26:21,981 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:27:15,845 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:15,845 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:27:15,846 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:15,846 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:27:25,501 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:25,502 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:27:25,503 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:25,503 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:27:33,948 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:33,949 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:27:33,950 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:33,950 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:27:39,850 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:39,850 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:27:39,852 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:39,853 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:27:52,006 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:52,007 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:27:52,008 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:52,008 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:27:54,414 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:54,414 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:27:54,415 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:27:54,415 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:28:55,854 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:28:55,854 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:28:55,855 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:28:55,855 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:28:56,871 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:28:56,872 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:28:56,873 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:28:56,873 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:29:01,563 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:29:01,564 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:29:01,564 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:29:01,564 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:29:44,058 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:29:44,059 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:29:44,060 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:29:44,060 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:30:06,246 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:30:06,246 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:30:06,247 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:30:06,247 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:30:11,022 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:30:11,022 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:30:11,023 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:30:11,023 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:30:41,023 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:30:41,024 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:30:41,025 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:30:41,025 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:31:00,293 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:31:00,294 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:31:00,294 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:31:00,295 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:32:26,899 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:32:26,900 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:32:26,901 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:32:26,902 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:32:30,070 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:32:30,071 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:32:30,072 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:32:30,073 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:32:39,410 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:32:39,411 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:32:39,412 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:32:39,412 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:34:12,336 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:34:12,337 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:34:12,338 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:34:12,338 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:34:16,134 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:34:16,134 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:34:16,135 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:34:16,135 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:34:22,168 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:34:22,169 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:34:22,171 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:34:22,171 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:36:13,113 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:36:13,114 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:36:13,115 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:36:13,115 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:37:28,087 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:37:28,088 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:37:28,089 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:37:28,090 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:37:33,788 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:37:33,789 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:37:33,789 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:37:33,790 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:38:41,497 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:38:41,498 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:38:41,498 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:38:41,499 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:40:31,753 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:40:31,754 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:40:31,755 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:40:31,755 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:40:43,866 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:40:43,866 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:40:43,867 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:40:43,868 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:41:31,752 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:31,753 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:41:31,754 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:31,754 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:41:34,923 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:34,924 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:41:34,925 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:34,925 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:41:39,618 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:39,619 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:41:39,620 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:39,620 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:41:56,302 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:56,303 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:41:56,304 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:41:56,304 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:42:05,931 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:42:05,931 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:42:05,932 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:42:05,932 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:42:12,133 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:42:12,134 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:42:12,134 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:42:12,134 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:42:20,841 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:42:20,841 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:42:20,842 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:42:20,842 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:43:19,464 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:43:19,465 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:43:19,465 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:43:19,465 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:43:22,410 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:43:22,411 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:43:22,411 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:43:22,411 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:43:46,850 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:43:46,851 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:43:46,852 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:43:46,853 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:45:08,713 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:45:08,714 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:45:08,714 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:45:08,715 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:45:24,621 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:45:24,622 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:45:24,622 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:45:24,622 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:46:14,563 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:14,563 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:46:14,564 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:14,564 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:46:24,856 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:24,857 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:46:24,857 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:24,858 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:46:29,018 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:29,019 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:46:29,019 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:29,020 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:46:42,123 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:42,124 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:46:42,125 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:42,125 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:46:44,402 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:44,403 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:46:44,403 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:44,404 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:46:58,215 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:58,216 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:46:58,216 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:46:58,217 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:47:34,099 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:47:34,099 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:47:34,100 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:47:34,100 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:48:16,028 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:16,028 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:48:16,029 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:16,030 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:48:20,453 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:20,455 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:48:20,456 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:20,457 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:48:23,987 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:23,988 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:48:23,989 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:23,989 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:48:31,546 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:31,558 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:48:31,559 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:31,560 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:48:47,862 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:47,862 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:48:47,863 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:48:47,863 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:49:20,866 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:49:20,867 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:49:20,868 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:49:20,868 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:50:28,867 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:50:28,867 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:50:28,868 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:50:28,869 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:50:33,782 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:50:33,782 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:50:33,783 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:50:33,783 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:51:07,569 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:51:07,570 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-18 03:51:07,571 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:51:07,571 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:52:05,352 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:52:05,352 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:52:05,353 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:52:05,353 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:54:29,216 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:29,217 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:54:29,218 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:29,218 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:54:33,211 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:33,212 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:54:33,213 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:33,213 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:54:38,294 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:38,295 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:54:38,295 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:38,296 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:54:53,020 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:53,021 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:54:53,021 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:53,021 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:54:54,042 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:54,043 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:54:54,044 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:54:54,044 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:55:07,109 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:55:07,109 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:55:07,110 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:55:07,110 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:56:04,246 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:56:04,247 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:56:04,248 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:56:04,248 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:56:26,100 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:56:26,100 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:56:26,101 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:56:26,101 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:56:36,365 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:56:36,366 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:56:36,366 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:56:36,366 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:57:50,587 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:57:50,587 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:57:50,588 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:57:50,588 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:58:23,927 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:58:23,927 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:58:23,928 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:58:23,928 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:58:48,765 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:58:48,766 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:58:48,766 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:58:48,767 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 03:59:24,099 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:59:24,100 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 03:59:24,100 [Worker-31] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 03:59:24,100 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:00:13,825 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:00:13,826 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:00:13,826 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:00:13,826 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:00:31,715 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:00:31,716 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:00:31,716 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:00:31,716 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:01:48,157 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:01:48,158 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:01:48,158 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:01:48,158 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:01:54,391 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:01:54,392 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:01:54,393 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:01:54,393 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:02:02,283 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:02:02,284 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:02:02,284 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:02:02,285 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:03:23,639 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:03:23,639 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:03:23,640 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:03:23,640 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:03:52,908 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:03:52,909 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:03:52,909 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:03:52,910 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:04:07,211 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:04:07,212 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:04:07,212 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:04:07,213 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:04:11,227 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:04:11,228 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:04:11,228 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:04:11,229 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:05:19,862 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:05:19,863 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:05:19,863 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:05:19,864 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:05:52,593 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:05:52,594 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:05:52,594 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:05:52,594 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:05:57,309 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:05:57,310 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:05:57,310 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:05:57,310 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:06:04,476 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:06:04,477 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:06:04,477 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:06:04,477 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:06:18,588 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:06:18,588 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:06:18,589 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:06:18,589 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:07:05,752 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:07:05,753 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:07:05,753 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:07:05,754 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:09:22,710 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:09:22,711 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:09:22,711 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:09:22,711 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:09:24,485 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:09:24,485 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:09:24,486 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:09:24,486 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:09:28,598 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:09:28,599 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:09:28,599 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:09:28,600 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:10:10,611 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:10:10,612 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:10:10,612 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:10:10,613 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:10:24,438 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:10:24,439 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:10:24,439 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:10:24,440 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:10:27,999 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:10:28,000 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:10:28,001 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:10:28,001 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:11:55,127 [Worker-40] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:11:55,128 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:11:55,128 [Worker-40] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:11:55,128 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:13:37,965 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:13:37,966 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:13:37,966 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:13:37,967 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:18:25,010 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:18:25,010 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:18:25,011 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:18:25,011 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:18:27,775 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:18:27,776 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:18:27,776 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:18:27,777 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:19:02,432 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:19:02,433 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:19:02,433 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:19:02,433 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:21:32,652 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:21:32,653 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:21:32,653 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:21:32,654 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:21:56,670 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:21:56,670 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:21:56,671 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:21:56,671 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:22:01,433 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:22:01,433 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:22:01,434 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:22:01,434 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:22:47,132 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:22:47,133 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:22:47,134 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:22:47,134 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:23:17,223 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:23:17,223 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:23:17,224 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:23:17,224 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:23:24,027 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:23:24,027 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:23:24,028 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:23:24,028 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:23:37,159 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:23:37,160 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:23:37,160 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:23:37,160 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:24:15,966 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:24:15,967 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:24:15,968 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:24:15,968 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:25:00,378 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:25:00,379 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:25:00,379 [Worker-36] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:25:00,380 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:26:12,103 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:26:12,103 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:26:12,104 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:26:12,104 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:26:49,366 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:26:49,367 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:26:49,367 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:26:49,367 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:26:53,904 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:26:53,904 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:26:53,905 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:26:53,905 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:27:19,240 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:27:19,240 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:27:19,241 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:27:19,241 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:29:41,382 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:29:41,383 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:29:41,384 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:29:41,384 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:30:18,410 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:30:18,410 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:30:18,411 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:30:18,411 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:31:30,123 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:31:30,124 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:31:30,124 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:31:30,124 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:32:18,400 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:32:18,401 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:32:18,401 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:32:18,402 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:32:24,231 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:32:24,232 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:32:24,233 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:32:24,233 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:32:33,106 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:32:33,107 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:32:33,107 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:32:33,108 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:34:00,884 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:34:00,885 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:34:00,885 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:34:00,885 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:34:13,341 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:34:13,342 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2016-12-18 04:34:13,342 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:34:13,342 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:36:43,686 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:36:43,686 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:36:43,687 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:36:43,687 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:45:01,368 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:01,368 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:45:01,369 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:01,369 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:45:16,403 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:16,403 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:45:16,404 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:16,404 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:45:34,236 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:34,237 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:45:34,237 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:34,237 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:45:46,923 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:46,923 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:45:46,924 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:45:46,924 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:47:01,886 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:01,886 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:47:01,887 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:01,887 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:47:32,945 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:32,946 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:47:32,946 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:32,947 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:47:47,586 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:47,586 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:47:47,587 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:47,587 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:47:49,155 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:49,156 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:47:49,156 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:49,157 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:47:50,330 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:50,330 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:47:50,331 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:47:50,331 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:49:50,515 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:49:50,522 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:49:50,523 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:49:50,523 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:49:55,383 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:49:55,383 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:49:55,384 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:49:55,384 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:50:07,722 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:50:07,722 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:50:07,723 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:50:07,723 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:50:15,205 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:50:15,205 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:50:15,206 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:50:15,206 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:51:17,555 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:17,555 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:51:17,556 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:17,556 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:51:18,576 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:18,577 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:51:18,577 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:18,577 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:51:26,910 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:26,910 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:51:26,911 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:26,911 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:51:57,802 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:57,802 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:51:57,803 [Worker-47] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:51:57,803 [Worker-47] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:52:17,685 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:52:17,686 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:52:17,686 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:52:17,687 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:54:07,895 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:07,896 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:54:07,896 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:07,897 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:54:27,019 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:27,019 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:54:27,020 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:27,020 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:54:33,521 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:33,521 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:54:33,522 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:33,522 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:54:39,831 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:39,832 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:54:39,832 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:54:39,833 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:56:42,056 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:56:42,056 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:56:42,057 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:56:42,057 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:57:02,427 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:57:02,427 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:57:02,428 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:57:02,428 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:57:06,890 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:57:06,890 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:57:06,891 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:57:06,891 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:58:45,113 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:58:45,120 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:58:45,121 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:58:45,121 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:59:00,195 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:00,196 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:59:00,196 [Worker-51] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:00,196 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:59:01,868 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:01,868 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:59:01,869 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:01,869 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:59:19,982 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:19,982 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:59:19,983 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:19,984 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 04:59:48,790 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:48,791 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 04:59:48,791 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 04:59:48,792 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:00:13,141 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:00:13,141 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:00:13,142 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:00:13,142 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:02:58,271 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:02:58,271 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:02:58,272 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:02:58,272 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:03:02,438 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:02,439 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:03:02,439 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:02,440 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:03:35,502 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:35,502 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:03:35,503 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:35,503 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:03:47,118 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:47,119 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:03:47,119 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:47,119 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:03:56,704 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:56,705 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:03:56,705 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:03:56,706 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:04:01,386 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:04:01,387 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:04:01,388 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:04:01,388 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:05:16,997 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:05:16,997 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:05:16,997 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:05:16,998 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:05:49,973 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:05:49,973 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:05:49,974 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:05:49,974 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:06:46,499 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:06:46,500 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:06:46,500 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:06:46,500 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:07:04,472 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:07:04,473 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:07:04,473 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:07:04,473 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:07:16,864 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:07:16,865 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:07:16,865 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:07:16,866 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:07:45,430 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:07:45,431 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:07:45,431 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:07:45,431 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:09:01,046 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:01,047 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:09:01,047 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:01,047 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:09:06,970 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:06,971 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:09:06,971 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:06,971 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:09:09,872 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:09,873 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:09:09,874 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:09,874 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:09:30,911 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:30,912 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:09:30,913 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:30,913 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:09:34,632 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:34,632 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:09:34,633 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:34,633 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:09:36,831 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:36,831 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:09:36,832 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:36,832 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:09:39,701 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:39,702 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:09:39,702 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:09:39,703 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:10:08,649 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:10:08,650 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:10:08,650 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:10:08,650 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:10:43,071 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:10:43,071 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:10:43,072 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:10:43,072 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:11:06,092 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:06,092 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:11:06,093 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:06,093 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:11:19,268 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:19,268 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:11:19,269 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:19,269 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:11:43,998 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:43,999 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:11:43,999 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:44,000 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:11:56,464 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:56,465 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:11:56,465 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:56,465 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:11:58,078 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:58,078 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:11:58,079 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:11:58,079 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:12:05,462 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:05,462 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:12:05,463 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:05,463 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:12:07,867 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:07,867 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:12:07,868 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:07,869 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:12:19,081 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:19,082 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:12:19,082 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:19,082 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:12:20,274 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:20,274 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:12:20,275 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:20,275 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:12:34,117 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:34,118 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:12:34,118 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:12:34,119 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:14:13,398 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:14:13,399 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:14:13,399 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:14:13,400 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:14:42,889 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:14:42,891 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:14:42,891 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:14:42,891 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:14:49,427 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:14:49,428 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:14:49,428 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:14:49,429 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:15:39,180 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:15:39,181 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:15:39,182 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:15:39,182 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:15:55,066 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:15:55,066 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:15:55,067 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:15:55,067 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:16:11,669 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:11,669 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:16:11,676 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:11,677 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:16:15,679 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:15,680 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:16:15,680 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:15,681 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:16:17,934 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:17,935 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:16:17,935 [Worker-49] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:17,936 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:16:34,736 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:34,736 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:16:34,737 [Worker-53] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:16:34,737 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:17:25,542 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:17:25,544 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:17:25,545 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:17:25,545 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources
+2016-12-18 05:17:31,181 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:17:31,181 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2016-12-18 05:17:31,182 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-12-18 05:17:31,182 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Chrome/Documents/eclipse workspaces/kafka-influx/Kafka-InfluxDB-Chain/src/test/resources

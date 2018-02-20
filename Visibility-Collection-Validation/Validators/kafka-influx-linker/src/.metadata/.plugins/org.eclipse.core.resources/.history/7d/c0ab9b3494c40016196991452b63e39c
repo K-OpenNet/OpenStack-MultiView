@@ -1,0 +1,9 @@
+package chainlinker;
+
+public class BackendInfluxDBRPFF extends ReflectivePointFieldFeeder {
+
+	public BackendInfluxDBRPFF() {
+		super();
+	}
+
+}

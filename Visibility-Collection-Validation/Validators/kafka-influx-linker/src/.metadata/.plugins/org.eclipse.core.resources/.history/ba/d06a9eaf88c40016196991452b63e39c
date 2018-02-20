@@ -1,0 +1,63 @@
+package chainlinker;
+
+import org.influxdb.InfluxDB.ConsistencyLevel;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import chainlinker.ConfigLoader.InfluxDBConfig;
+
+public class BackendInfluxDB extends Backend {
+	private InfluxDBConfig influxdb;
+	// Nested class to store and provice read-only access to InfluxDB-related setting values.
+	public class InfluxDBConfig {
+		private String address;
+		private String id;
+		private String password;
+		private String db_name;
+		private String retention_policy;
+		private ConsistencyLevel consistency_level;
+
+		public String getAddress() {
+			return address;
+		}
+		public String getID() {
+			return id;
+		}
+		public String getPassword() {
+			return password;
+		}
+		public String getDBName() {
+			return db_name;
+		}
+		public String getRetentionPolicy() {
+			return retention_policy;
+		}
+		public ConsistencyLevel getConsistencyLevel() {
+			return consistency_level;
+		}
+	}
+	
+	@Override
+	public void loadConfig(JSONObject config_influx_json) throws ParseException {
+		influxdb = new InfluxDBConfig();
+		influxdb.address = (String)ConfigLoader.getValue(config_influx_json, "address");
+		influxdb.id = (String)ConfigLoader.getValue(config_influx_json, "id");
+		influxdb.password = (String)ConfigLoader.getValue(config_influx_json, "password");
+		influxdb.db_name = (String)ConfigLoader.getValue(config_influx_json, "db_name");
+		influxdb.retention_policy = (String)ConfigLoader.getValue(config_influx_json, "retention_policy");
+		influxdb.consistency_level = getConsistencyLevel(config_influx_json);
+	};
+	
+	// InfluxDB's ConsistencyLevel requires a different approach as it is not a String.
+	protected ConsistencyLevel getConsistencyLevel(JSONObject json) throws ParseException {
+		String lvl_str = ((String)ConfigLoader.getValue(json, "consistency_level")).toLowerCase();
+		switch (lvl_str) {
+		case "all" :
+			return ConsistencyLevel.ALL;
+		default:
+//			throw new ParseException(0, "Failed to parse '" + String.join(":", ConfigLoader.hierachy_header) + ":consistency_level.");
+			throw new ParseException(0, "Failed to parse '" + String.join(":", ConfigLoader.hierachy_header) + ":consistency_level.");
+		}
+	}
+
+}

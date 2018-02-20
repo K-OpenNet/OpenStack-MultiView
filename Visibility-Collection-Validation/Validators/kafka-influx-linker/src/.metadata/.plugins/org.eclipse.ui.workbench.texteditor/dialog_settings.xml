@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="|" key="selection"/>
+		<item value="influxDBConf" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="ReflectivePointFieldFeeder"/>
+			<item value="influxdb"/>
+			<item value="influx"/>
+			<item value="collectors"/>
+			<item value="hierachy_header"/>
+			<item value="pluginManifestMap"/>
 			<item value=" or "/>
 			<item value="source"/>
-			<item value="for"/>
-			<item value="tag"/>
-			<item value="|"/>
-			<item value="&quot;, lClass"/>
-			<item value="Failed to find data type info for given data with field name"/>
-			<item value="parserKeySet"/>
 		</list>
 		<list key="replacehistory">
+			<item value="influxDBConf"/>
+			<item value="influx"/>
+			<item value="backendManifestMap"/>
+			<item value=""/>
 			<item value="|"/>
 			<item value=" or "/>
 			<item value="_perc&quot;, lfClass"/>
 			<item value="SnapPluginManifest"/>
-			<item value="getSafe(dataObj, "/>
-			<item value=""/>
-			<item value="consistency_level"/>
-			<item value="retention_policy"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

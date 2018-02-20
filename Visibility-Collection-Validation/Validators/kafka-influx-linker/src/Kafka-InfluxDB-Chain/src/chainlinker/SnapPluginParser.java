@@ -1,16 +1,15 @@
 package chainlinker;
 
+import java.io.InvalidClassException;
 import java.util.HashMap;
 import java.util.Set;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /*
  * This class serve as a template for all Snap plugin parsers.
  */
 public abstract class SnapPluginParser {
-	private static final Logger logger = LogManager.getLogger(SnapParser.class);
+	
+	Backend backend = ConfigLoader.getInstance().getBackend();
 	
 	Long lValue = 0L;
 	Double lfValue = 0.0;
@@ -41,33 +40,12 @@ public abstract class SnapPluginParser {
 	
 	// This method is to describe how the parser will feed the given data into pointBuilder.
 	public void addField(
-			org.influxdb.dto.Point.Builder pointBuilder, 
+			Object metricObject, 
 			String dataTypeName, 
 			Object data
-			) throws ClassNotFoundException {
-		if (!isParsible(dataTypeName))  throw new ClassNotFoundException ();
-		
-		try {
-			@SuppressWarnings("rawtypes")
-			Class dataType = typeMap.get(dataTypeName);
-			if (dataType == null) {
-				for (String regex : regexSet) {
-					if (dataTypeName.matches(regex)) {
-						dataType = regexTypeMap.get(regex);
-					}
-				}
-			}
-			if (dataType == null) {
-				throw new ClassNotFoundException ();
-			}
-			
-			ReflectivePointFieldFeeder.addField(
-					pointBuilder, dataType, data);
-		} catch (ClassNotFoundException e) {
-			logger.error("Given data type isn't supported by JSON format. Is it correct?");
-			throw new ClassNotFoundException ();
-		}
-	}
+			) throws ClassNotFoundException, InvalidClassException {
+		backend.addField(metricObject, dataTypeName, data, this);
+	}	
 	
 	// This method is to describe whether the parser is able to handle data with the given name.
 	// This exists to handle data with parameterized names.
