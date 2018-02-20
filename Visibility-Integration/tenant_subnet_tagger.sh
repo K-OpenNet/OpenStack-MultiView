@@ -18,11 +18,11 @@
 #
 # Created by    : Muhammad Usman
 # Version       : 0.1
-# Last Update	: December, 2017
+# Last Update	: February, 2018
 #
 # TH-CHULA
 
-OS_REGIONS="GIST1 GIST3 TW-NCKU MYREN MY-UM"
+OS_REGIONS="GIST1 KR-GIST2 GIST3 TW-NCKU MYREN MY-UM TH-CHULA VN-HUST"
 
 . /home/netcs/openstack/admin-openrc
 rm -rf tenant_subnet.temp1 tenant.tags
