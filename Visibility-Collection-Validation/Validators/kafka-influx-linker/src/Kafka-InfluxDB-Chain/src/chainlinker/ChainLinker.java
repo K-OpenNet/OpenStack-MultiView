@@ -3,6 +3,7 @@ import java.util.Properties;
 import java.util.Arrays;
 
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.config.ConfigException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -38,8 +39,15 @@ public class ChainLinker {
 		props.put("session.timeout.ms", kafkaConf.getSessionTimeoutMS());
 		props.put("key.deserializer", kafkaConf.getKeyDeserializer());
 		props.put("value.deserializer", kafkaConf.getValueDeserializer());
-		KafkaConsumer<String, String> consumer = new KafkaConsumer
-				<String, String>(props);
+		
+		System.out.println(kafkaConf.getBootstrapServers());
+		KafkaConsumer<String, String> consumer;
+		try {
+			consumer = new KafkaConsumer<String, String>(props);
+		} catch (ConfigException e) {
+			logger.fatal(e.getMessage(), e);
+			return;
+		}
 
 		// Reserving graceful shutdown
 		Runtime.getRuntime().addShutdownHook(new Thread() {
