@@ -1,6 +1,0 @@
-
-public class RFC3339toNSConvertor {
-	public static long ToNS(String timestamp) {
-		return 0L;
-	}
-}

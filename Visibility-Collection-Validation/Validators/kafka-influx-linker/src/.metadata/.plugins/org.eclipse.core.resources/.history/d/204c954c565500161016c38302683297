@@ -1,0 +1,102 @@
+package chainlinker;
+
+public class SnapPluginManifest {
+	private static final Logger logger = LogManager.getLogger(SnapPluginManifest.class);
+	
+	// Singleton part for this class as this class does not need to exist in multitude.
+	private static SnapPluginManifest instance = new SnapPluginManifest();
+	public static SnapPluginManifest getInstance () {
+		return instance;
+	}		
+
+	private SnapPluginManifest() {
+		load(System.getProperty( "user.home" ) + "/kafka-influx-linker/.kafka-influx-linker");
+	}
+
+	// This is to make text of the object in JSON that error occurred for error message.
+	LinkedList<String> hierachy_header = new LinkedList<>();
+
+	/*
+	 * Reading the config file. The file must be in JSON style.
+	 * 
+	 * Config file full path : ~/kafka/.Kafka-InfluxDB-Chain
+	 */
+	protected void load(String configFilePath) throws IOException, ParseException, NullPointerException {
+
+		// Loading entire JSON file
+		JSONObject config_all_json;
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(new FileReader(configFilePath));
+		config_all_json = (JSONObject) obj;
+
+		// Loading part for Kafka configuration
+		JSONObject config_kafka_json;
+		config_kafka_json = (JSONObject)getValue(config_all_json, "kafka");
+
+		kafka = new KafkaConfig();
+		hierachy_header.add("kafka");
+		kafka.topic_name = (String)getValue(config_kafka_json, "topic");
+
+		@SuppressWarnings("unchecked")
+		Iterator<String> iterator = ((JSONArray)getValue(config_kafka_json, "bootstrap.servers")).iterator();
+		StringJoiner brokerSJ = new StringJoiner(";", "", "");
+		while (iterator.hasNext()) {
+			brokerSJ.add(iterator.next());
+		}
+		kafka.bootstrap_servers = brokerSJ.toString();
+
+		kafka.group_id = (String)getValue(config_kafka_json, "group.id");
+		kafka.auto_commit = (String)getValue(config_kafka_json, "enable.auto.commit");
+		kafka.auto_commit_interval_ms = ((Long)getValue(config_kafka_json, "auto.commit.interval.ms")).toString();
+		kafka.session_timeout_ms = ((Long)getValue(config_kafka_json, "session.timeout.ms")).toString();
+		kafka.key_deserializer = (String)getValue(config_kafka_json, "key.deserializer");
+		kafka.value_deserializer = (String)getValue(config_kafka_json, "value.deserializer");
+
+		hierachy_header.removeLast();
+
+		// Loading part for InfluxDB
+		JSONObject config_influx_json;
+		hierachy_header.add("influxdb");
+		config_influx_json = (JSONObject)getValue(config_all_json, "influxdb");
+
+		influxdb = new InfluxDBConfig();
+		influxdb.address = (String)getValue(config_influx_json, "address");
+		influxdb.id = (String)getValue(config_influx_json, "id");
+		influxdb.password = (String)getValue(config_influx_json, "password");
+		influxdb.db_name = (String)getValue(config_influx_json, "db_name");
+		influxdb.retention_policy = (String)getValue(config_influx_json, "retention_policy");
+		influxdb.consistency_level = getConsistencyLevel(config_influx_json);
+
+		hierachy_header.removeLast();
+	}
+
+	KafkaConfig getKafkaConfig() {
+		return kafka;
+	}
+	InfluxDBConfig getInfluxDBConfig() {
+		return influxdb;
+	}
+
+	/*
+	 * This method is intended for checking validity of the given setting.
+	 * 
+	 * Currently, this checks only whether required value exists.
+	 * TODO: Make this also check each value's syntax.
+	 */
+	protected Object getValue(JSONObject json, String key) throws NullPointerException {
+		Object value = json.get(key);
+		if (value == null) throw new NullPointerException ("Config file's '" + String.join(":", hierachy_header) + ":" + key + "' is missing.");
+		return value;
+	}
+
+	// InfluxDB's ConsistencyLevel requires a different approach as it is not a String.
+	protected ConsistencyLevel getConsistencyLevel(JSONObject json) throws ParseException {
+		String lvl_str = ((String)getValue(json, "consistency_level")).toLowerCase();
+		switch (lvl_str) {
+		case "all" :
+			return ConsistencyLevel.ALL;
+		default:
+			throw new ParseException(0, "Failed to parse '" + String.join(":", hierachy_header) + ":consistency_level.");
+		}
+	}
+}

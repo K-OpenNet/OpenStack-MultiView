@@ -1,6 +1,7 @@
 package chainlinker;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringJoiner;
@@ -43,6 +44,16 @@ public class ConfigLoader {
 		return instance;
 	}		
 
+	private SnapConfig snap;
+	// Nested class to store and provide read-only access to Snap-related setting values.
+	public class SnapConfig {
+		private ArrayList<String> collectors;
+
+		public ArrayList<String> getCollectors() {
+			return collectors;
+		}
+	}
+	
 	private KafkaConfig kafka;
 	// Nested class to store and provice read-only access to Kafka-related setting values.
 	public class KafkaConfig {
@@ -122,7 +133,10 @@ public class ConfigLoader {
 	 * Reading the config file. The file must be in JSON style.
 	 * 
 	 * Config file full path : ~/kafka/.Kafka-InfluxDB-Chain
+	 * TODO: Must be updated.
 	 */
+	
+	@SuppressWarnings("unchecked")
 	protected void load(String configFilePath) throws IOException, ParseException, NullPointerException {
 
 		// Loading entire JSON file
@@ -130,7 +144,15 @@ public class ConfigLoader {
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader(configFilePath));
 		config_all_json = (JSONObject) obj;
+		
+		// Loading part for Snap
+		JSONObject config_snap_json;
+		config_snap_json = (JSONObject)getValue(config_all_json, "snap");
 
+		snap = new SnapConfig();
+		hierachy_header.add("snap");
+		snap.collectors = new ArrayList<>((JSONArray)getValue(config_snap_json, "collectors"));
+		
 		// Loading part for Kafka configuration
 		JSONObject config_kafka_json;
 		config_kafka_json = (JSONObject)getValue(config_all_json, "kafka");
@@ -139,7 +161,7 @@ public class ConfigLoader {
 		hierachy_header.add("kafka");
 		kafka.topic_name = (String)getValue(config_kafka_json, "topic");
 
-		@SuppressWarnings("unchecked")
+		// @SuppressWarnings("unchecked")
 		Iterator<String> iterator = ((JSONArray)getValue(config_kafka_json, "bootstrap.servers")).iterator();
 		StringJoiner brokerSJ = new StringJoiner(";", "", "");
 		while (iterator.hasNext()) {
@@ -177,6 +199,9 @@ public class ConfigLoader {
 	}
 	InfluxDBConfig getInfluxDBConfig() {
 		return influxdb;
+	}
+	SnapConfig getSnapConfig() {
+		return snap;
 	}
 
 	/*

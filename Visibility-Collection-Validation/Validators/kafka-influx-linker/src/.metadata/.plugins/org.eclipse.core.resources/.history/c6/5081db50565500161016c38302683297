@@ -1,0 +1,14 @@
+package chainlinker;
+
+public class SnapPluginManifest {
+	private static final Logger logger = LogManager.getLogger(SnapPluginManifest.class);
+	
+	// Singleton part for this class as this class does not need to exist in multitude.
+	private static SnapPluginManifest instance = new SnapPluginManifest();
+	public static SnapPluginManifest getInstance () {
+		return instance;
+	}		
+
+	private SnapPluginManifest() {
+	}
+}

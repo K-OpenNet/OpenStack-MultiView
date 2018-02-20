@@ -60,13 +60,12 @@ public class ChainLinker {
 		// print the topic name
 		logger.debug("Subscribed to topic '" + topicName + "'");
 
+		JSONParser parser = new JSONParser();
+		SnapParser dataParser = new SnapParser();
 		while (true) {
 			ConsumerRecords<String, String> records = consumer.poll(100);
 			for (ConsumerRecord<String, String> record : records) {
 				logger.debug("MSG. Offset = " + record.offset());
-				JSONParser parser = new JSONParser();
-
-				SnapParser dataParser = new SnapParser();
 				String value = record.value();
 				try {
 					dataParser.processMessage((JSONArray)parser.parse(value));

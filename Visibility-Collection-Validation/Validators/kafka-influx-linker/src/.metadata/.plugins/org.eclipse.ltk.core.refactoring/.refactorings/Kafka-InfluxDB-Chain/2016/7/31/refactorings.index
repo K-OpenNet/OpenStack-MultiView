@@ -12,3 +12,4 @@
 1469687289130	Delete element
 1469688972992	Rename local variable 'typeMap'
 1469692692236	Rename method 'isParsable'
+1469774627216	Encapsulate field 'collectors'

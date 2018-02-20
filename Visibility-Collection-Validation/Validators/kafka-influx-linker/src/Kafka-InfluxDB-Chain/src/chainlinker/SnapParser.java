@@ -25,12 +25,26 @@ public class SnapParser {
 
 	protected HashMap<String, SnapPluginParser> parserMap = new HashMap<>();
 	protected Set<String> parserKeySet;
+	protected ConfigLoader config;
 
 	public SnapParser() {
-		influxDBConf = ConfigLoader.getInstance().getInfluxDBConfig();
+		config = ConfigLoader.getInstance();
+		influxDBConf = config.getInfluxDBConfig();
 		// TODO: Must make this reflective.
-		parserMap.put("snap-plugin-collector-psutil", new SnapPSUtilParser());
-		parserMap.put("snap-plugin-collector-cpu", new SnapCPUParser());
+		HashMap<String, Class<? extends SnapPluginParser>> parserClassMap = SnapPluginManifest.getInstance().getPluginManifestMap(); 
+		try {
+			for (String collector : config.getSnapConfig().getCollectors()) {
+				Class<? extends SnapPluginParser> parserClass = parserClassMap.get(collector);
+				logger.trace("Loading SnapPluginParser module '" + parserClass.getName() + "' for plugin '" + collector + "'");
+				parserMap.put(collector, parserClass.newInstance());
+			}
+		} catch (InstantiationException e) {
+			logger.fatal("Failed to instantitate given class from SnapPluginManifest. Is SnapPluginManifest is properly written?", e);
+		} catch (IllegalAccessException e) {
+			logger.fatal("Failed to instantitate given class from SnapPluginManifest. Is SnapPluginManifest is properly written?", e);
+		}
+//		parserMap.put("snap-plugin-collector-psutil", new SnapPSUtilParser());
+//		parserMap.put("snap-plugin-collector-cpu", new SnapCPUParser());			
 		
 		parserKeySet = parserMap.keySet();
 		for (String parserKey : parserKeySet) {

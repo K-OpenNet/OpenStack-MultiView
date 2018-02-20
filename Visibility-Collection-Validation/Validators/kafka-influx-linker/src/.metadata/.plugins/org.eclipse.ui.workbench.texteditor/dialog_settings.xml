@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="dataTypeClass" key="selection"/>
+		<item value="Instance" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="instance"/>
+			<item value="ConfigLoader"/>
 			<item value="dataTypeClass"/>
 			<item value="parse"/>
 			<item value="System"/>
 			<item value="NullPointerException"/>
 			<item value="dataObj.get("/>
 			<item value=".get"/>
-			<item value="address"/>
-			<item value="password"/>
 		</list>
 		<list key="replacehistory">
+			<item value="SnapPluginManifest"/>
 			<item value="getSafe(dataObj, "/>
 			<item value=""/>
 			<item value="consistency_level"/>
@@ -25,14 +26,13 @@
 			<item value="db_name"/>
 			<item value="password"/>
 			<item value="id"/>
-			<item value="getValue(config_kafka_json, "/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="290" key="DIALOG_WIDTH"/>
 		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText-Regular" key="DIALOG_FONT_NAME"/>
 		<item value="409" key="DIALOG_HEIGHT"/>
-		<item value="52" key="DIALOG_X_ORIGIN"/>
-		<item value="101" key="DIALOG_Y_ORIGIN"/>
+		<item value="562" key="DIALOG_X_ORIGIN"/>
+		<item value="179" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
