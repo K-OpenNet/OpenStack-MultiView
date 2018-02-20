@@ -1,0 +1,10 @@
+1469002222349	Rename local variable 'jsonObject'
+1469003707702	Rename type 'main'
+1469004126776	Rename local variable 'config_json'
+1469153103439	Rename type 'PSUtilParser'
+1469154225013	Infer generic type arguments
+1469154533673	Infer generic type arguments
+1469185194996	Rename method 'Parse'
+1469186254563	Rename type 'PSUtilParser'
+1469186269835	Rename type 'PluginParser'
+1469293374860	Rename type 'ReflectiveFieldFeeder'

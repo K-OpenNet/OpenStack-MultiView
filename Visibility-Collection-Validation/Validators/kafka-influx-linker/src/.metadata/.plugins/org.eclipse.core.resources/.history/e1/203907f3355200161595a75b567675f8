@@ -1,0 +1,59 @@
+import java.util.Iterator;
+import java.util.StringJoiner;
+import java.util.concurrent.TimeUnit;
+
+import org.influxdb.dto.Point;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+/*
+ * Corresponding to snap-plugin-collector-psutil
+ * 
+ * CAUTION: This parser may fail in case if the plugins' version mismatch with the below.
+ * - collector:psutil:6
+ * - publisher:kafka:7
+ * 
+ */
+public class SnapPSUtilParser extends SnapPluginParser {
+	public Point parse(JSONObject dataObj) throws NullPointerException, ClassNotFoundException {
+		
+		// name, source, unit, time, value
+		
+		// Extraction of name. String name will be the measurement in influxDB.
+		JSONArray namespace = (JSONArray)dataObj.get("namespace");
+		StringJoiner nameSJ = new StringJoiner("/", "", "");
+		@SuppressWarnings("unchecked")
+		Iterator<JSONObject> namespace_iterator = namespace.iterator();
+		while (namespace_iterator.hasNext()) {
+			nameSJ.add(namespace_iterator.next().get("Value").toString());
+		}
+		String name = nameSJ.toString();
+		
+		// Extraction of source.
+		String source = (String)((JSONObject)dataObj.get("tags")).get("plugin_running_on");
+		
+		// Extraction of unit.
+		String unit = (String)dataObj.get("Unit_");
+		
+		// Extraction of time.
+		String timestamp = (String)dataObj.get("timestamp");
+		long time = RFC3339toNSConvertor.ToNS(timestamp);
+		
+		// Time sout for debugging
+		// TODO: This must be removed or must be equipped with debug log function.
+		System.out.println("Time : " + timestamp + " = " + time);
+		
+		org.influxdb.dto.Point.Builder builder = Point.measurement(name)
+							.time(time, TimeUnit.NANOSECONDS)
+		                    .tag("source", source)
+		                    .tag("unit", unit);
+		
+		PSUtilParserPref parserPref = PSUtilParserPref.getInstance();
+				
+		// TODO: Check if this work well with multiple types of data.
+		ReflectivePointFieldFeeder.addField(
+				builder, parserPref.TypeMap.get(name), dataObj.get("data"));
+				
+		return builder.build();
+	}
+}

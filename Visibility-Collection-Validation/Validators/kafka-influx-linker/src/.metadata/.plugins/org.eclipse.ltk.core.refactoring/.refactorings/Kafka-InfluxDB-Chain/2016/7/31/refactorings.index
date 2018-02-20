@@ -1,0 +1,9 @@
+1469410502086	Rename type 'kafkaConfig'
+1469411395099	Encapsulate field 'bootstrap_servers'
+1469411402885	Encapsulate field 'topic_name'
+1469411682168	Encapsulate field 'group_id'
+1469448460811	Delete element
+1469448568627	Move folder
+1469448597463	Delete element
+1469505519741	Infer generic type arguments
+1469516069931	Move compilation units

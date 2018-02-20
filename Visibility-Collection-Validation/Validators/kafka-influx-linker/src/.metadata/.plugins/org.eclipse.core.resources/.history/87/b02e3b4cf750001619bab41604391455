@@ -1,0 +1,23 @@
+
+public class ReflectiveFieldFeeder {
+	// Dummy value objects for class type info 
+	private static Long lValue = 0L;
+	private static Double lfValue = 0.0;
+	private static String sValue = "";
+	private static Boolean bValue = false;	
+	
+	public static int addField(org.influxdb.dto.Point.Builder pointBuilder, @SuppressWarnings("rawtypes") Class dataTypeClass, Object data) {
+		if (dataTypeClass.equals(lValue.getClass())) {
+			pointBuilder.addField("value", (long)data);
+		} else if (dataTypeClass.equals(lfValue.getClass())) {
+			pointBuilder.addField("value", (double)data);			
+		} else if (dataTypeClass.equals(sValue.getClass())) {
+			pointBuilder.addField("value", (String)data);			
+		} else if (dataTypeClass.equals(bValue.getClass())) {
+			pointBuilder.addField("value", (boolean)data);			
+		} else {
+			return -1;
+		}
+		return 0;
+	}
+}

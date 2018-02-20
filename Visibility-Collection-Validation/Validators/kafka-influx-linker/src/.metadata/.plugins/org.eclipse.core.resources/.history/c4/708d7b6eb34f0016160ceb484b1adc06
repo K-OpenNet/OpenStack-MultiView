@@ -1,0 +1,26 @@
+import java.util.HashMap;
+
+// Referenced site: https://blog.seotory.com/post/2016/03/java-singleton-pattern
+
+public class PSUtilParserPref {
+	private static PSUtilParserPref instance = new PSUtilParserPref();
+	
+	HashMap<String, Class> TypeMap; 
+	private PSUtilParserPref () {
+		// PSUtilParser's every settings must be written here.
+		
+		Class<Long> lClass = Long.TYPE;
+		Class<Double> lfClass = Double.TYPE;
+		
+		
+	}
+	
+	public static PSUtilParserPref getInstance () {
+		return instance;
+	}
+	
+	public void print () {
+//		System.out.println("It's print() method in EagerInitialization instance.");
+//		System.out.println("instance hashCode > " + instance.hashCode());
+	}
+}

@@ -1,0 +1,25 @@
+import java.time.Instant;
+
+public class RFC3339toNSConvertor {
+	public static long ToNS(String timestamp) {
+		int offset_pos = 23;
+		long offset_millis = 0;
+		while (offset_pos < timestamp.length()) {
+			if (!Character.isDigit(timestamp.charAt(offset_pos))) {
+				break;
+			}
+			offset_pos++;
+		}
+		char offset_ops = timestamp.charAt(offset_pos);
+		if (offset_ops != 'Z') {
+			String offset_string = timestamp.substring(offset_pos + 1);
+			String[] values = offset_string.split(":");
+			offset_millis = (Integer.parseInt(values[0]) * 3600 + Integer.parseInt(values[1]) * 60) * 1000;
+			offset_millis *= offset_ops == '+' ? -1 : 1;
+		}
+		long time = (Instant.parse(timestamp.substring(0, 23) + "Z").toEpochMilli() + offset_millis)* 1000000 + Long.parseLong(timestamp.substring(23, offset_pos));
+		
+		
+		return 0L;
+	}
+}
