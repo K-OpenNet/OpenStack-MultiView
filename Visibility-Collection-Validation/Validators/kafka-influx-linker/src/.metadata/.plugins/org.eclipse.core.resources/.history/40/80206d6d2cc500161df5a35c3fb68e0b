@@ -1,0 +1,47 @@
+package chainlinker;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class ArgumentParser {
+	private static final Logger logger = LogManager.getLogger(ArgumentParser.class);
+
+	public static class ArgumentMap {
+		private String configURL;
+		
+		public ArgumentMap() {
+			// Default values
+			configURL = "/opt/snap-kafka-parser/.snap-kafka-parser";
+		}
+
+		public String getConfigURL() {
+			return configURL;
+		}
+	}
+	
+	private ArgumentParser() {
+		// No, I will not let this class be instantiated.
+	}
+
+	public static ArgumentMap parseArg(String[] args) throws ParseException {
+		ArgumentMap argMap = new ArgumentMap();
+		
+        Options options = new Options();
+        options.addOption("c", false, "Configuration Filepath");
+        
+        CommandLineParser parser = new DefaultParser();
+        try {
+			CommandLine cmd = parser.parse(options, args);
+		} catch (ParseException e) {
+			logger.fatal("Failed to parse given argument '" + args + "'");
+			e.printStackTrace();
+		}		
+		return argMap;
+	}
+}

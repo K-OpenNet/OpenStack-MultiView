@@ -26,7 +26,6 @@
 <fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="org.apache.kafka.common.config.ConfigException"/>
@@ -34,4 +33,13 @@
 <fullyQualifiedTypeName name="org.influxdb.dto.Point"/>
 <fullyQualifiedTypeName name="chainlinker.ConfigLoader"/>
 <fullyQualifiedTypeName name="java.io.InvalidClassException"/>
+<fullyQualifiedTypeName name="org.apache.commons.cli.CommandLine"/>
+<fullyQualifiedTypeName name="org.apache.commons.cli.OptionBuilder"/>
+<fullyQualifiedTypeName name="org.apache.commons.cli.Option"/>
+<fullyQualifiedTypeName name="org.apache.commons.cli.Options"/>
+<fullyQualifiedTypeName name="org.apache.commons.cli.GnuParser"/>
+<fullyQualifiedTypeName name="org.apache.commons.cli.CommandLineParser"/>
+<fullyQualifiedTypeName name="org.apache.commons.cli.DefaultParser"/>
+<fullyQualifiedTypeName name="chainlinker.ArgumentParser.ArgumentMap"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
 </qualifiedTypeNameHistroy>

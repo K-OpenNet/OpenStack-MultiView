@@ -47,7 +47,7 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item value="/Users/Chrome/Documents/eclipse workspaces/kafka-influx" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="ChainLinker - Kafka-InfluxDB-Chain" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="ChainLinker - Snap-Kafka-Linker" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
 		<item value="/Users/Chrome/Downloads/kafka-influx-linker.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="2" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>

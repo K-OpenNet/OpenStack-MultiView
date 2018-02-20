@@ -1,0 +1,27 @@
+package chainlinker;
+
+public class ArgumentParser {
+
+	public static class ArgumentMap {
+		private String configURL;
+		
+		public ArgumentMap() {
+			// Default values
+			configURL = "/opt/snap-kafka-parser/.snap-kafka-parser";
+		}
+
+		public String getConfigURL() {
+			return configURL;
+		}
+	}
+	
+	private ArgumentParser() {
+		// No, I will not let this class be instantiated.
+	}
+
+	public static ArgumentMap parseArg(String arg) {
+		ArgumentMap argMap = new ArgumentMap();
+		argMap.configURL = "";
+		return argMap;
+	}
+}
