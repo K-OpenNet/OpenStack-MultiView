@@ -24,6 +24,7 @@ public class ConfigLoader {
 		// Loading configurations from config file. Any error during loading will be filtered here.
 		ConfigLoader conf;
 		try {
+			// TODO: Make this to get config file's path, not by hard-coded string inside of it.
 			conf = new ConfigLoader();
 		} catch (IOException e1) {
 			logger.fatal("Failed to open config file. Is it in proper place? The file's full path must be \"~/kafka/.Kafka-InfluxDB-Chain\".", e1);
@@ -128,7 +129,7 @@ public class ConfigLoader {
 		JSONObject config_all_json;
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader(
-				System.getProperty( "user.home" ) + "/kafka/.Kafka-InfluxDB-Chain"));
+				System.getProperty( "user.home" ) + "/kafka-influx-linker/.kafka-influx-linker"));
 		config_all_json = (JSONObject) obj;
 
 		// Loading part for Kafka configuration

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration package="chainlinker" status="ALL">
 	<Appenders>
-		<RollingFile name="RollingFile" fileName="/tmp/logs/chainlinker.log"
+		<RollingFile name="RollingFileTracer" fileName="/var/logs/chainlinker-tracer.log"
+			filePattern="logs/chainlinker-%d{MM-dd-yyyy}.log.gz"
+			ignoreExceptions="false">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<TimeBasedTriggeringPolicy />
+		</RollingFile>
+		<RollingFile name="RollingFileDebug" fileName="/var/logs/chainlinker-debug.log"
 			filePattern="logs/chainlinker-%d{MM-dd-yyyy}.log.gz"
 			ignoreExceptions="false">
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
@@ -12,9 +18,14 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Root level="trace">
+		<Logger name="LogTracer" level="trace">
+			<AppenderRef ref="RollingFileTracer" />
+		</Logger>
+		<Logger name="LogDebug" level="debug">
+			<AppenderRef ref="RollingFileDebug" />
 			<AppenderRef ref="Console" />
-			<AppenderRef ref="RollingFile" />
+		</Logger>
+		<Root level="info">
 		</Root>
 	</Loggers>
 </Configuration>
