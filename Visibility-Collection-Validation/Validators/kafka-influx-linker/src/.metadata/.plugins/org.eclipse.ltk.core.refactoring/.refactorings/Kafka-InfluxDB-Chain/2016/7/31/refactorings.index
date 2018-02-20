@@ -7,3 +7,8 @@
 1469448597463	Delete element
 1469505519741	Infer generic type arguments
 1469516069931	Move compilation units
+1469684774113	Rename type 'SnapPluginParser'
+1469685376236	Rename local variable 'TypeMap_internal'
+1469687289130	Delete element
+1469688972992	Rename local variable 'typeMap'
+1469692692236	Rename method 'isParsable'

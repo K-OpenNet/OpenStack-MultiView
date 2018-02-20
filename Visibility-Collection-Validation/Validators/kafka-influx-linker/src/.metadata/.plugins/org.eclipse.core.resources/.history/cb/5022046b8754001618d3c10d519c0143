@@ -1,0 +1,7 @@
+package chainlinker;
+
+public class SnapPluginParser {
+	public static void loadMap() {
+		
+	}
+}

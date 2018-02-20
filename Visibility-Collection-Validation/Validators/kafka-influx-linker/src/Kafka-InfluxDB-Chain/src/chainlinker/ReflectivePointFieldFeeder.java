@@ -6,8 +6,6 @@ package chainlinker;
  * This class separates non-reflective codes from the main code block.
  */
 
-// TODO: Move this into SnapPluginParser.
-
 public class ReflectivePointFieldFeeder {
 	// NOTE:
 	// I'm still getting familiar with Java, but if there're anyone knows it better than me,

@@ -1,0 +1,11 @@
+package chainlinker;
+
+import java.util.HashMap;
+
+public class SnapPluginParser {
+	public static HashMap<String, Class> loadMap(HashMap<String, Class> map) {
+		return null;
+	}) {
+		return null;
+	}
+}

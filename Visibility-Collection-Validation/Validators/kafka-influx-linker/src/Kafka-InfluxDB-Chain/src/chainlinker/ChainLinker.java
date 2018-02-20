@@ -66,7 +66,7 @@ public class ChainLinker {
 				logger.debug("MSG. Offset = " + record.offset());
 				JSONParser parser = new JSONParser();
 
-				SnapPSUtilParser dataParser = new SnapPSUtilParser();
+				SnapParser dataParser = new SnapParser();
 				String value = record.value();
 				try {
 					dataParser.processMessage((JSONArray)parser.parse(value));

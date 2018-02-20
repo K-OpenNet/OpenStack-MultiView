@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/Chrome/Documents/eclipse workspaces/kafka-influx.screwed/Kafka-InfluxDB-Chain"/>
+		<item value="/Users/Chrome/Documents/eclipse workspaces/kafka-influx.screwed"/>
+	</list>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item value="false" key="FilterByLocation"/>
 		<item value="true" key="ShowStatusLine"/>

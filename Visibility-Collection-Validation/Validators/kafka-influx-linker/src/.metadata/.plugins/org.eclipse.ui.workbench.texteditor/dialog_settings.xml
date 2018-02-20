@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="System" key="selection"/>
+		<item value="dataTypeClass" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="dataTypeClass"/>
+			<item value="parse"/>
 			<item value="System"/>
 			<item value="NullPointerException"/>
 			<item value="dataObj.get("/>
 			<item value=".get"/>
 			<item value="address"/>
 			<item value="password"/>
-			<item value="config_kafka_json.get("/>
-			<item value="msgValue"/>
 		</list>
 		<list key="replacehistory">
 			<item value="getSafe(dataObj, "/>
