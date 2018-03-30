@@ -1,9 +1,11 @@
-# Name          : mcd_planes_tacing.c
-# Description   : A script for tracing network packets at kernel-level
-#
-# Created by    : Muhammad Usman
-# Version       : 0.1
-# Last Update   : March, 2018
+/* 
+ Name          : mcd_planes_tacing.c
+ Description   : A script for tracing network packets at kernel-level
+
+ Created by    : Muhammad Usman
+ Version       : 0.1
+ Last Update   : March, 2018
+*/
 
 #include <uapi/linux/ptrace.h>
 #include <net/sock.h>
