@@ -19,7 +19,6 @@ import netifaces as ni
 import re
 import json
 from urllib2 import urlopen
-#import geoip
 import time
 
 from kafka import KafkaProducer
@@ -62,17 +61,16 @@ sock = socket.fromfd(socket_fd,socket.PF_PACKET,socket.SOCK_RAW,socket.IPPROTO_I
 #set it as blocking socket
 sock.setblocking(True)
 
-print("hosname, MachineIP   ipver     Src IP Addr     Dst IP Addr     Local_Src_Addr   Local_des_Addr     Local_Src_Port   Local_des_Port VNI  VLANID  protocol  Packet Length ")
+print("hosname, MachineIP   ipver     Src IP Addr     Dst IP Addr     Src_Port   Des_Port  Local_Src_Addr   Local_des_Addr     Local_Src_Port   Local_Des_Port VNI  VLANID  protocol  Packet Length ")
 count_c1 = 0
 
 while 1:
     #retrieve raw packet from socket
     packet_str = os.read(socket_fd,2048)
-    #print(packet_str)
+    
     #convert packet into bytearray
     packet_bytearray = bytearray(packet_str)
     
-    #print (packet_bytearray)
     #ethernet header length
     ETH_HLEN = 14 
     
@@ -127,41 +125,46 @@ while 1:
     ipversion = str(bin(packet_bytearray[14])[2:5])
     
     #parsing source ip address, destination ip address from ip packet header
-    srcAddr = str(packet_bytearray[26]) + "." + str(packet_bytearray[27]) + "." + str(packet_bytearray[28]) + "." + str(packet_bytearray[29])
-    dstAddr = str(packet_bytearray[30]) + "." + str(packet_bytearray[31]) + "." + str(packet_bytearray[32]) + "." + str(packet_bytearray[33])
+    src_host_ip = str(packet_bytearray[26]) + "." + str(packet_bytearray[27]) + "." + str(packet_bytearray[28]) + "." + str(packet_bytearray[29])
+    dest_host_ip = str(packet_bytearray[30]) + "." + str(packet_bytearray[31]) + "." + str(packet_bytearray[32]) + "." + str(packet_bytearray[33])
     
+    #parsing source port and destination port
+    src_host_port = packet_bytearray[34] << 8 | packet_bytearray[35]
+    dest_host_port = packet_bytearray[36] << 8 | packet_bytearray[37]
+    
+    #parsing VNI and VLANID from VXLAN header
     VLANID=""
-    VNI= str((packet_bytearray[46])+(packet_bytearray[47])+(packet_bytearray[48]))
-    VLANID= str((packet_bytearray[64])+(packet_bytearray[65]))
+    VNI = str((packet_bytearray[46])+(packet_bytearray[47])+(packet_bytearray[48]))
+    VLANID = str((packet_bytearray[64])+(packet_bytearray[65]))
 
     if (packet_bytearray[77]==6):
         protocoll4 = 6
-        srcPort = packet_bytearray[88] << 8 | packet_bytearray[88]
-        dstPort = packet_bytearray[90] << 8 | packet_bytearray[91]
+        src_vm_port = packet_bytearray[88] << 8 | packet_bytearray[88]
+        dest_vm_port = packet_bytearray[90] << 8 | packet_bytearray[91]
     elif (packet_bytearray[77]==1):
         protocoll4 = 1
-        srcPort = "-1"
-        dstPort = "-1"
+        src_vm_port = -1
+        dest_vm_port = -1
     elif (packet_bytearray[77]==17):
         protocoll4 = 17
-        srcPort = packet_bytearray[88] << 8 | packet_bytearray[88]
-        dstPort = packet_bytearray[90] << 8 | packet_bytearray[91]
+        src_vm_port = packet_bytearray[88] << 8 | packet_bytearray[88]
+        dest_vm_port = packet_bytearray[90] << 8 | packet_bytearray[91]
     else:
-        protocoll4 = "500"
-        srcPort = packet_bytearray[88] << 8 | packet_bytearray[88]
-        dstPort = packet_bytearray[90] << 8 | packet_bytearray[91]
+        protocoll4 = packet_bytearray[77]
+        src_vm_port = packet_bytearray[88] << 8 | packet_bytearray[88]
+        dest_vm_port = packet_bytearray[90] << 8 | packet_bytearray[91]
 
-    local_src_addr = str(packet_bytearray[80]) + "."+ str(packet_bytearray[81]) + "." + str(packet_bytearray[82]) + "." + str(packet_bytearray[83])
-    local_des_addr = str(packet_bytearray[84]) + "."+ str(packet_bytearray[85]) + "." + str(packet_bytearray[86]) + "." + str(packet_bytearray[87]) 
+    src_vm_ip = str(packet_bytearray[80]) + "."+ str(packet_bytearray[81]) + "." + str(packet_bytearray[82]) + "." + str(packet_bytearray[83])
+    dest_vm_ip = str(packet_bytearray[84]) + "."+ str(packet_bytearray[85]) + "." + str(packet_bytearray[86]) + "." + str(packet_bytearray[87]) 
 
-    #  MESSAGE = (socket.gethostname(), ip, str(int(ipversion, 2)), srcAddr, str(srcPort), dstAddr, str(dstPort), str(total_length), protocoll4, local_src_addr, local_des_addr, str(int(VNI)), str(int(VLANID)))
+    #  MESSAGE = (socket.gethostname(), ip, str(int(ipversion, 2)), srcAddr, str(src_vm_port), dstAddr, str(dest_vm_port), str(total_length), protocoll4, local_src_addr, local_des_addr, str(int(VNI)), str(int(VLANID)))
     #  print (MESSAGE)
     #  MESSAGE1 = ','.join(MESSAGE)
     #  MESSAGE2 = MESSAGE1.encode() 
     
     #  producer = KafkaProducer(bootstrap_servers=['vc.manage.overcloud:9092'])
     #  producer.send('iovisor-oftein', key=b'iovisor', value=MESSAGE2)
-    MESSAGE = str(int(round(time.time() * 1000000)))+","+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+srcAddr+","+dstAddr+","+local_src_addr+","+local_des_addr+","+str(srcPort)+","+str(dstPort)+","+str(int(VNI))+","+str(int(VLANID))+","+str(protocoll4)+","+str(total_length)
+    MESSAGE = str(int(round(time.time() * 1000000)))+","+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+src_host_ip+","+dest_host_ip+","+str(src_host_port)+","+str(dest_host_port)+","+src_vm_ip+","+dest_vm_ip+","+str(src_vm_port)+","+str(dest_vm_port)+","+str(int(VNI))+","+str(int(VLANID))+","+str(protocoll4)+","+str(total_length)
     print (MESSAGE)
     if (int(time.strftime("%M")) < 30):
        filename = "/opt/IOVisor-Data/data-"+time.strftime("%Y-%m-%d-%H")+"-00"
