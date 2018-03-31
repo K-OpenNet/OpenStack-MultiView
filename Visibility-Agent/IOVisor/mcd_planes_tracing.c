@@ -45,6 +45,57 @@ int ip_filter(struct __sk_buff *skb) {
 			goto DROP;}}
 	}
 
+	u32  tcp_header_length = 0;
+	u32  ip_header_length = 0;
+	u32  payload_offset = 0;
+	u32  payload_length = 0;
+
+	struct tcp_t *tcp = cursor_advance(cursor, sizeof(*tcp));
+	/*
+	  calculate ip header length
+	  value to multiply * 4
+	  e.g. ip->hlen = 5 ; IP Header Length = 5 x 4 byte = 20 byte
+
+	  The minimum value for this field is 5, which indicates a length of 5 x 32 bits(4 bytes) = 20 bytes
+	*/
+	ip_header_length = ip->hlen << 2;    //SHL 2 -> *4 multiply
+
+	/*
+	  calculate tcp header length
+	  value to multiply *4
+	  e.g. tcp->offset = 5 ; TCP Header Length = 5 x 4 byte = 20 byte
+
+	  The minimum value for this field is 5, which indicates a length of 5 x 32 bits(4 bytes) = 20 bytes
+	*/
+	tcp_header_length = tcp->offset << 2; //SHL 2 -> *4 multiply
+
+	//calculate patload offset and length
+	payload_offset = ETH_HLEN + ip_header_length + tcp_header_length;
+	payload_length = ip->tlen - ip_header_length - tcp_header_length;
+
+	/*
+	  http://stackoverflow.com/questions/25047905/http-request-minimum-size-in-bytes
+	  minimum length of http request is always geater than 7 bytes
+	  avoid invalid access memory
+	  include empty payload
+	*/
+	if(payload_length < 7) {
+		goto DROP;
+	}
+	
+	/*
+	  load firt 7 byte of payload into p (payload_array)
+	  direct access to skb not allowed
+	  load_byte(): read binary data from socket buffer(skb)
+	*/
+	unsigned long p[7];
+	int i = 0;
+	int j = 0;
+	for (i = payload_offset ; i < (payload_offset + 7) ; i++) {
+		p[j] = load_byte(skb , i);
+		j++;
+	}
+		
 	goto KEEP;
 
 	//keep the packet and send it to userspace retruning -1
