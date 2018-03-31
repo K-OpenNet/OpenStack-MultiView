@@ -22,6 +22,10 @@ from kafka  import KafkaProducer
 from kafka.errors import KafkaError
 import json
 
+import iovisor_pb2
+from google.protobuf.internal.encoder import _VarintBytes
+from google.protobuf.internal.decoder import _DecodeVarint32
+
 #convert a bin string into a string of hex char
 #helper function to print raw packet in hex
 def toHex(s):
@@ -34,7 +38,21 @@ def toHex(s):
 
     return reduce(lambda x,y:x+y, lst)
 
- 
+# This function fills in a NetworkPacket message.
+def AddPacket(netpacket, collectionTime, mpName, mpIP, srcIP, destIP, srcPort, destPort, protocol, dataBytes):
+    netpacket.collectionTime = collectionTime
+    netpacket.mpName = mpName
+    netpacket.mpIP = mpIP
+    #netpacket.ipVersion = ipVersion
+    netpacket.srcIP = srcIP
+    netpacket.destIP = destIP
+    netpacket.srcPort = srcPort
+    netpacket.destPort = destPort
+    netpacket.protocol = protocol
+    netpacket.dataBytes = dataBytes
+    #netpacket.message = ""
+    
+     
 # initialize BPF - load source code from http-parse-simple.c
 bpf = BPF(src_file = "mcd_planes_tracing.c",debug = 0)
 
@@ -128,14 +146,15 @@ while 1:
     srcAddr = str(packet_bytearray[26]) + "." + str(packet_bytearray[27]) + "." + str(packet_bytearray[28]) + "." + str(packet_bytearray[29])
     dstAddr = str(packet_bytearray[30]) + "." + str(packet_bytearray[31]) + "." + str(packet_bytearray[32]) + "." + str(packet_bytearray[33])
 
+    #parsing source port and destination port
     if (packet_bytearray[23]==6):
         protocol = 6
     	srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
     	dstPort = packet_bytearray[36] << 8 | packet_bytearray[37]
     elif (packet_bytearray[23]==1):
     	protocol = 1
-    	srcPort = "-1"
-    	dstPort = "-1"
+    	srcPort = -1
+    	dstPort = -1
     elif (packet_bytearray[23]==17):
     	protocol = 17
     	srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
@@ -144,13 +163,25 @@ while 1:
     	protocol = -1
     	srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
     	dstPort = packet_bytearray[36] << 8 | packet_bytearray[37]
- 
+
+    # Define Protocol Buffer
+    network_packet = iovisor_pb2.NetworkPackets()
+    
+    # Add a packet
+    AddPacket(network_packet.packet.add(), int(round(time.time() * 1000000)), socket.gethostname(), ip, srcAddr, dstAddr, srcPort, dstPort, protocol, total_length)
+    
     MESSAGE = str(int(round(time.time() * 1000000)))+","+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+srcAddr+","+dstAddr+","+str(srcPort)+","+str(dstPort)+","+str(protocol)+","+str(total_length)
     print (MESSAGE)
+    
     if (int(time.strftime("%M")) < 30):
         filename = "/opt/IOVisor-Data/control-"+time.strftime("%Y-%m-%d-%H")+"-00"
     else:
         filename = "/opt/IOVisor-Data/control-"+time.strftime("%Y-%m-%d-%H")+"-30"
+    
+    #f = open(filename, "wb")
     f = open(filename, "a")
+    #size = network_packet.ByteSize()
+    #f.write(_VarintBytes(size))
+    #f.writeDelimitedTo(network_packet.SerializeToString())
     f.write("%s\n" % MESSAGE)
     f.close
