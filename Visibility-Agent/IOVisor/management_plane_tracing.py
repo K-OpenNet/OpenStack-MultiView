@@ -129,14 +129,15 @@ while 1:
     srcAddr = str(packet_bytearray[26]) + "." + str(packet_bytearray[27]) + "." + str(packet_bytearray[28]) + "." + str(packet_bytearray[29])
     dstAddr = str(packet_bytearray[30]) + "." + str(packet_bytearray[31]) + "." + str(packet_bytearray[32]) + "." + str(packet_bytearray[33])
   
+    #parsing source port and destination port
     if (packet_bytearray[23]==6):
         protocol = 6
         srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
         dstPort = packet_bytearray[36] << 8 | packet_bytearray[37]
     elif (packet_bytearray[23]==1):
         protocol = 1
-        srcPort = "-1"
-        dstPort = "-1"
+        srcPort = -1
+        dstPort = -1
     elif (packet_bytearray[23]==17):
         protocol = 17
         srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
@@ -149,9 +150,9 @@ while 1:
     MESSAGE = str(int(round(time.time() * 1000000)))+","+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+srcAddr+","+dstAddr+","+str(srcPort)+","+str(dstPort)+","+str(protocol)+","+str(total_length)
     print (MESSAGE)
     if (int(time.strftime("%M")) < 30):
-     filename = "/opt/IOVisor-Data/management-"+time.strftime("%Y-%m-%d-%H")+"-00"
+        filename = "/opt/IOVisor-Data/management-"+time.strftime("%Y-%m-%d-%H")+"-00"
     else:
-     filename = "/opt/IOVisor-Data/management-"+time.strftime("%Y-%m-%d-%H")+"-30"
+        filename = "/opt/IOVisor-Data/management-"+time.strftime("%Y-%m-%d-%H")+"-30"
     f = open(filename, "a")
     f.write("%s\n" % MESSAGE)
     f.close
