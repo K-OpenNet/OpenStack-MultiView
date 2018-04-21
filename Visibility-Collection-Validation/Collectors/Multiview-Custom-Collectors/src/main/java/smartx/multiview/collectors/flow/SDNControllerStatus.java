@@ -13,28 +13,12 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.influxdb.InfluxDB;
-import org.influxdb.InfluxDBFactory;
-import org.influxdb.dto.BatchPoints;
-import org.influxdb.dto.Point;
-import org.influxdb.dto.Query;
-import org.influxdb.dto.QueryResult;
-
-import java.util.concurrent.TimeUnit;
-
-
-
-
-
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-
 import org.bson.Document;
 
 public class SDNControllerStatus implements Runnable{
@@ -45,11 +29,8 @@ public class SDNControllerStatus implements Runnable{
 	private MongoDatabase db;
 	private Document document;
 	private MongoCollection<Document> collection1, collection2;
-	private BatchPoints batchPoints;
-	private InfluxDB influxDB;
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
-	//public SDNControllerStatusClass(String dbHost, int dbPort, String dbName, String flowConfigMongoCollection, String flowConfigMongoCollectionRT, String devopscon, String User, String Password)
 	public SDNControllerStatus(String dbHost, int dbPort, String dbName, String flowConfigMongoCollection, String flowConfigMongoCollectionRT, String devopscon, String User, String Password)
 	{
 		mongoClient      = new MongoClient(dbHost, dbPort);
@@ -66,7 +47,6 @@ public class SDNControllerStatus implements Runnable{
     	String baseURL   = "http://"+devopscontroller+":8080/controller/nb/v2/flowprogrammer";
     	String containerName = "default", actions, NodeID, BoxID; 
     	String [] id;
-    	//Point point1;
     	Date timestamp = new Date();
     	//System.out.println(devopscontroller);
     	collection2.deleteMany(new Document());
@@ -140,24 +120,8 @@ public class SDNControllerStatus implements Runnable{
 	        	collection1.insertOne(document);
 	        	collection2.insertOne(document);
 	        	
-	        	//Insert to InfluxDB for Visualization
-	        	//point1 = Point.measurement("FlowRules")
-		        //        .time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
-		        //       .addField("controllerIP", devopscontroller)
-		        //        .addField("InstallInHw", jsonArray.getJSONObject(i).get("installInHw").toString())
-		        //        .addField("name", jsonArray.getJSONObject(i).get("name").toString())
-		        //        .tag("node", id[0].substring(7, id[0].length()-1)) // tag the individual point
-		        //        .build();
-	        	
-	        	//batchPoints.point(point1);
-		        
-		        // Write them to InfluxDB
-	        	//influxDB.write(arg0, arg1, arg2);
-		        //influxDB.write(batchPoints);
 	        }
-	        
-	        
-	    } catch (Exception e) {
+	    }catch (Exception e) {
 	        e.printStackTrace();
 	    }
     }
@@ -174,7 +138,6 @@ public class SDNControllerStatus implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		
 	}
     
     public void start() {

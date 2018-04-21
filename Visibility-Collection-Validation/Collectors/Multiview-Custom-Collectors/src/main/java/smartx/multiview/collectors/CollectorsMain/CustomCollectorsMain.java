@@ -46,10 +46,9 @@ public class CustomCollectorsMain
 		}
         
         //Start Visibility Collection for VM's Data
-        InstaceStatusNovaClass instanceNovaStatus = new InstaceStatusNovaClass(configLoader.getCTRL_Box_IP(), configLoader.getCTRL_Box_USER(), configLoader.getCTRL_Box_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getOPENSTACK_USER_ID(), configLoader.getOPENSTACK_PASSWORD(), configLoader.getOPENSTACK_PROJECT_ID(), configLoader.getOPENSTACK_ENDPOINT(), configLoader.getvboxMongoCollection(), configLoader.getvboxMongoCollectionRT());
-        instanceNovaStatus.start();
-        
-        
+        OpenStackInstances instancelist = new OpenStackInstances(configLoader.getCTRL_Box_IP(), configLoader.getCTRL_Box_USER(), configLoader.getCTRL_Box_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getvboxMongoCollection(), configLoader.getvboxMongoCollectionRT());
+        instancelist.start();
+                
         //Start Instant Visibility Collection for OVS Data
         ovsBridgeStatusClass bridgeStatus  = new ovsBridgeStatusClass(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getpboxMongoCollection(), configLoader.getovsListMongoCollection(), configLoader.getovsstatusMongoCollection(), configLoader.getBoxType(), configLoader.getOVS_VM_USER(), configLoader.getOVS_VM_PASSWORD());
         bridgeStatus.start();
