@@ -53,6 +53,10 @@ public class CustomCollectorsMain
         ovsBridgeStatusClass bridgeStatus  = new ovsBridgeStatusClass(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getpboxMongoCollection(), configLoader.getovsListMongoCollection(), configLoader.getovsstatusMongoCollection(), configLoader.getBoxType(), configLoader.getOVS_VM_USER(), configLoader.getOVS_VM_PASSWORD());
         bridgeStatus.start();
         
+        //Start Instant Visibility Collection for Tenant-VLAN Mappings
+        TenantVLANMapping tenantvlanMapping  = new TenantVLANMapping(configLoader.getCTRL_Box_IP(), configLoader.getCTRL_Box_USER(), configLoader.getCTRL_Box_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.gettenantVLANMongoCollection());
+        tenantvlanMapping.start();
+        
         //Start Visibility Collection for OpenStack Bridges Data
         OpenStackBridgesStatus osBridgeStatus  = new OpenStackBridgesStatus(configLoader.getSmartXBox_USER(), configLoader.getSmartXBox_PASSWORD(), configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getpboxMongoCollection(), configLoader.getflowConfigOpenStackMongoCollection(), configLoader.getflowConfigOpenStackMongoCollectionRT(), configLoader.getBoxType());
         osBridgeStatus.start();

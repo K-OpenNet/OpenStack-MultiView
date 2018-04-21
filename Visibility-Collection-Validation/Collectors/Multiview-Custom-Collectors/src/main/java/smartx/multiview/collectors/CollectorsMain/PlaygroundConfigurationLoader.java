@@ -45,6 +45,7 @@ public class PlaygroundConfigurationLoader {
 	private String pboxMongoCollection                  = "configuration-pbox-list";
 	private String vboxMongoCollection                  = "resourcelevel-os-instance-detail";
 	private String vboxMongoCollectionRT                = "configuration-vbox-list";
+	private String tenantVLANMongoCollection            = "configuration-tenant-vlan-mapping";
 	private String pboxstatusMongoCollection            = "resourcelevel-ppath";
 	private String pboxstatusMongoCollectionRT          = "resourcelevel-ppath-rt";
 	private String ovsListMongoCollection               = "configuration-vswitch-list";
@@ -132,6 +133,10 @@ public class PlaygroundConfigurationLoader {
 		return vboxMongoCollectionRT;
 	}
 
+	public String gettenantVLANMongoCollection() {
+		return tenantVLANMongoCollection;
+	}
+	
 	public String getpboxstatusMongoCollection() {
 		return pboxstatusMongoCollection;
 	}
