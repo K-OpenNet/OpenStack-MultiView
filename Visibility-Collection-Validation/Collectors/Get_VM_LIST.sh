@@ -43,7 +43,7 @@ do
 			instance_power_state=`echo $vmline | cut -d ',' -f5`
 			instance_networks=`echo $vmline | cut -d ',' -f6`
 			instance_image=`echo $vmline | cut -d ',' -f7`
-			instance_host_box=`echo $vmline | cut -d ',' -f10`
+			instance_host_box=`echo $vmline | cut -d ',' -f11`
 			echo "$instance_id,$instance_name,$instance_status,$instance_power_state,$instance_networks,$instance_image,$instance_host_box" >> InstanceList
 		fi
 	done < "vm_list.temp"
