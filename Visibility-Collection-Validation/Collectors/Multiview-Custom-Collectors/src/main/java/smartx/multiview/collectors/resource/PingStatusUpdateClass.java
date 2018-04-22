@@ -56,7 +56,7 @@ public class PingStatusUpdateClass implements Runnable {
 		pboxstatusMongoCollectionRT = pboxstatus;
 	}
 	
-    public void getActiveVM(String serverIp,String command, String usernameString,String password)
+    public void getActiveVM(String serverIp, String command, String usernameString, String password)
     {
     	try
         {

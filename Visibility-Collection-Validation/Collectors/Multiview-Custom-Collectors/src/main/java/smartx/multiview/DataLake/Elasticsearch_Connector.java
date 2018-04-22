@@ -75,7 +75,7 @@ public class Elasticsearch_Connector {
         //index=response1.getCount();
     }
     
-    public void insertData(String indexName, Date timestamp, String flowKey, String TLProtocol, String agentBox, float dataBytes, float frameSize)
+    public void insertData(String indexName, Date timestamp, String flowKey, String VLANID, String tenant, String TLProtocol, String agentBox, float dataBytes, float frameSize)
     {
     	try {
     		XContentBuilder builder = jsonBuilder()
@@ -83,6 +83,8 @@ public class Elasticsearch_Connector {
     				.field("@version", "1")
     				.field("@timestamp", timestamp)
     				.field("AgentID", agentBox)
+    				.field("VLANID", VLANID)
+    				.field("Tenant", tenant)
     				.field("TransportProtocol", TLProtocol)
     				.field("flowKey", flowKey)
     				.field("Bytes", dataBytes)

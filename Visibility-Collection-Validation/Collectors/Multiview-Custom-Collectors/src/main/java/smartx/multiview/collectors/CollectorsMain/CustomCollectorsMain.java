@@ -77,7 +77,7 @@ public class CustomCollectorsMain
 		}
         
         //Start sFlow Kafka Consumer
-        sFlowKafkaConsumer sFlowconsumer  = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector, ESConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType());
+        sFlowKafkaConsumer sFlowconsumer  = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector, ESConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType(), configLoader.gettenantVLANMongoCollection());
         sFlowconsumer.Consume();
         
         //Start IO Visor Kafka Consumer

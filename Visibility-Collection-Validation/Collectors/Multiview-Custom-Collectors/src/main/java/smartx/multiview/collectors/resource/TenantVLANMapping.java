@@ -28,13 +28,16 @@ public class TenantVLANMapping implements Runnable{
 	private String ThreadName="Tenant VLAN Mapping Status Thread";
 	private String tenant_VLAN_MongoCollection;
 	private String CTRL_Box_IP, CTRL_Box_USER, CTRL_Box_PASSWORD;
+	
 	private MongoClient mongoClient;
 	private List<Document> documentsRT = new ArrayList<Document>();
 	private MongoDatabase db;
 	private Document documentRT;
 	private DeleteResult deleteResult;
+	
 	private Date timestamp;
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	private Logger LOG = Logger.getLogger("novaUpdateFile");
     
 	public TenantVLANMapping(String CTRL_IP, String CTRL_USER, String CTRL_PASSWORD, String dbHost, int dbPort, String dbName, String mongocollection) 
