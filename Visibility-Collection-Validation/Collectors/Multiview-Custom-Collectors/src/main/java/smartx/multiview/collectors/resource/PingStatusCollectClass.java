@@ -105,7 +105,7 @@ public class PingStatusCollectClass implements Runnable
 					in.close();
 	            } catch (IOException e) {
 	            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][PING][Collect][Box: "+BoxIP+" Failed]"+e.getMessage());
-	            	System.out.println("[INFO][PING][Box : "+BoxIP+" Failed "+e);
+	            	//System.out.println("[INFO][PING][Box : "+BoxIP+" Failed "+e);
 	            }
 	        }
 		});

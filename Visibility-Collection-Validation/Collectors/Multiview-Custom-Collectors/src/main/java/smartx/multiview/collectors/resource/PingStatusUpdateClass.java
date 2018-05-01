@@ -172,7 +172,7 @@ public class PingStatusUpdateClass implements Runnable {
         }
         catch (IOException e)
         {
-        	System.out.println("[INFO][PING][UPDATE][Box : "+serverMgmtIp+" Failed");
+        	//System.out.println("[INFO][PING][UPDATE][Box : "+serverMgmtIp+" Failed");
         	LOG.debug("["+dateFormat.format(timestamp)+"][ERROR][PING][UPDATE][Box : "+serverMgmtIp+" Failed");
             e.printStackTrace(System.err);
         }

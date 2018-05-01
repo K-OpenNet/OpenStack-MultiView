@@ -154,7 +154,7 @@ public class ovsBridgeStatusClass implements Runnable{
                 if (line!=null)
                 {
                 	bridges.add(line);
-                	System.out.println(m_ip+" BRIDGES-STATUS "+line+" "+OVS_STATUS);
+                	//System.out.println(m_ip+" BRIDGES-STATUS "+line+" "+OVS_STATUS);
                 }
             }
             //System.out.println("ExitCode: " + sess.getExitStatus());
@@ -223,7 +223,7 @@ public class ovsBridgeStatusClass implements Runnable{
 					    	else
 					    	{
 					    		//Check for Active VM
-					    		System.out.println("[In B** & C** Setup's]");
+					    		//System.out.println("[In B** & C** Setup's]");
 					    		activeVM = activeVM.equals("ovs-vm1") ? ovsVM1ip : ovsVM2ip;
 					    		getBridgesStatus(m_ip, "ovs-vsctl list-br", SmartXBox_USER, SmartXBox_PASSWORD);
 					    		getBridgesStatus(activeVM, "sudo ovs-vsctl list-br", ovsVM_USER, ovsVM_PASSWORD);

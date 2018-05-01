@@ -120,7 +120,7 @@ public class OpenStackInstances implements Runnable{
 	            		documentHistory.put("state", instanceStatus);
 	            		documentRT.put("state", instanceStatus);
 	            	}
-		    		System.out.println(instanceStatus);
+		    		//System.out.println(instanceStatus);
 		    		db.getCollection(vboxMongoCollection).insertOne(documentHistory);
 		    		
 	            	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][NOVA][Box: "+BoxName+" Instance: "+instanceName+" State: "+instanceStatus+"]");

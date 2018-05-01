@@ -135,7 +135,7 @@ public class sFlowKafkaConsumer {
 					document = new Document();
 					document.put("timestamp",         timestamp);
 					document.put("AgentID",           agentBox);
-					document.put("VLANID",            VLANIDDB);
+					document.put("VLANID",            VLANIDPacket);
 					document.put("Tenant",            TenantName);
 					document.put("TransportProtocol", TLProtocol);
 		    		document.put("Flowkey",           flowKey);
@@ -183,7 +183,7 @@ public class sFlowKafkaConsumer {
 					document = new Document();
 					document.put("timestamp",         timestamp);
 					document.put("AgentID",           agentBox);
-					document.put("VLANID",            VLANIDDB);
+					document.put("VLANID",            VLANIDPacket);
 					document.put("Tenant",            TenantName);
 					document.put("TransportProtocol", TLProtocol);
 		    		document.put("Flowkey",           flowKey);
@@ -218,7 +218,7 @@ public class sFlowKafkaConsumer {
 		        	document = new Document();
 					document.put("timestamp",         timestamp);
 					document.put("AgentID",           agentBox);
-					document.put("VLANID",            VLANIDDB);
+					document.put("VLANID",            VLANIDPacket);
 					document.put("Tenant",            TenantName);
 					document.put("TransportProtocol", TLProtocol);
 		    		document.put("Flowkey",           flowKey);

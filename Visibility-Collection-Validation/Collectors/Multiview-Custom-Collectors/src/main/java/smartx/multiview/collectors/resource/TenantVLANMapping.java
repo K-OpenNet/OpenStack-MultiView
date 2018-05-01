@@ -127,7 +127,7 @@ public class TenantVLANMapping implements Runnable{
 			
 			try {
 				//Sleep For 30 Seconds
-				Thread.sleep(30000);
+				Thread.sleep(300000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
