@@ -74,7 +74,7 @@ socket_fd = function_ip_filter.sock
 sock = socket.fromfd(socket_fd,socket.PF_PACKET,socket.SOCK_RAW,socket.IPPROTO_IP)
 #set it as blocking socket
 sock.setblocking(True)
-print("MachineIP, Hostname ipver     Src IP Addr          Dst IP Addr    src Port    Dst Port      protocol     Packet Length")
+print("MachineIP Hostname   ipver     Src IP Addr          Dst IP Addr    src Port    Dst Port      protocol  TCP_Window_Size Packet_Length")
 
 count_c1 = 0
 
@@ -151,18 +151,22 @@ while 1:
         protocol = 6
     	srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
     	dstPort = packet_bytearray[36] << 8 | packet_bytearray[37]
+        TCP_Window_Size = packet_bytearray[48] << 8 | packet_bytearray[49]
     elif (packet_bytearray[23]==1):
     	protocol = 1
     	srcPort = -1
     	dstPort = -1
+        TCP_Window_Size = 0
     elif (packet_bytearray[23]==17):
     	protocol = 17
     	srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
     	dstPort = packet_bytearray[36] << 8 | packet_bytearray[37]
+        TCP_Window_Size = 0
     else:
     	protocol = -1
     	srcPort = packet_bytearray[34] << 8 | packet_bytearray[35]
     	dstPort = packet_bytearray[36] << 8 | packet_bytearray[37]
+        TCP_Window_Size = 0
 
     # Define Protocol Buffer
     network_packet = iovisor_pb2.NetworkPackets()
@@ -170,7 +174,7 @@ while 1:
     # Add a packet
     AddPacket(network_packet.packet.add(), int(round(time.time() * 1000000)), socket.gethostname(), ip, srcAddr, dstAddr, srcPort, dstPort, protocol, total_length)
     
-    MESSAGE = str(int(round(time.time() * 1000000)))+","+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+srcAddr+","+dstAddr+","+str(srcPort)+","+str(dstPort)+","+str(protocol)+","+str(total_length)
+    MESSAGE = str(int(round(time.time() * 1000000)))+","+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+srcAddr+","+dstAddr+","+str(srcPort)+","+str(dstPort)+","+str(protocol)+","+str(TCP_Window_Size)+","+str(total_length)
     print (MESSAGE)
     
     if (int(time.strftime("%M")) < 30):

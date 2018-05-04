@@ -20,11 +20,11 @@ html
       border: 1px solid lightgray;
       background: #ffffff;
       }
-    script(src='../bower_components/jquery/dist/jquery.min.js')
+    script(src='../node_modules/jquery/dist/jquery.min.js')
     script(type='text/javascript', src='javascripts/vis.js')
     link(href='stylesheets/vis.css', rel='stylesheet', type='text/css')
-    link(type='text/css', rel='stylesheet', href='stylesheets/opentip.css')
-    script(type='text/javascript', src='javascripts/opentip-jquery.js')
+    link(type='text/css', rel='stylesheet', href='../node_modules/opentip/css/opentip.css')
+    script(type='text/javascript', src='../node_modules/opentip/downloads/opentip-jquery.js')
     script(type='text/javascript').
       //Huynh start
       var serverIP="103.22.221.56";
@@ -192,6 +192,9 @@ html
       levelSeparation: 150,
       nodeSpacing: 240,
       direction: "DU",
+      blockShifting: true,
+      edgeMinimization: true,
+      parentCentralization: true
       }
       },
       physics:{

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MultiView : Flow Path Tracing View</title>
+    <title>Multi-View : Flow Path Tracing View</title>
     <style type="text/css">
 		body {
 			color: #d3d3d3;
@@ -146,22 +146,21 @@
 				if (boxList[i].box == instanceList[k].box)
 				{
 					vmNodeID = vmNodeID + 1;
-					//if (instanceList[k].state == 'Running')
-					//{
-						nodes.push({id: vmNodeID, label: instanceList[k].name, box: instanceList[k].box, level:vmlevel, image: DIR + 'vmiconyellow.png', shape: 'image', group: 'instance', title: 'Instance Details', fixed: false, physics:true});
-						edges.push({from: switchNodeID, to: vmNodeID, length: EDGE_LENGTH_SUB, color: TraceColor});
-					//}
-					//else
-					//{
-					//	console.log('TEST');
-					//	nodes.push({id: vmNodeID, label: instanceList[k].name, level:vmlevel, image: DIR + 'vmiconred.png', shape: 'image', group: 'instance', title: 'Instance Details', fixed: false, physics:true});
-					//	edges.push({from: switchNodeID, to: vmNodeID, length: EDGE_LENGTH_SUB, color: GREEN});
-					//}
-					//Draw the Application Running in the OpenStack Instance using Workload and Tenant Concept
-					workloadNodeID = BoxNodeID+600;
-					//workloadNodeID = workloadNodeID+1;
-					//nodes.push({id: workloadNodeID, label: 'Streaming', level:switchlevel+2, group: 'desktop', value: 3, fixed: false, physics:false});
-					//edges.push({from: vmNodeID, to: workloadNodeID, length: EDGE_LENGTH_SUB, color: GREEN});
+					if (instanceList[k].state == 'Running')
+					{
+						nodes.push({id: vmNodeID, label: instanceList[k].name, box: instanceList[k].box, level:instancelevel, image: DIR + 'vmicongreen.png', shape: 'image', group: 'instance', title: 'Instance Details', fixed: false, physics:true});
+						edges.push({from: switchNodeID, to: vmNodeID, length: EDGE_LENGTH_SUB, color: GREEN});
+					}
+					else
+					{
+						console.log('TEST');
+						nodes.push({id: vmNodeID, label: instanceList[k].name, level:instancelevel, image: DIR + 'vmiconred.png', shape: 'image', group: 'instance', title: 'Instance Details', fixed: false, physics:true});
+						edges.push({from: switchNodeID, to: vmNodeID, length: EDGE_LENGTH_SUB, color: RED});
+					}
+					//Draw the Services Running in the OpenStack Instance
+					//serviceNodeID = serviceNodeID+1;
+					//nodes.push({id: serviceNodeID, label: 'Streaming', level:switchlevel+2, group: 'desktop', value: 3, fixed: false, physics:false});
+					//edges.push({from: vmNodeID, to: serviceNodeID, length: EDGE_LENGTH_SUB, color: GREEN});
 				}
 			}
 			
@@ -205,7 +204,7 @@
 					enabled:true,
 					levelSeparation: 150,
 					nodeSpacing: 240,
-					direction: "DU",
+					direction: "DU"
 				}
 			},
 			physics:{

@@ -18,21 +18,16 @@ var logger = require('morgan')
 
 var BoxProvider = require('./MultiView-DataAPI').BoxProvider;
 var client = require('socket.io').listen(8080).sockets;
-var host = "103.22.221.56";
+var host = "";
 
 var app = express();
 
-//  app.set('views', __dirname + '/views');
-  app.set('view engine', 'pug');
-  app.use(express.json());
-//  app.use(express.urlencoded());
-  app.use(logger('dev'))
-  app.use(methodOverride());
-  app.use(require('stylus').middleware({ src: __dirname + '/public' }));
-//  app.use(express.static(__dirname + '/public'));
-
+app.set('view engine', 'pug');
+app.use(express.json());
+app.use(logger('dev'))
+app.use(methodOverride());
+app.use(require('stylus').middleware({ src: __dirname + '/public' }));
 app.set('views', path.join(__dirname, '/views'))
-//app.use(favicon(path.join(__dirname, '/public/favicon.ico')))
 app.use(session({ resave: true,
                   saveUninitialized: true,
                   secret: 'uwotm8' }))
