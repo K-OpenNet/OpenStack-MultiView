@@ -151,13 +151,13 @@ while 1:
         dstPort = packet_bytearray[36] << 8 | packet_bytearray[37]
         TCP_Window_Size = 0
 	 
-    MESSAGE = str(int(round(time.time() * 1000000)))+","+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+srcAddr+","+dstAddr+","+str(srcPort)+","+str(dstPort)+","+str(protocol)+","+str(TCP_Window_Size)+","+str(total_length)
+    MESSAGE = str(int(round(time.time() * 1000000)))+",0,"+socket.gethostname()+","+ip+","+str(int(ipversion, 2))+","+srcAddr+","+dstAddr+","+str(srcPort)+","+str(dstPort)+","+str(protocol)+","+str(TCP_Window_Size)+","+str(total_length)
     print (MESSAGE)
     
     if (int(time.strftime("%M")) < 30):
-        filename = "/opt/IOVisor-Data/management-"+time.strftime("%Y-%m-%d-%H")+"-00"
+        filename = "/opt/IOVisor-Data/mc-"+time.strftime("%Y-%m-%d-%H")+"-00"
     else:
-        filename = "/opt/IOVisor-Data/management-"+time.strftime("%Y-%m-%d-%H")+"-30"
+        filename = "/opt/IOVisor-Data/mc-"+time.strftime("%Y-%m-%d-%H")+"-30"
     f = open(filename, "a")
     f.write("%s\n" % MESSAGE)
     f.close
