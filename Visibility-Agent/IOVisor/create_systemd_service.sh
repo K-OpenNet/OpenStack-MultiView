@@ -28,6 +28,10 @@ systemctl enable control-plane-tracing.service
 systemctl enable data-plane-tracing.service
 systemctl enable management-plane-tracing.service
 
+systemctl start control-plane-tracing.service
+systemctl start data-plane-tracing.service
+systemctl start management-plane-tracing.service
+
 #sudo  journalctl --follow -u control-plane-tracing
 #sudo  journalctl --follow -u data-plane-tracing
 #sudo  journalctl --follow -u management-plane-tracing
