@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import smartx.multiview.collectors.flow.*;
 import smartx.multiview.collectors.resource.*;
+import smartx.multiview.collectors.topology.tcpTopologyKafkaConsumer;
 import smartx.multiview.DataLake.*;
 
 public class CustomCollectorsMain 
@@ -91,5 +92,9 @@ public class CustomCollectorsMain
         //Start Visibility Collection for ODL Statistics Data
         SDNControllerStats sdnStats = new SDNControllerStats(configLoader.getMONGO_DB_HOST(), configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(), configLoader.getflowStatsMongoCollection(), configLoader.getflowStatsMongoCollectionRT(), configLoader.getdevopscontrollers(), configLoader.getControllerUser(), configLoader.getControllerPassword());
         sdnStats.start();
+        
+        //Start Visibility Collection for TCP Topology Data
+        //tcpTopologyKafkaConsumer tcptopology = new tcpTopologyKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092", MongoConnector);
+        //tcptopology.start();
     }
 }
