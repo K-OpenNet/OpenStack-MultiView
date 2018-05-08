@@ -1,0 +1,21 @@
+The following Python scripts demonstrating sFlow-RT's REST API:
+
+* tail_log.py   - tail the event log
+* tail_flows.py - tail flow log
+* topflows.py   - text based client displaying top flows
+
+Note: The Python scripts make use of the Python requests library:
+      http://python-requests.org/
+
+The following scripts are used to set a hybrid OpenFlow ECMP fabric in Mininet:
+
+* leafandspine.py        - create hybrid OpenFlow fabrics using Mininet
+* leafandspine-hybrid.js - JavaScript file to include in controller script
+
+See http://blog.sflow.com/2015/01/hybrid-openflow-ecmp-testbed.html
+
+The following script extends Mininet to automatically enable sFlow:
+
+* sflow.py  - send sFlow and topology to local sFlow-RT instance 
+
+See http://blog.sflow.com/2016/05/mininet-flow-analytics.html
