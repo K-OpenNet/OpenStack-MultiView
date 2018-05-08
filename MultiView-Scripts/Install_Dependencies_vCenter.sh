@@ -19,9 +19,10 @@
 # Created by    : usman@smartx.kr
 # Version       : 0.3
 # Create Data   : October, 2016
-# Last Update   : April, 2017
+# Last Update   : May, 2018
 
 MGMT_IP=$1
+VC_NAME="vc.manage.overcloud"
 
 wget_check ()
 {
@@ -77,7 +78,8 @@ echo -e "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Elasticsearch Installing 
 CurrentDir=`pwd`
 cd /tmp/
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+sudo apt-get install apt-transport-https &> /dev/null
+echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
 sudo apt-get update && sudo apt-get install elasticsearch &> /dev/null
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
@@ -90,10 +92,9 @@ sudo /bin/systemctl enable elasticsearch.service
 sed -i "s/#cluster.name: elasticsearch/cluster.name: elasticsearch/g" /etc/elasticsearch/elasticsearch.yml
 sed -i "s/#network.host: 192.168.0.1/network.host: $MGMT_IP/g" /etc/elasticsearch/elasticsearch.yml
 
-sudo service elasticsearch restart &> /dev/null
+sudo systemctl restart elasticsearch.service &> /dev/null
 echo -e "Done.\n"
-#cd /usr/share/elasticsearch
-#bin/elasticsearch-plugin install mobz/elasticsearch-head
+
 cd $CurrentDir
 else
 echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Elasticsearch Already Installed."
@@ -133,26 +134,59 @@ echo `node -v`
 fi
 }
 
+zookeeper_check()
+{
+zookeeperExist=`dpkg -l | grep  zookeeperd`
+if [ "$zookeeperExist" == "" ]; then
+echo -e ""
+echo -n "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Get Zookeeper .................... "
+sudo apt install -y zookeeperd &> /dev/null
+echo -e "Done.\n"
+else
+echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Zookeeper Already Installed."
+fi
+}
+
 kafka_check()
 {
 kafkaExist=`ls | grep kafka`
 if [ "$kafkaExist" == "" ]; then
 echo -e ""
-echo -n "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Get Zookeeper .................... "
-wget http://apache.mirror.cdnetworks.com/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz &> /dev/null
-tar -xvzf zookeeper-3.4.9.tar.gz &> /dev/null
-rm -rf zookeeper-3.4.9.tar.gz
-mv zookeeper-3.4.9 zookeeper
-mv zookeeper/conf/zoo_sample.cfg zookeeper/conf/zoo.cfg
-echo -e "Done.\n"
-#zookeeper/bin/zkServer.sh start
-
 echo -n "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Get Kafka .................... "
-wget http://ftp.jaist.ac.jp/pub/apache/kafka/0.10.0.0/kafka_2.11-0.10.0.0.tgz &> /dev/null
-tar -xvzf kafka_2.11-0.10.0.0.tgz &> /dev/null
-rm -rf kafka_2.11-0.10.0.0.tgz
-mv kafka_2.11-0.10.0.0 kafka 
-echo "delete.topic.enable = true" >> kafka/config/server.properties
+wget http://mirror.apache-kr.org/kafka/1.1.0/kafka_2.11-1.1.0.tgz &> /dev/null
+
+tar -xvzf kafka_2.11-1.1.0.tgz &> /dev/null
+mv kafka_2.11-1.1.0 /opt
+rm -rf kafka_2.11-1.1.0.tgz
+
+mkdir /var/lib/kafka
+mkdir /var/lib/kafka/data
+
+echo "delete.topic.enable = true" >> /opt/kafka_2.11-1.1.0/config/server.properties
+echo "advertised.host.name=$VC_NAME" >> /opt/kafka_2.11-1.1.0/config/server.properties
+sed -i "s/log.dirs=\/tmp\/kafka-logs/log.dirs=\/var\/lib\/kafka\/data/g" /opt/kafka_2.11-1.1.0/config/server.properties
+sed -i "s/num.partitions=1/num.partitions=2/g" /opt/kafka_2.11-1.1.0/config/server.properties
+sed -i "s/log.retention.hours=168/log.retention.hours=24/g" /opt/kafka_2.11-1.1.0/config/server.properties
+ 
+touch /etc/systemd/system/kafka.service
+
+echo "[Unit]" >> /etc/systemd/system/kafka.service
+echo "Description=High-available, distributed message broker" >> /etc/systemd/system/kafka.service
+echo "After=network.target" >> /etc/systemd/system/kafka.service
+echo "After=network-online.target" >> /etc/systemd/system/kafka.service
+echo "[Service]" >> /etc/systemd/system/kafka.service
+echo "User=root" >> /etc/systemd/system/kafka.service
+echo "ExecStart=/opt/kafka_2.11-1.1.0/bin/kafka-server-start.sh /opt/kafka_2.11-1.1.0/config/server.properties" >> /etc/systemd/system/kafka.service
+echo "Restart=on-failure" >> /etc/systemd/system/kafka.service
+echo "RestartSec=30" >> /etc/systemd/system/kafka.service
+echo "[Install]" >> /etc/systemd/system/kafka.service
+echo "WantedBy=multi-user.target" >> /etc/systemd/system/kafka.service
+
+systemctl daemon-reload
+systemctl enable kafka.service
+systemctl start kafka.service
+systemctl status kafka.service
+
 #kafka/bin/kafka-server-start.sh kafka/config/server.properties
 #In case kafka server can't start then add IP to /etc/hosts
 echo -e "Done. \n"
@@ -166,11 +200,11 @@ grafana_check ()
 grafana=`dpkg -l | grep grafana`
 if [ "$grafana" == "" ]; then
 echo -n "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Grafana Installing .................... "
-echo 'deb https://packagecloud.io/grafana/stable/debian/ jessie main' | sudo tee -a /etc/apt/sources.list
-curl https://packagecloud.io/gpg.key | sudo apt-key add - &> /dev/null
-sudo apt-get update &> /dev/null
-sudo apt-get install grafana &> /dev/null
-sudo systemctl enable grafana-server.service 
+wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.1.1_amd64.deb
+sudo dpkg -i grafana_5.1.1_amd64.deb 
+
+sudo systemctl enable grafana-server.service
+sudo systemctl restart grafana-server.service
 echo -e "Done."
 echo `grafana-server -v`
 else
@@ -184,18 +218,20 @@ kibana_check ()
 kibana=`dpkg -l | grep kibana`
 if [ "$kibana" == "" ]; then
 echo -n "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Kibana Installing .................... "
-wget https://artifacts.elastic.co/downloads/kibana/kibana-5.3.0-amd64.deb &> /dev/null
-sudo dpkg -i kibana-5.3.0-amd64.deb
+wget https://artifacts.elastic.co/downloads/kibana/kibana-6.2.4-amd64.deb &> /dev/null
+shasum -a 512 kibana-6.2.4-amd64.deb
+sudo dpkg -i kibana-6.2.4-amd64.deb
+
 #sed -i "s/#server.port:.*/server.port: 5601/" /etc/kibana/kibana.yml
-#sed -i "s/#server.host:.*/server.host: $MGMT_IP/" /etc/kibana/kibana.yml
-#sed -i "s/#elasticsearch.url:.*/elasticsearch.url: '"http://$MGMT_IP:9200"'/" /etc/kibana/kibana.yml
-#sed -i "/#kibana.index:/c\kibana.index: .kibana/" /etc/kibana/kibana.yml
+sed -i "s/#server.host:.*/server.host: $MGMT_IP/" /etc/kibana/kibana.yml
+sed -i "s/#elasticsearch.url:.*/elasticsearch.url: '"http://$MGMT_IP:9200"'/" /etc/kibana/kibana.yml
+sed -i "/#kibana.index:/c\kibana.index: .kibana/" /etc/kibana/kibana.yml
 
 sudo systemctl daemon-reload
 sudo systemctl enable kibana
 sudo systemctl start kibana
 
-rm -rf kibana-5.3.0-amd64.deb
+rm -rf kibana-6.2.4-amd64.deb
 echo -e "Done."
 else
 echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Kibana Already Installed."
@@ -222,6 +258,7 @@ influxDB_check
 elasticsearch_check
 mongoDB_check
 nodeJS_check
+zookeeper_check
 kafka_check
 grafana_check
 kibana_check
