@@ -250,6 +250,24 @@ npm install
 sudo npm install -g nodemon
 echo -e "Done.\n"
 cd $currentDir
+
+touch /etc/systemd/system/multi-view-web.service
+
+echo "[Unit]" >> /etc/systemd/system/multi-view-web.service
+echo "Description=Multi-View, Visualization Application" >> /etc/systemd/system/multi-view-web.service
+echo "After=network.target" >> /etc/systemd/system/multi-view-web.service
+echo "After=network-online.target" >> /etc/systemd/system/multi-view-web.service
+echo "[Service]" >> /etc/systemd/system/multi-view-web.service
+echo "User=root" >> /etc/systemd/system/multi-view-web.service
+echo "ExecStart=/usr/bin/node /opt/KONE-MultiView/Visibility-Visualization/pvcT-Visualization/server.js" >> /etc/systemd/system/multi-view-web.service
+echo "Restart=on-failure" >> /etc/systemd/system/multi-view-web.service
+echo "[Install]" >> /etc/systemd/system/multi-view-web.service
+echo "WantedBy=multi-user.target" >> /etc/systemd/system/multi-view-web.service
+
+systemctl daemon-reload
+systemctl enable multi-view-web.service
+systemctl start multi-view-web.service
+systemctl status multi-view-web.service
 }
 
 wget_check
