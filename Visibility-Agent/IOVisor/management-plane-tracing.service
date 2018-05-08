@@ -4,7 +4,10 @@ After=network.target
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/python /opt/FlowAgent/management_plane_tracing.py
+User=root
+ExecStart=/usr/bin/python /opt/FlowAgent/management_plane_tracing.py 
+StandardOutput=null
+StandardError=null
 Restart=on-failure
 RestartSec=30
 
