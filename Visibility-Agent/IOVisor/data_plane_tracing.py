@@ -168,7 +168,7 @@ while 1:
     
     #  producer = KafkaProducer(bootstrap_servers=['vc.manage.overcloud:9092'])
     #  producer.send('iovisor-oftein', key=b'iovisor', value=MESSAGE2)
-    MESSAGE = str(int(round(time.time() * 1000000))) + "," + socket.gethostname() + "," + ip + "," + str(int(ipversion, 2)) + "," + src_host_ip + "," + dest_host_ip + "," + str(src_host_port) + "," + str(dest_host_port) + "," + src_vm_ip + "," + dest_vm_ip + "," + str(src_vm_port) + "," + str(dest_vm_port) + "," + str(int(VNI)) + "," + str(int(VLANID)) + "," + str(protocoll4) + "," + str(total_length)
+    MESSAGE = str(int(round(time.time() * 1000000))) + "," + socket.gethostname() + "," + ip + "," + str(int(ipversion, 2)) + "," + src_host_ip + "," + dest_host_ip + "," + str(src_host_port) + "," + str(dest_host_port) + "," + src_vm_ip + "," + dest_vm_ip + "," + str(src_vm_port) + "," + str(dest_vm_port) + "," + str(int(VNI)) + "," + str(int(VLANID)) + "," + str(protocoll4) + "," +str(TCP_Window_Size)+","+  str(total_length)
     print (MESSAGE)
     
     CurrentMin = int(time.strftime("%M"))
