@@ -155,39 +155,40 @@ while 1:
     print (MESSAGE)
     
     CurrentMin = int(time.strftime("%M"))
+    BoxName=socket.gethostname()
     
     if (CurrentMin < 30):
         if (CurrentMin < 10):
             if (CurrentMin < 5):
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-00"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-00"
             else:
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-05"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-05"
         elif (CurrentMin < 20):
             if (CurrentMin < 15):
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-10"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-10"
             else:
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-15"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-15"
         else:
             if (CurrentMin < 25):
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-20"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-20"
             else:
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-25"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-25"
     else:
         if (CurrentMin < 40):
             if (CurrentMin < 35):
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-30"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-30"
             else:
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-35"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-35"
         elif (CurrentMin < 50):
             if (CurrentMin < 45):
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-40"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-40"
             else:
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-45"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-45"
         else:
             if (CurrentMin < 55):
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-50"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-50"
             else:
-                filename = "/opt/IOVisor-Data/mc-" + time.strftime("%Y-%m-%d-%H") + "-55"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-mc-" + time.strftime("%Y-%m-%d-%H") + "-55"
                 
     f = open(filename, "a")
     f.write("%s\n" % MESSAGE)
