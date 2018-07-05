@@ -101,15 +101,22 @@ public class ParseMetrcis
                     String[] metrics = line.split(",");
                     String [] IPs = metrics[4].split(" ");
                     
-            		NewDocument.put("timestamp",   new Date());
+                    NewDocument.put("timestamp",   new Date());
             		NewDocument.put("vmname",      metrics[0]);
             		NewDocument.put("os",          metrics[1]);
             		NewDocument.put("kernel",      metrics[3]);
             		NewDocument.put("controlip",   IPs[0]);
             		NewDocument.put("dataip",      IPs[1]);
-            		NewDocument.put("cpuload1",    metrics[6]);
-            		NewDocument.put("cpuload5",    metrics[7]);
-            		NewDocument.put("cpuload15",   metrics[8]);
+            		if (metrics[5].equals("<!DOCTYPE html>")) {
+            			NewDocument.put("cpuload1",    0);
+                		NewDocument.put("cpuload5",    0);
+                		NewDocument.put("cpuload15",   0);
+            		}
+            		else {
+            			NewDocument.put("cpuload1",    metrics[6]);
+                		NewDocument.put("cpuload5",    metrics[7]);
+                		NewDocument.put("cpuload15",   metrics[8]);
+            		}
             	}   
                 
                 int count = 1;
