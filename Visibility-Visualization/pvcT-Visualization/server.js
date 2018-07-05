@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 //Define Application Routes
 var resourceProvider = new ResourceProvider();
 
-// Rout for TCP Throughput-based Topology View
+// Route for TCP Throughput-based Topology View
 app.get('/tcptopologyviewops', function(req, res){
     var boxList = null;
 	//console.log('Topology Visualization Rendering.');
@@ -564,6 +564,26 @@ app.get('/tenantvlanmapops', function(req, res){
 			res.render('tenantvlanmapops.jade', { title: 'Tenant Vlan Mappings View', tenantList: tenantList });
 		}
     }    
+});
+
+// Route for TCP Throughput-based Data API
+app.get('/getamdatatcpperDay/', function(req, res){
+    //Wait for 1 minute before requesting again
+	req.connection.setTimeout(60*1000);
+	
+	var boxID=req.originalUrl;
+	var filterdate=boxID;
+	
+	boxID=filterdate.substring(20, filterdate.indexOf("&"));
+	filterdate=boxID.substring(boxID.indexOf("&")+1, boxID.length);
+	console.log(boxID);
+	console.log(filterdate);
+	
+	resourceProvider.getAMDataTCPperDay(boxID, filterdate, function(error, data){
+        if (err)
+			res.send(err);
+		res.json(data);
+    })
 });
 
 // Route for Login View

@@ -200,5 +200,18 @@ ResourceProvider.prototype.getOpsSDNStatList = function(boxID, callback)
     });
 };
 
+//Get Active Monitoring data From MongoDB for TCP throughput
+ResourceProvider.prototype.getAMDataTCPperDay = function(boxID, startDate, endDate, callback) 
+{
+    MongoClient.connect(mongourl, function(err, db)
+    {
+        console.log('Active Monitoring TCP data / day: ');
+	    var collection = db.collection("topolgoy-tcp-data-raw");
+        collection.find({$and: [{srcBoxname: boxID}, {timestamp :  {$gte : {"$date" : startDate}, $lte : {"$date" : endDate}}}]}).count().toArray(function(err, data){
+		callback(null, data);
+		db.close();
+	});
+	});
+};
 exports.ResourceProvider = ResourceProvider;
 //exports.UserProvider = UserProvider;
