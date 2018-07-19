@@ -76,6 +76,7 @@ public class PingStatusUpdateClass implements Runnable {
 				}
 			}
 			// System.out.println("ExitCode: " + sess.getExitStatus());
+			br.close();
 			sess.close();
 			conn.close();
 		} catch (IOException e) {
@@ -150,6 +151,7 @@ public class PingStatusUpdateClass implements Runnable {
 						}
 					}
 				}
+				br.close();
 				sess.close();
 				conn.close();
 			} else {
@@ -243,6 +245,7 @@ public class PingStatusUpdateClass implements Runnable {
 										new Document("$set", new Document("management_ip_status", m_status_new)
 												.append("data_ip_status", d_status).append("active_ovs_vm", activeVM)));
 						
+						document.remove("_id");
 						document.put("timestamp", new Date());
 						mongoConnector.getDbConnection().getCollection("pbox-list-history").insertOne(document);
 

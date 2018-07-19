@@ -43,7 +43,8 @@ public class ovsBridgeStatusClass implements Runnable{
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private MongoClient mongoClient;
 	private MongoDatabase db;
-	private FindIterable<Document> pBoxList;
+	private FindIterable<Document> pBoxList, ovsStatusList;
+	private List<Document> documentsRT = new ArrayList<Document>();
     private FindIterable<Document> ovsList;
     private Logger LOG = Logger.getLogger("vSwitchFile");
     
@@ -176,7 +177,21 @@ public class ovsBridgeStatusClass implements Runnable{
 		//pBoxList = db.getCollection(pboxMongoCollection).find(new Document("type", BoxType));
 		pBoxList = db.getCollection(pboxMongoCollection).find(new Document("$or", asList(new Document("type", BoxType[0]),new Document("type", BoxType[1]))));
 		//pBoxList = mongoConnector.getDbConnection().getCollection(pboxMongoCollection).find(new Document("$or", asList(new Document("type", BoxType[0]),new Document("type", BoxType[1]))));
+		ovsStatusList = db.getCollection(ovsstatusMongoCollection).find();
 		
+		ovsStatusList.forEach(new Block<Document>() {
+		    public void apply(final Document document) {
+		    	document.remove("_id");
+		        document.put("timestamp", new Date());
+		        documentsRT.add(document);
+		    }
+        });
+		
+		if (documentsRT.isEmpty() == false) {
+			db.getCollection("vswitch-status-history").insertMany(documentsRT);
+			documentsRT.clear();
+		}
+        
 		pBoxList.forEach(new Block<Document>() {
 		    public void apply(final Document document) {
 		    	
@@ -186,9 +201,6 @@ public class ovsBridgeStatusClass implements Runnable{
 		        ovsVM2ip     = (String) document.get("ovs_vm2");
 		        activeVM     = (String) document.get("active_ovs_vm");
 		        m_status_new = (String) document.get("management_ip_status");
-		        
-		        document.put("timestamp", new Date());
-		        db.getCollection("vswitch-status-history").insertOne(document);
 		        
 		        if (m_status_new.equals("GREEN"))
 		        {
