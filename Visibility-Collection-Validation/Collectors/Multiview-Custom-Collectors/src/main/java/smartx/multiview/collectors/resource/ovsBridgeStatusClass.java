@@ -83,10 +83,9 @@ public class ovsBridgeStatusClass implements Runnable{
             else
             {
             	OVS_STATUS="ORANGE";
-            	//System.out.println("Orange");
             }
              
-            //System.out.println("ExitCode: " + sess.getExitStatus());
+            br.close();
             sess.close();
             conn.close();
         }
@@ -111,8 +110,7 @@ public class ovsBridgeStatusClass implements Runnable{
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
             
         	String line = br.readLine();
-        	//System.out.println(command+"  - Result : "+line);
-            
+        	
         	if (Integer.parseInt(line) > 2)
             {
               	OVS_STATUS="GREEN";
@@ -122,7 +120,8 @@ public class ovsBridgeStatusClass implements Runnable{
               	OVS_STATUS="DARKGRAY";
             }
             //System.out.println("ExitCode: " + sess.getExitStatus());
-            sess.close();
+            br.close();
+        	sess.close();
             conn.close();
             
         }
@@ -154,9 +153,9 @@ public class ovsBridgeStatusClass implements Runnable{
                 if (line!=null)
                 {
                 	bridges.add(line);
-                	//System.out.println(m_ip+" BRIDGES-STATUS "+line+" "+OVS_STATUS);
                 }
             }
+            br.close();
             //System.out.println("ExitCode: " + sess.getExitStatus());
             sess.close();
             conn.close();
@@ -188,7 +187,9 @@ public class ovsBridgeStatusClass implements Runnable{
 		        activeVM     = (String) document.get("active_ovs_vm");
 		        m_status_new = (String) document.get("management_ip_status");
 		        
-		        // Added today Feb 21 2017  
+		        document.put("timestamp", new Date());
+		        db.getCollection("vswitch-status-history").insertOne(document);
+		        
 		        if (m_status_new.equals("GREEN"))
 		        {
 			        //Check Status of OVS Process in each Box/OVS-VM
@@ -198,8 +199,7 @@ public class ovsBridgeStatusClass implements Runnable{
 			        	UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateMany(new Document("box", box),
 				           	        new Document("$set", new Document("status", OVS_STATUS)));
 			        	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OpenvSwitch][Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
-			        	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
-				    }
+			        }
 			        
 				    else
 			        {
@@ -210,12 +210,11 @@ public class ovsBridgeStatusClass implements Runnable{
 				        	UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateMany(new Document("box", box),
 					           	        new Document("$set", new Document("status", OVS_STATUS)));
 				        	LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OpenStack Neutron Service] Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
-				        	//System.out.println("["+dateFormat.format(timestamp)+"][INFO][OpenStack Neutron Service] Box : "+box+" Status : "+OVS_STATUS+" Records Updated : "+result.getModifiedCount()+"]");
-					    }
+				        }
 					    
 					    else
 				        {   
-					    	//Check OVS bridge configurations for existance of bridge
+					    	//Check OVS bridge configurations for existence of bridge
 					    	if(ovsVM_USER == null)
 					    	{
 					    		getBridgesStatus(m_ip, "ovs-vsctl list-br", SmartXBox_USER, SmartXBox_PASSWORD);
@@ -223,7 +222,6 @@ public class ovsBridgeStatusClass implements Runnable{
 					    	else
 					    	{
 					    		//Check for Active VM
-					    		//System.out.println("[In B** & C** Setup's]");
 					    		activeVM = activeVM.equals("ovs-vm1") ? ovsVM1ip : ovsVM2ip;
 					    		getBridgesStatus(m_ip, "ovs-vsctl list-br", SmartXBox_USER, SmartXBox_PASSWORD);
 					    		getBridgesStatus(activeVM, "sudo ovs-vsctl list-br", ovsVM_USER, ovsVM_PASSWORD);
@@ -235,7 +233,6 @@ public class ovsBridgeStatusClass implements Runnable{
 					        {
 					            public void apply(final Document ovsDocument) 
 					            {
-					            	//System.out.println(ovsDocument.get("bridge"));
 					            	for (int i=0; i<bridges.size(); i++)
 					            	{
 					            		if (bridges.get(i).equals(ovsDocument.get("bridge")))
@@ -253,13 +250,10 @@ public class ovsBridgeStatusClass implements Runnable{
 					            	//When bridge is not Found in Box but exist in Model
 					            	if (Mathced.equals(false))
 					            	{
-					            		//System.out.println("False "+ ovsDocument.get("bridge")+ " m_ip: "+m_ip+" status: "+OVS_STATUS);
 					            		UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateOne(new Document("box", box).append("bridge", ovsDocument.get("bridge")),
 					    		        		        new Document("$set", new Document("status", "RED")));
 					            		LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OpenvSwitch][Bridge : "+ovsDocument.get("bridge")+" Records Updated :"+result.getModifiedCount()+"]");
-					    		        //System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+ovsDocument.get("bridge")+" Records Updated :"+result.getModifiedCount()+"]");
-					            		Mathced=false;
-					            		//System.out.println(Mathced);
+					    		        Mathced=false;
 					            	}
 					            	Mathced=false;
 					            }
@@ -276,8 +270,7 @@ public class ovsBridgeStatusClass implements Runnable{
 		        	UpdateResult result= db.getCollection(ovsstatusMongoCollection).updateMany(new Document("box", box),
 		           	        new Document("$set", new Document("status", "RED")));
             		LOG.debug("["+dateFormat.format(timestamp)+"][INFO][OpenvSwitch][Records Updated :"+result.getModifiedCount()+"]");
-    		        //System.out.println("["+dateFormat.format(timestamp)+"][INFO][OVS][Bridge : "+ovsDocument.get("bridge")+" Records Updated :"+result.getModifiedCount()+"]");
-		        }
+    		    }
 		    }
 		});
 	}
