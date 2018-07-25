@@ -4,8 +4,8 @@
 # Description   : A script for transferring network packets data to the SmartX Visibility Center
 #
 # Created by    : Muhammad Usman
-# Version       : 0.3
-# Last Update   : June, 2018
+# Version       : 0.4
+# Last Update   : July, 2018
 
 #Modify these parameters before execution on SmartX Boxes
 #Also install sshpass and add SmartX Visibility Center IP for automatic logins.
@@ -23,18 +23,25 @@ Hour="$(date +'%H')"
 cDate="$(date +'%Y-%m-%d')"
 
 host=`hostname`
-if [ "$Hour" -lt 10 ]
-    then 
-        Hour="0$Hour"
-        echo $Hour
-fi
+#if [ "$Hour" -lt 10 ]
+#    then 
+#        Hour="0$Hour"
+#        echo $Hour
+#fi
 
 if [ "$Minute" -eq 0 ]
     then
-        PREVIOUS_HOUR=23
-        PREVIOUS_MINUTE=55
-        PREVIOUS_DAY="$(date +'%d')"
-        PREVIOUS_DAY=$((PREVIOUS_DAY - 1))
+		if [ "$Hour" -eq 0 ]
+		then
+			PREVIOUS_HOUR=23
+			PREVIOUS_MINUTE=55
+			PREVIOUS_DAY="$(date +'%d')"
+			PREVIOUS_DAY=$((PREVIOUS_DAY - 1))
+		else	
+			PREVIOUS_HOUR=$(($HOUR - 1))
+			PREVIOUS_MINUTE=55
+			PREVIOUS_DAY="$(date +'%d')"
+		fi
         cDate="$(date +'%Y-%m')"
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$PREVIOUS_DAY-$PREVIOUS_HOUR-$PREVIOUS_MINUTE"
         PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$PREVIOUS_DAY-$PREVIOUS_HOUR-$PREVIOUS_MINUTE"
