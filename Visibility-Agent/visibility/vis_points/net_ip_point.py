@@ -3,9 +3,10 @@
 # Name          : net_ip_point.py
 # Description   : A script for processing network packets at user-level
 #
-# Created by    : Jun-Sik Shin, Muhammad Usman
-# Version       : 0.3
-# Last Update   : July, 2018
+# Created by    : Networked Computing Systems Laboratory
+# Maintained by : Jun-Sik Shin and Muhammad Usman
+# Version       : 0.4
+# Last Update   : August, 2018
 
 from __future__ import print_function
 
@@ -15,6 +16,10 @@ import time
 import logging
 import signal
 import sys
+import zmq
+import json
+import yaml
+from datetime import datetime
 
 import netifaces as ni
 from bcc import BPF
@@ -32,21 +37,47 @@ class NetworkIpPacketPoint:
         self._socket = None
         self._socket_fd = None
 
+        # point_conf = dict()
+        # point_conf["point"] = "NetworkIpPacketPoint"
+        # point_conf["level"] = "resource"
+        # point_conf["type"] = "physical_networking"
+        #
+        # mq_opt = dict()
+        # mq_opt["ipaddress"] = "127.0.0.1"
+        # mq_opt["port"] = 50070
+        # point_conf["msg_queue"] = mq_opt
+        #
+        # point_opt = dict()
+        # point_opt["output_type"] = "stream"
+        # point_opt["target"] = "eno1"
+        # point_conf["option"] = point_opt
+
+        self._point = None
+        self._level = None
+        self._type = None
+        self._option = None
+
+        self._mq_context = None
+        self._mq_sock = None
+
         self._load_config(point_config)
+        self._prepare_mq_conn(point_config["msg_queue"])
 
         signal.signal(signal.SIGINT, self.signal_handler)
         signal.signal(signal.SIGTERM, self.signal_handler)
 
     def _load_config(self, point_config):
-        if point_config:
-            # Variables that have to be defined in point_config
-            self._target_net_if = point_config.get("target")
-            self._log_dir = point_config.get("log_dir")
-            self._net_type = point_config.get("network_type")
-        else:
-            self._target_net_if = "enx20180124c41b"
-            self._log_dir = "/opt/IOVisor-Data/"
-            self._net_type = "data"
+        # Variables that have to be defined in point_config
+        self._point = point_config["point"]
+        self._level = point_config["level"]
+        self._type = point_config["type"]
+        self._option = point_config["option"]
+
+    def _prepare_mq_conn(self, mq_config):
+        self._mq_context = zmq.Context()
+        self._mq_sock = self._mq_context.socket(zmq.PUSH)
+        self._mq_sock.connect("tcp://{}:{}".format(mq_config["ipaddress"], mq_config["port"]))
+        self._logger.debug("MQ Socket is connected to {}:{}".format(mq_config["ipaddress"], mq_config["port"]))
 
     def signal_handler(self, signal, frame):
         self._logger.info("Visibility Point {} was finished successfully".format(self.__class__.__name__))
@@ -60,7 +91,7 @@ class NetworkIpPacketPoint:
                            "   protocol  TCP_Window_Size Packet_Length")
         while True:
             # For detailed information, please find "_not_used_func()" method.
-            packet_info = dict()
+            packet_all_info = dict()
 
             # retrieve raw packet from socket
             packet_str = os.read(self._socket_fd, 2048)
@@ -68,11 +99,16 @@ class NetworkIpPacketPoint:
             # convert packet into bytearray
             packet_bytearray = bytearray(packet_str)
 
-            self._get_packet_overall_info(packet_bytearray, packet_info)
-            self._get_packet_ip_info(packet_bytearray, packet_info)
-            self._get_packet_tcp_info(packet_bytearray, packet_info)
-            message = self._generate_message(packet_info)
-            self._write_message(message)
+            self._store_packet_overall_info(packet_bytearray, packet_all_info)
+            self._store_packet_ip_info(packet_bytearray, packet_all_info)
+            self._store_packet_tcp_info(packet_bytearray, packet_all_info)
+            if self._option["output_type"] == "file":
+                message = self._gen_msg_str(packet_all_info)
+                filename = self._get_filename()
+                self._write_file(filename, message)
+            elif self._option["output_type"] == "stream":
+                message = self._get_influx_msg(packet_all_info)
+                self._send_msg(message)
 
     def _init_bpf(self):
         # initialize BPF - load source code from http-parse-simple.c
@@ -84,7 +120,7 @@ class NetworkIpPacketPoint:
 
         # create raw socket, bind it to eth0
         # attach bpf program to socket created
-        BPF.attach_raw_socket(function_ip_filter, self._target_net_if)
+        BPF.attach_raw_socket(function_ip_filter, self._option["nic"])
 
         # get file descriptor of the socket previously created inside BPF.attach_raw_socket
         self._socket_fd = function_ip_filter.sock
@@ -95,7 +131,7 @@ class NetworkIpPacketPoint:
         # set it as blocking socket
         self._socket.setblocking(True)
 
-    def _get_packet_overall_info(self, packet_bytearray, packet_info):
+    def _store_packet_overall_info(self, packet_bytearray, packet_info):
         # ethernet header length
         ETH_HLEN = 14
 
@@ -103,9 +139,9 @@ class NetworkIpPacketPoint:
         total_length = packet_bytearray[ETH_HLEN + 2]  # load MSB
         total_length = total_length << 8  # shift MSB
         total_length = total_length + packet_bytearray[ETH_HLEN + 3]  # add LSB
-        packet_info["total_length"] = str(total_length)
+        packet_info["total_length"] = total_length
 
-    def _get_packet_ip_info(self, packet_bytearray, packet_info):
+    def _store_packet_ip_info(self, packet_bytearray, packet_info):
         # parsing ip version from ip packet header
         ipversion = str(bin(packet_bytearray[14])[2:5])
         packet_info["ip_version"] = str(int(ipversion,2))
@@ -118,7 +154,7 @@ class NetworkIpPacketPoint:
         packet_info["src_ip_addr"] = src_addr
         packet_info["dst_ip_addr"] = dst_addr
 
-    def _get_packet_tcp_info(self, packet_bytearray, packet_info):
+    def _store_packet_tcp_info(self, packet_bytearray, packet_info):
         # parsing source port and destination port
         if packet_bytearray[23] == 6:
             protocol = 6
@@ -144,15 +180,15 @@ class NetworkIpPacketPoint:
         packet_info["protocol"] = str(protocol)
         packet_info["src_port"] = str(src_port)
         packet_info["dst_port"] = str(dst_port)
-        packet_info["tcp_window_size"] = str(tcp_window_size)
+        packet_info["tcp_window_size"] = tcp_window_size
 
-    def _generate_message(self, packet_info):
+    def _gen_msg_str(self, packet_info):
         mgmt_ip = self._get_mgmt_ip_address()
         message = "{},0,{},{},{},{},{},{},{},{},{},{}".format(
             str(int(round(time.time() * 1000000))), socket.gethostname(), mgmt_ip,
             packet_info["ip_version"], packet_info["src_ip_addr"], packet_info["dst_ip_addr"],
-            packet_info["src_port"], packet_info["dst_port"], packet_info["protocol"], packet_info["tcp_window_size"],
-            packet_info["total_length"]
+            packet_info["src_port"], packet_info["dst_port"], packet_info["protocol"], str(packet_info["tcp_window_size"]),
+            str(packet_info["total_length"])
         )
         self._logger.debug(message)
         return message
@@ -163,12 +199,10 @@ class NetworkIpPacketPoint:
         mgmt_ip = ni.ifaddresses(mgmt_nic)[ni.AF_INET][0]['addr']
         return mgmt_ip
 
-    def _write_message(self, msg):
-        filename = self._get_filename()
-
-        if not os.path.exists(self._log_dir):
+    def _write_file(self, filename, msg):
+        if not os.path.exists(self._option["log_dir"]):
             self._logger.debug("Hello")
-            os.mkdir(self._log_dir)
+            os.mkdir(self._option["log_dir"])
 
         f = open(filename, "a")
         f.write("%s\n" % msg)
@@ -179,10 +213,47 @@ class NetworkIpPacketPoint:
         box_name = socket.gethostname()
 
         min_mul_five = current_min - current_min % 5
-        filename = "{}{}-{}-{}-{:02d}".format(self._log_dir, box_name, self._net_type,
+        filename = "{}{}-{}-{}-{:02d}".format(self._option["log_dir"], box_name, self._option["net_type"],
                                           time.strftime("%Y-%m-%d-%H"), min_mul_five)
         self._logger.debug(filename)
         return filename
+
+    def _get_influx_msg(self, pkt_all_info):
+        # Need to get
+        # Physical / Virtual
+        # Compute / Networking/ Storage
+
+        # measurement: Physical / Virtual + Compute / Networking / Storage
+        # tags: Box Name, NIC
+        # fields: ip_ver, srcipaddr, dstipaddr, srcport, dstport, protocol, tcpwindowsize, totalpktlength
+        msg = dict()
+        msg["measurement"] = self._type
+
+        msg["time"] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+
+        tags = dict()
+        tags["box"] = socket.gethostname()
+        tags["nic"] = self._option["nic"]
+        tags["src_ip_addr"] = str(pkt_all_info.pop("src_ip_addr"))
+        tags["dst_ip_addr"] = str(pkt_all_info.pop("dst_ip_addr"))
+        tags["src_port"] = str(pkt_all_info.pop("src_port"))
+        tags["dst_port"] = str(pkt_all_info.pop("dst_port"))
+        msg["tags"] = tags
+        msg["fields"] = pkt_all_info
+
+        influx_msg = json.dumps([msg])
+
+        return influx_msg
+
+    def _send_msg(self, msg):
+        m = msg
+        if isinstance(msg, dict):
+            m = json.dumps(msg)
+        elif isinstance(msg, list):
+            m = json.dumps(msg)
+        zmq_msg = "{}/{}".format(self._level, m)
+        self._logger.debug(zmq_msg)
+        self._mq_sock.send_string(zmq_msg)
 
     def to_hex(self, s):
         # convert a bin string into a string of hex char
@@ -248,7 +319,20 @@ class NetworkIpPacketPoint:
 
 if __name__ == "__main__":
     logging.basicConfig(format="[%(asctime)s / %(levelname)s] %(filename)s,%(funcName)s(#%(lineno)d): %(message)s",
-                        level=logging.DEBUG)
-    point = NetworkIpPacketPoint(None)
-    point.collect()
+                        level=logging.INFO)
 
+    point_conf = dict()
+    file_path = None
+    if len(sys.argv) == 2:
+        # Load configuration from a file passed by second argument in the command
+        file_path = sys.argv[1]
+    else:
+        file_path = "net_ip_point.yaml"
+
+    with open(file_path) as f:
+        cfg_str = f.read()
+        point_conf = yaml.load(cfg_str)
+        print (point_conf)
+
+    point = NetworkIpPacketPoint(point_conf)
+    point.collect()
