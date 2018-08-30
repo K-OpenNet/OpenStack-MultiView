@@ -1,0 +1,12 @@
+---
+point: "ComputePsutilPoint"
+level: "resource"
+type: "physical_compute"
+
+msg_queue:
+  ipaddress: 127.0.0.1
+  port: 50070
+
+option:
+  output_type: "stream"
+  interval: "1"

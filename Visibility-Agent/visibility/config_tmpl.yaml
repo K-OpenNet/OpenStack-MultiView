@@ -1,0 +1,26 @@
+---
+visibility_coordinator:
+
+  data_transfer:
+    - type: influxdb
+      database: <InfluxDB DB Name>
+      ipaddress: <InfluxDB IP Address>
+      port: <InfluxDB Port>
+      id: <InfluxDB User ID>
+      password: <InfluxDB User Password>
+
+  msg_queue:
+    ipaddress: 127.0.0.1
+    port: 50070
+
+  # Below configuration is dummy at this time.
+  # The below will be used for the agent to enable user-defined visibility points.
+  visibility_points:
+    static_points:
+      - point: StaticInformationPoint
+    measurement_points:
+      - point: NetworkIpPacketPoint
+        option:
+          file: "net_ip_point.py"
+          output_type: "stream" # stream | file
+          target: "eno1"
