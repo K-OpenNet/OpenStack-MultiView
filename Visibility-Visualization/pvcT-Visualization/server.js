@@ -59,7 +59,7 @@ app.get('/tcptopologyviewops', function(req, res){
 });
 
 // Route for Resource-Centric View
-app.get('/resourcecentricviewops', function(req, res){
+/*app.get('/resourcecentricviewops', function(req, res){
     var boxList         = null;
     var switchList      = null;
     var instanceList    = null;
@@ -111,9 +111,10 @@ app.get('/resourcecentricviewops', function(req, res){
 			);
 		}
 	}
-});
+});*/
 
-/*app.get('/resourcecentricviewops', function(req, res){
+app.get('/resourcecentricviewops', function(req, res){
+	var bboxList         = null;
     var sboxList         = null;
     var cboxList         = null;
     var oboxList         = null;
@@ -125,6 +126,13 @@ app.get('/resourcecentricviewops', function(req, res){
     var pPathStatus     = null;
     
     var tasks = [
+	function(callback){
+    	resourceProvider.getpBoxList('B', (function(error, bboxobj)
+    	{
+		 	boxes.bbox = bboxobj;
+	    	callback();
+		}))
+    },
     function(callback){
     	resourceProvider.getpBoxList('S', (function(error, sboxobj)
     	{
@@ -153,6 +161,13 @@ app.get('/resourcecentricviewops', function(req, res){
 		 	//showView();
     	}))
     },
+	function (callback){
+    	resourceProvider.getvSwitchList('B', (function(error, bswitchobj)
+    	{
+    		boxes.bswitchList = bswitchobj;
+       	   	callback();
+		}))
+    },
     function (callback){
     	resourceProvider.getvSwitchList('S', (function(error, sswitchobj)
     	{
@@ -179,6 +194,14 @@ app.get('/resourcecentricviewops', function(req, res){
        	callback();
 		 	//showView();
     	}))
+    },
+	function (callback){
+    	resourceProvider.getovsBridgeStatus('B', function(error, bbridgestatusobj)
+    	{
+			console.log(bbridgestatusobj);
+			boxes.bovsBridgeStatus = bbridgestatusobj;
+			callback();
+        })
     },
     function (callback){
     	resourceProvider.getovsBridgeStatus('S', function(error, sbridgestatusobj)
@@ -227,34 +250,34 @@ app.get('/resourcecentricviewops', function(req, res){
     function(callback){
     	resourceProvider.getControllerList(function(error, controllerobj)
     	{
-        boxes.controllerList = controllerobj;
-        console.log(boxes.controllerList);
-        callback();
+			boxes.controllerList = controllerobj;
+			console.log(boxes.controllerList);
+			callback();
       })
     }
     ];
 
 	 async.parallel(tasks, function(err) { 
-		   console.log('Resource-Centric View Rendering');
-//		   console.log(boxes.sbox);
+			console.log('Resource-Centric View Rendering');
 			res.render('resourcecentricviewops.jade', {
-         sboxList         : JSON.stringify(boxes.sbox),
-         cboxList         : JSON.stringify(boxes.cbox),
-         oboxList         : JSON.stringify(boxes.obox),
-			sswitchList      : JSON.stringify(boxes.sswitchList),
-			cswitchList      : JSON.stringify(boxes.cswitchList),
-			oswitchList      : JSON.stringify(boxes.oswitchList),
-			instanceList    : JSON.stringify(boxes.instanceList),
-			iotHostList    : JSON.stringify(boxes.iotHostList),
-//			workloadList     : JSON.stringify(workloadList),
-			sovsBridgeStatus : JSON.stringify(boxes.sovsBridgeStatus),
-			covsBridgeStatus : JSON.stringify(boxes.covsBridgeStatus),
-			oovsBridgeStatus : JSON.stringify(boxes.oovsBridgeStatus),
-			controllerList : JSON.stringify(boxes.controllerList)
+				bboxList         : JSON.stringify(boxes.bbox),
+				sboxList         : JSON.stringify(boxes.sbox),
+				cboxList         : JSON.stringify(boxes.cbox),
+				oboxList         : JSON.stringify(boxes.obox),
+				bswitchList      : JSON.stringify(boxes.bswitchList),
+				sswitchList      : JSON.stringify(boxes.sswitchList),
+				cswitchList      : JSON.stringify(boxes.cswitchList),
+				oswitchList      : JSON.stringify(boxes.oswitchList),
+				instanceList     : JSON.stringify(boxes.instanceList),
+				iotHostList      : JSON.stringify(boxes.iotHostList),
+				bovsBridgeStatus : JSON.stringify(boxes.bovsBridgeStatus),
+				sovsBridgeStatus : JSON.stringify(boxes.sovsBridgeStatus),
+				covsBridgeStatus : JSON.stringify(boxes.covsBridgeStatus),
+				oovsBridgeStatus : JSON.stringify(boxes.oovsBridgeStatus),
+				controllerList   : JSON.stringify(boxes.controllerList)
         	});
-        	}
-    		);
-    });*/
+        });
+    });
 
 //Route for Flow Rules View
 app.get('/flowrulesviewops', function(req, res){

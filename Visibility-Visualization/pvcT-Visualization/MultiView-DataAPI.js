@@ -49,7 +49,7 @@ ResourceProvider.prototype.getpBoxList = function(callback)
 	// Locate all the entries using find
         var collection = db.collection("configuration-pbox-list");
         //collection.find({type: 'B**'},{box: true, host: true, management_ip: true, management_ip_status: true, data_ip: true, data_ip_status: true, control_ip: true, control_ip_status: true, _id: false}).sort({host: -1}).toArray(function(err, boxes){
-	collection.find({$or:[{type: 'B**'},{type: 'C**'}]},{box: true, boxID: true, management_ip: true, management_ip_status: true, data_ip: true, data_ip_status: true, control_ip: true, control_ip_status: true, _id: false}).sort({host: -1}).toArray(function(err, boxes){
+		collection.find({$or:[{type: 'B**'},{type: 'C**'}]},{box: true, boxID: true, management_ip: true, management_ip_status: true, data_ip: true, data_ip_status: true, control_ip: true, control_ip_status: true, _id: false}).sort({host: -1}).toArray(function(err, boxes){
 	//	db.close();
 		//console.log(boxes);
 		callback(null,boxes);
@@ -57,6 +57,23 @@ ResourceProvider.prototype.getpBoxList = function(callback)
 	});
 	//console.log (db.boxes);
     });
+};
+
+//Get pBoxes List From MongoDB New
+ResourceProvider.prototype.getpBoxList = function(box_type, callback) 
+{
+	 //var boxes = {};//sboxes, cboxes, oboxes;
+    MongoClient.connect(mongourl, function(err, db)
+    {
+        //console.log('Physical Boxes List: ');
+		var collection = db.collection("pbox-list");
+        //collection.find({type: 'B**'},{box: true, host: true, management_ip: true, management_ip_status: true, data_ip: true, data_ip_status: true, control_ip: true, control_ip_status: true, _id: false}).sort({host: -1}).toArray(function(err, boxes){
+		  //collection.find({$or:[{boxType: 'S'},{boxType: 'C'},{boxType: 'O'}]},{boxID: true, boxName: true, management_ip: true, boxType: true, management_ip: true, management_ip_status: true, data1_ip: true, data1_ip_status: true, control_ip: true, control_ip_status: true, _id: false}).sort({boxName: -1}).toArray(function(err, boxes){
+		  collection.find({boxType: box_type, type: 'B**'},{boxID: true, boxName: true, boxType: true, site: true, management_ip: true, management_ip_status: true, data_ip: true, data_ip_status: true, control_ip: true, control_ip_status: true, _id: false}).sort({boxName: 1}).toArray(function(err, boxes){
+				callback(null, boxes);
+				db.close();
+		});
+	 });
 };
 
 //Get vSwitches List From MongoDB
@@ -74,49 +91,16 @@ ResourceProvider.prototype.getvSwitchList = function(callback)
     });
 };
 
-//Get OpenStack Instances List From MongoDB
-ResourceProvider.prototype.getvBoxList = function(callback)
+//Get Virtual Switches List From MongoDB New
+ResourceProvider.prototype.getvSwitchList = function(switch_type, callback)
 {
     MongoClient.connect(mongourl, function(err, db)
     {
-        console.log('OpenStack instances List: ');
-        var collection = db.collection("configuration-vbox-list");
-        collection.find({},{box: true, name: true, osuserid: true, ostenantid: true, vlanid: true, state: true, _id: false}).sort({box: -1}).toArray(function(err, vBoxList){
-                //db.close();
-                callback(null,vBoxList);
-				db.close();
-        });
-    });
-};
-
-
-//Get OpenStack Instances List for Specific Tenant From MongoDB
-ResourceProvider.prototype.getTenantvBoxList = function(tenantID, callback)
-{
-    MongoClient.connect(mongourl, function(err, db)
-    {
-        console.log('OpenStack instances List in Tenant : '+tenantID);
-        var collection = db.collection("configuration-vbox-list");
-        collection.find({ostenantid: tenantID},{_id: false, state: false, osuserid: false, vlandid: false}).sort({box: -1}).toArray(function(err, vBoxList){
-            //db.close();
-            console.log(vBoxList);
-            callback(null,vBoxList);
-                        db.close();
-        });
-    });
-};
-
-//Get Workloads List From MongoDB
-ResourceProvider.prototype.getServicesList = function(callback)
-{
-    MongoClient.connect(mongourl, function(err, db)
-    {
-        console.log('Services List: ');
-        var collection = db.collection("configuration-service-list");
-        collection.find({type: 'B**'},{box: true, name: true, osusername: true, ostenantname: true, vlanid: true, state: true, _id: false}).sort({box: -1}).toArray(function(err, vmList){
-                //db.close();
-                callback(null,vmList);
-				db.close();
+        console.log('OVS bridges List: ');
+        var collection = db.collection("vswitch-list");
+        collection.find({boxType: switch_type},{boxType: true, bridge: true, topologyorder: true, boxDevType: true, _id: false}).sort({topologyorder: 1}).toArray(function(err, switchList){
+            callback(null, switchList);
+			db.close();
         });
     });
 };
@@ -135,6 +119,94 @@ ResourceProvider.prototype.getovsBridgeStatus = function(callback)
         });
     });
 };
+
+//Get Virtual Switches Status From MongoDB New
+ResourceProvider.prototype.getovsBridgeStatus = function(box_type, callback)
+{
+    MongoClient.connect(mongourl, function(err, db)
+    {
+        console.log('OVS Bridge Status: ');
+        var collection = db.collection("vswitch-status");
+        collection.find({boxType: box_type},{boxType: true, boxID: true, bridge: true, status: true, _id: false}).sort({boxID: -1}).toArray(function(err, ovsBridgeStatus){
+                //db.close();
+                callback(null,ovsBridgeStatus);
+				db.close();
+        });
+    });
+};
+
+//Get Controllers List From MongoDB New
+ResourceProvider.prototype.getControllerList = function(callback) 
+{
+	MongoClient.connect(mongourl, function(err, db)
+    {
+        var collection = db.collection("playground-controllers-list");
+        collection.find({},{controllerIP: true, controllerName: true, controllerStatus: true, controllerSoftware: true, _id: false}).sort({controllerName: -1}).toArray(function(err, controllers){
+	     	callback(null, controllers);
+		    db.close();
+		});
+	 });
+};
+
+//Get OpenStack Instances List From MongoDB
+ResourceProvider.prototype.getvBoxList = function(callback)
+{
+    MongoClient.connect(mongourl, function(err, db)
+    {
+        console.log('OpenStack instances List: ');
+        var collection = db.collection("vm-instance-list");
+        collection.find({},{box: true, name: true, osuserid: true, ostenantid: true, vlanid: true, state: true, _id: false}).sort({box: -1}).toArray(function(err, vBoxList){
+            callback(null,vBoxList);
+			db.close();
+        });
+    });
+};
+
+
+//Get OpenStack Instances List for Specific Tenant From MongoDB
+ResourceProvider.prototype.getTenantvBoxList = function(tenantID, callback)
+{
+    MongoClient.connect(mongourl, function(err, db)
+    {
+        console.log('OpenStack instances List in Tenant : '+tenantID);
+        var collection = db.collection("vm-instance-list");
+        collection.find({ostenantid: tenantID},{_id: false, state: false, osuserid: false, vlandid: false}).sort({box: -1}).toArray(function(err, vBoxList){
+            //db.close();
+            console.log(vBoxList);
+            callback(null,vBoxList);
+                        db.close();
+        });
+    });
+};
+
+//Get IoT Host List From MongoDB New
+ResourceProvider.prototype.getIoTHostList = function(callback)
+{
+    MongoClient.connect(mongourl, function(err, db)
+    {
+        console.log('IoT Host List: ');
+        var collection = db.collection("IoT-Host-list");
+        collection.find({},{boxID: true, hostID: true, macaddress: true, ipaddress: true, vlanid: true, _id: false}).sort({boxID: -1}).toArray(function(err, iotHostList){
+            callback(null, iotHostList);
+			db.close();
+        });
+    });
+};
+
+//Get Workloads List From MongoDB
+/*ResourceProvider.prototype.getServicesList = function(callback)
+{
+    MongoClient.connect(mongourl, function(err, db)
+    {
+        console.log('Services List: ');
+        var collection = db.collection("configuration-service-list");
+        collection.find({type: 'B**'},{box: true, name: true, osusername: true, ostenantname: true, vlanid: true, state: true, _id: false}).sort({box: -1}).toArray(function(err, vmList){
+                //db.close();
+                callback(null,vmList);
+				db.close();
+        });
+    });
+};*/
 
 //Get Tenant-vlan Mapping List
 ResourceProvider.prototype.gettenantvlanmapList = function(callback)
