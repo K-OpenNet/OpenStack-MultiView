@@ -14,11 +14,11 @@
 #  See the License for the specific language governing permissions and
 #
 # Name          : Install_Dependencies_vBox.sh
-# Description   : Script for Installing Dependencies on Visibility Box
+# Description   : Script for Installing Dependencies on SmartX Box
 #
 # Created by    : usman@smartx.kr
-# Version       : 0.1
-# Last Update   : December, 2016
+# Version       : 0.2
+# Last Update   : September, 2018
 
 MGMT_IP=$1
 
@@ -59,6 +59,17 @@ java_check ()
 	sudo apt-get -y install oracle-java8-set-default &> /dev/null
 	echo -e "Done.\n"
 	java -version
+  fi
+}
+
+sshpass_check ()
+{
+  if command -v sshpass > /dev/null; then
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] SSH Pass Already Installed.\n"
+  else
+    echo -n "[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] SSH Pass Installing .................... "
+    apt-get -y install sshpass &> /dev/null
+	echo -e "Done.\n"
   fi
 }
 
