@@ -32,6 +32,12 @@ html(lang='en')
       console.log(boxs);
       iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+boxs.label;
       }
+      //receive tenant objects
+      function receiveTenantID(data){
+      //- console.log("Receive Data Success " + data.info);
+      var iframe = document.getElementById('grafanaIframe');
+      iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+data.boxID;
+      }
       //receive brCap Objects
       function receiveValueBrCap(brCaps){
       var iframe = document.getElementById('grafanaIframe');
@@ -86,6 +92,11 @@ html(lang='en')
       console.log('In Menu '+vlan);
       iframe.src = 'http://'+serverIP+':'+serverPort+'/flowtracingviewops/'+vlan;
       }
+      //Route to Onion-ring Multi-View for tenant
+      function getOnionRingTenant(vlan){
+      var iframe = document.getElementById('topoIframe');
+      iframe.src = 'http://'+serverIP+':'+serverPort+'/onionringviewtenant/'+vlan;
+      }
       //Flow-level Functions End
       //Show Panel on Click
       function showPanel(itemID){
@@ -96,19 +107,35 @@ html(lang='en')
       // Called when the Visualization API is loaded.
       function draw()
       {
-      document.getElementById('usertext').innerHTML="Logged In User:  "+session_userrole;
+      document.getElementById('usertext').innerHTML="Logged In User:  "+session_username;
       //Update********************************************************
       var iframe1     = document.getElementById('topoIframe');
       var iframe2     = document.getElementById('grafanaIframe');
       var resource    = document.getElementById('resourcecentricviewops');
+      var onionops    = document.getElementById('onionops');
+      var oniontenant = document.getElementById('oniontenant');
       var flowrules   = document.getElementById('flowrulesviewops');
       var flowtracing = document.getElementById('flowtracingviewops');
       var flowmeasure = document.getElementById('flowmeasureviewops');
       var service     = document.getElementById('servicecentricviewops');
+      //manh start
+      var sliceview       = document.getElementById('sliceview');
+      var sliceviewtenant = document.getElementById('sliceviewtenant');
+      //manh end
       tcptopology.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Playground Overlay Topology View</p></b>';
       iframe1.src = 'http://'+serverIP+':'+serverPort+'/tcptopologyviewops';
       //iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+      });
+      onionops.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Onion-ring-based Visualization (Operator)</p></b>';
+      iframe1.src = 'http://'+serverIP+':'+serverPort+'/onionringviewops';
+      //iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+      });
+      oniontenant.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Onion-ring-based Visualization (Tenant)</p></b>';
+      //iframe1.src = 'http://'+serverIP+':'+serverPort+'/onionringviewtenant';
+      iframe2.src = 'http://'+serverIP+':'+serverPort+'/tenantvlanmaponionring';
       });
       resource.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Resource-Centric Topological View (Playground View)</p></b>';
@@ -135,7 +162,7 @@ html(lang='en')
       iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowiovisorviewops';
       //iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
       });
-      flowboxviewops.addEventListener('click', function() {
+      /*flowboxviewops.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Flow-Centric Topological View (sFlow-based)</p></b>';
       iframe1.src = 'http://'+serverIP+':5601/goto/1cf86a106a8725db0f3ab9c33c72bf60';
       //iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
@@ -144,7 +171,7 @@ html(lang='en')
       document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Flow-Centric Topological View</p></b>';
       iframe1.src = 'http://'+serverIP+':5601/goto/20e35e15d09a942539b445badc77693c';
       //iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
-      });
+      });*/
       service.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Service-Centric Topological View</p></b>';
       iframe1.src = 'http://'+serverIP+':'+serverPort+'/servicecentricviewops';
@@ -152,53 +179,20 @@ html(lang='en')
       });
       }
   body(onload='draw()')
-    #wrapper
+    #wrapper(style='width: 1430px;')
       // Navigation
       nav.navbar.navbar-default.navbar-static-top(role='navigation', style='margin-bottom: 0')
-        .navbar-header(style='background-color:#e0e0d1;width: 1660px; height: 50px; display:inline-block')
+        .navbar-header(style='background-color:#e0e0d1;width: 1460px; height: 50px; display:inline-block')
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
             span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
           p
-            #titlediv
-              b
-                h1(style='color:#ff8000;font-family:verdana;text-align:center;display:inline;') SmartX Multi-View Dashboard
-        ul.nav.navbar-top-links.navbar-right
-          li.dropdown
-            a.dropdown-toggle(data-toggle='dropdown', href='#')
-              i.fa.fa-envelope.fa-fw
-              i.fa.fa-caret-down
-            ul.dropdown-menu.dropdown-messages
-          li.dropdown
-            a.dropdown-toggle(data-toggle='dropdown', href='#')
-              i.fa.fa-tasks.fa-fw
-              i.fa.fa-caret-down
-            ul.dropdown-menu.dropdown-tasks
-          li.dropdown
-            a.dropdown-toggle(data-toggle='dropdown', href='#')
-              i.fa.fa-bell.fa-fw
-              i.fa.fa-caret-down
-            ul.dropdown-menu.dropdown-alerts
-          li.dropdown
-            a.dropdown-toggle(data-toggle='dropdown', href='#')
-              i.fa.fa-user.fa-fw
-              i.fa.fa-caret-down
-            ul.dropdown-menu.dropdown-user
-              li
-                a(href='#')
-                  i.fa.fa-user.fa-fw
-                  |  User Profile
-              li
-                a(href='#')
-                  i.fa.fa-gear.fa-fw
-                  |  Settings
-              li.divider
-              li
-                a(href='login')
-                  i.fa.fa-sign-out.fa-fw
-                  |  Logout
+          #titlediv
+            b
+              h1(style='color:#ff8000;font-family:verdana;text-align:center;display:inline;') SmartX Multi-View Dashboard
+          p
         .navbar-default.sidebar(role='navigation')
           .sidebar-nav.navbar-collapse
             ul#side-menu.nav
@@ -215,11 +209,25 @@ html(lang='en')
               li
                 a(href='#', style='background-color:#eaeae1;color:#3c3c2a;')
                   i.fa.fa-bookmark.fa-fw
-                  | Resource-layer Visualization
+                  | Onion-ring-based Visualization
+                  span.fa.arrow
+                ul#parent-list.nav.nav-second-level(style='background-color:#ffffff;')
+                  li
+                    a#onionops(href='#', style='background-color:#ffffff;') Operator Visualization
+                  li
+                    a#oniontenant(href='#', style='background-color:#ffffff;') Tenant Visualization
+              li
+                a(href='#', style='background-color:#eaeae1;color:#3c3c2a;')
+                  i.fa.fa-bookmark.fa-fw
+                  | Network-based Visualization
                   span.fa.arrow
                 ul#parent-list.nav.nav-second-level(style='background-color:#ffffff;')
                   li
                     a#resourcecentricviewops(href='#', style='background-color:#ffffff;') Playground View
+                  li
+                    a#flowrulesviewops(href='#', style='background-color:#ffffff;') vSwich-Flows Info
+                  li
+                    a#flowtracingviewops(href='#', style='background-color:#ffffff;') Inter-connected Flow Path
               li
                 a(href='#', style='background-color:#eaeae1;color:#3c3c2a;')
                   i.fa.fa-bookmark.fa-fw
@@ -239,34 +247,24 @@ html(lang='en')
                   li
                     a#servicecentricviewops(href='#', style='background-color:#ffffff;') Workload-centric View
               li
-                a(href='#', style='background-color:#eaeae1;color:#3c3c2a;')
-                  i.fa.fa-bookmark.fa-fw
-                  | Integrated Visualization
-                  span.fa.arrow
-                ul#parent-list.nav.nav-second-level(style='background-color:#ffffff;')
-                  li
-                    a#flowrulesviewops(href='#', style='background-color:#ffffff;') vSwich-Flows Info
-                  li
-                    a#flowtracingviewops(href='#', style='background-color:#ffffff;') Inter-connected Flow Path
-              li
                 a(href='login', style='background-color:#ffe6e6;color:#ff0000;')
                   i.fa.fa-sign-out.fa-fw
                   b Logout
-      #page-wrapper
+      #page-wrapper(style='width: 1210px;')
         .container-fluid
           .row
             .col-lg-12
               // h1.page-header
-        .row
+        .row(style='width: 1180px;')
           .col-lg-12
             .panel.panel-default
               #panel-heading-id.panel-heading(style='background-color:#003399;text-align:center')
                 b
-                  p(style='display:inline;font-size:12;color:#e6eeff;text-align:center;') Resource-Centric Topological View (Playground View)
+                  p(style='display:inline;font-size:12;color:#e6eeff;text-align:center;') Onion-ring-style Visualization
               .panel-body
                 p
-                  iframe#topoIframe(src='http://103.22.221.56:3011/resourcecentricviewops', width='1560', height='600')
-        .row
+                  iframe#topoIframe(src='http://103.22.221.56:3011/onionringviewops', width='1120', height='800')
+        .row(style='width: 1180px;')
           .col-lg-12
             .panel.panel-default
               .panel-heading(style='background-color:#003399;text-align:center')
@@ -274,7 +272,7 @@ html(lang='en')
                   p(style='display:inline;font-size:12;color:#e6eeff;text-align:center;') Metrics Visualization Panel
               .panel-body
                 p
-                  iframe#grafanaIframe(src='', width='1560', height='500')
+                  iframe#grafanaIframe(src='', width='1120', height='500')
     // jQuery
     script(src='../node_modules/jquery/dist/jquery.min.js')
     // Bootstrap Core JavaScript

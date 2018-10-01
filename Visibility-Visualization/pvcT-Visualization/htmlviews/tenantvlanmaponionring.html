@@ -31,7 +31,7 @@
 				$("#t01 tbody tr").click(function(){
 					var tenantid=$(this).children('td:nth-child(1)').text();
 					var vlan=$(this).children('td:nth-child(3)').text();
-					window.parent.getFlowPathTrace(tenantid+'&'+vlan);
+					window.parent.getOnionRingTenant(tenantid+'&'+vlan);
 				});
 			});
 		</script>
@@ -51,7 +51,7 @@
 			<tbody>
 				each tenant in tenantList
 				<tr>
-					<td><a href="flowtracingviewops/"+tenant.tenantid>#{tenant.tenantid}</a></td>
+					<td><a href="onionringviewtenant/"+tenant.tenantid>#{tenant.tenantid}</a></td>
 					<td>tenant.tenantname</td>
 					<td>tenant.vlan</td>
 					<td>tenant.userid</td>

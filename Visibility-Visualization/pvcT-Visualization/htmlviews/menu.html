@@ -34,6 +34,12 @@
 			console.log(boxs);
 			iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+boxs.label;
 		}
+		//receive tenant objects
+		function receiveTenantID(data){
+			//- console.log("Receive Data Success " + data.info);
+			var iframe = document.getElementById('grafanaIframe');
+			iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+data.boxID;
+		}
 		//receive brCap Objects
 		function receiveValueBrCap(brCaps){
 			var iframe = document.getElementById('grafanaIframe');
@@ -90,6 +96,12 @@
 			console.log('In Menu '+vlan);
 			iframe.src = 'http://'+serverIP+':'+serverPort+'/flowtracingviewops/'+vlan;
 		}
+		
+		//Route to Onion-ring Multi-View for tenant
+		function getOnionRingTenant(vlan){
+			var iframe = document.getElementById('topoIframe');
+			iframe.src = 'http://'+serverIP+':'+serverPort+'/onionringviewtenant/'+vlan;
+		}
 		//Flow-level Functions End
 		//Show Panel on Click
 		function showPanel(itemID){
@@ -100,20 +112,36 @@
 		// Called when the Visualization API is loaded.
 		function draw()
 		{
-			document.getElementById('usertext').innerHTML="Logged In User:  "+session_userrole;
+			document.getElementById('usertext').innerHTML="Logged In User:  "+session_username;
 			//Update********************************************************
 			var iframe1     = document.getElementById('topoIframe');
 			var iframe2     = document.getElementById('grafanaIframe');
 			var resource    = document.getElementById('resourcecentricviewops');
+			var onionops    = document.getElementById('onionops');
+			var oniontenant = document.getElementById('oniontenant');
 			var flowrules   = document.getElementById('flowrulesviewops');
 			var flowtracing = document.getElementById('flowtracingviewops');
 			var flowmeasure = document.getElementById('flowmeasureviewops');
 			var service     = document.getElementById('servicecentricviewops');
+			//manh start
+			var sliceview       = document.getElementById('sliceview');
+			var sliceviewtenant = document.getElementById('sliceviewtenant');
+			//manh end
 			
 			tcptopology.addEventListener('click', function() {
 				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Playground Overlay Topology View</p></b>';
 				iframe1.src = 'http://'+serverIP+':'+serverPort+'/tcptopologyviewops';
 				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+			});
+			onionops.addEventListener('click', function() {
+				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Onion-ring-based Visualization (Operator)</p></b>';
+				iframe1.src = 'http://'+serverIP+':'+serverPort+'/onionringviewops';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+			});
+			oniontenant.addEventListener('click', function() {
+				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Onion-ring-based Visualization (Tenant)</p></b>';
+				//iframe1.src = 'http://'+serverIP+':'+serverPort+'/onionringviewtenant';
+				iframe2.src = 'http://'+serverIP+':'+serverPort+'/tenantvlanmaponionring';
 			});
 			resource.addEventListener('click', function() {
 				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Resource-Centric Topological View (Playground View)</p></b>';
@@ -141,7 +169,7 @@
 				iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowiovisorviewops';
 				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 			});
-			flowboxviewops.addEventListener('click', function() {
+			/*flowboxviewops.addEventListener('click', function() {
 				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Flow-Centric Topological View (sFlow-based)</p></b>';
 				iframe1.src = 'http://'+serverIP+':5601/goto/1cf86a106a8725db0f3ab9c33c72bf60';
 				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
@@ -150,116 +178,96 @@
 				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Flow-Centric Topological View</p></b>';
 				iframe1.src = 'http://'+serverIP+':5601/goto/20e35e15d09a942539b445badc77693c';
 				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
-			});
+			});*/
 			service.addEventListener('click', function() {
 				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Service-Centric Topological View</p></b>';
 				iframe1.src = 'http://'+serverIP+':'+serverPort+'/servicecentricviewops';
 				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 			});
+			
 		}
     </script>
 	</head>
 	<body onload="draw()">
-		<div id="wrapper">
+		<div id="wrapper" style="width: 1430px;">
 			<!-- Navigation-->
 			<nav role="navigation" style="margin-bottom: 0" class="navbar navbar-default navbar-static-top">
-				<div class="navbar-header" style="background-color:#e0e0d1;width: 1660px; height: 50px; display:inline-block">
-				<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-				<p>
-					<div id="titlediv"><b><h1 style="color:#ff8000;font-family:verdana;text-align:center;display:inline;">SmartX Multi-View Dashboard</h1></b></div>
-				</p>
-        </div>
-        <ul class="nav navbar-top-links navbar-right">
-          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i></a>
-            <ul class="dropdown-menu dropdown-messages"></ul>
-          </li>
-          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><i class="fa fa-caret-down"></i></a>
-            <ul class="dropdown-menu dropdown-tasks"></ul>
-          </li>
-          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i></a>
-            <ul class="dropdown-menu dropdown-alerts"></ul>
-          </li>
-          <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i></a>
-            <ul class="dropdown-menu dropdown-user">
-              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
-              <li class="divider"></li>
-              <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-            </ul>
-          </li>
-        </ul>
+				<div class="navbar-header" style="background-color:#e0e0d1;width: 1460px; height: 50px; display:inline-block">
+					<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+					<p><div id="titlediv"><b><h1 style="color:#ff8000;font-family:verdana;text-align:center;display:inline;">SmartX Multi-View Dashboard</h1></b></div></p>
+				</div>
+			
+				<div role="navigation" class="navbar-default sidebar">
+					<div class="sidebar-nav navbar-collapse">
+						<ul id="side-menu" class="nav">
+							<li class="sidebar-search" style="background-color:#e0e0d1;font-size:12;color:#737373;text-align:center;width: 250px; height: 40px;">
+								<div class="input-group custom-search-form" id="usertext"></div>
+							</li>
+							<li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Topology Visualization<span class="fa arrow"></span></a>
+								<ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
+									<li><a id="tcptopology" href="#" style="background-color:#ffffff;">Topology View</a></li>
+								</ul>
+							</li>
+							<li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Onion-ring-based Visualization<span class="fa arrow"></span></a>
+								<ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
+									<li><a id="onionops" href="#" style="background-color:#ffffff;">Operator Visualization</a></li>
+									<li><a id="oniontenant" href="#" style="background-color:#ffffff;">Tenant Visualization</a></li>
+								</ul>
+							</li>
+							
+							<li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Network-based Visualization<span class="fa arrow"></span></a>
+								<ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
+									<li><a id="resourcecentricviewops" href="#" style="background-color:#ffffff;">Playground View</a></li>
+									<li><a id="flowrulesviewops" href="#" style="background-color:#ffffff;">vSwich-Flows Info</a></li>
+									<li><a id="flowtracingviewops" href="#" style="background-color:#ffffff;">Inter-connected Flow Path</a></li>
+								</ul>
+							</li>
+							<li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Flow-layer Visualization<span class="fa arrow"></span></a>
+								<ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
+									<li><a id="flowmeasureviewops" href="#" style="background-color:#ffffff;">Packets Sampling </a></li>
+									<li><a id="flowiovisorviewops" href="#" style="background-color:#ffffff;">Packets Tracing </a></li>
+								</ul>
+							</li>
+							<li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw" ></i>Workload-layer Visualization<span class="fa arrow"></span></a>
+								<ul id="parent-list" class="nav nav-second-level">
+									<li><a id="servicecentricviewops" href="#" style="background-color:#ffffff;">Workload-centric View</a></li>
+								</ul>
+							</li>
+							<li><a href="login" style="background-color:#ffe6e6;color:#ff0000;"><i class="fa fa-sign-out fa-fw"></i> <b>Logout</b></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 		
-        <div role="navigation" class="navbar-default sidebar">
-          <div class="sidebar-nav navbar-collapse">
-            <ul id="side-menu" class="nav">
-      				<li class="sidebar-search" style="background-color:#e0e0d1;font-size:12;color:#737373;text-align:center;width: 250px; height: 40px;">
-      					<div class="input-group custom-search-form" id="usertext"></div>
-      				</li>
-              <li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Topology Visualization<span class="fa arrow"></span></a>
-                <ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
-                  <li><a id="tcptopology" href="#" style="background-color:#ffffff;">Topology View</a></li>
-                </ul>
-              </li>
-			  <li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Resource-layer Visualization<span class="fa arrow"></span></a>
-                <ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
-                  <li><a id="resourcecentricviewops" href="#" style="background-color:#ffffff;">Playground View</a></li>
-                </ul>
-              </li>
-              <li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Flow-layer Visualization<span class="fa arrow"></span></a>
-                <ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
-                  <li><a id="flowmeasureviewops" href="#" style="background-color:#ffffff;">Packets Sampling </a></li>
-                  <li><a id="flowiovisorviewops" href="#" style="background-color:#ffffff;">Packets Tracing </a></li>
-                </ul>
-              </li>
-              <li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw" ></i>Workload-layer Visualization<span class="fa arrow"></span></a>
-                <ul id="parent-list" class="nav nav-second-level">
-                  <li><a id="servicecentricviewops" href="#" style="background-color:#ffffff;">Workload-centric View</a></li>
-                </ul>
-              </li>
-              <li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw" ></i>Integrated Visualization<span class="fa arrow"></span></a>
-                <ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
-                  <li><a id="flowrulesviewops" href="#" style="background-color:#ffffff;">vSwich-Flows Info</a></li>
-                  <li><a id="flowtracingviewops" href="#" style="background-color:#ffffff;">Inter-connected Flow Path</a></li>
-                </ul>
-              </li>
-              <li><a href="login" style="background-color:#ffe6e6;color:#ff0000;"><i class="fa fa-sign-out fa-fw"></i> <b>Logout</b></a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div id="page-wrapper">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12">
-              <!-- h1.page-header-->
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel panel-default">
-              <div id="panel-heading-id" class="panel-heading" style="background-color:#003399;text-align:center"><b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Resource-Centric Topological View (Playground View)</p></b></div>
-              <div class="panel-body">
-                <p>
-                  <iframe id="topoIframe" src="http://103.22.221.56:3011/resourcecentricviewops" width="1560" height="600"></iframe>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel panel-default">
-              <div class="panel-heading" style="background-color:#003399;text-align:center"><b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Metrics Visualization Panel</p></b></div>
-              <div class="panel-body">
-                <p>
-                  <iframe id="grafanaIframe" src="" width="1560" height="500"></iframe>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+			<div id="page-wrapper" style="width: 1210px;">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<!-- h1.page-header-->
+						</div>
+					</div>
+				</div>
+				<div class="row" style="width: 1180px;">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div id="panel-heading-id" class="panel-heading" style="background-color:#003399;text-align:center"><b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Onion-ring-style Visualization</p></b></div>
+								<div class="panel-body">
+									<p><iframe id="topoIframe" src="http://103.22.221.56:3011/onionringviewops" width="1120" height="800"></iframe></p>
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="row" style="width: 1180px;">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading" style="background-color:#003399;text-align:center"><b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Metrics Visualization Panel</p></b></div>
+								<div class="panel-body">
+									<p><iframe id="grafanaIframe" src="" width="1120" height="500"></iframe></p>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
     </div>
 	
 	<!-- jQuery-->

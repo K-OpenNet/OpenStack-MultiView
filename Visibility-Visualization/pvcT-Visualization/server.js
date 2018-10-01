@@ -52,11 +52,64 @@ app.get('/tcptopologyviewops', function(req, res){
     function showView(){
         if(boxList !== null){
             console.log('Topology Visualization Rendering.');
-			console.log(boxList);
+			//console.log(boxList);
             res.render('tcptopologyviewops.jade', { title: 'Playground Topology View', boxList: JSON.stringify(boxList) });
         }
     }
 });
+
+//the dictionary key is user name and value is
+var userwithip = null;
+var username = "admin";
+
+//ManhNT start
+app.get('/onionringviewops', function(req, res){
+	var data = null;
+	console.log(username);
+	resourceProvider.getDataMultiSliceVisibility(username, function(error, databj)
+	{
+		data = databj;
+		showView();
+	});
+	
+	resourceProvider.getControllerList(function(error, controllerobj)
+    {
+        controllerList = controllerobj;
+        console.log(controllerList);
+        showView();
+    });
+	
+	function showView()
+	{
+		if(data !== null && controllerList !== null){
+			res.render('onionringviewops.jade', {title: 'Onion-ring-based Visualization', data : JSON.stringify(data), controllerList : JSON.stringify(controllerList)});
+		}
+	}
+});
+
+app.get('/onionringviewtenant/*', function(req, res){
+	var data = null;
+	console.log(username);
+	resourceProvider.getDataMultiSliceVisibilityTenant('demo', function(error, databj)
+	{
+		data = databj;
+		showView();
+	});
+	resourceProvider.getControllerList(function(error, controllerobj)
+    {
+        controllerList = controllerobj;
+        console.log(controllerList);
+        showView();
+    });
+	function showView()
+	{
+		if(data !== null && controllerList !== null){
+			//console.log('Onion-ring Visualization Rendering'+data);
+			res.render('onionringviewtenant.jade', {title: 'Onion-ring-based Visualization', data : JSON.stringify(data), controllerList : JSON.stringify(controllerList)});
+    }
+  }
+});
+//manhNT end
 
 // Route for Resource-Centric View
 /*app.get('/resourcecentricviewops', function(req, res){
@@ -94,7 +147,7 @@ app.get('/tcptopologyviewops', function(req, res){
     function showView(){
         if(boxList !== null && switchList !== null && instanceList !== null && workloadList !==null &&  ovsBridgeStatus !== null){
 		    console.log('Resource-Centric View Rendering');
-			console.log(ovsBridgeStatus);
+			//console.log(ovsBridgeStatus);
 			
 			res.render('resourcecentricviewops.jade', {title: 'Resource-Centric Topological View',
 				boxList         : JSON.stringify(boxList),
@@ -156,7 +209,7 @@ app.get('/resourcecentricviewops', function(req, res){
     	resourceProvider.getpBoxList('O', (function(error, oboxobj)
     	{
 		 	boxes.obox = oboxobj;
-	    	console.log(boxes.obox);
+	    	//console.log(boxes.obox);
 	    	callback();
 		 	//showView();
     	}))
@@ -173,7 +226,7 @@ app.get('/resourcecentricviewops', function(req, res){
     	{
     		boxes.sswitchList = sswitchobj;
        	//console.log(switchList);
-       	callback();
+			callback();
 		 	//showView();
     	}))
     },
@@ -182,7 +235,7 @@ app.get('/resourcecentricviewops', function(req, res){
     	{
     		boxes.cswitchList = cswitchobj;
        	//console.log(switchList);
-       	callback();
+			callback();
 		 	//showView();
     	}))
     },
@@ -191,7 +244,7 @@ app.get('/resourcecentricviewops', function(req, res){
     	{
     		boxes.oswitchList = oswitchobj;
        	//console.log(boxes.oswitchList);
-       	callback();
+			callback();
 		 	//showView();
     	}))
     },
@@ -206,52 +259,52 @@ app.get('/resourcecentricviewops', function(req, res){
     function (callback){
     	resourceProvider.getovsBridgeStatus('S', function(error, sbridgestatusobj)
     	{
-        boxes.sovsBridgeStatus = sbridgestatusobj;
-        //console.log(ovsBridgeStatus);
-        callback();
-        //showView();
+			boxes.sovsBridgeStatus = sbridgestatusobj;
+			//console.log(ovsBridgeStatus);
+			callback();
+			//showView();
     	})
     },
     function (callback){
     	resourceProvider.getovsBridgeStatus('C', function(error, cbridgestatusobj)
     	{
-        boxes.covsBridgeStatus = cbridgestatusobj;
-        //console.log(boxes.covsBridgeStatus);
-        callback();
-        //showView();
+			boxes.covsBridgeStatus = cbridgestatusobj;
+			//console.log(boxes.covsBridgeStatus);
+			callback();
+			//showView();
     	})
     },
     function (callback){
     	resourceProvider.getovsBridgeStatus('O', function(error, obridgestatusobj)
     	{
-        boxes.oovsBridgeStatus = obridgestatusobj;
-        //console.log(boxes.oovsBridgeStatus);
-        callback();
-        //showView();
+			boxes.oovsBridgeStatus = obridgestatusobj;
+			//console.log(boxes.oovsBridgeStatus);
+			callback();
+			//showView();
     	})
     },
     function(callback){
     	resourceProvider.getvBoxList(function(error, instanceobj)
     	{
-        boxes.instanceList = instanceobj;
-        //console.log(boxes.instanceList);
-        callback();
-        //showView();
+			boxes.instanceList = instanceobj;
+			//console.log(boxes.instanceList);
+			callback();
+			//showView();
     	})
     },
     function(callback){
     	resourceProvider.getIoTHostList(function(error, hostobj)
     	{
-        boxes.iotHostList = hostobj;
-        //console.log(boxes.iotHostList);
-        callback();
+			boxes.iotHostList = hostobj;
+			//console.log(boxes.iotHostList);
+			callback();
       })
     },
     function(callback){
     	resourceProvider.getControllerList(function(error, controllerobj)
     	{
 			boxes.controllerList = controllerobj;
-			console.log(boxes.controllerList);
+			//console.log(boxes.controllerList);
 			callback();
       })
     }
@@ -589,6 +642,26 @@ app.get('/tenantvlanmapops', function(req, res){
     }    
 });
 
+// Route for Tenant-Vlan Mappings View
+app.get('/tenantvlanmaponionring', function(req, res){
+	var tenantList = null;
+    resourceProvider.gettenantvlanmapList(function(error, tenantObj)
+    {
+       	tenantList = tenantObj;
+       	showView();
+    })
+    
+    function showView()
+    {
+       	if(tenantList !== null)
+       	{
+        	console.log('Tenant-Vlan Onion-ring');
+			//console.log(tenantList);
+			res.render('tenantvlanmaponionring.jade', { title: 'Tenant Vlan Mappings View', tenantList: tenantList });
+		}
+    }    
+});
+
 // Route for TCP Throughput-based Data API
 app.get('/getamdatatcpperDay/', function(req, res){
     //Wait for 1 minute before requesting again
@@ -616,8 +689,10 @@ app.get('/', function(req, res){
 
 // Route for Menu View
 app.get('/menu', function(req, res){
-       	console.log('Menu Rendering');
-	res.render('menu.jade',{locals: {}, title: 'MultiView Menu'})
+    console.log('Menu Rendering');
+	userwithip = {name:username , ip : req.connection.remoteAddress};
+	console.log(userwithip);
+	res.render('menu.jade',{locals: {}, title: 'Multi-View Menu'})
 });
 
 app.get('/login', function(req, res){
@@ -647,6 +722,7 @@ client.on('connection', function (socket) {
                                 found = true;
                                 if (listusers[i].password === this_user_password) {
                                     //todo: get priority and send to menu page.
+									username = this_user_name;
                                     if(listusers[i].role === 'operator'){
                                         socket.emit('redirect', 'operator');
                                     }
