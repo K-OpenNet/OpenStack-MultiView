@@ -195,6 +195,57 @@ echo -e "\n[$(date '+%Y-%m-%d %H:%M:%S')][INFO][INSTALL] Kafka Already Installed
 fi
 }
 
+multiviewJavaCollector_service()
+{
+touch /etc/systemd/system/multiview-java-collectors.service
+
+echo "[Unit]" >> /etc/systemd/system/multiview-java-collectors.service
+echo "Description=Multi-View Java-based Collectors" >> /etc/systemd/system/multiview-java-collectors.service
+echo "After=network.target" >> /etc/systemd/system/multiview-java-collectors.service
+echo "After=network-online.target" >> /etc/systemd/system/multiview-java-collectors.service
+echo "[Service]" >> /etc/systemd/system/multiview-java-collectors.service
+echo "User=root" >> /etc/systemd/system/multiview-java-collectors.service
+echo "WorkingDirectory=/opt/OpenStack-MultiView/MultiView-RunnableJars" >> /etc/systemd/system/multiview-java-collectors.service
+echo "ExecStart=/opt/OpenStack-MultiView/MultiView-RunnableJars/start-multiview-java-collectors" >> /etc/systemd/system/multiview-java-collectors.service
+echo "SuccessExitStatus=143" >> /etc/systemd/system/multiview-java-collectors.service
+echo "StandardOutput=null" >> /etc/systemd/system/multiview-java-collectors.service
+echo "StandardError=null" >> /etc/systemd/system/multiview-java-collectors.service
+echo "Restart=on-failure" >> /etc/systemd/system/multiview-java-collectors.service
+echo "RestartSec=10" >> /etc/systemd/system/multiview-java-collectors.service
+echo "[Install]" >> /etc/systemd/system/multiview-java-collectors.service
+echo "WantedBy=multi-user.target" >> /etc/systemd/system/multiview-java-collectors.service
+
+systemctl daemon-reload
+systemctl enable multiview-java-collectors.service
+systemctl start multiview-java-collectors.service
+systemctl status multiview-java-collectors.service
+}
+
+sFlowRTCollector_service()
+{
+touch /etc/systemd/system/sflow-rt-collector.service
+
+echo "[Unit]" >> /etc/systemd/system/sflow-rt-collector.service
+echo "Description=sFlow-RT Collector" >> /etc/systemd/system/sflow-rt-collector.service
+echo "After=network.target" >> /etc/systemd/system/sflow-rt-collector.service
+echo "After=network-online.target" >> /etc/systemd/system/sflow-rt-collector.service
+echo "[Service]" >> /etc/systemd/system/sflow-rt-collector.service
+echo "User=root" >> /etc/systemd/system/sflow-rt-collector.service
+echo "ExecStart=/opt/OpenStack-MultiView/Visibility-Collection-Validation/Collectors/sflow-rt/start.sh" >> /etc/systemd/system/sflow-rt-collector.service
+echo "SuccessExitStatus=143" >> /etc/systemd/system/sflow-rt-collector.service
+echo "StandardOutput=null" >> /etc/systemd/system/sflow-rt-collector.service
+echo "StandardError=null" >> /etc/systemd/system/sflow-rt-collector.service
+echo "Restart=on-failure" >> /etc/systemd/system/sflow-rt-collector.service
+echo "RestartSec=10" >> /etc/systemd/system/sflow-rt-collector.service
+echo "[Install]" >> /etc/systemd/system/sflow-rt-collector.service
+echo "WantedBy=multi-user.target" >> /etc/systemd/system/sflow-rt-collector.service
+
+systemctl daemon-reload
+systemctl enable sflow-rt-collector.service
+systemctl start sflow-rt-collector.service
+systemctl status sflow-rt-collector.service
+}
+
 grafana_check ()
 {
 grafana=`dpkg -l | grep grafana`
@@ -278,6 +329,9 @@ mongoDB_check
 nodeJS_check
 zookeeper_check
 kafka_check
+multiviewJavaCollector_service
+sFlowRTCollector_service
 grafana_check
 kibana_check
 nodeJSlib_check
+
