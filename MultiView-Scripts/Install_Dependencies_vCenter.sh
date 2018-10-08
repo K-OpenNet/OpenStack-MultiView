@@ -312,6 +312,7 @@ echo "[Service]" >> /etc/systemd/system/multi-view-web.service
 echo "User=root" >> /etc/systemd/system/multi-view-web.service
 echo "ExecStart=/usr/bin/node /opt/KONE-MultiView/Visibility-Visualization/pvcT-Visualization/server.js" >> /etc/systemd/system/multi-view-web.service
 echo "Restart=on-failure" >> /etc/systemd/system/multi-view-web.service
+echo "RestartSec=10" >> /etc/systemd/system/multi-view-web.service
 echo "[Install]" >> /etc/systemd/system/multi-view-web.service
 echo "WantedBy=multi-user.target" >> /etc/systemd/system/multi-view-web.service
 
