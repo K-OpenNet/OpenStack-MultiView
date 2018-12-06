@@ -24,7 +24,7 @@
 OS_REGIONS="GIST1 KR-GIST2 GIST3 TW-NCKU MYREN MY-UM TH-CHULA VN-HUST"
 
 . /home/netcs/openstack/admin-openrc
-rm -rf tenant_subnet.temp1 tenant.tags.temp tenant.tags
+rm -rf tenant_subnet.temp1 tenant.tags.temp
 
 for region in $OS_REGIONS
 do
