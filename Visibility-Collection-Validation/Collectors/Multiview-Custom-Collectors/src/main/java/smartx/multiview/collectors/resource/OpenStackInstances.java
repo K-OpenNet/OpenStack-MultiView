@@ -26,7 +26,7 @@ import com.mongodb.client.result.DeleteResult;
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.StreamGobbler;
 
-public class OpenStackInstances implements Runnable {
+public class OpenStackInstances implements Runnable{
 	private Thread thread;
 	private String ThreadName = "vBox Status Thread";
 	private String vboxMongoCollection, vboxMongoCollectionRT;
@@ -43,7 +43,7 @@ public class OpenStackInstances implements Runnable {
 	private Logger LOG = Logger.getLogger("novaUpdateFile");
 
 	public OpenStackInstances(String CTRL_IP, String CTRL_USER, String CTRL_PASSWORD, String dbHost, int dbPort,
-			String dbName, String vboxhistory, String vboxrt) {
+		String dbName, String vboxhistory, String vboxrt) {
 		mongoClient = new MongoClient(dbHost, dbPort);
 		db = mongoClient.getDatabase(dbName);
 		vboxMongoCollection = vboxhistory;
@@ -140,7 +140,7 @@ public class OpenStackInstances implements Runnable {
 
 			// Delete Previous Documents from Real Time collection
 			deleteResult = db.getCollection(vboxMongoCollectionRT).deleteMany(new Document());
-
+			
 			// Insert New Documents for Near-Realtime Visualization
 			if (documentsRT.isEmpty() == false) {
 				db.getCollection(vboxMongoCollectionRT).insertMany(documentsRT);

@@ -18,8 +18,11 @@ import smartx.multiview.collectors.flow.sFlowKafkaConsumer;
 import smartx.multiview.collectors.flow.sFlowKafkaProducer;
 import smartx.multiview.collectors.resource.BridgesVLANMapping;
 import smartx.multiview.collectors.resource.OpenStackInstances;
+import smartx.multiview.collectors.resource.OpenStackInstancesPerformance;
 import smartx.multiview.collectors.resource.PingStatusCollectClass;
 import smartx.multiview.collectors.resource.PingStatusUpdateClass;
+import smartx.multiview.collectors.resource.PlaygroundControllers;
+import smartx.multiview.collectors.resource.SmartXBoxesPerformance;
 import smartx.multiview.collectors.resource.TenantVLANMapping;
 import smartx.multiview.collectors.resource.ovsBridgeStatusClass;
 
@@ -35,6 +38,10 @@ public class CustomCollectorsMain {
 		Elasticsearch_Connector ESConnector = new Elasticsearch_Connector();
 		ESConnector.setClient(configLoader.getES_HOST(), configLoader.getES_PORT());
 
+		//Start Visibility Collection for Platform Controllers
+		PlaygroundControllers platformcontroller = new PlaygroundControllers(MongoConnector, "onos", "rocks", "netcs", "fn!xo!ska!", "karaf", "karaf");
+		platformcontroller.start();
+		
 		// Start Visibility Data Collection for Ping Data from SmartX Boxes
 		PingStatusCollectClass pingStatusCollect = new PingStatusCollectClass(configLoader.getVISIBILITY_CENTER(),
 				MongoConnector, configLoader.getpboxMongoCollection(), configLoader.getpboxstatusMongoCollection(),
@@ -113,15 +120,26 @@ public class CustomCollectorsMain {
 		sFlowKafkaConsumer sFlowconsumer = new sFlowKafkaConsumer(configLoader.getVISIBILITY_CENTER() + ":9092",
 				MongoConnector, ESConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType(),
 				configLoader.gettenantVLANMongoCollection());
-		sFlowconsumer.Consume();
+		sFlowconsumer.start();
 
-		// Start IO Visor Kafka Consumer
+		/* Start IO Visor Kafka Consumer
 		IOVisorKafkaConsumer iovisorconsumer = new IOVisorKafkaConsumer(configLoader.getVISIBILITY_CENTER() + ":9092",
 				MongoConnector);
 		iovisorconsumer.Consume();
+		*/
+		
+		// Start SmartX Boxes Performance Metrics Collection
+		SmartXBoxesPerformance smartxboxesinstanceconsumer = new SmartXBoxesPerformance(MongoConnector, configLoader.getVISIBILITY_CENTER() + ":9092",
+								configLoader.getES_HOST(), configLoader.getES_PORT());
+		smartxboxesinstanceconsumer.start();
+				
+		// Start OpenStack Instances Performance Metrics Collection
+		OpenStackInstancesPerformance openstackinstanceconsumer = new OpenStackInstancesPerformance(configLoader.getVISIBILITY_CENTER() + ":9092",
+						configLoader.getES_HOST(), configLoader.getES_PORT());
+		openstackinstanceconsumer.start();
 
 		// Start Visibility Collection for ODL Flow Rules Data
-		SDNControllerStatus sdnStatus = new SDNControllerStatus(configLoader.getMONGO_DB_HOST(),
+		/*SDNControllerStatus sdnStatus = new SDNControllerStatus(configLoader.getMONGO_DB_HOST(),
 				configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(),
 				configLoader.getflowConfigMongoCollection(), configLoader.getflowConfigMongoCollectionRT(),
 				configLoader.getdevopscontrollers(), configLoader.getControllerUser(),
@@ -135,7 +153,7 @@ public class CustomCollectorsMain {
 				configLoader.getdevopscontrollers(), configLoader.getControllerUser(),
 				configLoader.getControllerPassword());
 		sdnStats.start();
-
+*/
 		// Start Visibility Collection for TCP Topology Data
 		// tcpTopologyKafkaConsumer tcptopology = new
 		// tcpTopologyKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092",

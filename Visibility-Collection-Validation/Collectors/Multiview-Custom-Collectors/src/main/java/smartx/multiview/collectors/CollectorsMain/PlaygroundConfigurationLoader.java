@@ -42,14 +42,14 @@ public class PlaygroundConfigurationLoader {
 	private int VLAN_START;
 	private int VLAN_END;
 
-	private String pboxMongoCollection = "configuration-pbox-list";
-	private String vboxMongoCollection = "resourcelevel-os-instance-detail";
-	private String vboxMongoCollectionRT = "configuration-vbox-list";
-	private String tenantVLANMongoCollection = "configuration-tenant-vlan-mapping";
+	private String pboxMongoCollection = "pbox-list";
+	private String vboxMongoCollection = "vm-instance-list-all";
+	private String vboxMongoCollectionRT = "vm-instance-list";
+	private String tenantVLANMongoCollection = "tenant-vlan-mapping";
 	private String pboxstatusMongoCollection = "resourcelevel-ppath";
 	private String pboxstatusMongoCollectionRT = "resourcelevel-ppath-rt";
-	private String ovsListMongoCollection = "configuration-vswitch-list";
-	private String ovsstatusMongoCollection = "configuration-vswitch-status";
+	private String ovsListMongoCollection = "vswitch-list";
+	private String ovsstatusMongoCollection = "vswitch-status";
 	private String bridgevlanmapMongoCollection = "configuration-bridge-vlan-map";
 	private String bridgevlanmapMongoCollectionRT = "configuration-bridge-vlan-map-rt";
 	private String flowConfigMongoCollection = "flow-configuration-sdn-controller";

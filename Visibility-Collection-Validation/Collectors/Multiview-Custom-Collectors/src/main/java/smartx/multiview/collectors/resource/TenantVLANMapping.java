@@ -54,7 +54,7 @@ public class TenantVLANMapping implements Runnable {
 
 	public void get_Teanant_VLAN_Mapping_List() {
 		System.out.println("Running " + ThreadName);
-		String tenantID, tenantName, userID, userName, vlanID;
+		String tenantID, tenantName, userID, userName, vlanID, subnetRange;
 
 		timestamp = new Date();
 		try {
@@ -79,6 +79,8 @@ public class TenantVLANMapping implements Runnable {
 							StringUtils.ordinalIndexOf(line, ",", 2)).trim();
 					tenantName = line.substring(StringUtils.ordinalIndexOf(line, ",", 2) + 1,
 							StringUtils.ordinalIndexOf(line, ",", 3)).trim();
+					subnetRange = line.substring(StringUtils.ordinalIndexOf(line, ",", 3) + 1,
+							line.length()).trim();
 					userID = "";
 					userName = "";
 
@@ -89,6 +91,7 @@ public class TenantVLANMapping implements Runnable {
 					documentRT.put("userid", userID);
 					documentRT.put("username", tenantName);
 					documentRT.put("vlan", vlanID);
+					documentRT.put("subnetRange", subnetRange);
 
 					LOG.debug("[" + dateFormat.format(timestamp) + "][INFO][TenantVLANMapping][New Map is created]");
 
@@ -121,8 +124,8 @@ public class TenantVLANMapping implements Runnable {
 			}
 
 			try {
-				// Sleep For 60 Seconds
-				Thread.sleep(600000);
+				// Sleep For 1 minute
+				Thread.sleep(60000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

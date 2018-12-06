@@ -24,7 +24,10 @@ import com.mongodb.client.FindIterable;
 import smartx.multiview.DataLake.Elasticsearch_Connector;
 import smartx.multiview.DataLake.MongoDB_Connector;
 
-public class sFlowKafkaConsumer {
+public class sFlowKafkaConsumer implements Runnable{
+	private Thread thread;
+	private String ThreadName = "Flow Sampling (sFlow Consumer) Thread";
+	
 	private String sFlowMongoCollection;
 	private String bootstrapServer;
 
@@ -264,6 +267,19 @@ public class sFlowKafkaConsumer {
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public void run() {
+		while (true) {
+			this.Consume();
+		}
+	}
+
+	public void start() {
+		if (thread == null) {
+			thread = new Thread(this, ThreadName);
+			thread.start();
 		}
 	}
 }
