@@ -239,8 +239,19 @@ psd3.Pie.prototype.draw = function(svg, totalRadius, dataset, originalDataset, o
     var onclick = function(d){
     // console.log(JSON.stringify(d.data));
     // console.log(d.data);
-    // console.log(d.data);
-    window.parent.receiveTenantID(d.data);
+    console.log(d.data);
+	if (d.data.label === "SF")
+	{
+		window.parent.receiveSampledFlows(d.data);
+	}
+	else if (d.data.label === "TP")
+	{
+		window.parent.receiveTracedPkts(d.data);
+	}
+	else{
+		window.parent.receiveTenantID(d.data);
+	}
+    
     // window.alert("Hello");
     };
     var arc = d3.svg.arc().innerRadius(innerRadius)

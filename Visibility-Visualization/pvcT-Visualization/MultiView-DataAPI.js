@@ -1,9 +1,4 @@
 var MongoClient = require('mongodb').MongoClient;
-//var Db = require('mongodb').Db;
-//var Connection = require('mongodb').Connection;
-//var Server = require('mongodb').Server;
-//var BSON = require('mongodb').BSON;
-//var ObjectID = require('mongodb').ObjectID;
 var dateFormat  = require('dateformat');
 var mongodbHost = '127.0.0.1';
 var mongodbPort = '27017';
@@ -297,15 +292,12 @@ ResourceProvider.prototype.getDataMultiSliceVisibility = function(userID, callba
 		var colunder_ren = db.collection('underlay_REN');
 		var playground_sites = db.collection('playground_sites');
 		var colpBox = db.collection('pbox-list');
-		
 		var colIoTHostList = db.collection('IoT-Host-list');
 		var colVMInstance = db.collection('vm-instance-list');
-		
 		var flowvisor_slice = db.collection('flowvisor_slice');
 
 		var data = [];
 		var main = 0;
-		
 		
 		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
 			colunder_int.find({}).toArray(function(err, rUnder_int){
@@ -371,10 +363,18 @@ ResourceProvider.prototype.getDataMultiSliceVisibility = function(userID, callba
 																			rpBox[m].info = "Box Info \n Box Name: "+rpBox[m].boxName+ "\n"+" Site: " + rpBox[m].site;
 																			if (rpBox[m].data_ip_status == "GREEN"){
 																				rpBox[m].color = 'white';
-																				//console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																			}
+																			else if (rpBox[m].data_ip_status == "ORANGE"){
+																				rpBox[m].color = '#ffcc99';//light Orange
+																				console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+' '+rpBox[m].color)
 																			}
 																			else{
-																				rpBox[m].color = '#ffffb3';//rpBox[m].data_ip_status; light yellow
+																				rpBox[m].color = '#ffcce0';//light red
+																				console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+' '+rpBox[m].color)
 																			}
 																			rpBox[m].colorBoder = 	'MediumSeaGreen' //MediumSeaGreen
 																			
@@ -469,6 +469,7 @@ ResourceProvider.prototype.getDataMultiSliceVisibility = function(userID, callba
 		});
     });
 };
+
 
 ResourceProvider.prototype.getDataMultiSliceVisibilityTenant = function(userID, callback)
 {
@@ -555,10 +556,18 @@ ResourceProvider.prototype.getDataMultiSliceVisibilityTenant = function(userID, 
 																			rpBox[m].info = "Box Info \n Box Name: "+rpBox[m].boxName+ "\n"+" Site: " + rpBox[m].site;
 																			if (rpBox[m].data_ip_status == "GREEN"){
 																				rpBox[m].color = 'white';
-																				//console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																			}
+																			else if (rpBox[m].data_ip_status == "ORANGE"){
+																				rpBox[m].color = '#ffcc99';//light Orange
+																				console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+' '+rpBox[m].color)
 																			}
 																			else{
-																				rpBox[m].color = '#ffffb3';//rpBox[m].data_ip_status; light yellow
+																				rpBox[m].color = '#ffcce0';//light red
+																				console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																				console.log(rpBox[m].boxName+' '+rpBox[m].color)
 																			}
 																			rpBox[m].colorBoder = 	'MediumSeaGreen' //MediumSeaGreen
 																			
@@ -654,7 +663,742 @@ ResourceProvider.prototype.getDataMultiSliceVisibilityTenant = function(userID, 
     });
 };
 
+//VM's Visualization API
+ResourceProvider.prototype.getSevenRingAPI = function(callback){
+    MongoClient.connect(mongourl, function(err, client){
+		const db = client.db('multiviewdb');
+
+		var colUnderlay_main = db.collection('underlay_main');
+		var colunder_int =db.collection('underlay_int');
+		var colunder_ren = db.collection('underlay_REN');
+		var playground_sites = db.collection('playground_sites');
+		var colpBox = db.collection('pbox-list');
+		var colVMInstance = db.collection('vm-instance-list');
+		
+		var data = [];
+		var main = 0;
+		
+		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
+			colunder_int.find({}).toArray(function(err, rUnder_int){
+				colunder_ren.find({}).toArray(function(err, rUnder_ren){
+					playground_sites.find({}).toArray(function(err, rplayground_sites){
+						colpBox.find({type: 'B**'}).toArray(function(err, rpBox){
+							colVMInstance.find({}).toArray(function(err, rVM){
+								for (var i = 0 ; i < rUnderlay_main.length; i++){
+									rUnderlay_main[i].drilldown = [];
+									rUnderlay_main[i].resource = 1;
+									rUnderlay_main[i].label = rUnderlay_main[i].name;
+									rUnderlay_main[i].info = "TEIN Main";
+									rUnderlay_main[i].color = 'white';
+									rUnderlay_main[i].textBoder= 'LightGrey';
+									
+									//TEIN International
+									for (var j = 0 ; j < rUnder_int.length; j++){
+										if (rUnder_int[j].mainID == rUnderlay_main[i].mainID)
+										{
+											rUnder_int[j].drilldown = [];
+											rUnder_int[j].resource = 2;
+											rUnder_int[j].label = rUnder_int[j].name;
+											rUnder_int[j].info = "TEIN International: "+ rUnder_int[i].name;
+											rUnder_int[j].color = 'white';
+											rUnder_int[j].colorBoder = 'LightGrey ';// Light Grey
+											rUnderlay_main[i].drilldown.push(rUnder_int[j]);
+											
+											//National Research Networks
+											for (var k = 0 ; k < rUnder_ren.length; k++){
+												if (rUnder_ren[k].intID == rUnder_int[j].intID)
+												{
+													rUnder_ren[k].drilldown = [];
+													rUnder_ren[k].resource = 3;
+													rUnder_ren[k].label = rUnder_ren[k].name;
+													rUnder_ren[k].info = "Underlay REN: " + rUnder_ren[k].name;
+													rUnder_ren[k].color = 'white';
+													rUnder_ren[k].colorBoder = 'LightGrey'; // Grey
+													rUnder_int[j].drilldown.push(rUnder_ren[k]);
+													
+													//Playground Sites
+													for (var l = 0 ; l < rplayground_sites.length; l++){
+														if (rplayground_sites[l].RENID == rUnder_ren[k].RENID)
+														{
+															rplayground_sites[l].drilldown = [];
+															rplayground_sites[l].resource = 4;
+															rplayground_sites[l].label =   rplayground_sites[l].name;
+															rplayground_sites[l].info = "Site Name: " + rplayground_sites[l].name;
+															rplayground_sites[l].color = 'white';
+															rplayground_sites[l].colorBoder =  	'#90EE90';
+															
+															rUnder_ren[k].drilldown.push(rplayground_sites[l]);
+															
+															//Physical Boxes
+															for (var m = 0 ; m < rpBox.length; m++){
+																if (rpBox[m].site == rplayground_sites[l].siteID)
+																{
+																	rpBox[m].drilldown = [];
+																	rpBox[m].resource = 5;
+																	rpBox[m].label = ''+ rpBox[m].boxType;
+																	rpBox[m].info = "Box Name: "+rpBox[m].boxName+ "\n"+" Site: " + rpBox[m].site;
+																	if (rpBox[m].data_ip_status == "GREEN"){
+																		rpBox[m].color = 'white';
+																		console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																		console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																	}
+																	else if (rpBox[m].data_ip_status == "ORANGE"){
+																		rpBox[m].color = '#ffcc99';//light Orange
+																		console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																		console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																	}
+																	else{
+																		rpBox[m].color = '#ffcce0';//light red
+																		console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																		console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																	}
+																	rpBox[m].colorBoder = 	'MediumSeaGreen' //MediumSeaGreen
+																	
+																	rplayground_sites[l].drilldown.push(rpBox[m]);
+																	
+																	//OpenStack VMs
+																	for (var o = 0 ; o < rVM.length; o++){
+																		if (rVM[o].box == rpBox[m].boxName)
+																		{
+																			rVM[o].drilldown = [];
+																			rVM[o].resource = 6;
+																			rVM[o].label = ''+rVM[o].name;
+																			rVM[o].info = "VM: " +rVM[o].name + " Box: " + rpBox[m].boxName;
+																			rVM[o].colorBoder = '#FFD700'; //Gold
+																			
+																			if (rVM[o].state == "Running"){
+																				rVM[o].color = 'white';
+																			}
+																			else{
+																				rVM[o].color = "#ffcce0"; //light red
+																			}
+																			rpBox[m].drilldown.push(rVM[o]);
+																			
+																			var sFlows = {"resource": "11", "label": "SF", "info": "Click to get details about sampled flows", "color": "white", "colorBoder": "#0040ff"}; //Blue
+																			rVM[o].drilldown.push(sFlows);
+																			
+																			//sFlows.drilldown = [];
+																			//var tPackets = {"resource": "12", "label": "TP", "info": "Click to get details about packets", "color": "white", "colorBoder": "#0040ff"}; //Blue
+																			//sFlows.drilldown.push(tPackets);
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									data = rUnderlay_main;
+									console.log(data);
+								}
+								callback(null, data);
+							});
+						});
+					});
+				});
+			});
+		});
+    });
+};
+
+//VM's Visualization API
+ResourceProvider.prototype.getEightRingAPI = function(callback){
+    MongoClient.connect(mongourl, function(err, client){
+		const db = client.db('multiviewdb');
+
+		var colUnderlay_main = db.collection('underlay_main');
+		var colunder_int =db.collection('underlay_int');
+		var colunder_ren = db.collection('underlay_REN');
+		var playground_sites = db.collection('playground_sites');
+		var colpBox = db.collection('pbox-list');
+		var colVMInstance = db.collection('vm-instance-list');
+		var colWorkload = db.collection('workload-list');
+		
+		var data = [];
+		var main = 0;
+		
+		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
+			colunder_int.find({}).toArray(function(err, rUnder_int){
+				colunder_ren.find({}).toArray(function(err, rUnder_ren){
+					playground_sites.find({}).toArray(function(err, rplayground_sites){
+						colpBox.find({type: 'B**'}).toArray(function(err, rpBox){
+							colVMInstance.find({}).toArray(function(err, rVM){
+								colWorkload.find({}).toArray(function(err, rWorkload){
+									for (var i = 0 ; i < rUnderlay_main.length; i++){
+										rUnderlay_main[i].drilldown = [];
+										rUnderlay_main[i].resource = 1;
+										rUnderlay_main[i].label = rUnderlay_main[i].name;
+										rUnderlay_main[i].info = "TEIN Main";
+										rUnderlay_main[i].color = 'white';
+										rUnderlay_main[i].textBoder= 'LightGrey';
+										
+										//TEIN International
+										for (var j = 0 ; j < rUnder_int.length; j++){
+											if (rUnder_int[j].mainID == rUnderlay_main[i].mainID)
+											{
+												rUnder_int[j].drilldown = [];
+												rUnder_int[j].resource = 2;
+												rUnder_int[j].label = rUnder_int[j].name;
+												rUnder_int[j].info = "TEIN International: "+ rUnder_int[i].name;
+												rUnder_int[j].color = 'white';
+												rUnder_int[j].colorBoder = 'LightGrey ';// Light Grey
+												rUnderlay_main[i].drilldown.push(rUnder_int[j]);
+												
+												//National Research Networks
+												for (var k = 0 ; k < rUnder_ren.length; k++){
+													if (rUnder_ren[k].intID == rUnder_int[j].intID)
+													{
+														rUnder_ren[k].drilldown = [];
+														rUnder_ren[k].resource = 3;
+														rUnder_ren[k].label = rUnder_ren[k].name;
+														rUnder_ren[k].info = "Underlay REN: " + rUnder_ren[k].name;
+														rUnder_ren[k].color = 'white';
+														rUnder_ren[k].colorBoder = 'LightGrey'; // Grey
+														rUnder_int[j].drilldown.push(rUnder_ren[k]);
+														
+														//Playground Sites
+														for (var l = 0 ; l < rplayground_sites.length; l++){
+															if (rplayground_sites[l].RENID == rUnder_ren[k].RENID)
+															{
+																rplayground_sites[l].drilldown = [];
+																rplayground_sites[l].resource = 4;
+																rplayground_sites[l].label =   rplayground_sites[l].name;
+																rplayground_sites[l].info = "Site Name: " + rplayground_sites[l].name;
+																rplayground_sites[l].color = 'white';
+																rplayground_sites[l].colorBoder =  	'#90EE90';
+																
+																rUnder_ren[k].drilldown.push(rplayground_sites[l]);
+																
+																//Physical Boxes
+																for (var m = 0 ; m < rpBox.length; m++){
+																	if (rpBox[m].site == rplayground_sites[l].siteID)
+																	{
+																		rpBox[m].drilldown = [];
+																		rpBox[m].resource = 5;
+																		rpBox[m].label = ''+ rpBox[m].boxType;
+																		rpBox[m].info = "Box Name: "+rpBox[m].boxName+ "\n"+" Site: " + rpBox[m].site;
+																		if (rpBox[m].data_ip_status == "GREEN"){
+																			rpBox[m].color = 'white';
+																			console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																			console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																		}
+																		else if (rpBox[m].data_ip_status == "ORANGE"){
+																			rpBox[m].color = '#ffe680';//light Orange
+																			console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																			console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																		}
+																		else{
+																			rpBox[m].color = '#ff66a3';//light red
+																			console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																			console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																		}
+																		rpBox[m].colorBoder = 	'MediumSeaGreen' //MediumSeaGreen
+																		
+																		rplayground_sites[l].drilldown.push(rpBox[m]);
+																		
+																		//OpenStack VMs
+																		for (var o = 0 ; o < rVM.length; o++){
+																			if (rVM[o].box == rpBox[m].boxName)
+																			{
+																				rVM[o].drilldown = [];
+																				rVM[o].resource = 6;
+																				rVM[o].label = ''+rVM[o].name;
+																				rVM[o].info = "VM: " +rVM[o].name + " Box: " + rpBox[m].boxName;
+																				rVM[o].colorBoder = '#FFD700'; //Gold
+																				
+																				if (rVM[o].state == "Running"){
+																					rVM[o].color = 'white';
+																				}
+																				else{
+																					rVM[o].color = "#ff66a3"; //light red
+																				}
+																				rpBox[m].drilldown.push(rVM[o]);
+																				
+																				var sFlows = {"resource": "7", "label": "SF", "drilldown": [], "info": "Click to get details about sampled flows", "color": "white", "colorBoder": "#0040ff"}; //Blue
+																				rVM[o].drilldown.push(sFlows);
+																				
+																				//Workloads
+																				for (var p = 0 ; p < rWorkload.length; p++){
+																					if (rWorkload[p].vmInstance == rVM[o].name)
+																					{
+																						rWorkload[p].drilldown = [];
+																						rWorkload[p].resource = 8;
+																						rWorkload[p].label = ''+rWorkload[p].workloadName;
+																						rWorkload[p].info = "Workload: " +rWorkload[p].name + " VM: " + rVM[o].name;
+																						rWorkload[p].colorBoder = '#ff66ff'; //Light Purple
+																						
+																						if (rWorkload[p].state == "Running"){
+																							rWorkload[p].color = 'white';
+																						}
+																						else{
+																							rWorkload[p].color = "#ff66a3"; //light red
+																						}
+																						sFlows.drilldown.push(rWorkload[p]);
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										data = rUnderlay_main;
+										console.log(data);
+									}
+									callback(null, data);
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+    });
+};
 //ManhNT end
+
+//TEIN Internatioal Visualization API
+ResourceProvider.prototype.getTwoRingAPI = function(callback){
+    MongoClient.connect(mongourl, function(err, client){
+		const db = client.db('multiviewdb');
+
+		var colUnderlay_main = db.collection('underlay_main');
+		var colunder_int =db.collection('underlay_int');
+		
+		var data = [];
+		var main = 0;
+		
+		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
+			colunder_int.find({}).toArray(function(err, rUnder_int){
+				
+					
+					//TEIN Main
+					for (var i = 0 ; i < rUnderlay_main.length; i++){
+						rUnderlay_main[i].drilldown = [];
+						rUnderlay_main[i].resource = 1;
+						rUnderlay_main[i].label = rUnderlay_main[i].name;
+						rUnderlay_main[i].info = "TEIN Main";
+						rUnderlay_main[i].color = 'black';
+						rUnderlay_main[i].textBoder= 'LightGrey';
+						
+						//TEIN International
+						for (var j = 0 ; j < rUnder_int.length; j++){
+							if (rUnder_int[j].mainID == rUnderlay_main[i].mainID)
+							{
+								rUnder_int[j].drilldown = [];
+								rUnder_int[j].resource = 2;
+								rUnder_int[j].label = rUnder_int[j].name;
+								rUnder_int[j].info = "TEIN International: "+ rUnder_int[i].name;
+								rUnder_int[j].color = 'white';
+								rUnder_int[j].colorBoder = 'LightGrey ';// Light Grey
+								rUnderlay_main[i].drilldown.push(rUnder_int[j]);
+							}
+						}
+						data = rUnderlay_main;
+						console.log(data);
+					}
+					callback(null, data);
+			
+			});
+		});
+    });
+};
+
+//REN Visualization API
+ResourceProvider.prototype.getThreeRingAPI = function(callback){
+    MongoClient.connect(mongourl, function(err, client){
+		const db = client.db('multiviewdb');
+
+		var colUnderlay_main = db.collection('underlay_main');
+		var colunder_int =db.collection('underlay_int');
+		var colunder_ren = db.collection('underlay_REN');
+		
+		var data = [];
+		var main = 0;
+		
+		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
+			colunder_int.find({}).toArray(function(err, rUnder_int){
+				colunder_ren.find({}).toArray(function(err, rUnder_ren){
+					
+					for (var i = 0 ; i < rUnderlay_main.length; i++){
+						rUnderlay_main[i].drilldown = [];
+						rUnderlay_main[i].resource = 1;
+						rUnderlay_main[i].label = rUnderlay_main[i].name;
+						rUnderlay_main[i].info = "TEIN Main";
+						rUnderlay_main[i].color = 'white';
+						rUnderlay_main[i].textBoder= 'LightGrey';
+						
+						//TEIN International
+						for (var j = 0 ; j < rUnder_int.length; j++){
+							if (rUnder_int[j].mainID == rUnderlay_main[i].mainID)
+							{
+								rUnder_int[j].drilldown = [];
+								rUnder_int[j].resource = 2;
+								rUnder_int[j].label = rUnder_int[j].name;
+								rUnder_int[j].info = "TEIN International: "+ rUnder_int[i].name;
+								rUnder_int[j].color = 'white';
+								rUnder_int[j].colorBoder = 'LightGrey ';// Light Grey
+								rUnderlay_main[i].drilldown.push(rUnder_int[j]);
+								
+								//National Research Networks
+								for (var k = 0 ; k < rUnder_ren.length; k++){
+									if (rUnder_ren[k].intID == rUnder_int[j].intID)
+									{
+										rUnder_ren[k].drilldown = [];
+										rUnder_ren[k].resource = 3;
+										rUnder_ren[k].label = rUnder_ren[k].name;
+										rUnder_ren[k].info = "Underlay REN: " + rUnder_ren[k].name;
+										rUnder_ren[k].color = 'white';
+										rUnder_ren[k].colorBoder = 'LightGrey'; // Grey
+										rUnder_int[j].drilldown.push(rUnder_ren[k]);
+									}
+								}
+							}
+						}
+						data = rUnderlay_main;
+						console.log(data);
+					}
+					callback(null, data);
+				});
+			});
+		});
+    });
+};
+
+//Sites Visualization API
+ResourceProvider.prototype.getFourRingAPI = function(callback){
+    MongoClient.connect(mongourl, function(err, client){
+		const db = client.db('multiviewdb');
+
+		var colUnderlay_main = db.collection('underlay_main');
+		var colunder_int =db.collection('underlay_int');
+		var colunder_ren = db.collection('underlay_REN');
+		var playground_sites = db.collection('playground_sites');
+		
+		
+		var data = [];
+		var main = 0;
+		
+		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
+			colunder_int.find({}).toArray(function(err, rUnder_int){
+				colunder_ren.find({}).toArray(function(err, rUnder_ren){
+					playground_sites.find({}).toArray(function(err, rplayground_sites){
+						for (var i = 0 ; i < rUnderlay_main.length; i++){
+							rUnderlay_main[i].drilldown = [];
+							rUnderlay_main[i].resource = 1;
+							rUnderlay_main[i].label = rUnderlay_main[i].name;
+							rUnderlay_main[i].info = "TEIN Main";
+							rUnderlay_main[i].color = 'white';
+							rUnderlay_main[i].textBoder= 'LightGrey';
+							
+							//TEIN International
+							for (var j = 0 ; j < rUnder_int.length; j++){
+								if (rUnder_int[j].mainID == rUnderlay_main[i].mainID)
+								{
+									rUnder_int[j].drilldown = [];
+									rUnder_int[j].resource = 2;
+									rUnder_int[j].label = rUnder_int[j].name;
+									rUnder_int[j].info = "TEIN International: "+ rUnder_int[i].name;
+									rUnder_int[j].color = 'white';
+									rUnder_int[j].colorBoder = 'LightGrey ';// Light Grey
+									rUnderlay_main[i].drilldown.push(rUnder_int[j]);
+									
+									//National Research Networks
+									for (var k = 0 ; k < rUnder_ren.length; k++){
+										if (rUnder_ren[k].intID == rUnder_int[j].intID)
+										{
+											rUnder_ren[k].drilldown = [];
+											rUnder_ren[k].resource = 3;
+											rUnder_ren[k].label = rUnder_ren[k].name;
+											rUnder_ren[k].info = "Underlay REN: " + rUnder_ren[k].name;
+											rUnder_ren[k].color = 'white';
+											rUnder_ren[k].colorBoder = 'LightGrey'; // Grey
+											rUnder_int[j].drilldown.push(rUnder_ren[k]);
+											
+											//Playground Sites
+											for (var l = 0 ; l < rplayground_sites.length; l++){
+												if (rplayground_sites[l].RENID == rUnder_ren[k].RENID)
+												{
+													rplayground_sites[l].drilldown = [];
+													rplayground_sites[l].resource = 4;
+													rplayground_sites[l].label =   rplayground_sites[l].name;
+													rplayground_sites[l].info = "Site Name: " + rplayground_sites[l].name;
+													rplayground_sites[l].color = 'white';
+													rplayground_sites[l].colorBoder =  	'#90EE90';
+													
+													rUnder_ren[k].drilldown.push(rplayground_sites[l]);
+												}
+											}
+										}
+									}
+								}
+							}
+							data = rUnderlay_main;
+							console.log(data);
+						}
+						callback(null, data);
+					});
+				});
+			});
+		});
+    });
+};
+
+//SmartX Boxes Visualization API
+ResourceProvider.prototype.getFiveRingAPI = function(callback){
+    MongoClient.connect(mongourl, function(err, client){
+		const db = client.db('multiviewdb');
+
+		var colUnderlay_main = db.collection('underlay_main');
+		var colunder_int =db.collection('underlay_int');
+		var colunder_ren = db.collection('underlay_REN');
+		var playground_sites = db.collection('playground_sites');
+		var colpBox = db.collection('pbox-list');
+		
+		var data = [];
+		var main = 0;
+		
+		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
+			colunder_int.find({}).toArray(function(err, rUnder_int){
+				colunder_ren.find({}).toArray(function(err, rUnder_ren){
+					playground_sites.find({}).toArray(function(err, rplayground_sites){
+						colpBox.find({type: 'B**'}).toArray(function(err, rpBox){
+							for (var i = 0 ; i < rUnderlay_main.length; i++){
+								rUnderlay_main[i].drilldown = [];
+								rUnderlay_main[i].resource = 1;
+								rUnderlay_main[i].label = rUnderlay_main[i].name;
+								rUnderlay_main[i].info = "TEIN Main";
+								rUnderlay_main[i].color = 'white';
+								rUnderlay_main[i].textBoder= 'LightGrey';
+								
+								//TEIN International
+								for (var j = 0 ; j < rUnder_int.length; j++){
+									if (rUnder_int[j].mainID == rUnderlay_main[i].mainID)
+									{
+										rUnder_int[j].drilldown = [];
+										rUnder_int[j].resource = 2;
+										rUnder_int[j].label = rUnder_int[j].name;
+										rUnder_int[j].info = "TEIN International: "+ rUnder_int[i].name;
+										rUnder_int[j].color = 'white';
+										rUnder_int[j].colorBoder = 'LightGrey ';// Light Grey
+										rUnderlay_main[i].drilldown.push(rUnder_int[j]);
+										
+										//National Research Networks
+										for (var k = 0 ; k < rUnder_ren.length; k++){
+											if (rUnder_ren[k].intID == rUnder_int[j].intID)
+											{
+												rUnder_ren[k].drilldown = [];
+												rUnder_ren[k].resource = 3;
+												rUnder_ren[k].label = rUnder_ren[k].name;
+												rUnder_ren[k].info = "Underlay REN: " + rUnder_ren[k].name;
+												rUnder_ren[k].color = 'white';
+												rUnder_ren[k].colorBoder = 'LightGrey'; // Grey
+												rUnder_int[j].drilldown.push(rUnder_ren[k]);
+												
+												//Playground Sites
+												for (var l = 0 ; l < rplayground_sites.length; l++){
+													if (rplayground_sites[l].RENID == rUnder_ren[k].RENID)
+													{
+														rplayground_sites[l].drilldown = [];
+														rplayground_sites[l].resource = 4;
+														rplayground_sites[l].label =   rplayground_sites[l].name;
+														rplayground_sites[l].info = "Site Name: " + rplayground_sites[l].name;
+														rplayground_sites[l].color = 'white';
+														rplayground_sites[l].colorBoder =  	'#90EE90';
+														
+														rUnder_ren[k].drilldown.push(rplayground_sites[l]);
+														
+														//Physical Boxes
+														for (var m = 0 ; m < rpBox.length; m++){
+															if (rpBox[m].site == rplayground_sites[l].siteID)
+															{
+																rpBox[m].drilldown = [];
+																rpBox[m].resource = 5;
+																rpBox[m].label = ''+ rpBox[m].boxType;
+																rpBox[m].info = "Box Info \n Box Name: "+rpBox[m].boxName+ "\n"+" Site: " + rpBox[m].site;
+																if (rpBox[m].data_ip_status == "GREEN"){
+																	rpBox[m].color = 'white';
+																	console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																	console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																}
+																else if (rpBox[m].data_ip_status == "ORANGE"){
+																	rpBox[m].color = '#ffcc99';//light Orange
+																	console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																	console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																}
+																else{
+																	rpBox[m].color = '#ffcce0';//light red
+																	console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																	console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																}
+																rpBox[m].colorBoder = 	'MediumSeaGreen' //MediumSeaGreen
+																
+																rplayground_sites[l].drilldown.push(rpBox[m]);
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								data = rUnderlay_main;
+								console.log(data);
+							}
+							callback(null, data);
+						});
+					});
+				});
+			});
+		});
+    });
+};
+
+//VM's Visualization API
+ResourceProvider.prototype.getSixRingAPI = function(callback){
+    MongoClient.connect(mongourl, function(err, client){
+		const db = client.db('multiviewdb');
+
+		var colUnderlay_main = db.collection('underlay_main');
+		var colunder_int =db.collection('underlay_int');
+		var colunder_ren = db.collection('underlay_REN');
+		var playground_sites = db.collection('playground_sites');
+		var colpBox = db.collection('pbox-list');
+		var colVMInstance = db.collection('vm-instance-list');
+		
+		var data = [];
+		var main = 0;
+		
+		colUnderlay_main.find({}).toArray(function(err, rUnderlay_main){
+			colunder_int.find({}).toArray(function(err, rUnder_int){
+				colunder_ren.find({}).toArray(function(err, rUnder_ren){
+					playground_sites.find({}).toArray(function(err, rplayground_sites){
+						colpBox.find({type: 'B**'}).toArray(function(err, rpBox){
+							colVMInstance.find({}).toArray(function(err, rVM){
+								for (var i = 0 ; i < rUnderlay_main.length; i++){
+									rUnderlay_main[i].drilldown = [];
+									rUnderlay_main[i].resource = 1;
+									rUnderlay_main[i].label = rUnderlay_main[i].name;
+									rUnderlay_main[i].info = "TEIN Main";
+									rUnderlay_main[i].color = 'white';
+									rUnderlay_main[i].textBoder= 'LightGrey';
+									
+									//TEIN International
+									for (var j = 0 ; j < rUnder_int.length; j++){
+										if (rUnder_int[j].mainID == rUnderlay_main[i].mainID)
+										{
+											rUnder_int[j].drilldown = [];
+											rUnder_int[j].resource = 2;
+											rUnder_int[j].label = rUnder_int[j].name;
+											rUnder_int[j].info = "TEIN International: "+ rUnder_int[i].name;
+											rUnder_int[j].color = 'white';
+											rUnder_int[j].colorBoder = 'LightGrey ';// Light Grey
+											rUnderlay_main[i].drilldown.push(rUnder_int[j]);
+											
+											//National Research Networks
+											for (var k = 0 ; k < rUnder_ren.length; k++){
+												if (rUnder_ren[k].intID == rUnder_int[j].intID)
+												{
+													rUnder_ren[k].drilldown = [];
+													rUnder_ren[k].resource = 3;
+													rUnder_ren[k].label = rUnder_ren[k].name;
+													rUnder_ren[k].info = "Underlay REN: " + rUnder_ren[k].name;
+													rUnder_ren[k].color = 'white';
+													rUnder_ren[k].colorBoder = 'LightGrey'; // Grey
+													rUnder_int[j].drilldown.push(rUnder_ren[k]);
+													
+													//Playground Sites
+													for (var l = 0 ; l < rplayground_sites.length; l++){
+														if (rplayground_sites[l].RENID == rUnder_ren[k].RENID)
+														{
+															rplayground_sites[l].drilldown = [];
+															rplayground_sites[l].resource = 4;
+															rplayground_sites[l].label =   rplayground_sites[l].name;
+															rplayground_sites[l].info = "Site Name: " + rplayground_sites[l].name;
+															rplayground_sites[l].color = 'white';
+															rplayground_sites[l].colorBoder =  	'#90EE90';
+															
+															rUnder_ren[k].drilldown.push(rplayground_sites[l]);
+															
+															//Physical Boxes
+															for (var m = 0 ; m < rpBox.length; m++){
+																if (rpBox[m].site == rplayground_sites[l].siteID)
+																{
+																	rpBox[m].drilldown = [];
+																	rpBox[m].resource = 5;
+																	rpBox[m].label = ''+ rpBox[m].boxType;
+																	rpBox[m].info = "Box Name: "+rpBox[m].boxName+ "\n"+" Site: " + rpBox[m].site;
+																	if (rpBox[m].data_ip_status == "GREEN"){
+																		rpBox[m].color = 'white';
+																		console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																		console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																	}
+																	else if (rpBox[m].data_ip_status == "ORANGE"){
+																		rpBox[m].color = '#ffcc99';//light Orange
+																		console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																		console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																	}
+																	else{
+																		rpBox[m].color = '#ffcce0';//light red
+																		console.log(rpBox[m].boxName+ " "+rpBox[m].data_ip_status);
+																		console.log(rpBox[m].boxName+' '+rpBox[m].color)
+																	}
+																	rpBox[m].colorBoder = 	'MediumSeaGreen' //MediumSeaGreen
+																	
+																	rplayground_sites[l].drilldown.push(rpBox[m]);
+																	
+																	//OpenStack VMs
+																	for (var o = 0 ; o < rVM.length; o++){
+																		if (rVM[o].box == rpBox[m].boxName)
+																		{
+																			rVM[o].drilldown = [];
+																			rVM[o].resource = 6;
+																			rVM[o].label = ''+rVM[o].name;
+																			rVM[o].info = "VM: " +rVM[o].name + " Box: " + rpBox[m].boxName;
+																			rVM[o].colorBoder = '#FFD700'; //Gold
+																			
+																			if (rVM[o].state == "Running"){
+																				rVM[o].color = 'white';
+																			}
+																			else{
+																				rVM[o].color = "#ffcce0"; //light red
+																			}
+																			rpBox[m].drilldown.push(rVM[o]);
+																			
+																			//var sFlows = {"resource": "11", "label": "SF", "info": "Click to get details about sampled flows", "color": "white", "colorBoder": "#0040ff"}; //Blue
+																			//rVM[o].drilldown.push(sFlows);
+																			
+																			//sFlows.drilldown = [];
+																			//var tPackets = {"resource": "12", "label": "TP", "info": "Click to get details about packets", "color": "white", "colorBoder": "#0040ff"}; //Blue
+																			//sFlows.drilldown.push(tPackets);
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									data = rUnderlay_main;
+									console.log(data);
+								}
+								callback(null, data);
+							});
+						});
+					});
+				});
+			});
+		});
+    });
+};
 
 exports.ResourceProvider = ResourceProvider;
 //exports.UserProvider = UserProvider;

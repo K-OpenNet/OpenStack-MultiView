@@ -38,6 +38,18 @@ html(lang='en')
       var iframe = document.getElementById('grafanaIframe');
       iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+data.boxID;
       }
+      //receive tenant objects
+      function receiveSampledFlows(data){
+      //- console.log("Receive Data Success " + data.info);
+      var iframe = document.getElementById('grafanaIframe');
+      iframe.src = 'http://'+serverIP+':8008/app/dashboard-example/html/';
+      }
+      //receive tenant objects
+      function receiveTracedPkts(data){
+      //- console.log("Receive Data Success " + data.info);
+      var iframe = document.getElementById('grafanaIframe');
+      iframe.src = 'http://'+serverIP+':8008/agents/html';
+      }
       //receive brCap Objects
       function receiveValueBrCap(brCaps){
       var iframe = document.getElementById('grafanaIframe');
@@ -117,6 +129,7 @@ html(lang='en')
       var flowrules   = document.getElementById('flowrulesviewops');
       var flowtracing = document.getElementById('flowtracingviewops');
       var flowmeasure = document.getElementById('flowmeasureviewops');
+      var slicingviewops = document.getElementById('slicingviewops');
       var service     = document.getElementById('servicecentricviewops');
       //manh start
       var sliceview       = document.getElementById('sliceview');
@@ -160,6 +173,11 @@ html(lang='en')
       flowiovisorviewops.addEventListener('click', function() {
       document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Flow-Centric Topological View (IO Visor-based)</p></b>';
       iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowiovisorviewops';
+      //iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+      });
+      slicingviewops.addEventListener('click', function() {
+      document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Slicing View</p></b>';
+      iframe1.src = 'http://103.22.221.51:6126/';
       //iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
       });
       /*flowboxviewops.addEventListener('click', function() {
@@ -228,6 +246,14 @@ html(lang='en')
                     a#flowrulesviewops(href='#', style='background-color:#ffffff;') vSwich-Flows Info
                   li
                     a#flowtracingviewops(href='#', style='background-color:#ffffff;') Inter-connected Flow Path
+              li
+                a(href='#', style='background-color:#eaeae1;color:#3c3c2a;')
+                  i.fa.fa-bookmark.fa-fw
+                  | Slicing Visualization
+                  span.fa.arrow
+                ul#parent-list.nav.nav-second-level(style='background-color:#ffffff;')
+                  li
+                    a#slicingviewops(href='#', style='background-color:#ffffff;') Infrastructure Slicing 
               li
                 a(href='#', style='background-color:#eaeae1;color:#3c3c2a;')
                   i.fa.fa-bookmark.fa-fw

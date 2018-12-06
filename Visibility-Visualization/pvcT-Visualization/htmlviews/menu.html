@@ -40,6 +40,18 @@
 			var iframe = document.getElementById('grafanaIframe');
 			iframe.src = 'http://'+serverIP+':3000/dashboard/db/resource-dashboard-'+data.boxID;
 		}
+		//receive tenant objects
+		function receiveSampledFlows(data){
+			//- console.log("Receive Data Success " + data.info);
+			var iframe = document.getElementById('grafanaIframe');
+			iframe.src = 'http://'+serverIP+':8008/app/dashboard-example/html/';
+		}
+		//receive tenant objects
+		function receiveTracedPkts(data){
+			//- console.log("Receive Data Success " + data.info);
+			var iframe = document.getElementById('grafanaIframe');
+			iframe.src = 'http://'+serverIP+':8008/agents/html';
+		}
 		//receive brCap Objects
 		function receiveValueBrCap(brCaps){
 			var iframe = document.getElementById('grafanaIframe');
@@ -64,18 +76,18 @@
 		function getBoxFlow(boxs){
 			var iframe = document.getElementById('grafanaIframe');
 			//console.log(boxs);
-      if (boxs.id === 1)
-        iframe.src = "http://"+serverIP+":5601/app/kibana#/dashboard/dab0b840-c90a-11e7-9140-dfb68f1deddf?_g=(refreshInterval%3A('%24%24hashKey'%3A'object%3A344'%2Cdisplay%3A'5%20seconds'%2Cpause%3A!f%2Csection%3A1%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-30m%2Cmode%3Aquick%2Cto%3Anow))";
-      else
-        iframe.src = 'http://'+serverIP+':3000/dashboard/db/iovisortracing-'+boxs.label;
-      
-      console.log('http://'+serverIP+':3000/dashboard/db/iovisortracing-'+boxs.label);
+			if (boxs.id === 1)
+				iframe.src = "http://"+serverIP+":5601/app/kibana#/dashboard/dab0b840-c90a-11e7-9140-dfb68f1deddf?_g=(refreshInterval%3A('%24%24hashKey'%3A'object%3A344'%2Cdisplay%3A'5%20seconds'%2Cpause%3A!f%2Csection%3A1%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-30m%2Cmode%3Aquick%2Cto%3Anow))";
+			else
+				iframe.src = 'http://'+serverIP+':3000/dashboard/db/iovisortracing-'+boxs.label;
+		  
+			console.log('http://'+serverIP+':3000/dashboard/db/iovisortracing-'+boxs.label);
       
 			/*if (boxs.label === 'GIST-WAN-Box')
 				iframe.src = 'http://'+serverIP+':3000/dashboard/db/iovisortracing-'+boxs.label;
 			else if (boxs.label === 'GIST-Cloud-Box')
 				iframe.src = 'http://'+serverIP+':5601/goto/48e591f431b051ae64b4ad3f451c36d9';
-      else if (boxs.label === 'GIST-Access-Box')
+			else if (boxs.label === 'GIST-Access-Box')
 				iframe.src = 'http://'+serverIP+':5601/goto/48e591f431b051ae64b4ad3f451c36d9';*/
 		}
 		//Route to Flow Rules + Stats View
@@ -122,6 +134,7 @@
 			var flowrules   = document.getElementById('flowrulesviewops');
 			var flowtracing = document.getElementById('flowtracingviewops');
 			var flowmeasure = document.getElementById('flowmeasureviewops');
+			var slicingviewops = document.getElementById('slicingviewops');
 			var service     = document.getElementById('servicecentricviewops');
 			//manh start
 			var sliceview       = document.getElementById('sliceview');
@@ -167,6 +180,11 @@
 			flowiovisorviewops.addEventListener('click', function() {
 				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Flow-Centric Topological View (IO Visor-based)</p></b>';
 				iframe1.src = 'http://'+serverIP+':'+serverPort+'/flowiovisorviewops';
+				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
+			});
+			slicingviewops.addEventListener('click', function() {
+				document.getElementById('panel-heading-id').innerHTML = '<b><p style="display:inline;font-size:12;color:#e6eeff;text-align:center;">Slicing View</p></b>';
+				iframe1.src = 'http://103.22.221.51:6126/';
 				//iframe2.src = 'http://'+serverIP+':'+serverPort+'/#';
 			});
 			/*flowboxviewops.addEventListener('click', function() {
@@ -220,6 +238,11 @@
 									<li><a id="resourcecentricviewops" href="#" style="background-color:#ffffff;">Playground View</a></li>
 									<li><a id="flowrulesviewops" href="#" style="background-color:#ffffff;">vSwich-Flows Info</a></li>
 									<li><a id="flowtracingviewops" href="#" style="background-color:#ffffff;">Inter-connected Flow Path</a></li>
+								</ul>
+							</li>
+							<li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Slicing Visualization<span class="fa arrow"></span></a>
+								<ul id="parent-list" class="nav nav-second-level" style="background-color:#ffffff;">
+									<li><a id="slicingviewops" href="#" style="background-color:#ffffff;">Infrastructure Slicing </a></li>
 								</ul>
 							</li>
 							<li><a href="#" style="background-color:#eaeae1;color:#3c3c2a;"><i class="fa fa-bookmark fa-fw"></i>Flow-layer Visualization<span class="fa arrow"></span></a>

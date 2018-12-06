@@ -682,6 +682,132 @@ app.get('/getamdatatcpperDay/', function(req, res){
     })
 });
 
+// Route for TEIN International API Call
+app.get('/teinint', function(req, res){
+    var data = null;
+	
+	resourceProvider.getTwoRingAPI(function(error, dataobj)
+	{
+		data = dataobj;
+		showView();
+	});
+	
+	function showView()
+	{
+		if(data !== null){
+			res.render('onionringviewapi.jade', {title: 'Onion-ring Visualization', data : JSON.stringify(data)});
+		}
+	}
+});
+
+// Route for REN API Call
+app.get('/ren', function(req, res){
+    var data = null;
+	
+	resourceProvider.getThreeRingAPI(function(error, dataobj)
+	{
+		data = dataobj;
+		showView();
+	});
+	
+	function showView()
+	{
+		if(data !== null){
+			res.render('onionringviewapi.jade', {title: 'Onion-ring Visualization', data : JSON.stringify(data)});
+		}
+	}
+});
+
+// Route for Sites API Call
+app.get('/sites', function(req, res){
+    var data = null;
+	
+	resourceProvider.getFourRingAPI(function(error, dataobj)
+	{
+		data = dataobj;
+		showView();
+	});
+	
+	function showView()
+	{
+		if(data !== null){
+			res.render('onionringviewapi.jade', {title: 'Onion-ring Visualization', data : JSON.stringify(data)});
+		}
+	}
+});
+
+// Route for SmartX Boxes/Micro-Boxes API Call
+app.get('/boxes', function(req, res){
+    var data = null;
+	
+	resourceProvider.getFiveRingAPI(function(error, dataobj)
+	{
+		data = dataobj;
+		showView();
+	});
+	
+	function showView()
+	{
+		if(data !== null){
+			res.render('onionringviewapi.jade', {title: 'Onion-ring Visualization', data : JSON.stringify(data)});
+		}
+	}
+});
+
+// Route for SmartX Boxes/Micro-Boxes API Call
+app.get('/vms', function(req, res){
+    var data = null;
+	
+	resourceProvider.getSixRingAPI(function(error, dataobj)
+	{
+		data = dataobj;
+		showView();
+	});
+	
+	function showView()
+	{
+		if(data !== null){
+			res.render('onionringviewapi.jade', {title: 'Onion-ring Visualization', data : JSON.stringify(data)});
+		}
+	}
+});
+
+// Route for SmartX Boxes/Micro-Boxes API Call
+app.get('/flows', function(req, res){
+    var data = null;
+	
+	resourceProvider.getSevenRingAPI(function(error, dataobj)
+	{
+		data = dataobj;
+		showView();
+	});
+	
+	function showView()
+	{
+		if(data !== null){
+			res.render('onionringviewapi.jade', {title: 'Onion-ring Visualization', data : JSON.stringify(data)});
+		}
+	}
+});
+
+// Route for SmartX Boxes/Micro-Boxes API Call
+app.get('/workload', function(req, res){
+    var data = null;
+	
+	resourceProvider.getEightRingAPI(function(error, dataobj)
+	{
+		data = dataobj;
+		showView();
+	});
+	
+	function showView()
+	{
+		if(data !== null){
+			res.render('onionringviewapi.jade', {title: 'Onion-ring Visualization', data : JSON.stringify(data)});
+		}
+	}
+});
+
 // Route for Login View
 app.get('/', function(req, res){
     res.render('login.jade', {title: 'MultiView Web Application Login'})

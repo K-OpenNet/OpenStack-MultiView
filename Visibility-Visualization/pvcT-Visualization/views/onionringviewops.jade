@@ -64,10 +64,10 @@ html
         table#controllertable(style='width:100%;color:black;text-align:center;')
           tbody
     script(type='text/javascript').
-      var session_username = sessionStorage.getItem('ss_user_name');
-      if(session_username === null){
-      window.location.replace("http://103.22.221.56:3011/login");
-      };
+      //var session_username = sessionStorage.getItem('ss_user_name');
+      //if(session_username === null){
+      //	window.location.replace("http://103.22.221.56:3011/login");
+      //};
       var data =  !{data};
       var controllerList   = !{controllerList};
       //* Important Data is the data of psd3
@@ -91,7 +91,7 @@ html
       return d.data.color;
       },
       transition: "linear",
-      transitionDuration: 50,
+      transitionDuration: 20,
       donutRadius: 50,
       gradient: true,
       colors: d3.scale.category20(),
