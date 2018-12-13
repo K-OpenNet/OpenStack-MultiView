@@ -122,12 +122,6 @@ public class CustomCollectorsMain {
 				configLoader.gettenantVLANMongoCollection());
 		sFlowconsumer.start();
 
-		/* Start IO Visor Kafka Consumer
-		IOVisorKafkaConsumer iovisorconsumer = new IOVisorKafkaConsumer(configLoader.getVISIBILITY_CENTER() + ":9092",
-				MongoConnector);
-		iovisorconsumer.Consume();
-		*/
-		
 		// Start SmartX Boxes Performance Metrics Collection
 		SmartXBoxesPerformance smartxboxesinstanceconsumer = new SmartXBoxesPerformance(MongoConnector, configLoader.getVISIBILITY_CENTER() + ":9092",
 								configLoader.getES_HOST(), configLoader.getES_PORT());
@@ -138,8 +132,13 @@ public class CustomCollectorsMain {
 						configLoader.getES_HOST(), configLoader.getES_PORT());
 		openstackinstanceconsumer.start();
 
+		/*// Start IO Visor Kafka Consumer
+		IOVisorKafkaConsumer iovisorconsumer = new IOVisorKafkaConsumer(configLoader.getVISIBILITY_CENTER() + ":9092",
+				MongoConnector);
+		iovisorconsumer.Consume();*/
+		
 		// Start Visibility Collection for ODL Flow Rules Data
-		/*SDNControllerStatus sdnStatus = new SDNControllerStatus(configLoader.getMONGO_DB_HOST(),
+		SDNControllerStatus sdnStatus = new SDNControllerStatus(configLoader.getMONGO_DB_HOST(),
 				configLoader.getMONGO_DB_PORT(), configLoader.getMONGO_DB_DATABASE(),
 				configLoader.getflowConfigMongoCollection(), configLoader.getflowConfigMongoCollectionRT(),
 				configLoader.getdevopscontrollers(), configLoader.getControllerUser(),
@@ -153,11 +152,11 @@ public class CustomCollectorsMain {
 				configLoader.getdevopscontrollers(), configLoader.getControllerUser(),
 				configLoader.getControllerPassword());
 		sdnStats.start();
-*/
+
 		// Start Visibility Collection for TCP Topology Data
-		// tcpTopologyKafkaConsumer tcptopology = new
-		// tcpTopologyKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092",
-		// MongoConnector);
-		// tcptopology.start();
+		/*tcpTopologyKafkaConsumer tcptopology = new
+		tcpTopologyKafkaConsumer(configLoader.getVISIBILITY_CENTER()+":9092",
+		MongoConnector);
+		tcptopology.start();*/
 	}
 }
