@@ -14,11 +14,11 @@
 #  See the License for the specific language governing permissions and
 #
 # Name			: Get OpenStack Subnet List (Multi-region Deployment)
-# Description	: Script for Integating/Mapping neutron network, subnet and tenant for operator+tenant tagging to assist flowcentric visibility. It must be executed in ID center.
+# Description	: Script for Integating/Mapping neutron network, subnet and tenant for operator+tenant tagging to assist flowcentric visibility. It must be executed in ID center via crontab. e.g. */5 * * * * /bin/bash /home/netcs/subnet_list.sh
 #
 # Created by    : Muhammad Usman
-# Version       : 0.1
-# Last Update	: April, 2018
+# Version       : 0.2
+# Last Update	: December, 2018
 #
 
 OS_REGIONS="GIST1 KR-GIST2 GIST3 TW-NCKU MYREN MY-UM TH-CHULA VN-HUST"
