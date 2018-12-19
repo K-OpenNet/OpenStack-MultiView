@@ -4,8 +4,8 @@
 # Description   : A script for transferring network packets data to the SmartX Visibility Center
 #
 # Created by    : Muhammad Usman
-# Version       : 0.4
-# Last Update   : July, 2018
+# Version       : 0.5
+# Last Update   : December, 2018
 
 #Modify these parameters before execution on SmartX Boxes
 #Also install sshpass and add SmartX Visibility Center IP for automatic logins.
@@ -23,25 +23,28 @@ Hour="$(date +'%H')"
 cDate="$(date +'%Y-%m-%d')"
 
 host=`hostname`
-#if [ "$Hour" -lt 10 ]
-#    then 
-#        Hour="0$Hour"
-#        echo $Hour
-#fi
 
-if [ "$Minute" -eq 0 ]
+if [ "$Minute" -eq 00 ]
     then
-		if [ "$Hour" -eq 0 ]
-		then
-			PREVIOUS_HOUR=23
-			PREVIOUS_MINUTE=55
-			PREVIOUS_DAY="$(date +'%d')"
-			PREVIOUS_DAY=$((PREVIOUS_DAY - 1))
-		else	
-			PREVIOUS_HOUR=$(($HOUR - 1))
-			PREVIOUS_MINUTE=55
-			PREVIOUS_DAY="$(date +'%d')"
-		fi
+        if [ "$Hour" -eq 00 ]
+        then
+                PREVIOUS_HOUR=23
+                PREVIOUS_MINUTE=55
+                PREVIOUS_DAY="$(date +'%d')"
+                PREVIOUS_DAY=$((PREVIOUS_DAY - 1))
+                if [ "$PREVIOUS_DAY" -lt 10 ]
+                then
+                        PREVIOUS_DAY="0$PREVIOUS_DAY"
+                fi
+        else
+                PREVIOUS_HOUR=$((Hour - 1))
+                PREVIOUS_MINUTE=55
+                PREVIOUS_DAY="$(date +'%d')"
+                if [ "$PREVIOUS_HOUR" -lt 10 ]
+                then
+                        PREVIOUS_HOUR="0$PREVIOUS_HOUR"
+                fi
+        fi
         cDate="$(date +'%Y-%m')"
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$PREVIOUS_DAY-$PREVIOUS_HOUR-$PREVIOUS_MINUTE"
         PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$PREVIOUS_DAY-$PREVIOUS_HOUR-$PREVIOUS_MINUTE"
@@ -61,15 +64,15 @@ elif [ "$Minute" -eq 15 ]
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$Hour-$PREVIOUS_MINUTE"
         PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$Hour-$PREVIOUS_MINUTE"
 elif [ "$Minute" -eq 20 ]
-    then
+     then
         PREVIOUS_MINUTE=15
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$Hour-$PREVIOUS_MINUTE"
         PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$Hour-$PREVIOUS_MINUTE"
 elif [ "$Minute" -eq 25 ]
-    then 
+    then
         PREVIOUS_MINUTE=20
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$Hour-$PREVIOUS_MINUTE"
-        PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$Hour-$PREVIOUS_MINUTE" 
+        PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$Hour-$PREVIOUS_MINUTE"
 elif [ "$Minute" -eq 30 ]
     then
         PREVIOUS_MINUTE=25
@@ -86,7 +89,7 @@ elif [ "$Minute" -eq 40 ]
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$Hour-$PREVIOUS_MINUTE"
         PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$Hour-$PREVIOUS_MINUTE"
 elif [ "$Minute" -eq 45 ]
-    then 
+    then
         PREVIOUS_MINUTE=40
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$Hour-$PREVIOUS_MINUTE"
         PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$Hour-$PREVIOUS_MINUTE"
@@ -101,8 +104,6 @@ elif [ "$Minute" -eq 55 ]
         PREVIOUS_FILE1="/opt/IOVisor-Data/$host-mc-$cDate-$Hour-$PREVIOUS_MINUTE"
         PREVIOUS_FILE2="/opt/IOVisor-Data/$host-data-$cDate-$Hour-$PREVIOUS_MINUTE"
 fi
-
-echo "$PREVIOUS_FILE1 $PREVIOUS_FILE2"
 
 sshpass -p $PASS scp $PREVIOUS_FILE1 $VISIBILITY_CENTER_USER@$VISIBILITY_CENTER_IP:$TARGETFOLDERCP
 sshpass -p $PASS scp $PREVIOUS_FILE2 $VISIBILITY_CENTER_USER@$VISIBILITY_CENTER_IP:$TARGETFOLDERDP
