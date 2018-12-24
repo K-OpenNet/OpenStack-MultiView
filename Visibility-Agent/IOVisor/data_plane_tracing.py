@@ -184,7 +184,7 @@ while 1:
             if (CurrentMin < 15):
                 filename = "/opt/IOVisor-Data/"+BoxName+"-data-" + time.strftime("%Y-%m-%d-%H") + "-10"
             else:
-                filename = "/opt/IOVisor-Data/"+BoxName+"-" + time.strftime("%Y-%m-%d-%H") + "-15"
+                filename = "/opt/IOVisor-Data/"+BoxName+"-data-" + time.strftime("%Y-%m-%d-%H") + "-15"
         else:
             if (CurrentMin < 25):
                 filename = "/opt/IOVisor-Data/"+BoxName+"-data-" + time.strftime("%Y-%m-%d-%H") + "-20"
