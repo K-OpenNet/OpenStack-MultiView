@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sbt: org.elasticsearch:elasticsearch-spark-20_2.11:6.4.1:jar">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.elasticsearch/elasticsearch-spark-20_2.11/jars/elasticsearch-spark-20_2.11-6.4.1.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
