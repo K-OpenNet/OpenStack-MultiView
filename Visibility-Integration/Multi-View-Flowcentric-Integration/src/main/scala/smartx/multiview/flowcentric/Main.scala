@@ -85,6 +85,8 @@ object Main {
       val ThirdResult = SecondResultRenamed.join(right = LatencyUnderlayDF, col("Box_ID") === col("SmartX-Box-Source"), joinType = "left_outer")
         .drop("SmartX-Box-Source").drop("processing_time")
 
+      DPlanesDF = DPlanesDF.withColumnRenamed("processing_time" , "processingTime")
+
       System.out.println("Data Plane Records: "+DPlanesDF.count())
       System.out.println("Control Plane Records: "+MCPlanesDF.count())
       System.out.println("Underlay Latency Records: "+LatencyUnderlayDF.count())
@@ -107,7 +109,7 @@ object Main {
       ThirdResult.write.mode("append")
         .format("org.elasticsearch.spark.sql")
         .option("es.mapping.date.rich", "false")
-        .save("dp-integrated-flows/data-integrated")
+        .save("dp-integrated-flows-1/data-integrated")
     }
   }
 }
