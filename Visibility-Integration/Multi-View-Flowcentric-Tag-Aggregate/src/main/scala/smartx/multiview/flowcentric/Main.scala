@@ -93,12 +93,17 @@ object Main {
       FinalResult.toDF.write.parquet("/home/netcs/Multi-View-Staged/AggregateUndelayLatency.parquet")
 
       //Save result to Elasticsearch
-      FinalResult.write.mode("append").format("org.elasticsearch.spark.sql").option("es.mapping.date.rich", "false").save("underlay-staged-latency/latency")
+      FinalResult.write.mode("append")
+        .format("org.elasticsearch.spark.sql")
+        .option("es.mapping.date.rich", "false")
+        .save("underlay-aggregate-latency-1/latency")
     }
 
     //Physical Resource-layer Data Summarization
     def AggregateSystemPhysical(spark: SparkSession): Unit = {
-      val df = spark.esDF("smartx-boxes-metrics/instance").filter(unix_timestamp($"@timestamp", "yyyy-MM-ddTHH:mm:ss.S").cast("timestamp").between(Timestamp.valueOf(start_time), Timestamp.valueOf(end_time)))
+      val df = spark.esDF("smartx-boxes-metrics-1/instance")
+        .filter(unix_timestamp($"@timestamp", "yyyy-MM-ddTHH:mm:ss.S")
+          .cast("timestamp").between(Timestamp.valueOf(start_time), Timestamp.valueOf(end_time)))
 
       val groupResult = df.groupBy("BoxID")
         .agg(
@@ -204,13 +209,13 @@ object Main {
       FinalResult.write.mode("append")
         .format("org.elasticsearch.spark.sql")
         .option("es.mapping.date.rich", "false")
-        .save("physical-staged-system/physical")
+        .save("physical-aggregate-system-1/physical")
     }
 
     //Virtual Resource-layer Data Summarization
     def AggregateSystemVirtual(spark: SparkSession): Unit = {
       //val df = EsSparkSQL.esDF(spark, "openstack-instance-metrics/instance", "?q=@timestamp:["+Timestamp.valueOf(start_time)+" TO "+Timestamp.valueOf(end_time)+"]")
-      val df = spark.esDF("openstack-instances-metrics/instance").filter(unix_timestamp($"@timestamp", "yyyy-MM-ddTHH:mm:ss.S").cast("timestamp").between(Timestamp.valueOf(start_time), Timestamp.valueOf(end_time)))
+      val df = spark.esDF("openstack-instances-metrics-1/instance").filter(unix_timestamp($"@timestamp", "yyyy-MM-ddTHH:mm:ss.S").cast("timestamp").between(Timestamp.valueOf(start_time), Timestamp.valueOf(end_time)))
       //        .where(unix_timestamp($"@timestamp", "yyyy-MM-ddTHH:mm:ss.S").cast("timestamp").between(Timestamp.valueOf(start_time), Timestamp.valueOf(end_time)))
 
       val groupResult = df.groupBy("BoxID")
@@ -250,7 +255,7 @@ object Main {
       FinalResult.write.mode("append")
         .format("org.elasticsearch.spark.sql")
         .option("es.mapping.date.rich", "false")
-        .save("virtual-staged-system/virtual")
+        .save("virtual-aggregate-system-1/virtual")
     }
 
     //Data Plane network packets data processing
@@ -339,7 +344,7 @@ object Main {
       result.write.mode("append")
         .format("org.elasticsearch.spark.sql")
         .option("es.mapping.date.rich", "false")
-        .save("dp-staged-flows/summarized")
+        .save("dp-aggregate-flows-1/summarized")
 /*
       //val notTagged = AppTaggedFlow.filter("appclassid is null")
 */
@@ -430,7 +435,7 @@ object Main {
       result.write.mode("append")
         .format("org.elasticsearch.spark.sql")
         .option("es.mapping.date.rich", "false")
-        .save("cp-staged-flows/summarized")
+        .save("cp-aggregate-flows-1/summarized")
 
       /*val notTagged = AppTaggedFlow.filter("appclassid is null")
 
