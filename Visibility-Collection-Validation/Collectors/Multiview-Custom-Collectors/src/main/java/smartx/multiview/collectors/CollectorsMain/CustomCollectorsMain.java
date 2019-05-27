@@ -106,7 +106,7 @@ public class CustomCollectorsMain {
 		vlanMapping.start();
 
 		// Start Visibility Collection for sFlow Flow Collection
-		String topic = "sFlow";
+	/*	String topic = "sFlow";
 		Timer timer = new Timer();
 		timer.schedule(new sFlowKafkaProducer(configLoader.getVISIBILITY_CENTER(), topic), 0, 10000);
 		try {
@@ -121,7 +121,7 @@ public class CustomCollectorsMain {
 				MongoConnector, ESConnector, configLoader.getsflowMongoCollection(), configLoader.getBoxType(),
 				configLoader.gettenantVLANMongoCollection());
 		sFlowconsumer.start();
-
+*/
 		// Start SmartX Boxes Performance Metrics Collection
 		SmartXBoxesPerformance smartxboxesinstanceconsumer = new SmartXBoxesPerformance(MongoConnector, configLoader.getVISIBILITY_CENTER() + ":9092",
 								configLoader.getES_HOST(), configLoader.getES_PORT());

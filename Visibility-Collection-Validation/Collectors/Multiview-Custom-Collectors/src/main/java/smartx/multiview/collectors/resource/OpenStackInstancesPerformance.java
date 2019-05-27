@@ -37,7 +37,7 @@ public class OpenStackInstancesPerformance implements Runnable{
 	private String bootstrapServer;
 
 	private String topic = "snap-vbox-visibility";
-	private String ESindex = "openstack-instances-metrics";
+	private String ESindex = "openstack-instances-metrics-1";
 
 	@SuppressWarnings("rawtypes")
 	private Map data = new HashMap();
@@ -65,7 +65,7 @@ public class OpenStackInstancesPerformance implements Runnable{
 		} else {
 			SearchHits resp = client.prepareSearch(ESindex).get().getHits();
 			index = resp.getTotalHits();
-			System.out.println("Total Records in Index: " + index);
+			System.out.println("Total Records in Index: "+ESindex+ " " + index);
 		}
 	}
 
@@ -110,7 +110,7 @@ public class OpenStackInstancesPerformance implements Runnable{
 			json2 = (JSONObject) ((JSONObject) array.get(0)).get("tags");
 			boxID = json2.get("BoxID").toString();
 			data.put("BoxID", boxID);
-			System.out.println(boxID);
+			System.out.println("[OpenStack VM ID] : "+boxID);
 			
 			for (int i = 0; i < array.size(); i++) {
 				json = (JSONObject) array.get(i);
@@ -185,7 +185,7 @@ public class OpenStackInstancesPerformance implements Runnable{
 					if (keyName.contains("bytes_sent")) {
 						String [] Interfaces = keyName.split("/");
 						String InterfaceName = Interfaces[4];
-						System.out.println(InterfaceName);
+						//System.out.println(InterfaceName);
 						int InterfaceNo = Integer.parseInt(InterfaceName.substring(InterfaceName.length()-1));	
 						if (BytesSentLastInterfaceNo == -1) {
 							keyValue = Float.parseFloat(json.get("data").toString());
@@ -204,7 +204,7 @@ public class OpenStackInstancesPerformance implements Runnable{
 					} else if (keyName.contains("bytes_recv")) {
 						String [] Interfaces = keyName.split("/");
 						String InterfaceName = Interfaces[4];
-						System.out.println(InterfaceName);
+						//System.out.println(InterfaceName);
 						int InterfaceNo = Integer.parseInt(InterfaceName.substring(InterfaceName.length()-1));	
 						if (BytesRecvLastInterfaceNo == -1) {
 							keyValue = Float.parseFloat(json.get("data").toString());
@@ -223,7 +223,7 @@ public class OpenStackInstancesPerformance implements Runnable{
 					} else if (keyName.contains("packets_sent")) {
 						String [] Interfaces = keyName.split("/");
 						String InterfaceName = Interfaces[4];
-						System.out.println(InterfaceName);
+						//System.out.println(InterfaceName);
 						int InterfaceNo = Integer.parseInt(InterfaceName.substring(InterfaceName.length()-1));	
 						if (PacketsSentLastInterfaceNo == -1) {
 							keyValue = Float.parseFloat(json.get("data").toString());
@@ -242,7 +242,7 @@ public class OpenStackInstancesPerformance implements Runnable{
 					} else if (keyName.contains("packets_recv")) {
 						String [] Interfaces = keyName.split("/");
 						String InterfaceName = Interfaces[4];
-						System.out.println(InterfaceName);
+						//System.out.println(InterfaceName);
 						int InterfaceNo = Integer.parseInt(InterfaceName.substring(InterfaceName.length()-1));	
 						if (PacketsRecvLastInterfaceNo == -1) {
 							keyValue = Float.parseFloat(json.get("data").toString());

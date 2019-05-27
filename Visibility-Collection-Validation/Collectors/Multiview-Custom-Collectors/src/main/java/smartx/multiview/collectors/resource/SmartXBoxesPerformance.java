@@ -44,7 +44,7 @@ public class SmartXBoxesPerformance implements Runnable{
 	private String bootstrapServer;
 
 	private String topic = "snap-pbox-visibility";
-	private String ESindex = "smartx-boxes-metrics";
+	private String ESindex = "smartx-boxes-metrics-1";
 	
 	@SuppressWarnings("rawtypes")
 	private Map data = new HashMap();
@@ -135,7 +135,7 @@ public class SmartXBoxesPerformance implements Runnable{
 			json2 = (JSONObject) ((JSONObject) array.get(0)).get("tags");
 			boxID = json2.get("BoxID").toString();
 			data.put("BoxID", boxID);
-			System.out.println(boxID);
+			System.out.println("[SmartX Box ID] : "+boxID);
 			if (SmartX_Box_List.containsKey(boxID))
 			{
 				for (int i = 0; i < array.size(); i++) {
