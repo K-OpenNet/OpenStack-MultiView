@@ -4,7 +4,7 @@
 		module="multi-view-flowcentric-integration-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20190402151003"
+		publication="20190402184503"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

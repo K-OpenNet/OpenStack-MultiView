@@ -19,22 +19,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.sbt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/smartx/multiview/flowcentric/Main.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1106">
-              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+            <state relative-caret-position="192">
+              <caret line="70" column="48" lean-forward="true" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
               <folding>
                 <element signature="e#38#57#0" expanded="true" />
+                <element signature="e#3551#4586#0" />
               </folding>
             </state>
           </provider>
@@ -85,6 +77,18 @@
               <item name="Multi-View-Flowcentric-Integration" type="b2602c69:ProjectViewProjectNode" />
               <item name="Multi-View-Flowcentric-Integration" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Multi-View-Flowcentric-Integration" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Multi-View-Flowcentric-Integration" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="scala-2.11" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Multi-View-Flowcentric-Integration" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Multi-View-Flowcentric-Integration" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="streams" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -186,10 +190,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="3089901239000" />
-        <entry key="$PROJECT_DIR$/build.sbt" value="1407799187" />
+        <entry key="$PROJECT_DIR$/build.sbt" value="2620528350" />
         <entry key="$PROJECT_DIR$/project/Main.scala" value="564936326" />
-        <entry key="$PROJECT_DIR$/project/build.properties" value="2125951362" />
+        <entry key="$PROJECT_DIR$/project/build.properties" value="3029178416" />
       </map>
     </option>
   </component>
@@ -216,10 +219,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="990" extended-state="6" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21250692" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18539014" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -237,7 +239,7 @@
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4997236" weight="0.32911393" />
       <window_info anchor="bottom" id="SBT Console" order="8" sideWeight="0.4997236" weight="0.32911393" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="9" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4997236" visible="true" weight="0.32816228" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4997236" visible="true" weight="0.22923589" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002764" side_tool="true" weight="0.32911393" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32911393" />
@@ -290,10 +292,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/smartx/multiview/flowcentric/Main.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1106">
-          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        <state relative-caret-position="192">
+          <caret line="70" column="48" lean-forward="true" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
           <folding>
             <element signature="e#38#57#0" expanded="true" />
+            <element signature="e#3551#4586#0" />
           </folding>
         </state>
       </provider>

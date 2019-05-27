@@ -85,18 +85,28 @@ object Main {
       val ThirdResult = SecondResultRenamed.join(right = LatencyUnderlayDF, col("Box_ID") === col("SmartX-Box-Source"), joinType = "left_outer")
         .drop("SmartX-Box-Source").drop("processing_time")
 
-      DPlanesDF = DPlanesDF.withColumnRenamed("processing_time" , "processingTime")
+      MCPlanesDF = MCPlanesDF.withColumnRenamed("processing_time" , "processingTime")
 
-      System.out.println("Data Plane Records: "+DPlanesDF.count())
-      System.out.println("Control Plane Records: "+MCPlanesDF.count())
-      System.out.println("Underlay Latency Records: "+LatencyUnderlayDF.count())
-      System.out.println("Physical System Records: "+SystemPhysicalDF.count())
-      System.out.println("Virtual System Records: "+SystemVirtualDF.count())
-      System.out.println("DP + Physical Records: "+FirstResultRenamed.count())
-      System.out.println("DP + Virtual Records: "+SecondResultRenamed.count())
-      System.out.println("DP + Underlay Records: "+ThirdResult.count())
+      val FourthResult = MCPlanesDF.join(right = SystemPhysicalDF, col("measurementboxname") === col("BoxID"), joinType = "left_outer")
+        .drop("measurementboxname")
+        .drop("minipat")
+        .drop("maxipat")
+        .drop("avgipat")
+        .drop("stddevipat")
 
-      ThirdResult.show(50, false)
+      val lookup3 = Map(
+        "BoxID" -> "Box_ID",
+        "cpuload5" -> "pcpuload5",
+        "system" -> "psystem", "user" -> "puser", "steal" -> "psteal", "nice" -> "pnice", "iowait" -> "piowait", "idle" -> "pidle",
+        "total_memory"-> "ptotal_memory", "free_memory"-> "pfree_memory", "used_memory"-> "pused_memory", "buffers"-> "pbuffers", "cached"-> "pcached",
+        "total_disk"-> "ptotal_disk", "free_disk" -> "pfree_disk", "used_disk" -> "pused_disk",
+        "management" -> "pmanagement", "mgmt_bytes_sent" -> "pmgmt_bytes_sent", "mgmt_bytes_recv" -> "pmgmt_bytes_recv", "mgmt_packets_sent" -> "pmgmt_packets_sent", "mgmt_packets_recv" -> "pmgmt_packets_recv",
+        "control" -> "pcontrol", "ctrl_bytes_sent" -> "pctrl_bytes_sent", "ctrl_bytes_recv" -> "pctrl_bytes_recv", "ctrl_packets_sent" -> "pctrl_packets_sent", "ctrl_packets_recv" -> "pctrl_packets_recv",
+        "data" -> "pdata", "data_bytes_sent" -> "pdata_bytes_sent", "data_bytes_recv" -> "pdata_bytes_recv", "data_packets_sent" -> "pdata_packets_sent", "data_packets_recv" -> "pdata_packets_recv"
+      )
+
+
+      val FourthResultRenamed = FourthResult.select(FourthResult.columns.map(c => col(c).as(lookup3.getOrElse(c, c))): _*)
 
       //Remove previous data files from the disk
       val dir = new File("/home/netcs/Multi-View-Integrated/")
@@ -110,6 +120,12 @@ object Main {
         .format("org.elasticsearch.spark.sql")
         .option("es.mapping.date.rich", "false")
         .save("dp-integrated-flows-1/data-integrated")
+
+      // Stage data to ElasticSearch DataStore
+      FourthResultRenamed.write.mode("append")
+        .format("org.elasticsearch.spark.sql")
+        .option("es.mapping.date.rich", "false")
+        .save("cp-integrated-flows-1/mc-integrated")
     }
   }
 }
