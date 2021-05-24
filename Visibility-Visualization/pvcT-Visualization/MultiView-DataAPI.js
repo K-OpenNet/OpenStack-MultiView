@@ -1,9 +1,7 @@
-var MongoClient = require('mongodb').MongoClient;
-var dateFormat  = require('dateformat');
-var mongodbHost = '127.0.0.1';
-var mongodbPort = '27017';
-var mongodbDatabase = 'multiviewdb';
-var mongourl = "mongodb://0.0.0.0:27017/multiviewdb";
+const MongoClient = require('mongodb').MongoClient;
+const dateFormat = require('dateformat');
+const mongodbDatabase = 'multiviewdb';
+const mongourl = "mongodb://mongodb:27017";
 
 ResourceProvider = function() {};
 //UserProvider = function() {};
@@ -11,16 +9,15 @@ ResourceProvider = function() {};
 //Get MultiView Users
 ResourceProvider.prototype.getUsers = function(callback)
 {
-    MongoClient.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, db)
+    MongoClient.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client)
     {
     	if (err) return console.log(err)
-    	
-    	console.log("connected...");
-    	console.log(db);
-        var collection = db.collection("configuration-multiview-users");
-        collection.find().toArray(function(err, users){
+		const db = client.db(mongodbDatabase);
+
+		const collection = db.collection("configuration-multiview-users");
+		collection.find().toArray(function(err, users){
 			callback(null,users);
-			db.close();
+			client.close();
 		});
     });
 };
