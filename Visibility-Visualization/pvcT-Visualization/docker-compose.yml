@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  nodejs-app:
+    image: usman476/mvf-visualization:0.0.0      
+    ports:
+      - "3011:3011"
+    container_name: mvf-visualization
+    links:
+      - mongodb
+    restart: unless-stopped    
+  mongodb:
+    image : mongo
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /home/usman/smartx-mvf/mongodb/database/:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
