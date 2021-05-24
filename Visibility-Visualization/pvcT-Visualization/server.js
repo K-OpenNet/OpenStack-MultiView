@@ -17,10 +17,15 @@ var errorHandler = require('errorhandler')
 var logger = require('morgan')
 
 var BoxProvider = require('./MultiView-DataAPI').BoxProvider;
-var client = require('socket.io').listen(8080).sockets;
+
+//var client = require("socket.io")(3021)
 var host = "";
 
 var app = express();
+
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const client = new Server(server);
 
 app.set('view engine', 'pug');
 app.use(express.json());
@@ -810,7 +815,7 @@ app.get('/workload', function(req, res){
 
 // Route for Login View
 app.get('/', function(req, res){
-    res.render('login.jade', {title: 'MultiView Web Application Login'})
+    res.render('login.pug', {title: 'MultiView Web Application Login'})
 });
 
 // Route for Menu View
@@ -818,11 +823,11 @@ app.get('/menu', function(req, res){
     console.log('Menu Rendering');
 	userwithip = {name:username , ip : req.connection.remoteAddress};
 	console.log(userwithip);
-	res.render('menu.jade',{locals: {}, title: 'Multi-View Menu'})
+	res.render('menu.pug',{locals: {}, title: 'Multi-View Menu'})
 });
 
 app.get('/login', function(req, res){
-    res.render('login.jade',{ title: 'MultiView Login'})
+    res.render('login.pug',{ title: 'MultiView Login'})
 });
 
 // error handling middleware should be loaded after the loading the routes
@@ -871,6 +876,6 @@ client.on('connection', function (socket) {
     });
 });
 
-app.set('domain', '0.0.0.0')
-app.listen(3011, () => console.log("Express Server Running..."))
+//server.set('domain', '0.0.0.0')
+server.listen(3011, () => console.log("Express Server Running..."))
 //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
