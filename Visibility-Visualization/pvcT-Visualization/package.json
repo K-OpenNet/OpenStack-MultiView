@@ -14,27 +14,17 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
-    "canvas": "2.8.0",
     "dateformat": "*",
     "errorhandler": "^1.5.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "html5shiv": "^3.7.3",
-    "jquery": "^3.6.0",
     "method-override": "^2.3.10",
-    "metismenu": "^3.0.7",
     "mongodb": "3.6.8",
     "morgan": "^1.10.0",
-    "multer": "^1.4.2",
-    "node-font-awesome": "^1.0.2",
-    "opentip": "^2.4.3",
     "@popperjs/core": "^2.9.2",
     "pug": ">=3.0.2",
     "responder": "^0.1.6",
-    "serve-favicon": "^2.5.0",
-    "startbootstrap-sb-admin-2": "^3.3.7",
     "stylus": ">= 0.54.8",
-    "vis-network": "^9.0.4",
     "socket.io": "4.1.2"
   }
 }

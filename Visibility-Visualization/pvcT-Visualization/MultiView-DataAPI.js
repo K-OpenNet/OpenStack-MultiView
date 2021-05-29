@@ -134,12 +134,15 @@ ResourceProvider.prototype.getovsBridgeStatus = function(box_type, callback)
 //Get Controllers List From MongoDB New
 ResourceProvider.prototype.getControllerList = function(callback) 
 {
-	MongoClient.connect(mongourl, function(err, db)
+	MongoClient.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client)
     {
+    	if (err) return console.log(err)
+		const db = client.db(mongodbDatabase);
         var collection = db.collection("playground-controllers-list");
         collection.find({},{controllerIP: true, controllerName: true, controllerStatus: true, controllerSoftware: true, _id: false}).sort({controllerName: -1}).toArray(function(err, controllers){
-	     	callback(null, controllers);
-		    db.close();
+	     	console.log(controllers);
+        	callback(null, controllers);
+		    client.close();
 		});
 	 });
 };
@@ -187,21 +190,6 @@ ResourceProvider.prototype.getIoTHostList = function(callback)
         });
     });
 };
-
-//Get Workloads List From MongoDB
-/*ResourceProvider.prototype.getServicesList = function(callback)
-{
-    MongoClient.connect(mongourl, function(err, db)
-    {
-        console.log('Services List: ');
-        var collection = db.collection("configuration-service-list");
-        collection.find({type: 'B**'},{box: true, name: true, osusername: true, ostenantname: true, vlanid: true, state: true, _id: false}).sort({box: -1}).toArray(function(err, vmList){
-                //db.close();
-                callback(null,vmList);
-				db.close();
-        });
-    });
-};*/
 
 //Get Tenant-vlan Mapping List
 ResourceProvider.prototype.gettenantvlanmapList = function(callback)
@@ -284,8 +272,10 @@ ResourceProvider.prototype.getAMDataTCPperDay = function(boxID, startDate, endDa
 //ManhNT
 ResourceProvider.prototype.getDataMultiSliceVisibility = function(userID, callback)
 {
-    MongoClient.connect(mongourl, function(err, client){
-		const db = client.db('multiviewdb');
+    MongoClient.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client)
+    {
+    	if (err) return console.log(err)
+		const db = client.db(mongodbDatabase);
 
 		var colConfigMultiUser = db.collection('configuration-multiview-users');
 		var colUnderlay_main = db.collection('underlay_main');
@@ -474,8 +464,10 @@ ResourceProvider.prototype.getDataMultiSliceVisibility = function(userID, callba
 
 ResourceProvider.prototype.getDataMultiSliceVisibilityTenant = function(userID, callback)
 {
-    MongoClient.connect(mongourl, function(err, client){
-		const db = client.db('multiviewdb');
+    MongoClient.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client)
+    {
+    	if (err) return console.log(err)
+		const db = client.db(mongodbDatabase);
 
 		var colConfigMultiUser = db.collection('configuration-multiview-users');
 		var colUnderlay_main = db.collection('underlay_main');
@@ -666,8 +658,10 @@ ResourceProvider.prototype.getDataMultiSliceVisibilityTenant = function(userID, 
 
 //VM's Visualization API
 ResourceProvider.prototype.getSevenRingAPI = function(callback){
-    MongoClient.connect(mongourl, function(err, client){
-		const db = client.db('multiviewdb');
+    MongoClient.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client)
+    {
+    	if (err) return console.log(err)
+		const db = client.db(mongodbDatabase);
 
 		var colUnderlay_main = db.collection('underlay_main');
 		var colunder_int =db.collection('underlay_int');

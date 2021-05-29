@@ -2,7 +2,7 @@ doctype html
 html
     head
         meta(charset='UTF-8')
-        title Onion-ring-style Visualization (Tenant)
+        title Onion-ring-style Visualization (Operator)
         style(type='text/css').
             .sdncontrollerdiv {
                 position: absolute;
@@ -57,9 +57,9 @@ html
                 background-color: black;
             }
         script(type='text/javascript', src='javascripts/d3.v3.min.js')
-        script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js')
+        script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js')
         script(type='text/javascript', src='javascripts/psd3.js')
-        link(type='text/css', rel='stylesheet', href='stylesheets/opentip.css')
+        link(type='text/css', rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/opentip/2.4.6/css/opentip.min.css')
         link(rel='stylesheet', type='text/css', href='stylesheets/psd3.css')
     body(style='margin: 15px;')
         .container
@@ -70,10 +70,10 @@ html
                 table#controllertable(style='width:100%;color:black;text-align:center;')
                     tbody
         script(type='text/javascript').
-            var session_username = sessionStorage.getItem('ss_user_name');
-            if (session_username === null) {
-                window.location.replace("http://103.22.221.56:3011/login");
-            };
+            //var session_username = sessionStorage.getItem('ss_user_name');
+            //if(session_username === null){
+            //	window.location.replace("http://103.22.221.56:3011/login");
+            //};
             var data = !{data};
             var controllerList = !{controllerList};
             //* Important Data is the data of psd3
@@ -97,7 +97,7 @@ html
                     return d.data.color;
                 },
                 transition: "linear",
-                transitionDuration: 50,
+                transitionDuration: 20,
                 donutRadius: 50,
                 gradient: true,
                 colors: d3.scale.category20(),
