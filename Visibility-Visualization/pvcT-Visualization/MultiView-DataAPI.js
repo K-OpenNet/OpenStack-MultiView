@@ -277,7 +277,6 @@ ResourceProvider.prototype.getDataMultiSliceVisibility = function(userID, callba
     	if (err) return console.log(err)
 		const db = client.db(mongodbDatabase);
 
-		var colConfigMultiUser = db.collection('configuration-multiview-users');
 		var colUnderlay_main = db.collection('underlay_main');
 		var colunder_int =db.collection('underlay_int');
 		var colunder_ren = db.collection('underlay_REN');
