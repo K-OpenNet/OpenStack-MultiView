@@ -1,26 +1,8 @@
 version: "3.8"
 services:
-  nodejs-app:
-    image: usman476/mvf-visualization:0.0.0      
-    ports:
-      - "3011:3011"
-    container_name: mvf-visualization
-    links:
-      - mongodb
-    restart: unless-stopped    
-  mongodb:
-    image : mongo
-    container_name: mongodb
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - /home/usman/smartx-mvf/mongodb/database/:/data/db
-    ports:
-      - 27017:27017
-    restart: unless-stopped
   zookeeper:
     image: docker.io/bitnami/zookeeper:3
+    container_name: zookeeper
     ports:
       - "2181:2181"
     volumes:
@@ -29,6 +11,7 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
     image: docker.io/bitnami/kafka:2
+    container_name: kafka
     ports:
       - "9092:9092"
     volumes:
@@ -39,6 +22,71 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+
+  spark-master:
+    image: docker.io/bitnami/spark:3
+    container_name: spark-master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - '8085:8080'
+      - '7077:7077'
+    volumes:
+      - spark_data:/opt/spark-data
+      - spark_apps:/opt/spark-apps
+  spark-worker-1:
+    image: docker.io/bitnami/spark:3
+    container_name: spark-worker1
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - spark_data:/opt/spark-data
+      - spark_apps:/opt/spark-apps
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"
+  spark-worker-2:
+    image: docker.io/bitnami/spark:3
+    container_name: spark-worker2
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - spark_data:/opt/spark-data
+      - spark_apps:/opt/spark-apps
+    depends_on:
+      - spark-master
+    ports:
+      - "8082:8081"
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -46,20 +94,35 @@ services:
       - "9090:9090"
     command:
       - --config.file=/etc/prometheus/prometheus.yml
-    volumes:
-      - "/home/usman/flask-example/prometheus.yml:/etc/prometheus/prometheus.yml:ro"
+    #volumes:
+    #  - "Visibility-Storage-Staging/prometheus.yml:/etc/prometheus/prometheus.yml"
   grafana:
     image: grafana/grafana:latest
+    container_name: grafana
     ports:
       - 3000:3000
     volumes:
       - "grafana_data:/var/lib/grafana"
     depends_on:
       - prometheus
+  nodejs-app:
+    image: usman476/mvf-visualization:0.0.0
+    ports:
+      - "3011:3011"
+    container_name: visualization
+    links:
+      - mongodb
+    restart: unless-stopped
 volumes:
   zookeeper_data:
     driver: local
   kafka_data:
     driver: local
   grafana_data:
+    driver: local
+  spark_data:
+    driver: local
+  spark_apps:
+    driver: local
+  mongodb_data:
     driver: local
