@@ -33,7 +33,6 @@ services:
     ports:
       - 27017:27017
     restart: unless-stopped
-
   spark-master:
     image: docker.io/bitnami/spark:3
     container_name: spark-master
@@ -95,7 +94,18 @@ services:
     command:
       - --config.file=/etc/prometheus/prometheus.yml
     #volumes:
-    #  - "Visibility-Storage-Staging/prometheus.yml:/etc/prometheus/prometheus.yml"
+    #  - "MultiView-Configurations/prometheus.yml:/etc/prometheus/prometheus.yml:ro"
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+    environment:
+      - node.name=es01
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    ports:
+      - 9200:9200
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -105,6 +115,17 @@ services:
       - "grafana_data:/var/lib/grafana"
     depends_on:
       - prometheus
+  kibana:
+    image: bitnami/kibana:latest
+    container_name: kibana
+    environment:
+      - KIBANA_ELASTICSEARCH_URL=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
+    volumes:
+      - kibana_data:/bitnami/kibana
   nodejs-app:
     image: usman476/mvf-visualization:0.0.0
     ports:
@@ -125,4 +146,8 @@ volumes:
   spark_apps:
     driver: local
   mongodb_data:
+    driver: local
+  es_data:
+    driver: local
+  kibana_data:
     driver: local
