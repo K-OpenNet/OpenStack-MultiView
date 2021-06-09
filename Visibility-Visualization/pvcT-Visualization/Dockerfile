@@ -8,10 +8,10 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 #COPY htmlviews ./
-#COPY server.js ./
-#COPY views ./
-#COPY public ./
-#COPY MultiView-DataAPI.js ./
+COPY server.js ./
+COPY views ./
+COPY public ./
+COPY MultiView-DataAPI.js ./
 
 RUN npm install
 

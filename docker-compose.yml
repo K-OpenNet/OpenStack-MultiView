@@ -99,9 +99,16 @@ services:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
     environment:
-      - node.name=es01
       - xpack.security.enabled=false
       - "discovery.type=single-node"
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     ports:
       - 9200:9200
     volumes:
@@ -116,10 +123,10 @@ services:
     depends_on:
       - prometheus
   kibana:
-    image: bitnami/kibana:latest
+    image: docker.elastic.co/kibana/kibana:7.13.1
     container_name: kibana
     environment:
-      - KIBANA_ELASTICSEARCH_URL=http://elasticsearch:9200
+      - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
     depends_on:
       - elasticsearch
     ports:
